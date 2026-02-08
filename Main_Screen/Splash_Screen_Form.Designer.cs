@@ -1,6 +1,6 @@
 ﻿namespace Main_Screen
 {
-    partial class splash_screen
+    partial class Splash_Screen_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(splash_screen));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Splash_Screen_Form));
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -141,11 +141,11 @@
             timer8.Interval = 30;
             timer8.Tick += timer8_Tick;
             // 
-            // splash_screen
+            // Splash_Screen_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.SlateBlue;
+            BackColor = Color.FromArgb(40, 164, 153);
             ClientSize = new Size(518, 339);
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
@@ -153,10 +153,10 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "splash_screen";
+            Name = "Splash_Screen_Form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
-            Load += splash_screen_Load;
+            Load += Splash_Screen_Form_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

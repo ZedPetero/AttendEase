@@ -18,7 +18,7 @@ namespace Main_Screen
 
         private void btnGetStarted_Click(object sender, EventArgs e)
         {
-            Form1 mainForm = (Form1)this.FindForm();
+            Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
             if (mainForm != null) 
             {
                 UC_Classes myClasses = new UC_Classes();
