@@ -9,15 +9,15 @@ using System.Drawing.Drawing2D;
 
 namespace Main_Screen
 {
-    public partial class splash_screen : Form
+    public partial class Splash_Screen_Form : Form
     {
-        public splash_screen()
+        public Splash_Screen_Form()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-        private void splash_screen_Load(object sender, EventArgs e)
+        private void Splash_Screen_Form_Load(object sender, EventArgs e)
         {
             ApplyRoundedCorners(30); // adjust radius here
 

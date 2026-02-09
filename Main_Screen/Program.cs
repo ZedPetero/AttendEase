@@ -14,12 +14,30 @@ namespace Main_Screen;
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            // show the splash screen first; when it closes, start the main form
-            using (var splash = new splash_screen())
+            // Register Syncfusion license before creating any Syncfusion controls (Login uses Syncfusion).
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhLYVJ0WmFZfVhgdVVMZV5bRnZPIiBoS35RcEVhWXpccnFXRGBYVUB0VEFf");
+
+            // show the splash screen first; when it closes, show the login dialog
+            using (var splash = new Splash_Screen_Form())
             {
                 splash.ShowDialog();
             }
-        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhLYVJ0WmFZfVhgdVVMZV5bRnZPIiBoS35RcEVhWXpccnFXRGBYVUB0VEFf");
-        Application.Run(new Form1());
-        }
+
+            while (true)
+            {
+                // Show login
+                using (var login = new Login_Screen_Form())
+                {
+                    if (login.ShowDialog() != DialogResult.OK)
+                        return; // exit app if cancelled
+                }
+
+                // Show main screen
+                var mainForm = new Main_Screen_Form();
+                Application.Run(mainForm);
+
+                // If we reach here, user clicked Logout
+                // Loop back to login
+            }
     }
+}

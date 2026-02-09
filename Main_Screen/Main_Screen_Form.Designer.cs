@@ -1,6 +1,6 @@
 ﻿namespace Main_Screen
 {
-    partial class Form1
+    partial class Main_Screen_Form
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Screen_Form));
             header = new Panel();
             hamburger = new PictureBox();
             label1 = new Label();
@@ -289,6 +289,7 @@
             btnLogOut.TextAlign = ContentAlignment.MiddleLeft;
             btnLogOut.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnLogOut.UseVisualStyleBackColor = false;
+            btnLogOut.Click += btnLogOut_Click;
             // 
             // sidebarTimer
             // 
@@ -305,7 +306,7 @@
             pnlMainContent.Size = new Size(1150, 640);
             pnlMainContent.TabIndex = 3;
             // 
-            // Form1
+            // Main_Screen_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -315,7 +316,7 @@
             Controls.Add(sidebar);
             Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form1";
+            Name = "Main_Screen_Form";
             StartPosition = FormStartPosition.CenterScreen;
             header.ResumeLayout(false);
             header.PerformLayout();

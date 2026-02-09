@@ -2,9 +2,9 @@
 using System.Drawing.Drawing2D;
 namespace Main_Screen
 {
-    public partial class Form1 : Form
+    public partial class Main_Screen_Form : Form
     {
-        public Form1()
+        public Main_Screen_Form()
         {
             InitializeComponent();
             UC_Home myHome = new UC_Home();
@@ -86,6 +86,11 @@ namespace Main_Screen
             path.CloseFigure();
 
             control.Region = new Region(path);
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
