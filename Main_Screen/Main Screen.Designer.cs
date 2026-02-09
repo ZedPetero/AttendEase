@@ -36,19 +36,19 @@
             logo = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel2 = new Panel();
-            btnHome = new Button();
-            imageList1 = new ImageList(components);
             panel3 = new Panel();
-            btnClasses = new Button();
+            imageList1 = new ImageList(components);
             panel4 = new Panel();
-            btnRecords = new Button();
             panel5 = new Panel();
-            btnTeacher = new Button();
             sidebar = new Panel();
             panel6 = new Panel();
             btnLogOut = new Button();
             sidebarTimer = new System.Windows.Forms.Timer(components);
             pnlMainContent = new Panel();
+            sfButton4 = new Syncfusion.WinForms.Controls.SfButton();
+            sfButton3 = new Syncfusion.WinForms.Controls.SfButton();
+            sfButton2 = new Syncfusion.WinForms.Controls.SfButton();
+            sfButton1 = new Syncfusion.WinForms.Controls.SfButton();
             header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)hamburger).BeginInit();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
@@ -119,32 +119,21 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(btnHome);
+            panel2.Controls.Add(sfButton1);
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
             panel2.Size = new Size(200, 60);
             panel2.TabIndex = 2;
             // 
-            // btnHome
+            // panel3
             // 
-            btnHome.BackColor = Color.Transparent;
-            btnHome.Dock = DockStyle.Fill;
-            btnHome.FlatAppearance.BorderSize = 0;
-            btnHome.FlatStyle = FlatStyle.Flat;
-            btnHome.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHome.ImageKey = "home.png";
-            btnHome.ImageList = imageList1;
-            btnHome.Location = new Point(0, 0);
-            btnHome.Name = "btnHome";
-            btnHome.Padding = new Padding(10, 0, 0, 0);
-            btnHome.Size = new Size(200, 60);
-            btnHome.TabIndex = 0;
-            btnHome.Text = "    Home";
-            btnHome.TextAlign = ContentAlignment.MiddleLeft;
-            btnHome.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnHome.UseVisualStyleBackColor = false;
-            btnHome.Click += btnHome_Click;
+            panel3.Controls.Add(sfButton4);
+            panel3.Location = new Point(0, 60);
+            panel3.Margin = new Padding(0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(200, 60);
+            panel3.TabIndex = 3;
             // 
             // imageList1
             // 
@@ -160,92 +149,23 @@
             imageList1.Images.SetKeyName(6, "edit.png");
             imageList1.Images.SetKeyName(7, "people.png");
             // 
-            // panel3
-            // 
-            panel3.Controls.Add(btnClasses);
-            panel3.Location = new Point(0, 60);
-            panel3.Margin = new Padding(0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(200, 60);
-            panel3.TabIndex = 3;
-            // 
-            // btnClasses
-            // 
-            btnClasses.BackColor = Color.Transparent;
-            btnClasses.Dock = DockStyle.Fill;
-            btnClasses.FlatAppearance.BorderSize = 0;
-            btnClasses.FlatStyle = FlatStyle.Flat;
-            btnClasses.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClasses.ImageKey = "people.png";
-            btnClasses.ImageList = imageList1;
-            btnClasses.Location = new Point(0, 0);
-            btnClasses.Name = "btnClasses";
-            btnClasses.Padding = new Padding(12, 0, 0, 0);
-            btnClasses.Size = new Size(200, 60);
-            btnClasses.TabIndex = 0;
-            btnClasses.Text = "    Classes";
-            btnClasses.TextAlign = ContentAlignment.MiddleLeft;
-            btnClasses.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnClasses.UseVisualStyleBackColor = false;
-            btnClasses.Click += btnClasses_Click;
-            // 
             // panel4
             // 
-            panel4.Controls.Add(btnRecords);
+            panel4.Controls.Add(sfButton3);
             panel4.Location = new Point(0, 120);
             panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
             panel4.Size = new Size(200, 60);
             panel4.TabIndex = 4;
             // 
-            // btnRecords
-            // 
-            btnRecords.BackColor = Color.Transparent;
-            btnRecords.Dock = DockStyle.Fill;
-            btnRecords.FlatAppearance.BorderSize = 0;
-            btnRecords.FlatStyle = FlatStyle.Flat;
-            btnRecords.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRecords.ImageKey = "edit.png";
-            btnRecords.ImageList = imageList1;
-            btnRecords.Location = new Point(0, 0);
-            btnRecords.Name = "btnRecords";
-            btnRecords.Padding = new Padding(12, 0, 0, 0);
-            btnRecords.Size = new Size(200, 60);
-            btnRecords.TabIndex = 0;
-            btnRecords.Text = "    Records";
-            btnRecords.TextAlign = ContentAlignment.MiddleLeft;
-            btnRecords.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnRecords.UseVisualStyleBackColor = false;
-            btnRecords.Click += btnRecords_Click;
-            // 
             // panel5
             // 
-            panel5.Controls.Add(btnTeacher);
+            panel5.Controls.Add(sfButton2);
             panel5.Location = new Point(0, 180);
             panel5.Margin = new Padding(0);
             panel5.Name = "panel5";
             panel5.Size = new Size(200, 60);
             panel5.TabIndex = 5;
-            // 
-            // btnTeacher
-            // 
-            btnTeacher.BackColor = Color.Transparent;
-            btnTeacher.Dock = DockStyle.Fill;
-            btnTeacher.FlatAppearance.BorderSize = 0;
-            btnTeacher.FlatStyle = FlatStyle.Flat;
-            btnTeacher.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTeacher.ImageKey = "teacher.png";
-            btnTeacher.ImageList = imageList1;
-            btnTeacher.Location = new Point(0, 0);
-            btnTeacher.Name = "btnTeacher";
-            btnTeacher.Padding = new Padding(12, 0, 0, 0);
-            btnTeacher.Size = new Size(200, 60);
-            btnTeacher.TabIndex = 0;
-            btnTeacher.Text = "    Teacher";
-            btnTeacher.TextAlign = ContentAlignment.MiddleLeft;
-            btnTeacher.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnTeacher.UseVisualStyleBackColor = false;
-            btnTeacher.Click += btnTeacher_Click;
             // 
             // sidebar
             // 
@@ -301,6 +221,90 @@
             pnlMainContent.Size = new Size(1150, 640);
             pnlMainContent.TabIndex = 3;
             // 
+            // sfButton4
+            // 
+            sfButton4.BackColor = Color.Transparent;
+            sfButton4.Dock = DockStyle.Fill;
+            sfButton4.FlatStyle = FlatStyle.Flat;
+            sfButton4.Font = new Font("Segoe UI Semibold", 9F);
+            sfButton4.ImageAlign = ContentAlignment.MiddleLeft;
+            sfButton4.ImageKey = "people.png";
+            sfButton4.ImageList = imageList1;
+            sfButton4.ImageMargin = new Padding(0);
+            sfButton4.Location = new Point(0, 0);
+            sfButton4.Margin = new Padding(0);
+            sfButton4.Name = "sfButton4";
+            sfButton4.Padding = new Padding(10, 0, 0, 0);
+            sfButton4.Size = new Size(200, 60);
+            sfButton4.Style.BackColor = Color.Transparent;
+            sfButton4.TabIndex = 3;
+            sfButton4.Text = "    Classes";
+            sfButton4.TextAlign = ContentAlignment.MiddleLeft;
+            sfButton4.UseVisualStyleBackColor = false;
+            // 
+            // sfButton3
+            // 
+            sfButton3.BackColor = Color.Transparent;
+            sfButton3.Dock = DockStyle.Fill;
+            sfButton3.FlatStyle = FlatStyle.Flat;
+            sfButton3.Font = new Font("Segoe UI Semibold", 9F);
+            sfButton3.ImageAlign = ContentAlignment.MiddleLeft;
+            sfButton3.ImageKey = "edit.png";
+            sfButton3.ImageList = imageList1;
+            sfButton3.ImageMargin = new Padding(0);
+            sfButton3.Location = new Point(0, 0);
+            sfButton3.Margin = new Padding(0);
+            sfButton3.Name = "sfButton3";
+            sfButton3.Padding = new Padding(10, 0, 0, 0);
+            sfButton3.Size = new Size(200, 60);
+            sfButton3.Style.BackColor = Color.Transparent;
+            sfButton3.TabIndex = 2;
+            sfButton3.Text = "    Records";
+            sfButton3.TextAlign = ContentAlignment.MiddleLeft;
+            sfButton3.UseVisualStyleBackColor = false;
+            // 
+            // sfButton2
+            // 
+            sfButton2.BackColor = Color.Transparent;
+            sfButton2.Dock = DockStyle.Fill;
+            sfButton2.FlatStyle = FlatStyle.Flat;
+            sfButton2.Font = new Font("Segoe UI Semibold", 9F);
+            sfButton2.ImageAlign = ContentAlignment.MiddleLeft;
+            sfButton2.ImageKey = "teacher.png";
+            sfButton2.ImageList = imageList1;
+            sfButton2.ImageMargin = new Padding(0);
+            sfButton2.Location = new Point(0, 0);
+            sfButton2.Margin = new Padding(0);
+            sfButton2.Name = "sfButton2";
+            sfButton2.Padding = new Padding(10, 0, 0, 0);
+            sfButton2.Size = new Size(200, 60);
+            sfButton2.Style.BackColor = Color.Transparent;
+            sfButton2.TabIndex = 1;
+            sfButton2.Text = "    Teacher";
+            sfButton2.TextAlign = ContentAlignment.MiddleLeft;
+            sfButton2.UseVisualStyleBackColor = false;
+            // 
+            // sfButton1
+            // 
+            sfButton1.BackColor = Color.Transparent;
+            sfButton1.Dock = DockStyle.Fill;
+            sfButton1.FlatStyle = FlatStyle.Flat;
+            sfButton1.Font = new Font("Segoe UI Semibold", 9F);
+            sfButton1.ImageAlign = ContentAlignment.MiddleLeft;
+            sfButton1.ImageKey = "home.png";
+            sfButton1.ImageList = imageList1;
+            sfButton1.ImageMargin = new Padding(0);
+            sfButton1.Location = new Point(0, 0);
+            sfButton1.Margin = new Padding(0);
+            sfButton1.Name = "sfButton1";
+            sfButton1.Padding = new Padding(10, 0, 0, 0);
+            sfButton1.Size = new Size(200, 60);
+            sfButton1.Style.BackColor = Color.Transparent;
+            sfButton1.TabIndex = 0;
+            sfButton1.Text = "    Home";
+            sfButton1.TextAlign = ContentAlignment.MiddleLeft;
+            sfButton1.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -334,19 +338,19 @@
         private PictureBox logo;
         private PictureBox hamburger;
         private FlowLayoutPanel flowLayoutPanel1;
-        private Button btnHome;
         private Panel panel2;
         private Panel panel3;
-        private Button btnClasses;
         private Panel panel4;
-        private Button btnRecords;
         private Panel panel5;
-        private Button btnTeacher;
         private ImageList imageList1;
         private Panel sidebar;
         private Panel panel6;
         private Button btnLogOut;
         private System.Windows.Forms.Timer sidebarTimer;
         private Panel pnlMainContent;
+        private Syncfusion.WinForms.Controls.SfButton sfButton1;
+        private Syncfusion.WinForms.Controls.SfButton sfButton4;
+        private Syncfusion.WinForms.Controls.SfButton sfButton3;
+        private Syncfusion.WinForms.Controls.SfButton sfButton2;
     }
 }
