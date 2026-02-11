@@ -41,6 +41,12 @@ namespace Main_Screen
             if (IsValidUser(username, password))
             {
                 // Login successful
+                MessageBox.Show(
+                    "Login successful!",
+                    "Welcome",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
