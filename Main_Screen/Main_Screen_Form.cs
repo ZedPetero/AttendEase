@@ -1,6 +1,6 @@
 
 using System.Drawing.Drawing2D;
-namespace Main_Screen
+namespace AE.Application
 {
     public partial class Main_Screen_Form : Form
     {
@@ -9,6 +9,7 @@ namespace Main_Screen
             InitializeComponent();
             UC_Home myHome = new UC_Home();
             loadForm(myHome);
+            btnHome.ImageSize = new Size(24, 24);
         }
         bool sidebarExpand = false;
         private void btnHome_Click(object sender, EventArgs e)
@@ -91,6 +92,11 @@ namespace Main_Screen
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnHome_MouseHover(object sender, EventArgs e)
+        {
+            btnHome.ImageSize = new Size(22,22);
         }
     }
 }

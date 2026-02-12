@@ -1,4 +1,4 @@
-﻿namespace Main_Screen
+﻿namespace AE.Application
 {
     partial class UC_Records
     {

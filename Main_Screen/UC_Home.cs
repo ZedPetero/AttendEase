@@ -5,8 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Main_Screen;
-namespace Main_Screen
+using AE.Application;
+namespace AE.Application
 {
     public partial class UC_Home : UserControl
     {

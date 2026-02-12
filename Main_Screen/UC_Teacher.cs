@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Main_Screen
+namespace AE.Application
 {
     public partial class UC_Teacher : UserControl
     {

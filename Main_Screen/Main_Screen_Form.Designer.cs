@@ -1,4 +1,4 @@
-﻿namespace Main_Screen
+﻿namespace AE.Application
 {
     partial class Main_Screen_Form
     {
@@ -142,11 +142,23 @@
             btnHome.Padding = new Padding(10, 0, 0, 0);
             btnHome.Size = new Size(200, 60);
             btnHome.Style.BackColor = Color.Transparent;
+            btnHome.Style.FocusedBackColor = Color.FromArgb(40, 164, 153);
+            btnHome.Style.FocusedImage = Properties.Resources.home;
+            btnHome.Style.FocusedImageForeColor = Color.Black;
+            btnHome.Style.ForeColor = Color.Black;
+            btnHome.Style.HoverForeColor = Color.FromArgb(40, 164, 153);
+            btnHome.Style.HoverImage = Properties.Resources.home;
+            btnHome.Style.HoverImageForeColor = Color.Black;
+            btnHome.Style.ImageForeColor = Color.Black;
+            btnHome.Style.PressedBackColor = Color.FromArgb(35, 159, 148);
+            btnHome.Style.PressedImage = Properties.Resources.home;
+            btnHome.Style.PressedImageForeColor = Color.Black;
             btnHome.TabIndex = 0;
             btnHome.Text = "    Home";
             btnHome.TextAlign = ContentAlignment.MiddleLeft;
             btnHome.UseVisualStyleBackColor = false;
             btnHome.Click += btnHome_Click;
+            btnHome.MouseHover += btnHome_MouseHover;
             // 
             // imageList1
             // 
@@ -302,7 +314,6 @@
             // 
             // pnlMainContent
             // 
-            pnlMainContent.Anchor = AnchorStyles.None;
             pnlMainContent.BackColor = Color.White;
             pnlMainContent.Location = new Point(50, 80);
             pnlMainContent.Margin = new Padding(0);

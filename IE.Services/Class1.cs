@@ -1,4 +1,4 @@
-﻿namespace IE.Services
+﻿namespace AE.Services
 {
     public class Class1
     {

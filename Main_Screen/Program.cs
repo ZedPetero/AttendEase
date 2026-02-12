@@ -1,4 +1,4 @@
-namespace Main_Screen;
+namespace AE.Application;
     using System;
     using System.Windows.Forms;
 

@@ -7,7 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Main_Screen
+namespace AE.Application
 {
     public partial class Login_Screen_Form : Form
     {
@@ -18,6 +18,9 @@ namespace Main_Screen
         {
             InitializeComponent();
             PrepareControlsForAnimation();
+            UIHelper.RoundControl(this, 100);
+            UIHelper.RoundControl(btnExit, 50);
+            UIHelper.RoundControl(sfButton1, 20);
         }
 
         private void PrepareControlsForAnimation()

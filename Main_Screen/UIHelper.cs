@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Text;
 
-namespace Main_Screen
+namespace AE.Application
 {
     public static class UIHelper 
     {
