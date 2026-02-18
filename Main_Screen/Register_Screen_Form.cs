@@ -14,5 +14,10 @@ namespace AE.Application
         {
             InitializeComponent();
         }
+
+        private void loginLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Close();
+        }
     }
 }

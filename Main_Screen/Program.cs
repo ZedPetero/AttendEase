@@ -28,6 +28,7 @@ namespace AE.Application;
                 // Show login
                 using (var login = new Login_Screen_Form())
                 {
+                    
                     if (login.ShowDialog() != DialogResult.OK)
                         return; // exit app if cancelled
                 }

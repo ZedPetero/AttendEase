@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             pictureBox1 = new PictureBox();
+            loginLink = new LinkLabel();
+            autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -42,12 +44,39 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
+            // loginLink
+            // 
+            loginLink.ActiveLinkColor = Color.Gainsboro;
+            loginLink.AutoSize = true;
+            loginLink.Cursor = Cursors.Hand;
+            loginLink.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            loginLink.LinkColor = Color.White;
+            loginLink.Location = new Point(472, 435);
+            loginLink.Name = "loginLink";
+            loginLink.Size = new Size(112, 30);
+            loginLink.TabIndex = 12;
+            loginLink.TabStop = true;
+            loginLink.Text = "Click Here";
+            loginLink.LinkClicked += loginLink_LinkClicked;
+            // 
+            // autoLabel3
+            // 
+            autoLabel3.Font = new Font("Segoe UI", 16F);
+            autoLabel3.ForeColor = Color.White;
+            autoLabel3.Location = new Point(217, 435);
+            autoLabel3.Name = "autoLabel3";
+            autoLabel3.Size = new Size(259, 30);
+            autoLabel3.TabIndex = 11;
+            autoLabel3.Text = "Already have an account?";
+            // 
             // Register_Screen_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 164, 153);
             ClientSize = new Size(800, 500);
+            Controls.Add(loginLink);
+            Controls.Add(autoLabel3);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Register_Screen_Form";
@@ -55,10 +84,13 @@
             Text = "Register_Screen_Form";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private PictureBox pictureBox1;
+        private LinkLabel loginLink;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
     }
 }
