@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using AE.Domain.Models;
+using AE.Application;
 namespace AE.Infrastructure.Data
 {
     public class AppDbContext : DbContext
@@ -19,7 +20,9 @@ namespace AE.Infrastructure.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Data Source=AttendEase.db");
+                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string dbPath = System.IO.Path.Combine(documentsPath, "AttendEase.db");
+                optionsBuilder.UseSqlite($"Data Source={dbPath}");
             }
         }
 

@@ -19,5 +19,6 @@ namespace AE.Domain.Models
         public int SectionId { get; set; }
         public Section Section { get; set; }
         public List<Grade> Grades { get; set; } = new List<Grade>();
+        public List<Attendance> Attendances { get; set; } = new List<Attendance>();
     }
 }

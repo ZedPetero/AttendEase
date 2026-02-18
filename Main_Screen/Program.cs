@@ -10,12 +10,10 @@ namespace AE.Application;
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-
-            // Register Syncfusion license before creating any Syncfusion controls (Login uses Syncfusion).
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhLYVJ0WmFZfVhgdVVMZV5bRnZPIiBoS35RcEVhWXpccnFXRGBYVUB0VEFf");
+        // To customize application configuration such as set high DPI settings or default font,
+        // see https://aka.ms/applicationconfiguration.
+        // Register Syncfusion license before creating any Syncfusion controls (Login uses Syncfusion).
+        Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdENjW35acHJRRWNbVkR0VkleYQ==");
 
             // show the splash screen first; when it closes, show the login dialog
             using (var splash = new Splash_Screen_Form())
