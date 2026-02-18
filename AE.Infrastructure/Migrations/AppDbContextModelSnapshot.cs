@@ -119,9 +119,6 @@ namespace AE.Infrastructure.Migrations
                     b.Property<int>("SectionId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("status")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.HasIndex("SectionId");
@@ -135,11 +132,27 @@ namespace AE.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Phonenumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -157,7 +170,7 @@ namespace AE.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("AE.Domain.Models.Student", "Student")
-                        .WithMany()
+                        .WithMany("Attendances")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -207,6 +220,8 @@ namespace AE.Infrastructure.Migrations
 
             modelBuilder.Entity("AE.Domain.Models.Student", b =>
                 {
+                    b.Navigation("Attendances");
+
                     b.Navigation("Grades");
                 });
 

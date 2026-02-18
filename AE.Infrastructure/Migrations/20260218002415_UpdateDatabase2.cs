@@ -5,24 +5,18 @@
 namespace AE.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class updatedDb : Migration
+    public partial class UpdateDatabase2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Name",
-                table: "Sections",
-                newName: "SectionName");
+
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "SectionName",
-                table: "Sections",
-                newName: "Name");
+
         }
     }
 }

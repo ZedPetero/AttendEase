@@ -51,7 +51,6 @@ namespace AE.Application
 
                     studentRow.StudentName = $"{student.FirstName} {student.LastName}";
                     studentRow.StudentNumber = count.ToString();
-                    studentRow.StudentStatus = student.status.ToString() ?? "Present";
 
                     layoutStudents.Controls.Add(studentRow);
                     count++;
