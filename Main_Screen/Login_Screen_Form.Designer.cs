@@ -132,7 +132,6 @@
             autoLabel3.Size = new Size(237, 30);
             autoLabel3.TabIndex = 8;
             autoLabel3.Text = "Don't have an account?";
-            autoLabel3.Click += autoLabel3_Click;
             // 
             // linkLabel2
             // 
@@ -147,7 +146,7 @@
             linkLabel2.TabIndex = 10;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Click Here";
-            linkLabel2.LinkClicked += this.linkLabel2_LinkClicked;
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
             // 
             // autoLabel4
             // 

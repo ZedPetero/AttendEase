@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pictureBox1 = new PictureBox();
             loginLink = new LinkLabel();
             autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            timerSlide = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -69,6 +71,10 @@
             autoLabel3.TabIndex = 11;
             autoLabel3.Text = "Already have an account?";
             // 
+            // timerSlide
+            // 
+            timerSlide.Tick += timerSlide_Tick;
+            // 
             // Register_Screen_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -92,5 +98,6 @@
         private PictureBox pictureBox1;
         private LinkLabel loginLink;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
+        private System.Windows.Forms.Timer timerSlide;
     }
 }

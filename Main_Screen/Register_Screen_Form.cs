@@ -19,5 +19,10 @@ namespace AE.Application
         {
             Close();
         }
+
+        private void timerSlide_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

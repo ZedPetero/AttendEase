@@ -70,11 +70,6 @@ namespace AE.Application
             return username == "admin" && password == "1234";
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
-
         private void Login_Screen_Form_Load(object sender, EventArgs e)
         {
             animationStep = 0;
@@ -115,9 +110,21 @@ namespace AE.Application
             Close();
         }
 
-        private void autoLabel3_Click(object sender, EventArgs e)
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            this.Hide();
+            using (var register = new Register_Screen_Form())
+            {
+                register.ShowDialog();
+            }
+            this.Show();
+            originalPositions.Clear();
+            originalPositions = new Dictionary<Control, Point>();
+            animationStep = 0;
+            this.Opacity = 0;
+            timerSlide.Start();
+            PrepareControlsForAnimation();
+            timerSlide_Tick(sender, e);
         }
     }
 }
