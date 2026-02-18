@@ -40,36 +40,6 @@ namespace AE.Application
             }
         }
 
-        private void sfButton1_Click(object sender, EventArgs e)
-        {
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text;
-
-            if (IsValidUser(username, password))
-            {
-                // Login successful
-                MessageBox.Show(
-                    "Login successful!",
-                    "Welcome",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
-            {
-                autoLabel4.Text = "Invalid password";
-                autoLabel5.Text = "Invalid username";
-            }
-        }
-
-        private bool IsValidUser(string username, string password)
-        {
-            // Example only — replace with DB check later
-            return username == "admin" && password == "1234";
-        }
-
         private void Login_Screen_Form_Load(object sender, EventArgs e)
         {
             animationStep = 0;
@@ -105,6 +75,36 @@ namespace AE.Application
             }
         }
 
+        private void sfButton1_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text;
+
+            if (IsValidUser(username, password))
+            {
+                // Login successful
+                MessageBox.Show(
+                    "Login successful!",
+                    "Welcome",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                autoLabel4.Text = "Invalid password";
+                autoLabel5.Text = "Invalid username";
+            }
+        }
+
+        private bool IsValidUser(string username, string password)
+        {
+            // Example only — replace with DB check later
+            return username == "admin" && password == "1234";
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -120,11 +120,8 @@ namespace AE.Application
             this.Show();
             originalPositions.Clear();
             originalPositions = new Dictionary<Control, Point>();
-            animationStep = 0;
-            this.Opacity = 0;
-            timerSlide.Start();
             PrepareControlsForAnimation();
-            timerSlide_Tick(sender, e);
+            Login_Screen_Form_Load(sender, e);
         }
     }
 }

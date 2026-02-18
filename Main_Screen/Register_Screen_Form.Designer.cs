@@ -88,6 +88,7 @@
             Name = "Register_Screen_Form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Register_Screen_Form";
+            Load += Register_Screen_Form_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
