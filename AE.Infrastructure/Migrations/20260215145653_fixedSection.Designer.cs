@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AE.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260211131658_InitialSetup")]
-    partial class InitialSetup
+    [Migration("20260215145653_fixedSection")]
+    partial class fixedSection
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,12 +80,20 @@ namespace AE.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("SectionName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Subject")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("TimeSchedule")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -112,6 +120,9 @@ namespace AE.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("SectionId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("status")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");

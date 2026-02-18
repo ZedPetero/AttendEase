@@ -19,7 +19,9 @@ namespace AE.Infrastructure.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Data Source=AttendEase.db");
+                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string dbPath = System.IO.Path.Combine(documentsPath, "AttendEase.db");
+                optionsBuilder.UseSqlite($"Data Source={dbPath}");
             }
         }
 
