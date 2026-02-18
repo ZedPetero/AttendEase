@@ -114,5 +114,10 @@ namespace AE.Application
         {
             Close();
         }
+
+        private void autoLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
