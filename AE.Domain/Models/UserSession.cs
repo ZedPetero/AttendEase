@@ -6,7 +6,7 @@ namespace AE.Application
 {
     public static class UserSession
     {
-        public static int CurrentTeacherId { get; set; } = 1;
-        public static string CurrentTeacherName { get; set; } = "Default Teacher";
+        public static int CurrentTeacherId { get; set; }
+        public static string CurrentTeacherName { get; set; } 
     }
 }

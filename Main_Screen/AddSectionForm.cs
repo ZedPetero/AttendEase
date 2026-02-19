@@ -43,8 +43,6 @@ namespace AE.Application
                 var section = new Section
                 {
                     SectionName = txtName.Text,
-                    Subject = txtSubject.Text,
-                    TimeSchedule = txtTime.Text,
                     TeacherId = UserSession.CurrentTeacherId,
                 };
 
