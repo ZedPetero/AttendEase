@@ -9,9 +9,9 @@ namespace AE.Domain.Models
         public int Id { get; set; }
 
         [Required]
-        public string Subject { get; set; } 
-        public int Score { get; set; } 
-        public int StudentId { get; set; }
+        public Subject Subject { get; set; } 
+        public double Score { get; set; } 
+        public int StudentId { get; set; } [ForeignKey("StudentId")]
         public Student Student { get; set; }
     }
 }

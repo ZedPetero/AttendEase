@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AE.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-using AE.Domain.Models;
-using AE.Application;
 namespace AE.Infrastructure.Data
 {
     public class AppDbContext : DbContext

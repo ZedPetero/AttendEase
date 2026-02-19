@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AE.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260212120921_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260219133946_RevisedDb")]
+    partial class RevisedDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,15 +57,14 @@ namespace AE.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Score")
-                        .HasColumnType("INTEGER");
+                    b.Property<double>("Score")
+                        .HasColumnType("REAL");
 
                     b.Property<int>("StudentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Subject")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Subject")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -80,19 +79,17 @@ namespace AE.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("SectionName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Subject")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Subject")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("TimeSchedule")
-                        .IsRequired()
+                    b.Property<DateTime>("TimeSchedule")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -116,6 +113,10 @@ namespace AE.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MiddleName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -143,6 +144,14 @@ namespace AE.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("MiddleName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Teachers");
@@ -157,7 +166,7 @@ namespace AE.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("AE.Domain.Models.Student", "Student")
-                        .WithMany()
+                        .WithMany("Attendances")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -207,6 +216,8 @@ namespace AE.Infrastructure.Migrations
 
             modelBuilder.Entity("AE.Domain.Models.Student", b =>
                 {
+                    b.Navigation("Attendances");
+
                     b.Navigation("Grades");
                 });
 
