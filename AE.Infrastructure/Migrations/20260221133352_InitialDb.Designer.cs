@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AE.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260219105356_balberoDb")]
-    partial class balberoDb
+    [Migration("20260221133352_InitialDb")]
+    partial class InitialDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,15 +57,14 @@ namespace AE.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Score")
-                        .HasColumnType("INTEGER");
+                    b.Property<double>("Score")
+                        .HasColumnType("REAL");
 
                     b.Property<int>("StudentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Subject")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Subject")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -84,15 +83,13 @@ namespace AE.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Subject")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Subject")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("TimeSchedule")
-                        .IsRequired()
+                    b.Property<DateTime>("TimeSchedule")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -119,6 +116,10 @@ namespace AE.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("MiddleName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("SectionId")
                         .HasColumnType("INTEGER");
 
@@ -135,9 +136,17 @@ namespace AE.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -147,16 +156,38 @@ namespace AE.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Password")
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MiddleName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Phonenumber")
-                        .IsRequired()
+                    b.Property<string>("NormalizedEmail")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
+                    b.Property<string>("NormalizedUserName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserName")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

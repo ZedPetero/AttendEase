@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AE.Domain.Models;
+using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +14,18 @@ namespace AE.Application
 {
     public partial class Register_Screen_Form : Form
     {
+        private readonly UserManager<Teacher> _userManager;
         private Dictionary<Control, Point> originalPositions = new();
         private int animationStep = 0;
 
-        public Register_Screen_Form()
+        public Register_Screen_Form(UserManager<Teacher> userManager)
         {
             InitializeComponent();
+            _userManager = userManager;
             PrepareControlsForAnimation();
+            UIHelper.RoundControl(this, 100);
+            UIHelper.RoundControl(btnExit, 50);
+            UIHelper.RoundControl(btnRegister, 40);
         }
 
         private void Register_Screen_Form_Load(object sender, EventArgs e)
@@ -71,6 +78,43 @@ namespace AE.Application
                 // Snap to exact positions
                 foreach (var pair in originalPositions)
                     pair.Key.Location = pair.Value;
+            }
+        }
+
+        private async void btnRegister_Click(object sender, EventArgs e)
+        {
+            var teacher = new Teacher
+            {
+                UserName = txtUsername.Text,
+                Email = txtEmail.Text,
+                FirstName = txtFirstName.Text,
+                LastName = txtLastName.Text,
+                PhoneNumber = txtPhoneNum.Text
+            };
+
+            try
+            {
+                var result = await _userManager.CreateAsync(teacher, txtPassword.Text);
+
+                if (result.Succeeded)
+                {
+                    MessageBox.Show("Registration successful! You can now log in.",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string errors = string.Join("\n", result.Errors.Select(e => e.Description));
+                    MessageBox.Show($"Registration failed:\n{errors}",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

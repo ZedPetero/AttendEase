@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AE.Domain.Models;
+using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,20 +13,22 @@ namespace AE.Application
 {
     public partial class Login_Screen_Form : Form
     {
+        private readonly UserManager<Teacher> _userManager;
         private Dictionary<Control, Point> originalPositions = new();
         private int animationStep = 0;
+        private bool isDarkMode = false;
 
-        public Login_Screen_Form()
+        public Login_Screen_Form(UserManager<Teacher> userManager)
         {
             InitializeComponent();
+            _userManager = userManager;
             PrepareControlsForAnimation();
             UIHelper.RoundControl(this, 100);
             UIHelper.RoundControl(btnExit, 50);
-            UIHelper.RoundControl(sfButton1, 30);
-            UIHelper.RoundControl(txtUsername, 30);
+            UIHelper.RoundControl(btnLogin, 40);
             UIHelper.RoundControl(txtPassword, 30);
-            autoLabel4.Text = "";
-            autoLabel5.Text = "";
+            lblPassword.Text = "";
+            lblUsername.Text = "";
         }
 
         private void PrepareControlsForAnimation()
@@ -75,41 +79,42 @@ namespace AE.Application
             }
         }
 
-        private void sfButton1_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text;
+            if (string.IsNullOrEmpty(txtUsername.Text))
+                lblUsername.Text = "Username cannot be empty";
+            if (string.IsNullOrEmpty(txtPassword.Text))
+                lblPassword.Text = "Password cannot be empty";
 
-            if (IsValidUser(username, password))
+            if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
+                return;
+
+            try
             {
-                // Login successful
-                MessageBox.Show(
-                    "Login successful!",
-                    "Welcome",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                var user = await _userManager.FindByNameAsync(txtUsername.Text);
+
+                if (user != null && await _userManager.CheckPasswordAsync(user, txtPassword.Text))
+                {
+                    MessageBox.Show("Login successful!");
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password. Please try again.",
+                        "Login Failed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+
+                    lblUsername.Text = "Invalid username";
+                    lblPassword.Text = "Invalid password";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                if (string.IsNullOrEmpty(username)) 
-                    autoLabel5.Text = "Username cannot be empty"; 
-                else 
-                    autoLabel5.Text = "Invalid username";
-
-                if (string.IsNullOrEmpty(password)) 
-                    autoLabel4.Text = "Password cannot be empty";
-                else 
-                    autoLabel4.Text = "Invalid password";
+                MessageBox.Show(ex.Message);
             }
-        }
-
-        private bool IsValidUser(string username, string password)
-        {
-            // Example only — replace with DB check later
-            return username == "admin" && password == "1234";
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -120,7 +125,7 @@ namespace AE.Application
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
-            using (var register = new Register_Screen_Form())
+            using (var register = new Register_Screen_Form(_userManager))
             {
                 register.ShowDialog();
             }
@@ -130,5 +135,25 @@ namespace AE.Application
             PrepareControlsForAnimation();
             Login_Screen_Form_Load(sender, e);
         }
+
+        private void btnDarkMode_Click(object sender, EventArgs e)
+        {
+            if (isDarkMode)
+            {
+                // Switch to light mode
+                isDarkMode = false;
+                this.BackColor = Color.White;
+                btnDarkMode.BackColor = Color.FromArgb(240, 240, 240);
+            }
+            else
+            {
+                // Switch to dark mode
+                isDarkMode = true;
+                this.BackColor = Color.FromArgb(100, 100, 100);
+                btnDarkMode.BackColor = Color.FromArgb(80, 80, 80);
+            }
+        }
+
+        
     }
 }

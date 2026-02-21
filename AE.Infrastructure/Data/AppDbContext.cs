@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 namespace AE.Infrastructure.Data
 {
@@ -19,8 +20,10 @@ namespace AE.Infrastructure.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string dbPath = System.IO.Path.Combine(documentsPath, "AttendEase.db");
+                string dbPath = System.IO.Path.Combine(
+                    AppContext.BaseDirectory,
+                    "AttendEase.db");
+
                 optionsBuilder.UseSqlite($"Data Source={dbPath}");
             }
         }
