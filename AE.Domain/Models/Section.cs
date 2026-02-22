@@ -17,5 +17,7 @@ namespace AE.Domain.Models
         public int TeacherId { get; set; } [ForeignKey("TeacherId")]
         public Teacher? Teacher { get; set; }
         public List<Student> Students { get; set; } = new List<Student>();
+        // Indicates whether this section is archived
+        public bool IsArchived { get; set; } = false;
     }
 }
