@@ -1,5 +1,11 @@
 namespace AE.Application;
-    using System;
+
+using AE.Domain.Models;
+using AE.Infrastructure.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
     using System.Windows.Forms;
 
     internal static class Program
@@ -15,27 +21,33 @@ namespace AE.Application;
         // Register Syncfusion license before creating any Syncfusion controls (Login uses Syncfusion).
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdENjW35acHJRRWNbVkR0VkleYQ==");
 
-            // show the splash screen first; when it closes, show the login dialog
-            using (var splash = new Splash_Screen_Form())
+        var services = new ServiceCollection();
+
+        services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlite("Data Source=AttendEase.db"));
+
+        services.AddIdentityCore<Teacher>()
+            .AddEntityFrameworkStores<AppDbContext>();
+
+        var serviceProvider = services.BuildServiceProvider();
+
+        using (var splash = new Splash_Screen_Form())
+        {
+            splash.ShowDialog();
+        }
+
+        while (true)
+        {
+            using (var login = new Login_Screen_Form(
+                ServiceProviderServiceExtensions.GetRequiredService<UserManager<Teacher>>(serviceProvider)))
             {
-                splash.ShowDialog();
+                    
+                if (login.ShowDialog() != DialogResult.OK)
+                    return;
             }
 
-            while (true)
-            {
-                // Show login
-                using (var login = new Login_Screen_Form())
-                {
-                    if (login.ShowDialog() != DialogResult.OK)
-                        return; // exit app if cancelled
-                }
-
-                // Show main screen
-                var mainForm = new Main_Screen_Form();
-                Application.Run(mainForm);
-
-                // If we reach here, user clicked Logout
-                // Loop back to login
-            }
+            var mainForm = new Main_Screen_Form();
+            Application.Run(mainForm);
+        }
     }
 }
