@@ -95,6 +95,8 @@ namespace AE.Application
 
                 if (user != null && await _userManager.CheckPasswordAsync(user, txtPassword.Text))
                 {
+                    UserSession.CurrentTeacherId = user.Id;
+                    UserSession.CurrentTeacherName = user.FirstName;
                     MessageBox.Show("Login successful!");
 
                     this.DialogResult = DialogResult.OK;

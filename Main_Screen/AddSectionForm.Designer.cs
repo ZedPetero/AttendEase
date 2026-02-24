@@ -1,4 +1,6 @@
-﻿namespace AE.Application
+﻿using AE.Domain.Models;
+
+namespace AE.Application
 {
     partial class AddSectionForm
     {
@@ -31,10 +33,12 @@
             txtName = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            txtSubject = new TextBox();
             label3 = new Label();
-            txtTime = new TextBox();
             btnSave = new Syncfusion.WinForms.Controls.SfButton();
+            comboSubject = new ComboBox();
+            dateTimePicker1 = new DateTimePicker();
+            dateTimePicker2 = new DateTimePicker();
+            label4 = new Label();
             SuspendLayout();
             // 
             // txtName
@@ -62,13 +66,6 @@
             label2.TabIndex = 3;
             label2.Text = "Subject:";
             // 
-            // txtSubject
-            // 
-            txtSubject.Location = new Point(331, 174);
-            txtSubject.Name = "txtSubject";
-            txtSubject.Size = new Size(216, 23);
-            txtSubject.TabIndex = 2;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -77,13 +74,6 @@
             label3.Size = new Size(37, 15);
             label3.TabIndex = 5;
             label3.Text = "Time:";
-            // 
-            // txtTime
-            // 
-            txtTime.Location = new Point(331, 219);
-            txtTime.Name = "txtTime";
-            txtTime.Size = new Size(216, 23);
-            txtTime.TabIndex = 4;
             // 
             // btnSave
             // 
@@ -98,16 +88,58 @@
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
             // 
+            // comboSubject
+            // 
+            comboSubject.FormattingEnabled = true;
+            comboSubject.Items.AddRange(new object[] { "Math", "Science", "History", "Literature", "Art", "Music", "PhysicalEducation", "ComputerScience" });
+            comboSubject.Location = new Point(331, 174);
+            comboSubject.Name = "comboSubject";
+            comboSubject.Size = new Size(216, 23);
+            comboSubject.TabIndex = 7;
+            comboSubject.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Format = DateTimePickerFormat.Time;
+            dateTimePicker1.Location = new Point(331, 216);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(96, 23);
+            dateTimePicker1.TabIndex = 8;
+            dateTimePicker1.Value = new DateTime(2026, 2, 24, 9, 0, 0, 0);
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Format = DateTimePickerFormat.Time;
+            dateTimePicker2.Location = new Point(451, 216);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(96, 23);
+            dateTimePicker2.TabIndex = 9;
+            dateTimePicker2.Value = new DateTime(2026, 2, 24, 10, 0, 0, 0);
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 9F);
+            label4.Location = new Point(429, 220);
+            label4.Name = "label4";
+            label4.Size = new Size(20, 15);
+            label4.TabIndex = 10;
+            label4.Text = "->";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // AddSectionForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(dateTimePicker2);
+            Controls.Add(dateTimePicker1);
+            Controls.Add(comboSubject);
             Controls.Add(btnSave);
             Controls.Add(label3);
-            Controls.Add(txtTime);
             Controls.Add(label2);
-            Controls.Add(txtSubject);
             Controls.Add(label1);
             Controls.Add(txtName);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -125,9 +157,11 @@
         private TextBox txtName;
         private Label label1;
         private Label label2;
-        private TextBox txtSubject;
         private Label label3;
-        private TextBox txtTime;
         private Syncfusion.WinForms.Controls.SfButton btnSave;
+        private ComboBox comboSubject;
+        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker2;
+        private Label label4;
     }
 }

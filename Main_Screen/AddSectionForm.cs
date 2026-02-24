@@ -19,39 +19,57 @@ namespace AE.Application
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtSubject.Text))
+            try
             {
-                MessageBox.Show("Please fill in all fields.");
-                return;
-            }
-
-            using (var db = new AppDbContext())
-            {
-                var teacherExists = db.Teachers.Any(t => t.Id == 1);
-
-                if (!teacherExists)
+                if (string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtSubject.Text))
                 {
-                    var defaultTeacher = new AE.Domain.Models.Teacher
+                    MessageBox.Show("Please fill in all fields.");
+                    return;
+                }
+
+                using (var db = new AppDbContext())
+                {
+                    // Parse time from string
+                    if (!DateTime.TryParse(txtTime.Text, out var timeSchedule))
                     {
-                        FirstName = "Default",
-                        LastName = "Teacher",
+                        MessageBox.Show("Invalid time format.");
+                        return;
+                    }
+                    MessageBox.Show($"DEBUG: The current TeacherId being saved is: '{UserSession.CurrentTeacherId}'");
+                    var section = new Section
+                    {
+                        SectionName = txtName.Text,
+                        TeacherId = UserSession.CurrentTeacherId,
+                        Subject = subjectEnum,
+                        TimeSchedule = timeSchedule // Store as DateTime
                     };
 
-                    db.Teachers.Add(defaultTeacher);
-                    db.SaveChanges(); 
+                    db.Sections.Add(section);
+                    db.SaveChanges();
                 }
-                var section = new Section
-                {
-                    SectionName = txtName.Text,
-                    TeacherId = UserSession.CurrentTeacherId,
-                };
 
-                db.Sections.Add(section);
-                db.SaveChanges();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
+            catch (Exception ex)
+            {
+                // 1. Grab the main message
+                string errorMessage = "Main Error: " + ex.Message;
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                // 2. Dig into the InnerException to find the real SQLite error!
+                if (ex.InnerException != null)
+                {
+                    errorMessage += "\n\nReal Database Error (Inner Exception):\n" + ex.InnerException.Message;
+                }
+
+                // 3. Show it cleanly
+                MessageBox.Show(errorMessage, "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

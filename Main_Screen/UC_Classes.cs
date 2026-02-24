@@ -17,6 +17,7 @@ namespace AE.Application
         public UC_Classes()
         {
             InitializeComponent();
+            LoadSections();
         }
         public void LoadSections()
         {
@@ -24,14 +25,12 @@ namespace AE.Application
             {
                 using (var db = new AppDbContext())
                 {
-                    MessageBox.Show($"I am looking for the database at: {db.Database.GetDbConnection().DataSource}");
-                    // 1. GET DATA: Filter strictly by the Logged In Teacher
                     var mySections = db.Sections
                         .Where(s => s.TeacherId == UserSession.CurrentTeacherId)
                         .Select(s => new
                         {
                             s.Id,
-                            Section = s.SectionName,     // Rename 'Name' to 'Section' for the header
+                            Section = s.SectionName,     
                             Time = s.TimeSchedule,
                             s.Subject,
                             teacherId = s.TeacherId
