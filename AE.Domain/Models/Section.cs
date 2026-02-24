@@ -7,13 +7,14 @@ namespace AE.Domain.Models
     public class Section
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
-        public string SectionName { get; set; } 
+        public string SectionName { get; set; }
+        [Required]
         public Subject Subject { get; set; } 
-        public DateTime TimeSchedule { get; set; }
+        public TimeSpan StartTimeSchedule { get; set; }
+        public TimeSpan EndTimeSchedule { get; set; }
         public int TeacherId { get; set; } [ForeignKey("TeacherId")]
         public Teacher? Teacher { get; set; }
         public List<Student> Students { get; set; } = new List<Student>();

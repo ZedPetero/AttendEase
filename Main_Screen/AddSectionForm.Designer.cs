@@ -36,8 +36,8 @@ namespace AE.Application
             label3 = new Label();
             btnSave = new Syncfusion.WinForms.Controls.SfButton();
             comboSubject = new ComboBox();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
+            dateTimeStarting = new DateTimePicker();
+            dateTimeEnding = new DateTimePicker();
             label4 = new Label();
             SuspendLayout();
             // 
@@ -98,23 +98,25 @@ namespace AE.Application
             comboSubject.TabIndex = 7;
             comboSubject.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // dateTimePicker1
+            // dateTimeStarting
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Time;
-            dateTimePicker1.Location = new Point(331, 216);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(96, 23);
-            dateTimePicker1.TabIndex = 8;
-            dateTimePicker1.Value = new DateTime(2026, 2, 24, 9, 0, 0, 0);
+            dateTimeStarting.Format = DateTimePickerFormat.Time;
+            dateTimeStarting.Location = new Point(331, 216);
+            dateTimeStarting.Name = "dateTimeStarting";
+            dateTimeStarting.ShowUpDown = true;
+            dateTimeStarting.Size = new Size(96, 23);
+            dateTimeStarting.TabIndex = 8;
+            dateTimeStarting.Value = new DateTime(2026, 2, 24, 9, 0, 0, 0);
             // 
-            // dateTimePicker2
+            // dateTimeEnding
             // 
-            dateTimePicker2.Format = DateTimePickerFormat.Time;
-            dateTimePicker2.Location = new Point(451, 216);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(96, 23);
-            dateTimePicker2.TabIndex = 9;
-            dateTimePicker2.Value = new DateTime(2026, 2, 24, 10, 0, 0, 0);
+            dateTimeEnding.Format = DateTimePickerFormat.Time;
+            dateTimeEnding.Location = new Point(451, 216);
+            dateTimeEnding.Name = "dateTimeEnding";
+            dateTimeEnding.ShowUpDown = true;
+            dateTimeEnding.Size = new Size(96, 23);
+            dateTimeEnding.TabIndex = 9;
+            dateTimeEnding.Value = new DateTime(2026, 2, 24, 10, 0, 0, 0);
             // 
             // label4
             // 
@@ -134,8 +136,8 @@ namespace AE.Application
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(label4);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dateTimeEnding);
+            Controls.Add(dateTimeStarting);
             Controls.Add(comboSubject);
             Controls.Add(btnSave);
             Controls.Add(label3);
@@ -160,8 +162,8 @@ namespace AE.Application
         private Label label3;
         private Syncfusion.WinForms.Controls.SfButton btnSave;
         private ComboBox comboSubject;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimeStarting;
+        private DateTimePicker dateTimeEnding;
         private Label label4;
     }
 }

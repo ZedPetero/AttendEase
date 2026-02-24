@@ -3,6 +3,7 @@ using System;
 using AE.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AE.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260224153415_changedSchedule")]
+    partial class changedSchedule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.3");
@@ -76,7 +79,7 @@ namespace AE.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<TimeSpan>("EndTimeSchedule")
+                    b.Property<DateTime>("EndTimeSchedule")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsArchived")
@@ -86,7 +89,7 @@ namespace AE.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<TimeSpan>("StartTimeSchedule")
+                    b.Property<DateTime>("StartTimeSchedule")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Subject")

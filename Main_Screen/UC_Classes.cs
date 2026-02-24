@@ -27,11 +27,14 @@ namespace AE.Application
                 {
                     var mySections = db.Sections
                         .Where(s => s.TeacherId == UserSession.CurrentTeacherId)
+                        .ToList()
+                        .OrderBy(s => s.StartTimeSchedule)
                         .Select(s => new
                         {
                             s.Id,
-                            Section = s.SectionName,     
-                            Time = s.TimeSchedule,
+                            Section = s.SectionName,
+                            Time = DateTime.Today.Add(s.StartTimeSchedule).ToString("hh:mm tt") + " - " +
+                                    DateTime.Today.Add(s.EndTimeSchedule).ToString("hh:mm tt"),
                             s.Subject,
                             teacherId = s.TeacherId
                         })

@@ -22,7 +22,7 @@ namespace AE.Application
         {
             try
             {
-                if(string.IsNullOrEmpty(txtFirstName.Text) || string.IsNullOrEmpty(txtLastName.Text))
+                if (string.IsNullOrEmpty(txtFirstName.Text) || string.IsNullOrEmpty(txtMiddleName.Text))
                 {
                     MessageBox.Show("First Name and Last Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -34,12 +34,13 @@ namespace AE.Application
                     if (!sectionExists)
                     {
                         MessageBox.Show($"Error: Cannot add student. Section ID {this.CurrentSectionId} does not exist in the database.");
-                        return; 
+                        return;
                     }
                     var student = new Student
                     {
                         FirstName = txtFirstName.Text,
-                        LastName = txtLastName.Text,
+                        MiddleName = txtMiddleName.Text,
+                        LastName = txtMiddleName.Text,
                         SectionId = this.CurrentSectionId
                     };
                     _context.Students.Add(student);
@@ -53,6 +54,11 @@ namespace AE.Application
                 MessageBox.Show($"An error occurred while saving the student: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

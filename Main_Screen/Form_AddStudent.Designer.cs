@@ -31,8 +31,10 @@
             label1 = new Label();
             btnSave = new Button();
             txtFirstName = new TextBox();
-            txtLastName = new TextBox();
+            txtMiddleName = new TextBox();
             label2 = new Label();
+            textLastName = new TextBox();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -46,7 +48,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(147, 144);
+            btnSave.Location = new Point(147, 185);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(159, 23);
             btnSave.TabIndex = 1;
@@ -61,28 +63,47 @@
             txtFirstName.Size = new Size(159, 23);
             txtFirstName.TabIndex = 2;
             // 
-            // txtLastName
+            // txtMiddleName
             // 
-            txtLastName.Location = new Point(147, 102);
-            txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(159, 23);
-            txtLastName.TabIndex = 4;
+            txtMiddleName.Location = new Point(147, 103);
+            txtMiddleName.Name = "txtMiddleName";
+            txtMiddleName.Size = new Size(159, 23);
+            txtMiddleName.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(74, 110);
+            label2.Location = new Point(75, 153);
             label2.Name = "label2";
             label2.Size = new Size(66, 15);
             label2.TabIndex = 3;
             label2.Text = "Last Name:";
+            label2.Click += label2_Click;
+            // 
+            // textLastName
+            // 
+            textLastName.Location = new Point(147, 144);
+            textLastName.Name = "textLastName";
+            textLastName.Size = new Size(159, 23);
+            textLastName.TabIndex = 5;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(59, 110);
+            label3.Name = "label3";
+            label3.Size = new Size(82, 15);
+            label3.TabIndex = 6;
+            label3.Text = "Middle Name:";
             // 
             // Form_AddStudent
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(384, 240);
-            Controls.Add(txtLastName);
+            Controls.Add(label3);
+            Controls.Add(textLastName);
+            Controls.Add(txtMiddleName);
             Controls.Add(label2);
             Controls.Add(txtFirstName);
             Controls.Add(btnSave);
@@ -99,7 +120,9 @@
         private Label label1;
         private Button btnSave;
         private TextBox txtFirstName;
-        private TextBox txtLastName;
+        private TextBox txtMiddleName;
         private Label label2;
+        private TextBox textLastName;
+        private Label label3;
     }
 }
