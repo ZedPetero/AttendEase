@@ -18,7 +18,6 @@ namespace AE.Infrastructure.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
-                    MiddleName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
                     UserName = table.Column<string>(type: "TEXT", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", nullable: true),
@@ -49,7 +48,8 @@ namespace AE.Infrastructure.Migrations
                     SectionName = table.Column<string>(type: "TEXT", nullable: false),
                     Subject = table.Column<int>(type: "INTEGER", nullable: false),
                     TimeSchedule = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    TeacherId = table.Column<int>(type: "INTEGER", nullable: false)
+                    TeacherId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsArchived = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
