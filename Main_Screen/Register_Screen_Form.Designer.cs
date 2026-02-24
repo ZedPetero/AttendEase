@@ -36,7 +36,7 @@
             autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtLastName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            txtFirstName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            txtMiddleName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             btnExit = new Syncfusion.WinForms.Controls.SfButton();
             autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -47,19 +47,22 @@
             autoLabel7 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             txtPassword = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             btnRegister = new Syncfusion.WinForms.Controls.SfButton();
+            autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            txtFirstName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtLastName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtFirstName).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtMiddleName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtEmail).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtPhoneNum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtUsername).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtPassword).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtFirstName).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.logo;
-            pictureBox1.Location = new Point(12, 206);
+            pictureBox1.Location = new Point(23, 206);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(361, 239);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -102,7 +105,7 @@
             autoLabel2.BackColor = Color.Transparent;
             autoLabel2.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             autoLabel2.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel2.Location = new Point(548, 87);
+            autoLabel2.Location = new Point(390, 154);
             autoLabel2.Name = "autoLabel2";
             autoLabel2.Size = new Size(108, 25);
             autoLabel2.TabIndex = 16;
@@ -110,16 +113,16 @@
             // 
             // txtLastName
             // 
-            txtLastName.BeforeTouchSize = new Size(150, 36);
+            txtLastName.BeforeTouchSize = new Size(155, 36);
             txtLastName.BorderColor = Color.DimGray;
             txtLastName.BorderStyle = BorderStyle.FixedSingle;
             txtLastName.CornerRadius = 15;
             txtLastName.Font = new Font("Segoe UI", 16F);
-            txtLastName.Location = new Point(548, 120);
-            txtLastName.MaximumSize = new Size(265, 36);
+            txtLastName.Location = new Point(390, 187);
+            txtLastName.MaximumSize = new Size(9999, 36);
             txtLastName.MinimumSize = new Size(34, 30);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(150, 36);
+            txtLastName.Size = new Size(319, 36);
             txtLastName.TabIndex = 15;
             txtLastName.Tag = "";
             // 
@@ -128,26 +131,26 @@
             autoLabel1.BackColor = Color.Transparent;
             autoLabel1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             autoLabel1.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel1.Location = new Point(379, 87);
+            autoLabel1.Location = new Point(554, 82);
             autoLabel1.Name = "autoLabel1";
-            autoLabel1.Size = new Size(111, 25);
+            autoLabel1.Size = new Size(134, 25);
             autoLabel1.TabIndex = 14;
-            autoLabel1.Text = "First Name:";
+            autoLabel1.Text = "Middle Name:";
             // 
-            // txtFirstName
+            // txtMiddleName
             // 
-            txtFirstName.BeforeTouchSize = new Size(150, 36);
-            txtFirstName.Border3DStyle = Border3DStyle.SunkenOuter;
-            txtFirstName.BorderColor = Color.DimGray;
-            txtFirstName.BorderStyle = BorderStyle.FixedSingle;
-            txtFirstName.CornerRadius = 15;
-            txtFirstName.Font = new Font("Segoe UI", 16F);
-            txtFirstName.Location = new Point(379, 120);
-            txtFirstName.MaximumSize = new Size(265, 36);
-            txtFirstName.MinimumSize = new Size(34, 30);
-            txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(150, 36);
-            txtFirstName.TabIndex = 13;
+            txtMiddleName.BeforeTouchSize = new Size(155, 36);
+            txtMiddleName.Border3DStyle = Border3DStyle.SunkenOuter;
+            txtMiddleName.BorderColor = Color.DimGray;
+            txtMiddleName.BorderStyle = BorderStyle.FixedSingle;
+            txtMiddleName.CornerRadius = 15;
+            txtMiddleName.Font = new Font("Segoe UI", 16F);
+            txtMiddleName.Location = new Point(554, 115);
+            txtMiddleName.MaximumSize = new Size(265, 36);
+            txtMiddleName.MinimumSize = new Size(34, 30);
+            txtMiddleName.Name = "txtMiddleName";
+            txtMiddleName.Size = new Size(155, 36);
+            txtMiddleName.TabIndex = 13;
             // 
             // btnExit
             // 
@@ -158,13 +161,14 @@
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(50, 50);
             btnExit.TabIndex = 17;
+            btnExit.Click += btnExit_Click;
             // 
             // autoLabel4
             // 
             autoLabel4.BackColor = Color.Transparent;
             autoLabel4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             autoLabel4.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel4.Location = new Point(379, 171);
+            autoLabel4.Location = new Point(390, 226);
             autoLabel4.Name = "autoLabel4";
             autoLabel4.Size = new Size(64, 25);
             autoLabel4.TabIndex = 19;
@@ -172,13 +176,13 @@
             // 
             // txtEmail
             // 
-            txtEmail.BeforeTouchSize = new Size(150, 36);
+            txtEmail.BeforeTouchSize = new Size(155, 36);
             txtEmail.Border3DStyle = Border3DStyle.SunkenOuter;
             txtEmail.BorderColor = Color.DimGray;
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
             txtEmail.CornerRadius = 15;
             txtEmail.Font = new Font("Segoe UI", 16F);
-            txtEmail.Location = new Point(379, 204);
+            txtEmail.Location = new Point(390, 259);
             txtEmail.MaximumSize = new Size(9999, 9999);
             txtEmail.MinimumSize = new Size(34, 30);
             txtEmail.Name = "txtEmail";
@@ -190,7 +194,7 @@
             autoLabel5.BackColor = Color.Transparent;
             autoLabel5.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             autoLabel5.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel5.Location = new Point(379, 260);
+            autoLabel5.Location = new Point(390, 298);
             autoLabel5.Name = "autoLabel5";
             autoLabel5.Size = new Size(148, 25);
             autoLabel5.TabIndex = 21;
@@ -198,13 +202,13 @@
             // 
             // txtPhoneNum
             // 
-            txtPhoneNum.BeforeTouchSize = new Size(150, 36);
+            txtPhoneNum.BeforeTouchSize = new Size(155, 36);
             txtPhoneNum.Border3DStyle = Border3DStyle.SunkenOuter;
             txtPhoneNum.BorderColor = Color.DimGray;
             txtPhoneNum.BorderStyle = BorderStyle.FixedSingle;
             txtPhoneNum.CornerRadius = 15;
             txtPhoneNum.Font = new Font("Segoe UI", 16F);
-            txtPhoneNum.Location = new Point(379, 293);
+            txtPhoneNum.Location = new Point(390, 331);
             txtPhoneNum.MaximumSize = new Size(9999, 9999);
             txtPhoneNum.MinimumSize = new Size(34, 30);
             txtPhoneNum.Name = "txtPhoneNum";
@@ -216,7 +220,7 @@
             autoLabel6.BackColor = Color.Transparent;
             autoLabel6.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             autoLabel6.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel6.Location = new Point(379, 348);
+            autoLabel6.Location = new Point(390, 370);
             autoLabel6.Name = "autoLabel6";
             autoLabel6.Size = new Size(103, 25);
             autoLabel6.TabIndex = 23;
@@ -224,13 +228,13 @@
             // 
             // txtUsername
             // 
-            txtUsername.BeforeTouchSize = new Size(150, 36);
+            txtUsername.BeforeTouchSize = new Size(155, 36);
             txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
             txtUsername.CornerRadius = 15;
             txtUsername.Font = new Font("Segoe UI", 16F);
-            txtUsername.Location = new Point(379, 381);
+            txtUsername.Location = new Point(390, 403);
             txtUsername.MaximumSize = new Size(9999, 9999);
             txtUsername.MinimumSize = new Size(34, 30);
             txtUsername.Name = "txtUsername";
@@ -242,7 +246,7 @@
             autoLabel7.BackColor = Color.Transparent;
             autoLabel7.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             autoLabel7.ForeColor = Color.FromArgb(40, 164, 153);
-            autoLabel7.Location = new Point(379, 436);
+            autoLabel7.Location = new Point(390, 442);
             autoLabel7.Name = "autoLabel7";
             autoLabel7.Size = new Size(96, 25);
             autoLabel7.TabIndex = 25;
@@ -250,13 +254,13 @@
             // 
             // txtPassword
             // 
-            txtPassword.BeforeTouchSize = new Size(150, 36);
+            txtPassword.BeforeTouchSize = new Size(155, 36);
             txtPassword.Border3DStyle = Border3DStyle.SunkenOuter;
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 15;
             txtPassword.Font = new Font("Segoe UI", 16F);
-            txtPassword.Location = new Point(379, 469);
+            txtPassword.Location = new Point(390, 475);
             txtPassword.MaximumSize = new Size(9999, 9999);
             txtPassword.MinimumSize = new Size(34, 30);
             txtPassword.Name = "txtPassword";
@@ -268,7 +272,7 @@
             btnRegister.BackColor = Color.FromArgb(40, 164, 153);
             btnRegister.Font = new Font("Segoe UI Semibold", 16F);
             btnRegister.ForeColor = Color.White;
-            btnRegister.Location = new Point(379, 523);
+            btnRegister.Location = new Point(390, 529);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(319, 40);
             btnRegister.Style.BackColor = Color.FromArgb(40, 164, 153);
@@ -278,12 +282,40 @@
             btnRegister.UseVisualStyleBackColor = false;
             btnRegister.Click += btnRegister_Click;
             // 
+            // autoLabel8
+            // 
+            autoLabel8.BackColor = Color.Transparent;
+            autoLabel8.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            autoLabel8.ForeColor = Color.FromArgb(40, 164, 153);
+            autoLabel8.Location = new Point(390, 82);
+            autoLabel8.Name = "autoLabel8";
+            autoLabel8.Size = new Size(111, 25);
+            autoLabel8.TabIndex = 28;
+            autoLabel8.Text = "First Name:";
+            // 
+            // txtFirstName
+            // 
+            txtFirstName.BeforeTouchSize = new Size(155, 36);
+            txtFirstName.Border3DStyle = Border3DStyle.SunkenOuter;
+            txtFirstName.BorderColor = Color.DimGray;
+            txtFirstName.BorderStyle = BorderStyle.FixedSingle;
+            txtFirstName.CornerRadius = 15;
+            txtFirstName.Font = new Font("Segoe UI", 16F);
+            txtFirstName.Location = new Point(390, 115);
+            txtFirstName.MaximumSize = new Size(265, 36);
+            txtFirstName.MinimumSize = new Size(34, 30);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Size = new Size(155, 36);
+            txtFirstName.TabIndex = 27;
+            // 
             // Register_Screen_Form
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 650);
+            Controls.Add(autoLabel8);
+            Controls.Add(txtFirstName);
             Controls.Add(btnRegister);
             Controls.Add(autoLabel7);
             Controls.Add(txtPassword);
@@ -297,7 +329,7 @@
             Controls.Add(autoLabel2);
             Controls.Add(txtLastName);
             Controls.Add(autoLabel1);
-            Controls.Add(txtFirstName);
+            Controls.Add(txtMiddleName);
             Controls.Add(loginLink);
             Controls.Add(autoLabel3);
             Controls.Add(pictureBox1);
@@ -308,11 +340,12 @@
             Load += Register_Screen_Form_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtLastName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtFirstName).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtMiddleName).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtEmail).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtPhoneNum).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtUsername).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtPassword).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtFirstName).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -326,7 +359,7 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtLastName;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtFirstName;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtMiddleName;
         private Syncfusion.WinForms.Controls.SfButton btnExit;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtEmail;
@@ -337,5 +370,7 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt txtPassword;
         private Syncfusion.WinForms.Controls.SfButton btnRegister;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel8;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtFirstName;
     }
 }

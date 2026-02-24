@@ -87,35 +87,37 @@ namespace AE.Application
             {
                 UserName = txtUsername.Text,
                 Email = txtEmail.Text,
-                FirstName = txtFirstName.Text,
+                FirstName = txtMiddleName.Text,
+                MiddleName = txtMiddleName.Text,
                 LastName = txtLastName.Text,
                 PhoneNumber = txtPhoneNum.Text
             };
 
-            try
-            {
-                var result = await _userManager.CreateAsync(teacher, txtPassword.Text);
 
-                if (result.Succeeded)
-                {
-                    MessageBox.Show("Registration successful! You can now log in.",
-                        "Success",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                }
-                else
-                {
-                    string errors = string.Join("\n", result.Errors.Select(e => e.Description));
-                    MessageBox.Show($"Registration failed:\n{errors}",
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
+            var result = await _userManager.CreateAsync(teacher, txtPassword.Text);
+
+            if (result.Succeeded)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Registration successful! You can now log in.",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
+            else
+            {
+                string errors = string.Join("\n", result.Errors.Select(e => e.Description));
+                MessageBox.Show($"Registration failed:\n{errors}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
