@@ -42,6 +42,10 @@
             btnMarkAllPresent = new Syncfusion.WinForms.Controls.SfButton();
             btnReset = new Syncfusion.WinForms.Controls.SfButton();
             lblNumberofStudents = new Label();
+            uC_SummaryCard1 = new UC_SummaryCard();
+            uC_SummaryCard2 = new UC_SummaryCard();
+            uC_SummaryCard3 = new UC_SummaryCard();
+            uC_SummaryCard4 = new UC_SummaryCard();
             panelCalendar.SuspendLayout();
             SuspendLayout();
             // 
@@ -75,6 +79,7 @@
             lblDateNow.Size = new Size(284, 30);
             lblDateNow.TabIndex = 12;
             lblDateNow.Text = "Saturday, February 14, 2026";
+            lblDateNow.Click += lblDateNow_Click;
             // 
             // btnNextDate
             // 
@@ -84,6 +89,7 @@
             btnNextDate.Size = new Size(36, 36);
             btnNextDate.TabIndex = 13;
             btnNextDate.Text = ">";
+            btnNextDate.Click += btnNextDate_Click;
             // 
             // btnPreviousDate
             // 
@@ -93,6 +99,7 @@
             btnPreviousDate.Size = new Size(36, 36);
             btnPreviousDate.TabIndex = 12;
             btnPreviousDate.Text = "<";
+            btnPreviousDate.Click += btnPreviousDate_Click;
             // 
             // lblSubjectName
             // 
@@ -127,7 +134,7 @@
             // 
             lblClassRoster.AutoSize = true;
             lblClassRoster.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblClassRoster.Location = new Point(109, 402);
+            lblClassRoster.Location = new Point(109, 474);
             lblClassRoster.Name = "lblClassRoster";
             lblClassRoster.Size = new Size(137, 30);
             lblClassRoster.TabIndex = 9;
@@ -137,7 +144,7 @@
             // 
             layoutStudents.AutoSize = true;
             layoutStudents.FlowDirection = FlowDirection.TopDown;
-            layoutStudents.Location = new Point(109, 445);
+            layoutStudents.Location = new Point(109, 517);
             layoutStudents.Name = "layoutStudents";
             layoutStudents.Size = new Size(887, 195);
             layoutStudents.TabIndex = 10;
@@ -176,7 +183,7 @@
             // 
             lblNumberofStudents.AutoSize = true;
             lblNumberofStudents.Font = new Font("Segoe UI", 12F);
-            lblNumberofStudents.Location = new Point(913, 411);
+            lblNumberofStudents.Location = new Point(913, 483);
             lblNumberofStudents.Name = "lblNumberofStudents";
             lblNumberofStudents.Size = new Size(83, 21);
             lblNumberofStudents.TabIndex = 14;
@@ -184,12 +191,44 @@
             lblNumberofStudents.TextAlign = ContentAlignment.MiddleRight;
             lblNumberofStudents.Click += label2_Click;
             // 
+            // uC_SummaryCard1
+            // 
+            uC_SummaryCard1.Location = new Point(109, 301);
+            uC_SummaryCard1.Name = "uC_SummaryCard1";
+            uC_SummaryCard1.Size = new Size(206, 136);
+            uC_SummaryCard1.TabIndex = 15;
+            // 
+            // uC_SummaryCard2
+            // 
+            uC_SummaryCard2.Location = new Point(336, 301);
+            uC_SummaryCard2.Name = "uC_SummaryCard2";
+            uC_SummaryCard2.Size = new Size(206, 136);
+            uC_SummaryCard2.TabIndex = 16;
+            // 
+            // uC_SummaryCard3
+            // 
+            uC_SummaryCard3.Location = new Point(790, 301);
+            uC_SummaryCard3.Name = "uC_SummaryCard3";
+            uC_SummaryCard3.Size = new Size(206, 136);
+            uC_SummaryCard3.TabIndex = 18;
+            // 
+            // uC_SummaryCard4
+            // 
+            uC_SummaryCard4.Location = new Point(563, 301);
+            uC_SummaryCard4.Name = "uC_SummaryCard4";
+            uC_SummaryCard4.Size = new Size(206, 136);
+            uC_SummaryCard4.TabIndex = 17;
+            // 
             // UC_Attendance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.White;
+            Controls.Add(uC_SummaryCard3);
+            Controls.Add(uC_SummaryCard4);
+            Controls.Add(uC_SummaryCard2);
+            Controls.Add(uC_SummaryCard1);
             Controls.Add(lblNumberofStudents);
             Controls.Add(btnReset);
             Controls.Add(btnMarkAllPresent);
@@ -202,7 +241,7 @@
             Controls.Add(panelCalendar);
             Controls.Add(lblSectionName);
             Name = "UC_Attendance";
-            Size = new Size(1150, 640);
+            Size = new Size(1150, 713);
             Load += UC_Attendance_Load;
             panelCalendar.ResumeLayout(false);
             panelCalendar.PerformLayout();
@@ -225,5 +264,9 @@
         private Syncfusion.WinForms.Controls.SfButton btnMarkAllPresent;
         private Syncfusion.WinForms.Controls.SfButton btnReset;
         private Label lblNumberofStudents;
+        private UC_SummaryCard uC_SummaryCard1;
+        private UC_SummaryCard uC_SummaryCard2;
+        private UC_SummaryCard uC_SummaryCard3;
+        private UC_SummaryCard uC_SummaryCard4;
     }
 }

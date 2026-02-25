@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using AE.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Diagnostics;
 
 namespace AE.Application
 {
@@ -17,25 +18,22 @@ namespace AE.Application
         [Browsable(false)]
         public int CurrentSectionId { get; set; }
 
-        // reference to the control that opened this attendance screen
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         public UserControl CallerControl { get; set; }
 
-        // currently selected date shown in the UI
         private DateTime _selectedDate = DateTime.Today;
 
         public UC_Attendance()
         {
             InitializeComponent();
-
-            // wire UI interactions (designer didn't set these handlers)
-            lblDateNow.Click += lblDateNow_Click;
-            btnNextDate.Click += btnNextDate_Click;
-            btnPreviousDate.Click += btnPreviousDate_Click;
-
-            // Start with today's date visible
             UpdateDateDisplay();
+        }
+        public void SetSection(int sectionId)
+        {
+            CurrentSectionId = sectionId;
+            LoadSectionInfo();
+            LoadStudentsForDate();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -53,11 +51,52 @@ namespace AE.Application
             }
         }
 
+        private void LoadSectionInfo()
+        {
+            lblSectionName.Text = "Loading...";
+            lblSubjectName.Text = string.Empty;
+
+            if (CurrentSectionId == 0)
+            {
+                lblSectionName.Text = "No section selected";
+                lblSubjectName.Text = string.Empty;
+                return;
+            }
+
+            try
+            {
+                using var _context = new AppDbContext();
+
+                var section = _context.Sections
+                    .AsNoTracking()
+                    .Where(s => s.Id == CurrentSectionId)
+                    .Select(s => new { s.SectionName, s.Subject })
+                    .SingleOrDefault();
+
+                if (section != null)
+                {
+                    lblSectionName.Text = section.SectionName;
+                    lblSubjectName.Text = section.Subject.ToString();
+                }
+                else
+                {
+                    lblSectionName.Text = "Section not found";
+                    lblSubjectName.Text = string.Empty;
+                    Debug.WriteLine($"[UC_Attendance] Section with ID {CurrentSectionId} was not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                lblSectionName.Text = "Error loading section";
+                lblSubjectName.Text = string.Empty;
+                Debug.WriteLine($"[UC_Attendance] LoadSectionInfo error: {ex}");
+            }
+        }
+
         private void LoadStudentsForDate()
         {
             layoutStudents.Controls.Clear();
 
-            // Defensive: if section not set yet, do nothing
             if (CurrentSectionId == 0)
             {
                 lblNumberofStudents.Text = "0 Students";
@@ -66,13 +105,11 @@ namespace AE.Application
 
             using (var _context = new AppDbContext())
             {
-                // Get students in this section
                 var students = _context.Students
                     .Where(s => s.SectionId == this.CurrentSectionId)
                     .OrderBy(s => s.LastName).ThenBy(s => s.FirstName)
                     .ToList();
 
-                // Get attendance records for the selected date (between midnight and next midnight)
                 DateTime dateStart = _selectedDate.Date;
                 DateTime dateEnd = dateStart.AddDays(1);
 
@@ -110,9 +147,15 @@ namespace AE.Application
 
         private void UC_Attendance_Load(object sender, EventArgs e)
         {
-            // Ensure the date label shows the right value and load students for that date.
             UpdateDateDisplay();
-            LoadStudentsForDate();
+
+            // If the caller already set a section via SetSection, LoadSectionInfo and LoadStudentsForDate are no-ops.
+            // Otherwise, attempt to load if CurrentSectionId was set externally.
+            if (CurrentSectionId != 0)
+            {
+                LoadSectionInfo();
+                LoadStudentsForDate();
+            }
         }
 
         private void lblBackToClass_Click(object sender, EventArgs e)
@@ -135,7 +178,6 @@ namespace AE.Application
 
         private void UpdateDateDisplay()
         {
-            // Full day, month, day, year format like "Saturday, February 14, 2026"
             lblDateNow.Text = _selectedDate.ToString("D");
         }
 
@@ -160,7 +202,6 @@ namespace AE.Application
 
         private void ShowCalendarPicker()
         {
-            // Simple modal dialog that hosts a MonthCalendar and OK/Cancel buttons.
             using (var dlg = new Form())
             {
                 dlg.FormBorderStyle = FormBorderStyle.FixedToolWindow;
@@ -187,7 +228,6 @@ namespace AE.Application
                 dlg.Controls.Add(cal);
                 dlg.Controls.Add(panel);
 
-                // Show dialog and update date if user confirmed
                 if (dlg.ShowDialog(this.FindForm()) == DialogResult.OK)
                 {
                     _selectedDate = cal.SelectionStart.Date;
