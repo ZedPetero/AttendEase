@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             lblTitle = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            lblInteger = new Label();
+            lblPercentage = new Label();
             SuspendLayout();
             // 
             // lblTitle
@@ -43,32 +43,32 @@
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Title";
             // 
-            // label2
+            // lblInteger
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 26F, FontStyle.Bold);
-            label2.Location = new Point(18, 74);
-            label2.Name = "label2";
-            label2.Size = new Size(40, 47);
-            label2.TabIndex = 1;
-            label2.Text = "0";
+            lblInteger.AutoSize = true;
+            lblInteger.Font = new Font("Segoe UI", 26F, FontStyle.Bold);
+            lblInteger.Location = new Point(18, 74);
+            lblInteger.Name = "lblInteger";
+            lblInteger.Size = new Size(40, 47);
+            lblInteger.TabIndex = 1;
+            lblInteger.Text = "0";
             // 
-            // label3
+            // lblPercentage
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 16F);
-            label3.Location = new Point(64, 88);
-            label3.Name = "label3";
-            label3.Size = new Size(60, 30);
-            label3.TabIndex = 2;
-            label3.Text = "0.0%";
+            lblPercentage.AutoSize = true;
+            lblPercentage.Font = new Font("Segoe UI", 16F);
+            lblPercentage.Location = new Point(64, 88);
+            lblPercentage.Name = "lblPercentage";
+            lblPercentage.Size = new Size(60, 30);
+            lblPercentage.TabIndex = 2;
+            lblPercentage.Text = "0.0%";
             // 
             // UC_SummaryCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(lblPercentage);
+            Controls.Add(lblInteger);
             Controls.Add(lblTitle);
             Name = "UC_SummaryCard";
             Size = new Size(227, 149);
@@ -79,7 +79,7 @@
         #endregion
 
         private Label lblTitle;
-        private Label label2;
-        private Label label3;
+        private Label lblInteger;
+        private Label lblPercentage;
     }
 }

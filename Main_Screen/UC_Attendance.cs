@@ -9,6 +9,7 @@ using AE.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Diagnostics;
+using AE.Domain.Models;
 
 namespace AE.Application
 {
@@ -29,11 +30,13 @@ namespace AE.Application
             InitializeComponent();
             UpdateDateDisplay();
         }
+
         public void SetSection(int sectionId)
         {
             CurrentSectionId = sectionId;
             LoadSectionInfo();
             LoadStudentsForDate();
+            SetSummaryCards(); // ensure summary reflects current state immediately
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -48,6 +51,83 @@ namespace AE.Application
                 popup.CurrentSectionId = CurrentSectionId;
                 var result = popup.ShowDialog();
                 LoadStudentsForDate();
+                SetSummaryCards();
+            }
+        }
+
+        private void SetSummaryCards()
+        {
+            try
+            {
+                if (CurrentSectionId == 0)
+                {
+                    pnlTotalStudents.Title = "Total Students";
+                    pnlTotalStudents.Integer = 0;
+                    pnlTotalStudents.Percentage = string.Empty;
+
+                    pnlPresent.Title = "Present";
+                    pnlPresent.Integer = 0;
+                    pnlPresent.Percentage = "0.0%";
+
+                    pnlLate.Title = "Late";
+                    pnlLate.Integer = 0;
+                    pnlLate.Percentage = "0.0%";
+
+                    pnlAbsent.Title = "Absent";
+                    pnlAbsent.Integer = 0;
+                    pnlAbsent.Percentage = "0.0%";
+
+                    pnlExcused.Title = "Excused";
+                    pnlExcused.Integer = 0;
+                    pnlExcused.Percentage = "0.0%";
+                    return;
+                }
+
+                using var _context = new AppDbContext();
+
+                int total = _context.Students.Count(s => s.SectionId == CurrentSectionId);
+
+                DateTime dateStart = _selectedDate.Date;
+                DateTime dateEnd = dateStart.AddDays(1);
+
+                var attendance = _context.AttendanceRecords
+                    .Where(a => a.SectionId == CurrentSectionId && a.Date >= dateStart && a.Date < dateEnd)
+                    .AsNoTracking()
+                    .ToList();
+
+                int present = attendance.Count(a => a.Status == AttendanceStatus.Present);
+                int late = attendance.Count(a => a.Status == AttendanceStatus.Late);
+                int absent = attendance.Count(a => a.Status == AttendanceStatus.Absent);
+                int excused = attendance.Count(a => a.Status == AttendanceStatus.Excused);
+
+                double pctPresent = total > 0 ? (present * 100.0) / total : 0.0;
+                double pctLate = total > 0 ? (late * 100.0) / total : 0.0;
+                double pctAbsent = total > 0 ? (absent * 100.0) / total : 0.0;
+                double pctExcused = total > 0 ? (excused * 100.0) / total : 0.0;
+
+                pnlTotalStudents.Title = "Total Students";
+                pnlTotalStudents.Integer = total;
+                pnlTotalStudents.Percentage = string.Empty; // no percentage for total
+
+                pnlPresent.Title = "Present";
+                pnlPresent.Integer = present;
+                pnlPresent.Percentage = $"{pctPresent:0.0}%";
+
+                pnlLate.Title = "Late";
+                pnlLate.Integer = late;
+                pnlLate.Percentage = $"{pctLate:0.0}%";
+
+                pnlAbsent.Title = "Absent";
+                pnlAbsent.Integer = absent;
+                pnlAbsent.Percentage = $"{pctAbsent:0.0}%";
+
+                pnlExcused.Title = "Excused";
+                pnlExcused.Integer = excused;
+                pnlExcused.Percentage = $"{pctExcused:0.0}%";
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[UC_Attendance] SetSummaryCards error: " + ex);
             }
         }
 
@@ -143,14 +223,14 @@ namespace AE.Application
 
                 lblNumberofStudents.Text = $"{students.Count} Students";
             }
+
+            SetSummaryCards();
         }
 
         private void UC_Attendance_Load(object sender, EventArgs e)
         {
             UpdateDateDisplay();
 
-            // If the caller already set a section via SetSection, LoadSectionInfo and LoadStudentsForDate are no-ops.
-            // Otherwise, attempt to load if CurrentSectionId was set externally.
             if (CurrentSectionId != 0)
             {
                 LoadSectionInfo();
@@ -173,8 +253,6 @@ namespace AE.Application
                 mainForm.loadForm(new UC_Classes());
             }
         }
-
-        // --- Date / calendar interactions ---
 
         private void UpdateDateDisplay()
         {
@@ -235,6 +313,92 @@ namespace AE.Application
                     LoadStudentsForDate();
                 }
             }
+        }
+
+        private void btnMarkAllPresent_Click(object? sender, EventArgs e)
+        {
+            if (CurrentSectionId == 0) return;
+
+            try
+            {
+                DateTime dateStart = _selectedDate.Date;
+                DateTime dateEnd = dateStart.AddDays(1);
+
+                using var _context = new AppDbContext();
+
+                var students = _context.Students.Where(s => s.SectionId == CurrentSectionId).ToList();
+
+                foreach (var student in students)
+                {
+                    var existing = _context.AttendanceRecords
+                        .FirstOrDefault(a => a.StudentId == student.Id
+                                             && a.SectionId == CurrentSectionId
+                                             && a.Date >= dateStart && a.Date < dateEnd);
+
+                    if (existing == null)
+                    {
+                        _context.AttendanceRecords.Add(new Attendance
+                        {
+                            StudentId = student.Id,
+                            SectionId = CurrentSectionId,
+                            Date = dateStart,
+                            Status = AttendanceStatus.Present,
+                            Remarks = string.Empty
+                        });
+                    }
+                    else
+                    {
+                        existing.Status = AttendanceStatus.Present;
+                    }
+                }
+
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[UC_Attendance] btnMarkAllPresent error: " + ex);
+            }
+
+            LoadStudentsForDate();
+            SetSummaryCards();
+        }
+
+        private void btnReset_Click(object? sender, EventArgs e)
+        {
+            if (CurrentSectionId == 0) return;
+
+            try
+            {
+                DateTime dateStart = _selectedDate.Date;
+                DateTime dateEnd = dateStart.AddDays(1);
+
+                using var _context = new AppDbContext();
+
+                var toRemove = _context.AttendanceRecords
+                    .Where(a => a.SectionId == CurrentSectionId && a.Date >= dateStart && a.Date < dateEnd)
+                    .ToList();
+
+                if (toRemove.Any())
+                {
+                    _context.AttendanceRecords.RemoveRange(toRemove);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("[UC_Attendance] btnReset error: " + ex);
+            }
+
+            // refresh UI
+            LoadStudentsForDate();
+            SetSummaryCards();
+        }
+
+        // Public refresh entry point you can call from other code after updating attendance
+        public void RefreshSummaryAndRoster()
+        {
+            LoadStudentsForDate();
+            SetSummaryCards();
         }
     }
 }

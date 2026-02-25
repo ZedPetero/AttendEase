@@ -42,10 +42,11 @@
             btnMarkAllPresent = new Syncfusion.WinForms.Controls.SfButton();
             btnReset = new Syncfusion.WinForms.Controls.SfButton();
             lblNumberofStudents = new Label();
-            uC_SummaryCard1 = new UC_SummaryCard();
-            uC_SummaryCard2 = new UC_SummaryCard();
-            uC_SummaryCard3 = new UC_SummaryCard();
-            uC_SummaryCard4 = new UC_SummaryCard();
+            pnlTotalStudents = new UC_SummaryCard();
+            pnlPresent = new UC_SummaryCard();
+            pnlAbsent = new UC_SummaryCard();
+            pnlLate = new UC_SummaryCard();
+            pnlExcused = new UC_SummaryCard();
             panelCalendar.SuspendLayout();
             SuspendLayout();
             // 
@@ -169,6 +170,7 @@
             btnMarkAllPresent.Size = new Size(121, 28);
             btnMarkAllPresent.TabIndex = 12;
             btnMarkAllPresent.Text = "Mark All Present";
+            btnMarkAllPresent.Click += btnMarkAllPresent_Click;
             // 
             // btnReset
             // 
@@ -178,6 +180,7 @@
             btnReset.Size = new Size(121, 28);
             btnReset.TabIndex = 13;
             btnReset.Text = "Reset Day";
+            btnReset.Click += btnReset_Click;
             // 
             // lblNumberofStudents
             // 
@@ -191,33 +194,40 @@
             lblNumberofStudents.TextAlign = ContentAlignment.MiddleRight;
             lblNumberofStudents.Click += label2_Click;
             // 
-            // uC_SummaryCard1
+            // pnlTotalStudents
             // 
-            uC_SummaryCard1.Location = new Point(109, 301);
-            uC_SummaryCard1.Name = "uC_SummaryCard1";
-            uC_SummaryCard1.Size = new Size(206, 136);
-            uC_SummaryCard1.TabIndex = 15;
+            pnlTotalStudents.Location = new Point(109, 301);
+            pnlTotalStudents.Name = "pnlTotalStudents";
+            pnlTotalStudents.Size = new Size(158, 136);
+            pnlTotalStudents.TabIndex = 15;
             // 
-            // uC_SummaryCard2
+            // pnlPresent
             // 
-            uC_SummaryCard2.Location = new Point(336, 301);
-            uC_SummaryCard2.Name = "uC_SummaryCard2";
-            uC_SummaryCard2.Size = new Size(206, 136);
-            uC_SummaryCard2.TabIndex = 16;
+            pnlPresent.Location = new Point(291, 301);
+            pnlPresent.Name = "pnlPresent";
+            pnlPresent.Size = new Size(158, 136);
+            pnlPresent.TabIndex = 16;
             // 
-            // uC_SummaryCard3
+            // pnlAbsent
             // 
-            uC_SummaryCard3.Location = new Point(790, 301);
-            uC_SummaryCard3.Name = "uC_SummaryCard3";
-            uC_SummaryCard3.Size = new Size(206, 136);
-            uC_SummaryCard3.TabIndex = 18;
+            pnlAbsent.Location = new Point(655, 301);
+            pnlAbsent.Name = "pnlAbsent";
+            pnlAbsent.Size = new Size(158, 136);
+            pnlAbsent.TabIndex = 18;
             // 
-            // uC_SummaryCard4
+            // pnlLate
             // 
-            uC_SummaryCard4.Location = new Point(563, 301);
-            uC_SummaryCard4.Name = "uC_SummaryCard4";
-            uC_SummaryCard4.Size = new Size(206, 136);
-            uC_SummaryCard4.TabIndex = 17;
+            pnlLate.Location = new Point(473, 301);
+            pnlLate.Name = "pnlLate";
+            pnlLate.Size = new Size(158, 136);
+            pnlLate.TabIndex = 17;
+            // 
+            // pnlExcused
+            // 
+            pnlExcused.Location = new Point(837, 301);
+            pnlExcused.Name = "pnlExcused";
+            pnlExcused.Size = new Size(158, 136);
+            pnlExcused.TabIndex = 19;
             // 
             // UC_Attendance
             // 
@@ -225,10 +235,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.White;
-            Controls.Add(uC_SummaryCard3);
-            Controls.Add(uC_SummaryCard4);
-            Controls.Add(uC_SummaryCard2);
-            Controls.Add(uC_SummaryCard1);
+            Controls.Add(pnlExcused);
+            Controls.Add(pnlAbsent);
+            Controls.Add(pnlLate);
+            Controls.Add(pnlPresent);
+            Controls.Add(pnlTotalStudents);
             Controls.Add(lblNumberofStudents);
             Controls.Add(btnReset);
             Controls.Add(btnMarkAllPresent);
@@ -264,9 +275,10 @@
         private Syncfusion.WinForms.Controls.SfButton btnMarkAllPresent;
         private Syncfusion.WinForms.Controls.SfButton btnReset;
         private Label lblNumberofStudents;
-        private UC_SummaryCard uC_SummaryCard1;
-        private UC_SummaryCard uC_SummaryCard2;
-        private UC_SummaryCard uC_SummaryCard3;
-        private UC_SummaryCard uC_SummaryCard4;
+        private UC_SummaryCard pnlTotalStudents;
+        private UC_SummaryCard pnlPresent;
+        private UC_SummaryCard pnlAbsent;
+        private UC_SummaryCard pnlLate;
+        private UC_SummaryCard pnlExcused;
     }
 }
