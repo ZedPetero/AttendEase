@@ -141,6 +141,36 @@ namespace AE.Application.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MaterialSymbolsOutlined {
+            get {
+                object obj = ResourceManager.GetObject("MaterialSymbolsOutlined", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MaterialSymbolsRounded_FILL_GRAD_opsz_wght_ {
+            get {
+                object obj = ResourceManager.GetObject("MaterialSymbolsRounded[FILL,GRAD,opsz,wght]", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MaterialSymbolsSharp_FILL_GRAD_opsz_wght_ {
+            get {
+                object obj = ResourceManager.GetObject("MaterialSymbolsSharp[FILL,GRAD,opsz,wght]", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap more {

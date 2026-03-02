@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblSectionName = new Label();
             panelCalendar = new Panel();
             lblDateNow = new Label();
@@ -47,6 +48,7 @@
             pnlAbsent = new UC_SummaryCard();
             pnlLate = new UC_SummaryCard();
             pnlExcused = new UC_SummaryCard();
+            kryptonCustomPaletteBase1 = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
             panelCalendar.SuspendLayout();
             SuspendLayout();
             // 
@@ -230,6 +232,12 @@
             pnlExcused.Size = new Size(158, 136);
             pnlExcused.TabIndex = 19;
             // 
+            // kryptonCustomPaletteBase1
+            // 
+            kryptonCustomPaletteBase1.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 8.25F);
+            kryptonCustomPaletteBase1.UseThemeFormChromeBorderWidth = Krypton.Toolkit.InheritBool.True;
+            kryptonCustomPaletteBase1.PalettePaint += kryptonCustomPaletteBase1_PalettePaint;
+            // 
             // UC_Attendance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -281,5 +289,6 @@
         private UC_SummaryCard pnlAbsent;
         private UC_SummaryCard pnlLate;
         private UC_SummaryCard pnlExcused;
+        private Krypton.Toolkit.KryptonCustomPaletteBase kryptonCustomPaletteBase1;
     }
 }

@@ -29,6 +29,9 @@ namespace AE.Application
         {
             InitializeComponent();
             UpdateDateDisplay();
+            kryptonCustomPaletteBase1.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.Font = FontEngine.MaterialOutlined;
+
+            kryptonCustomPaletteBase1.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
         }
 
         public void SetSection(int sectionId)
@@ -415,6 +418,11 @@ namespace AE.Application
             {
                 summaryForm.ShowDialog();
             }
+        }
+
+        private void kryptonCustomPaletteBase1_PalettePaint(object sender, Krypton.Toolkit.PaletteLayoutEventArgs e)
+        {
+
         }
     }
 }
