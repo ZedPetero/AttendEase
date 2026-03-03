@@ -50,11 +50,10 @@
             // 
             // kryptonButton1
             // 
-            kryptonButton1.Location = new Point(773, 249);
+            kryptonButton1.AutoSize = true;
+            kryptonButton1.Location = new Point(792, 105);
             kryptonButton1.Name = "kryptonButton1";
-            kryptonButton1.Size = new Size(100, 50);
-            kryptonButton1.StateCommon.Content.ShortText.Image = Properties.Resources.editbtn;
-            kryptonButton1.StateCommon.Content.ShortText.ImageStyle = Krypton.Toolkit.PaletteImageStyle.CenterLeft;
+            kryptonButton1.Size = new Size(117, 68);
             kryptonButton1.TabIndex = 0;
             kryptonButton1.Values.DropDownArrowColor = Color.Empty;
             kryptonButton1.Values.Image = Properties.Resources.editbtn;
@@ -69,6 +68,7 @@
             Name = "UC_Teacher";
             Size = new Size(1150, 640);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
