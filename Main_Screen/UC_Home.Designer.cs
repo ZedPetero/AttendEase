@@ -39,6 +39,10 @@
             label1 = new Label();
             panel2 = new Panel();
             label5 = new Label();
+            kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -51,10 +55,11 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Fill;
+            panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 3, 3, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1150, 640);
+            panel1.Size = new Size(1150, 495);
             panel1.TabIndex = 0;
             // 
             // btnGetStarted
@@ -131,23 +136,62 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(kryptonLabel3);
+            panel2.Controls.Add(kryptonLabel2);
+            panel2.Controls.Add(kryptonButton1);
+            panel2.Controls.Add(kryptonLabel1);
             panel2.Controls.Add(label5);
-            panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 404);
+            panel2.Location = new Point(0, 495);
+            panel2.Margin = new Padding(3, 0, 3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1150, 236);
+            panel2.Size = new Size(1150, 283);
             panel2.TabIndex = 1;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(28, 35, 46);
-            label5.Location = new Point(267, 9);
+            label5.Location = new Point(450, 12);
             label5.Name = "label5";
-            label5.Size = new Size(659, 86);
+            label5.Size = new Size(250, 32);
             label5.TabIndex = 6;
             label5.Text = "Everything you need";
+            // 
+            // kryptonButton1
+            // 
+            kryptonButton1.Location = new Point(286, 111);
+            kryptonButton1.Name = "kryptonButton1";
+            kryptonButton1.Size = new Size(192, 149);
+            kryptonButton1.StateCommon.Back.Color1 = Color.FromArgb(250, 250, 250);
+            kryptonButton1.StateCommon.Back.Color2 = Color.FromArgb(250, 250, 250);
+            kryptonButton1.TabIndex = 7;
+            kryptonButton1.Values.DropDownArrowColor = Color.Empty;
+            kryptonButton1.Values.Text = "";
+            // 
+            // kryptonLabel1
+            // 
+            kryptonLabel1.Location = new Point(81, 130);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(90, 25);
+            kryptonLabel1.TabIndex = 8;
+            kryptonLabel1.Values.Text = "kryptonLabel1";
+            // 
+            // kryptonLabel2
+            // 
+            kryptonLabel2.Location = new Point(81, 161);
+            kryptonLabel2.Name = "kryptonLabel2";
+            kryptonLabel2.Size = new Size(90, 25);
+            kryptonLabel2.TabIndex = 9;
+            kryptonLabel2.Values.Text = "kryptonLabel2";
+            // 
+            // kryptonLabel3
+            // 
+            kryptonLabel3.Location = new Point(81, 192);
+            kryptonLabel3.Name = "kryptonLabel3";
+            kryptonLabel3.Size = new Size(90, 25);
+            kryptonLabel3.TabIndex = 10;
+            kryptonLabel3.Values.Text = "kryptonLabel3";
             // 
             // UC_Home
             // 
@@ -156,7 +200,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "UC_Home";
-            Size = new Size(1150, 640);
+            Size = new Size(1150, 1000);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -175,5 +219,9 @@
         private ImageList imageList1;
         private Syncfusion.WinForms.Controls.SfButton btnGetStarted;
         private Label label5;
+        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel3;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
     }
 }
