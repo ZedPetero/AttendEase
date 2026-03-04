@@ -37,6 +37,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 15F);
+            lblTitle.ForeColor = Color.FromArgb(29, 37, 48);
             lblTitle.Location = new Point(18, 20);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(49, 28);
@@ -47,6 +48,7 @@
             // 
             lblInteger.AutoSize = true;
             lblInteger.Font = new Font("Segoe UI", 26F, FontStyle.Bold);
+            lblInteger.ForeColor = Color.FromArgb(29, 37, 48);
             lblInteger.Location = new Point(18, 74);
             lblInteger.Name = "lblInteger";
             lblInteger.Size = new Size(40, 47);
@@ -57,6 +59,7 @@
             // 
             lblPercentage.AutoSize = true;
             lblPercentage.Font = new Font("Segoe UI", 16F);
+            lblPercentage.ForeColor = Color.FromArgb(29, 37, 48);
             lblPercentage.Location = new Point(64, 88);
             lblPercentage.Name = "lblPercentage";
             lblPercentage.Size = new Size(60, 30);

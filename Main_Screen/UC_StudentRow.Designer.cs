@@ -63,6 +63,7 @@
             // 
             lblStudentName.AutoSize = true;
             lblStudentName.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblStudentName.ForeColor = Color.FromArgb(29, 37, 48);
             lblStudentName.Location = new Point(85, 24);
             lblStudentName.Name = "lblStudentName";
             lblStudentName.Size = new Size(192, 30);
@@ -73,6 +74,7 @@
             // 
             lblStatus.AutoSize = true;
             lblStatus.Font = new Font("Segoe UI", 12F);
+            lblStatus.ForeColor = Color.FromArgb(29, 37, 48);
             lblStatus.Location = new Point(87, 58);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(93, 21);

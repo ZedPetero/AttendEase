@@ -36,7 +36,7 @@ namespace AE.Application
 
             _userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
 
-           
+
             UsernameChangebutton.Click += UsernameChangebutton_Click;
             PasswordChangeButton.Click += PasswordChangeButton_Click;
         }
@@ -146,7 +146,8 @@ namespace AE.Application
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
+        }
+        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
         {
             UIHelper.RoundControl(AccountManagementPanel, 50);
         }
@@ -162,6 +163,11 @@ namespace AE.Application
         }
 
         private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UC_Settings_Load(object sender, EventArgs e)
         {
 
         }

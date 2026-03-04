@@ -33,16 +33,17 @@
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridButtonColumn gridButtonColumn1 = new Syncfusion.WinForms.DataGrid.GridButtonColumn();
             panel1 = new Panel();
+            btnAddClass = new Syncfusion.WinForms.Controls.SfButton();
             label2 = new Label();
             label1 = new Label();
             sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            btnAddClass = new Syncfusion.WinForms.Controls.SfButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)sfDataGrid1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.BackColor = Color.White;
             panel1.Controls.Add(btnAddClass);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
@@ -54,10 +55,26 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
+            // btnAddClass
+            // 
+            btnAddClass.BackColor = Color.FromArgb(39, 165, 153);
+            btnAddClass.Font = new Font("Segoe UI Semibold", 9F);
+            btnAddClass.ForeColor = Color.White;
+            btnAddClass.Location = new Point(457, 103);
+            btnAddClass.Name = "btnAddClass";
+            btnAddClass.Size = new Size(96, 28);
+            btnAddClass.Style.BackColor = Color.FromArgb(39, 165, 153);
+            btnAddClass.Style.ForeColor = Color.White;
+            btnAddClass.TabIndex = 3;
+            btnAddClass.Text = "Add Class+";
+            btnAddClass.UseVisualStyleBackColor = false;
+            btnAddClass.Click += btnAddClass_Click;
+            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16F);
+            label2.ForeColor = Color.FromArgb(29, 37, 48);
             label2.Location = new Point(43, 101);
             label2.Name = "label2";
             label2.Size = new Size(82, 30);
@@ -68,6 +85,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
+            label1.ForeColor = Color.FromArgb(29, 37, 48);
             label1.Location = new Point(36, 38);
             label1.Name = "label1";
             label1.Size = new Size(242, 45);
@@ -95,6 +113,7 @@
             sfDataGrid1.Columns.Add(gridTextColumn2);
             sfDataGrid1.Columns.Add(gridTextColumn3);
             sfDataGrid1.Columns.Add(gridButtonColumn1);
+            sfDataGrid1.ForeColor = Color.FromArgb(29, 37, 48);
             sfDataGrid1.Location = new Point(36, 155);
             sfDataGrid1.Name = "sfDataGrid1";
             sfDataGrid1.RowHeight = 50;
@@ -108,23 +127,11 @@
             sfDataGrid1.CellButtonClick += sfDataGrid1_CellButtonClick;
             sfDataGrid1.Click += sfDataGrid1_Click;
             // 
-            // btnAddClass
-            // 
-            btnAddClass.Font = new Font("Segoe UI Semibold", 9F);
-            btnAddClass.ForeColor = Color.Black;
-            btnAddClass.Location = new Point(457, 103);
-            btnAddClass.Name = "btnAddClass";
-            btnAddClass.Size = new Size(96, 28);
-            btnAddClass.Style.ForeColor = Color.Black;
-            btnAddClass.TabIndex = 3;
-            btnAddClass.Text = "Add Class+";
-            btnAddClass.Click += btnAddClass_Click;
-            // 
             // UC_Classes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(249, 250, 251);
             Controls.Add(panel1);
             Name = "UC_Classes";
             Size = new Size(1150, 640);
