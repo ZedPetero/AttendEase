@@ -9,7 +9,6 @@ namespace AE.Application
             InitializeComponent();
             UC_Home myHome = new UC_Home();
             loadForm(myHome);
-            btnHome.ImageSize = new Size(24, 24);
         }
         bool sidebarExpand = false;
         private void btnHome_Click(object sender, EventArgs e)
@@ -77,26 +76,10 @@ namespace AE.Application
             UC_Teacher myTeacher = new UC_Teacher();
             loadForm(myTeacher);
         }
-        public void RoundControl(Control control, int radius)
-        {
-            GraphicsPath path = new GraphicsPath();
-            path.AddArc(0, 0, radius, radius, 180, 90);
-            path.AddArc(control.Width - radius, 0, radius, radius, 270, 90);
-            path.AddArc(control.Width - radius, control.Height - radius, radius, radius, 0, 90);
-            path.AddArc(0, control.Height - radius, radius, radius, 90, 90);
-            path.CloseFigure();
-
-            control.Region = new Region(path);
-        }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void btnHome_MouseHover(object sender, EventArgs e)
-        {
-            btnHome.ImageSize = new Size(22,22);
         }
     }
 }
