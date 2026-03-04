@@ -38,7 +38,9 @@
             label2 = new Label();
             label1 = new Label();
             panel2 = new Panel();
+            label5 = new Label();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -63,7 +65,7 @@
             btnGetStarted.ForeColor = Color.White;
             btnGetStarted.ImageKey = "right-arrow (2).png";
             btnGetStarted.ImageList = imageList1;
-            btnGetStarted.Location = new Point(489, 339);
+            btnGetStarted.Location = new Point(489, 324);
             btnGetStarted.Name = "btnGetStarted";
             btnGetStarted.Padding = new Padding(2, 2, 4, 2);
             btnGetStarted.Size = new Size(173, 48);
@@ -87,7 +89,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 18F);
             label4.ForeColor = Color.FromArgb(107, 124, 143);
-            label4.Location = new Point(209, 266);
+            label4.Location = new Point(209, 262);
             label4.Name = "label4";
             label4.Size = new Size(732, 32);
             label4.TabIndex = 3;
@@ -98,7 +100,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 18F);
             label3.ForeColor = Color.FromArgb(107, 124, 143);
-            label3.Location = new Point(174, 230);
+            label3.Location = new Point(174, 226);
             label3.Name = "label3";
             label3.Size = new Size(802, 32);
             label3.TabIndex = 2;
@@ -109,7 +111,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(40, 164, 153);
-            label2.Location = new Point(246, 127);
+            label2.Location = new Point(246, 121);
             label2.Name = "label2";
             label2.Size = new Size(658, 86);
             label2.TabIndex = 1;
@@ -120,7 +122,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(28, 35, 46);
-            label1.Location = new Point(355, 41);
+            label1.Location = new Point(355, 36);
             label1.Name = "label1";
             label1.Size = new Size(440, 86);
             label1.TabIndex = 0;
@@ -129,11 +131,23 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(label5);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 423);
+            panel2.Location = new Point(0, 404);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1150, 217);
+            panel2.Size = new Size(1150, 236);
             panel2.TabIndex = 1;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(28, 35, 46);
+            label5.Location = new Point(267, 9);
+            label5.Name = "label5";
+            label5.Size = new Size(659, 86);
+            label5.TabIndex = 6;
+            label5.Text = "Everything you need";
             // 
             // UC_Home
             // 
@@ -145,6 +159,8 @@
             Size = new Size(1150, 640);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -158,5 +174,6 @@
         private Label label4;
         private ImageList imageList1;
         private Syncfusion.WinForms.Controls.SfButton btnGetStarted;
+        private Label label5;
     }
 }
