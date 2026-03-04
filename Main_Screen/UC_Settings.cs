@@ -146,9 +146,7 @@ namespace AE.Application
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        //Hi Pete
-        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
+        }        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
         {
             UIHelper.RoundControl(AccountManagementPanel, 50);
         }
