@@ -31,8 +31,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Teacher));
             imageList1 = new ImageList(components);
-<<<<<<< HEAD
-=======
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             kryptonButton2 = new Krypton.Toolkit.KryptonButton();
@@ -47,7 +45,6 @@
             kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
->>>>>>> c4f9ca58b29ded80f258d8929850c01ee0be8a54
             SuspendLayout();
             // 
             // imageList1
@@ -64,8 +61,6 @@
             imageList1.Images.SetKeyName(6, "edit.png");
             imageList1.Images.SetKeyName(7, "people.png");
             // 
-<<<<<<< HEAD
-=======
             // kryptonButton1
             // 
             kryptonButton1.Location = new Point(750, 67);
@@ -229,19 +224,14 @@
             kryptonLabel7.Values.ExtraText = "Email";
             kryptonLabel7.Values.Text = "";
             // 
->>>>>>> c4f9ca58b29ded80f258d8929850c01ee0be8a54
             // UC_Teacher
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-<<<<<<< HEAD
-            BackColor = Color.IndianRed;
-=======
             BackColor = Color.White;
             Controls.Add(kryptonLabel1);
             Controls.Add(kryptonPanel1);
             Controls.Add(kryptonButton1);
->>>>>>> c4f9ca58b29ded80f258d8929850c01ee0be8a54
             Name = "UC_Teacher";
             Size = new Size(1150, 640);
             Load += UC_Teacher_Load;
@@ -253,8 +243,6 @@
 
         #endregion
         private ImageList imageList1;
-<<<<<<< HEAD
-=======
         private Krypton.Toolkit.KryptonButton kryptonButton1;
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
@@ -267,6 +255,5 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel7;
         private Krypton.Toolkit.KryptonLabel lblEmail;
         private Krypton.Toolkit.KryptonLabel kryptonLabel6;
->>>>>>> c4f9ca58b29ded80f258d8929850c01ee0be8a54
     }
 }
