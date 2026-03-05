@@ -394,15 +394,11 @@
         private Label lblSectionName;
         private Panel panelCalendar;
         private Label lblSubjectName;
-        private Syncfusion.WinForms.Controls.SfButton btnExportSummary;
-        private Syncfusion.WinForms.Controls.SfButton btnAddStudent;
         private Label lblClassRoster;
         private FlowLayoutPanel layoutStudents;
         private Syncfusion.WinForms.Controls.SfButton btnPreviousDate;
         private Label lblDateNow;
         private Syncfusion.WinForms.Controls.SfButton btnNextDate;
-        private Syncfusion.WinForms.Controls.SfButton btnMarkAllPresent;
-        private Syncfusion.WinForms.Controls.SfButton btnReset;
         private Label lblNumberofStudents;
         private UC_SummaryCard pnlTotalStudents;
         private UC_SummaryCard pnlPresent;
@@ -414,9 +410,9 @@
         private Krypton.Toolkit.KryptonButton kryptonButton7;
         private Krypton.Toolkit.KryptonButton kryptonButton6;
         private Krypton.Toolkit.KryptonButton kryptonButton1;
-        private Krypton.Toolkit.KryptonButton kryptonButton2;
-        private Krypton.Toolkit.KryptonButton kryptonButton3;
-        private Krypton.Toolkit.KryptonButton kryptonButton4;
+        private Krypton.Toolkit.KryptonButton btnExportSummary;
+        private Krypton.Toolkit.KryptonButton btnAddStudent;
+        private Krypton.Toolkit.KryptonButton btnMarkAllPresent;
         private Krypton.Toolkit.KryptonButton btnReset;
     }
 }
