@@ -13,6 +13,7 @@ namespace AE.Application
         public UCEditTeacher()
         {
             InitializeComponent();
+            UIHelper.RoundControl(cmbSubject, 10);
         }
     }
 }
