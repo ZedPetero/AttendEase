@@ -412,9 +412,9 @@
         private Krypton.Toolkit.KryptonButton kryptonButton7;
         private Krypton.Toolkit.KryptonButton kryptonButton6;
         private Krypton.Toolkit.KryptonButton kryptonButton1;
-        private Krypton.Toolkit.KryptonButton btnMarkAllPresent;
-        private Krypton.Toolkit.KryptonButton btnAddStudent;
         private Krypton.Toolkit.KryptonButton btnExportSummary;
+        private Krypton.Toolkit.KryptonButton btnAddStudent;
+        private Krypton.Toolkit.KryptonButton btnMarkAllPresent;
         private Krypton.Toolkit.KryptonButton btnReset;
     }
 }
