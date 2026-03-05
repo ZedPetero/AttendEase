@@ -54,7 +54,15 @@
             kryptonButton1.Cursor = Cursors.Hand;
             kryptonButton1.Location = new Point(961, 84);
             kryptonButton1.Name = "kryptonButton1";
-            kryptonButton1.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton1.OverrideDefault.Back.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.OverrideDefault.Back.Color2 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.OverrideDefault.Border.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.OverrideDefault.Border.Color2 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.OverrideFocus.Back.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.OverrideFocus.Back.Color2 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            kryptonButton1.OverrideFocus.Border.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.OverrideFocus.Border.Color2 = Color.FromArgb(39, 165, 153);
             kryptonButton1.OverrideFocus.Content.Draw = Krypton.Toolkit.InheritBool.False;
             kryptonButton1.Size = new Size(120, 45);
             kryptonButton1.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
@@ -64,6 +72,8 @@
             kryptonButton1.StateCommon.Border.Rounding = 6F;
             kryptonButton1.StateCommon.Content.ShortText.Color1 = Color.White;
             kryptonButton1.StateCommon.Content.ShortText.Font = new Font("Inter", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton1.StatePressed.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton1.StatePressed.Border.Draw = Krypton.Toolkit.InheritBool.False;
             kryptonButton1.StateTracking.Back.Color1 = Color.FromArgb(39, 166, 156);
             kryptonButton1.StateTracking.Back.Color2 = Color.FromArgb(39, 166, 156);
             kryptonButton1.StateTracking.Border.Color1 = Color.FromArgb(39, 166, 156);

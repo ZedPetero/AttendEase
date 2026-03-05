@@ -255,7 +255,7 @@ namespace AE.Application
 
         private void UpdateDateDisplay()
         {
-            lblDateNow.Text = _selectedDate.ToString("D");
+            lblDateNow.Values.ExtraText = _selectedDate.ToString("D");
         }
 
         private void lblDateNow_Click(object? sender, EventArgs e)

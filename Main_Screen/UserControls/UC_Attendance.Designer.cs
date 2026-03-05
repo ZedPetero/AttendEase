@@ -31,11 +31,9 @@
             components = new System.ComponentModel.Container();
             lblSectionName = new Label();
             panelCalendar = new Panel();
-            kryptonButton7 = new Krypton.Toolkit.KryptonButton();
+            lblDateNow = new Krypton.Toolkit.KryptonButton();
+            kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             kryptonButton6 = new Krypton.Toolkit.KryptonButton();
-            lblDateNow = new Label();
-            btnNextDate = new Syncfusion.WinForms.Controls.SfButton();
-            btnPreviousDate = new Syncfusion.WinForms.Controls.SfButton();
             lblSubjectName = new Label();
             lblClassRoster = new Label();
             layoutStudents = new FlowLayoutPanel();
@@ -47,7 +45,6 @@
             pnlExcused = new UC_SummaryCard();
             kryptonCustomPaletteBase1 = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
-            kryptonButton8 = new Krypton.Toolkit.KryptonButton();
             btnExportSummary = new Krypton.Toolkit.KryptonButton();
             btnAddStudent = new Krypton.Toolkit.KryptonButton();
             btnMarkAllPresent = new Krypton.Toolkit.KryptonButton();
@@ -68,66 +65,92 @@
             // panelCalendar
             // 
             panelCalendar.BackColor = Color.White;
-            panelCalendar.Controls.Add(kryptonButton7);
-            panelCalendar.Controls.Add(kryptonButton6);
             panelCalendar.Controls.Add(lblDateNow);
-            panelCalendar.Controls.Add(btnNextDate);
-            panelCalendar.Controls.Add(btnPreviousDate);
+            panelCalendar.Controls.Add(kryptonButton2);
+            panelCalendar.Controls.Add(kryptonButton6);
             panelCalendar.Location = new Point(109, 157);
             panelCalendar.Name = "panelCalendar";
             panelCalendar.Size = new Size(887, 62);
             panelCalendar.TabIndex = 2;
             // 
-            // kryptonButton7
+            // lblDateNow
             // 
-            kryptonButton7.Location = new Point(741, 16);
-            kryptonButton7.Name = "kryptonButton7";
-            kryptonButton7.Size = new Size(90, 25);
-            kryptonButton7.TabIndex = 26;
-            kryptonButton7.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton7.Values.Text = "kryptonButton7";
+            lblDateNow.Location = new Point(272, 10);
+            lblDateNow.Name = "lblDateNow";
+            lblDateNow.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            lblDateNow.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            lblDateNow.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            lblDateNow.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            lblDateNow.Size = new Size(343, 43);
+            lblDateNow.StateCommon.Back.Color1 = Color.White;
+            lblDateNow.StateCommon.Back.Color2 = Color.White;
+            lblDateNow.StateCommon.Border.Color1 = Color.White;
+            lblDateNow.StateCommon.Border.Color2 = Color.White;
+            lblDateNow.StateCommon.Content.LongText.Color1 = Color.FromArgb(26, 37, 48);
+            lblDateNow.StateCommon.Content.LongText.Font = new Font("Inter", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDateNow.StateCommon.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
+            lblDateNow.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDateNow.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            lblDateNow.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            lblDateNow.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
+            lblDateNow.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
+            lblDateNow.StateTracking.Border.Rounding = 4F;
+            lblDateNow.StateTracking.Border.Width = 1;
+            lblDateNow.TabIndex = 25;
+            lblDateNow.Values.DropDownArrowColor = Color.Empty;
+            lblDateNow.Values.ExtraText = "Saturday, February 14, 2026";
+            lblDateNow.Values.Text = "";
+            lblDateNow.Click += lblDateNow_Click;
+            // 
+            // kryptonButton2
+            // 
+            kryptonButton2.Location = new Point(836, 13);
+            kryptonButton2.Name = "kryptonButton2";
+            kryptonButton2.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton2.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton2.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton2.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton2.Size = new Size(36, 36);
+            kryptonButton2.StateCommon.Back.Color1 = Color.White;
+            kryptonButton2.StateCommon.Back.Color2 = Color.White;
+            kryptonButton2.StateCommon.Border.Color1 = Color.White;
+            kryptonButton2.StateCommon.Border.Color2 = Color.White;
+            kryptonButton2.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
+            kryptonButton2.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonButton2.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            kryptonButton2.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            kryptonButton2.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
+            kryptonButton2.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
+            kryptonButton2.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
+            kryptonButton2.TabIndex = 27;
+            kryptonButton2.Values.DropDownArrowColor = Color.Empty;
+            kryptonButton2.Values.Text = "";
+            kryptonButton2.Click += btnNextDate_Click;
             // 
             // kryptonButton6
             // 
-            kryptonButton6.Location = new Point(55, 21);
+            kryptonButton6.Location = new Point(13, 13);
             kryptonButton6.Name = "kryptonButton6";
-            kryptonButton6.Size = new Size(90, 25);
+            kryptonButton6.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton6.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton6.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton6.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton6.Size = new Size(36, 36);
+            kryptonButton6.StateCommon.Back.Color1 = Color.White;
+            kryptonButton6.StateCommon.Back.Color2 = Color.White;
+            kryptonButton6.StateCommon.Border.Color1 = Color.White;
+            kryptonButton6.StateCommon.Border.Color2 = Color.White;
+            kryptonButton6.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
+            kryptonButton6.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonButton6.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            kryptonButton6.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            kryptonButton6.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
+            kryptonButton6.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
+            kryptonButton6.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
             kryptonButton6.TabIndex = 25;
             kryptonButton6.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton6.Values.Text = "kryptonButton6";
-            // 
-            // lblDateNow
-            // 
-            lblDateNow.AutoSize = true;
-            lblDateNow.Cursor = Cursors.Hand;
-            lblDateNow.Font = new Font("Segoe UI", 16F);
-            lblDateNow.ForeColor = Color.FromArgb(29, 37, 48);
-            lblDateNow.Location = new Point(301, 16);
-            lblDateNow.Name = "lblDateNow";
-            lblDateNow.Size = new Size(284, 30);
-            lblDateNow.TabIndex = 12;
-            lblDateNow.Text = "Saturday, February 14, 2026";
-            lblDateNow.Click += lblDateNow_Click;
-            // 
-            // btnNextDate
-            // 
-            btnNextDate.Font = new Font("Segoe UI Semibold", 12F);
-            btnNextDate.Location = new Point(837, 13);
-            btnNextDate.Name = "btnNextDate";
-            btnNextDate.Size = new Size(36, 36);
-            btnNextDate.TabIndex = 13;
-            btnNextDate.Text = ">";
-            btnNextDate.Click += btnNextDate_Click;
-            // 
-            // btnPreviousDate
-            // 
-            btnPreviousDate.Font = new Font("Segoe UI Semibold", 12F);
-            btnPreviousDate.Location = new Point(13, 13);
-            btnPreviousDate.Name = "btnPreviousDate";
-            btnPreviousDate.Size = new Size(36, 36);
-            btnPreviousDate.TabIndex = 12;
-            btnPreviousDate.Text = "<";
-            btnPreviousDate.Click += btnPreviousDate_Click;
+            kryptonButton6.Values.Text = "";
+            kryptonButton6.Click += btnPreviousDate_Click;
             // 
             // lblSubjectName
             // 
@@ -219,23 +242,31 @@
             // 
             // kryptonButton1
             // 
-            kryptonButton1.Location = new Point(103, 23);
+            kryptonButton1.Location = new Point(102, 22);
             kryptonButton1.Name = "kryptonButton1";
             kryptonButton1.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
             kryptonButton1.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton1.Size = new Size(147, 31);
+            kryptonButton1.Size = new Size(169, 31);
             kryptonButton1.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             kryptonButton1.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
             kryptonButton1.StateCommon.Border.Color1 = Color.FromArgb(249, 250, 251);
             kryptonButton1.StateCommon.Border.Color2 = Color.FromArgb(249, 250, 251);
+            kryptonButton1.StateCommon.Content.LongText.Color1 = Color.FromArgb(108, 124, 137);
+            kryptonButton1.StateCommon.Content.LongText.Font = new Font("Inter SemiBold", 11.25F, FontStyle.Bold);
+            kryptonButton1.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            kryptonButton1.StateCommon.Content.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonButton1.StateCommon.Content.ShortText.Color1 = Color.FromArgb(108, 124, 137);
-            kryptonButton1.StateCommon.Content.ShortText.Font = new Font("Inter SemiBold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton1.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonButton1.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            kryptonButton1.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonButton1.StateTracking.Back.Color1 = Color.FromArgb(249, 250, 251);
             kryptonButton1.StateTracking.Back.Color2 = Color.FromArgb(249, 250, 251);
+            kryptonButton1.StateTracking.Content.LongText.Color1 = Color.FromArgb(26, 37, 48);
             kryptonButton1.StateTracking.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
             kryptonButton1.TabIndex = 20;
             kryptonButton1.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton1.Values.Text = "< Back to Classes";
+            kryptonButton1.Values.ExtraText = "Back to Classes";
+            kryptonButton1.Values.Text = "";
             kryptonButton1.Click += lblBackToClass_Click;
             // 
             // btnExportSummary
@@ -244,7 +275,9 @@
             btnExportSummary.Location = new Point(721, 107);
             btnExportSummary.Name = "btnExportSummary";
             btnExportSummary.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnExportSummary.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnExportSummary.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnExportSummary.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnExportSummary.Size = new Size(146, 28);
             btnExportSummary.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnExportSummary.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
@@ -272,7 +305,9 @@
             btnAddStudent.Location = new Point(873, 107);
             btnAddStudent.Name = "btnAddStudent";
             btnAddStudent.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnAddStudent.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnAddStudent.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnAddStudent.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnAddStudent.Size = new Size(123, 28);
             btnAddStudent.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
             btnAddStudent.StateCommon.Back.Color2 = Color.FromArgb(39, 165, 153);
@@ -301,7 +336,9 @@
             btnMarkAllPresent.Location = new Point(109, 248);
             btnMarkAllPresent.Name = "btnMarkAllPresent";
             btnMarkAllPresent.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnMarkAllPresent.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnMarkAllPresent.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnMarkAllPresent.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnMarkAllPresent.Size = new Size(145, 31);
             btnMarkAllPresent.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnMarkAllPresent.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
@@ -331,7 +368,9 @@
             btnReset.Location = new Point(273, 248);
             btnReset.Name = "btnReset";
             btnReset.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnReset.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnReset.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnReset.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnReset.Size = new Size(121, 31);
             btnReset.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnReset.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
@@ -353,16 +392,7 @@
             btnReset.Values.DropDownArrowColor = Color.Empty;
             btnReset.Values.ExtraText = "Reset Day";
             btnReset.Values.Text = "";
-            btnReset.Click += this.btnReset_Click;
-            // 
-            // kryptonButton8
-            // 
-            kryptonButton8.Location = new Point(530, 206);
-            kryptonButton8.Name = "kryptonButton8";
-            kryptonButton8.Size = new Size(90, 25);
-            kryptonButton8.TabIndex = 25;
-            kryptonButton8.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton8.Values.Text = "kryptonButton8";
+            btnReset.Click += btnReset_Click;
             // 
             // UC_Attendance
             // 
@@ -370,7 +400,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.FromArgb(249, 250, 251);
-            Controls.Add(kryptonButton8);
             Controls.Add(kryptonButton1);
             Controls.Add(pnlExcused);
             Controls.Add(pnlAbsent);
@@ -391,7 +420,6 @@
             Size = new Size(1150, 713);
             Load += UC_Attendance_Load;
             panelCalendar.ResumeLayout(false);
-            panelCalendar.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -402,9 +430,6 @@
         private Label lblSubjectName;
         private Label lblClassRoster;
         private FlowLayoutPanel layoutStudents;
-        private Syncfusion.WinForms.Controls.SfButton btnPreviousDate;
-        private Label lblDateNow;
-        private Syncfusion.WinForms.Controls.SfButton btnNextDate;
         private Label lblNumberofStudents;
         private UC_SummaryCard pnlTotalStudents;
         private UC_SummaryCard pnlPresent;
@@ -412,13 +437,13 @@
         private UC_SummaryCard pnlLate;
         private UC_SummaryCard pnlExcused;
         private Krypton.Toolkit.KryptonCustomPaletteBase kryptonCustomPaletteBase1;
-        private Krypton.Toolkit.KryptonButton kryptonButton8;
-        private Krypton.Toolkit.KryptonButton kryptonButton7;
+        private Krypton.Toolkit.KryptonButton lblDateNow;
         private Krypton.Toolkit.KryptonButton kryptonButton6;
         private Krypton.Toolkit.KryptonButton kryptonButton1;
         private Krypton.Toolkit.KryptonButton btnMarkAllPresent;
         private Krypton.Toolkit.KryptonButton btnExportSummary;
         private Krypton.Toolkit.KryptonButton btnAddStudent;
         private Krypton.Toolkit.KryptonButton btnReset;
+        private Krypton.Toolkit.KryptonButton kryptonButton2;
     }
 }
