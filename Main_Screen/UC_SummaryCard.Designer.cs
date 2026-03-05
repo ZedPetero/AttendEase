@@ -36,12 +36,7 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-<<<<<<< HEAD
             lblTitle.Font = new Font("Inter", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-=======
-            lblTitle.Font = new Font("Segoe UI", 15F);
-            lblTitle.ForeColor = Color.FromArgb(29, 37, 48);
->>>>>>> features2/balansag/settings
             lblTitle.Location = new Point(18, 20);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(56, 30);
@@ -51,12 +46,7 @@
             // lblInteger
             // 
             lblInteger.AutoSize = true;
-<<<<<<< HEAD
             lblInteger.Font = new Font("Inter", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-=======
-            lblInteger.Font = new Font("Segoe UI", 26F, FontStyle.Bold);
-            lblInteger.ForeColor = Color.FromArgb(29, 37, 48);
->>>>>>> features2/balansag/settings
             lblInteger.Location = new Point(18, 74);
             lblInteger.Name = "lblInteger";
             lblInteger.Size = new Size(48, 53);
@@ -66,14 +56,8 @@
             // lblPercentage
             // 
             lblPercentage.AutoSize = true;
-<<<<<<< HEAD
             lblPercentage.Font = new Font("Inter", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPercentage.Location = new Point(72, 88);
-=======
-            lblPercentage.Font = new Font("Segoe UI", 16F);
-            lblPercentage.ForeColor = Color.FromArgb(29, 37, 48);
-            lblPercentage.Location = new Point(64, 88);
->>>>>>> features2/balansag/settings
             lblPercentage.Name = "lblPercentage";
             lblPercentage.Size = new Size(74, 35);
             lblPercentage.TabIndex = 2;

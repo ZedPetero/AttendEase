@@ -98,42 +98,5 @@ namespace AE.Application
                 MessageBox.Show(ex.Message);
             }
         }
-<<<<<<< HEAD
-=======
-
-        private void sfDataGrid1_CellButtonClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellButtonClickEventArgs e)
-        {
-            if (e.Column.MappingName == "teacherId")
-            {
-                var rowContainer = e.Record as Syncfusion.WinForms.DataGrid.DataRow;
-                if (rowContainer != null)
-                {
-                    dynamic rowData = rowContainer.RowData;
-                    int sectionId = rowData.Id;
-                    Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
-                    UC_Attendance attendanceScreen = new UC_Attendance();
-                    attendanceScreen.CallerControl = this;
-                    attendanceScreen.SetSection(sectionId);
-
-                    mainForm.loadForm(attendanceScreen);
-                }
-            }
-        }
-
-        private void sfDataGrid1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
-        {
-            UIHelper.RoundControl(kryptonPanel1, 50);
-        }
->>>>>>> features2/balansag/settings
     }
 }
