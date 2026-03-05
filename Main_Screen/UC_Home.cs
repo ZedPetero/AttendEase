@@ -14,6 +14,7 @@ namespace AE.Application
         {
             InitializeComponent();
             UIHelper.RoundControl(this.btnGetStarted, 20);
+            UIHelper.RoundControl(this.kryptonPanel1, 20);
         }
 
         private void btnGetStarted_Click(object sender, EventArgs e)
