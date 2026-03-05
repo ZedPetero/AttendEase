@@ -127,7 +127,7 @@
             btnClasses.TabIndex = 2;
             btnClasses.Values.DropDownArrowColor = Color.Empty;
             btnClasses.Values.ExtraText = "Classes";
-            btnClasses.Values.Text = "";
+            btnClasses.Values.Text = "";
             btnClasses.Click += btnClasses_Click;
             // 
             // btnRecords
@@ -141,7 +141,7 @@
             btnRecords.TabIndex = 3;
             btnRecords.Values.DropDownArrowColor = Color.Empty;
             btnRecords.Values.ExtraText = "Records";
-            btnRecords.Values.Text = "";
+            btnRecords.Values.Text = "";
             btnRecords.Click += btnRecords_Click;
             // 
             // btnTeacher
@@ -155,7 +155,7 @@
             btnTeacher.TabIndex = 4;
             btnTeacher.Values.DropDownArrowColor = Color.Empty;
             btnTeacher.Values.ExtraText = "Teacher";
-            btnTeacher.Values.Text = "";
+            btnTeacher.Values.Text = "";
             btnTeacher.Click += btnTeacher_Click;
             // 
             // imageList1

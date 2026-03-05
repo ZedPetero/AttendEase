@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Drawing;
 using System.Drawing.Text;
 using System.Runtime.InteropServices;
+using System.Linq;
 
 namespace AE.Application
 {
@@ -14,19 +14,25 @@ namespace AE.Application
         private static PrivateFontCollection _pfc = new PrivateFontCollection();
 
         public static Font MaterialOutlined;
+        public static Font InterBase;
 
         public static void LoadFonts()
         {
-            byte[] fontData = Properties.Resources.MaterialSymbolsOutlined;
+            LoadFontFromResource(Properties.Resources.MaterialSymbolsOutlined);
+            LoadFontFromResource(Properties.Resources.InterRegular);
 
+            MaterialOutlined = new Font(_pfc.Families.First(f => f.Name.Contains("Material")), 16f, FontStyle.Regular);
+            InterBase = new Font(_pfc.Families.First(f => f.Name.Contains("Inter")), 10f, FontStyle.Regular);
+        }
+
+        private static void LoadFontFromResource(byte[] fontData)
+        {
             IntPtr fontPtr = Marshal.AllocCoTaskMem(fontData.Length);
             Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
             uint dummy = 0;
             _pfc.AddMemoryFont(fontPtr, fontData.Length);
             AddFontMemResourceEx(fontPtr, (uint)fontData.Length, IntPtr.Zero, ref dummy);
             Marshal.FreeCoTaskMem(fontPtr);
-
-            MaterialOutlined = new Font(_pfc.Families[0], 16f, FontStyle.Regular);
         }
     }
 }

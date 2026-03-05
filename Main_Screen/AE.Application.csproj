@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Krypton.Components.Suite" Version="4.5.9" />
     <PackageReference Include="Krypton.Docking" Version="100.26.1.19" />
     <PackageReference Include="Krypton.Navigator" Version="100.26.1.19" />
     <PackageReference Include="Krypton.Ribbon" Version="100.26.1.19" />

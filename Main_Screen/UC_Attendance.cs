@@ -29,9 +29,6 @@ namespace AE.Application
         {
             InitializeComponent();
             UpdateDateDisplay();
-            kryptonCustomPaletteBase1.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.Font = FontEngine.MaterialOutlined;
-
-            kryptonCustomPaletteBase1.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
         }
 
         public void SetSection(int sectionId)
@@ -39,12 +36,7 @@ namespace AE.Application
             CurrentSectionId = sectionId;
             LoadSectionInfo();
             LoadStudentsForDate();
-            SetSummaryCards(); // ensure summary reflects current state immediately
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            SetSummaryCards(); 
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)
@@ -110,7 +102,7 @@ namespace AE.Application
 
                 pnlTotalStudents.Title = "Total Students";
                 pnlTotalStudents.Integer = total;
-                pnlTotalStudents.Percentage = string.Empty; // no percentage for total
+                pnlTotalStudents.Percentage = string.Empty; 
 
                 pnlPresent.Title = "Present";
                 pnlPresent.Integer = present;
