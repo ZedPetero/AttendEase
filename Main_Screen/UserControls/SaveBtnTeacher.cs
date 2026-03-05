@@ -15,16 +15,16 @@ namespace AE.Application.UserControls
         {
             InitializeComponent();
         }
-
+        public event EventHandler SaveChangesClicked;
+        public event EventHandler CancelEditClicked;
         private void btnCancelEdit_Click(object sender, EventArgs e)
         {
-            UC_Teacher teacher = new UC_Teacher();
-            teacher.ToTeacherProfile();
+            CancelEditClicked?.Invoke(this, e);
         }
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            
+            SaveChangesClicked?.Invoke(this, e);
         }
     }
 }

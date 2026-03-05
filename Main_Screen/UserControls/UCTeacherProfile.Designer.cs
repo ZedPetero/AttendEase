@@ -42,7 +42,7 @@
             kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             lblSubjectTitle = new Krypton.Toolkit.KryptonLabel();
             lblTeacherTitle = new Krypton.Toolkit.KryptonLabel();
-            kryptonButton2 = new Krypton.Toolkit.KryptonButton();
+            btnProfilePic = new Krypton.Toolkit.KryptonButton();
             SuspendLayout();
             // 
             // lblWrapBio
@@ -239,40 +239,40 @@
             lblTeacherTitle.TabIndex = 22;
             lblTeacherTitle.Values.Text = "Name Of Teacher";
             // 
-            // kryptonButton2
+            // btnProfilePic
             // 
-            kryptonButton2.Location = new Point(20, 20);
-            kryptonButton2.Margin = new Padding(0);
-            kryptonButton2.Name = "kryptonButton2";
-            kryptonButton2.Size = new Size(85, 85);
-            kryptonButton2.StateCommon.Back.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateCommon.Back.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateCommon.Border.Rounding = 50F;
-            kryptonButton2.StateCommon.Content.Padding = new Padding(-1, 6, -1, -1);
-            kryptonButton2.StateCommon.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateCommon.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 35F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            kryptonButton2.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            kryptonButton2.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Far;
-            kryptonButton2.StateNormal.Back.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateNormal.Back.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateNormal.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateNormal.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StatePressed.Back.Color1 = Color.FromArgb(208, 222, 220);
-            kryptonButton2.StatePressed.Back.Color2 = Color.FromArgb(208, 222, 220);
-            kryptonButton2.StatePressed.Border.Color1 = Color.FromArgb(43, 154, 143);
-            kryptonButton2.StatePressed.Border.Color2 = Color.FromArgb(43, 154, 143);
-            kryptonButton2.StatePressed.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StatePressed.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateTracking.Border.Color1 = Color.FromArgb(43, 154, 143);
-            kryptonButton2.StateTracking.Border.Color2 = Color.FromArgb(43, 154, 143);
-            kryptonButton2.StateTracking.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateTracking.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.TabIndex = 21;
-            kryptonButton2.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton2.Values.Text = "";
+            btnProfilePic.Location = new Point(20, 20);
+            btnProfilePic.Margin = new Padding(0);
+            btnProfilePic.Name = "btnProfilePic";
+            btnProfilePic.Size = new Size(85, 85);
+            btnProfilePic.StateCommon.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnProfilePic.StateCommon.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnProfilePic.StateCommon.Border.Rounding = 50F;
+            btnProfilePic.StateCommon.Content.Padding = new Padding(-1, 6, -1, -1);
+            btnProfilePic.StateCommon.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            btnProfilePic.StateCommon.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            btnProfilePic.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 35F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            btnProfilePic.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnProfilePic.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Far;
+            btnProfilePic.StateNormal.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnProfilePic.StateNormal.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnProfilePic.StateNormal.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            btnProfilePic.StateNormal.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            btnProfilePic.StatePressed.Back.Color1 = Color.FromArgb(208, 222, 220);
+            btnProfilePic.StatePressed.Back.Color2 = Color.FromArgb(208, 222, 220);
+            btnProfilePic.StatePressed.Border.Color1 = Color.FromArgb(43, 154, 143);
+            btnProfilePic.StatePressed.Border.Color2 = Color.FromArgb(43, 154, 143);
+            btnProfilePic.StatePressed.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            btnProfilePic.StatePressed.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            btnProfilePic.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnProfilePic.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnProfilePic.StateTracking.Border.Color1 = Color.FromArgb(43, 154, 143);
+            btnProfilePic.StateTracking.Border.Color2 = Color.FromArgb(43, 154, 143);
+            btnProfilePic.StateTracking.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            btnProfilePic.StateTracking.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            btnProfilePic.TabIndex = 21;
+            btnProfilePic.Values.DropDownArrowColor = Color.Empty;
+            btnProfilePic.Values.Text = "";
             // 
             // UCTeacherProfile
             // 
@@ -293,7 +293,7 @@
             Controls.Add(kryptonLabel4);
             Controls.Add(lblSubjectTitle);
             Controls.Add(lblTeacherTitle);
-            Controls.Add(kryptonButton2);
+            Controls.Add(btnProfilePic);
             Name = "UCTeacherProfile";
             Size = new Size(550, 440);
             Load += UCTeacherProfile_Load;
@@ -317,6 +317,6 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private Krypton.Toolkit.KryptonLabel lblSubjectTitle;
         private Krypton.Toolkit.KryptonLabel lblTeacherTitle;
-        private Krypton.Toolkit.KryptonButton kryptonButton2;
+        private Krypton.Toolkit.KryptonButton btnProfilePic;
     }
 }

@@ -36,7 +36,7 @@
             kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
-            kryptonButton2 = new Krypton.Toolkit.KryptonButton();
+            btnUploadPicture = new Krypton.Toolkit.KryptonButton();
             txtFirstName = new Krypton.Toolkit.KryptonTextBox();
             txtBio = new Krypton.Toolkit.KryptonRichTextBox();
             txtEmail = new Krypton.Toolkit.KryptonTextBox();
@@ -47,6 +47,7 @@
             txtLastName = new Krypton.Toolkit.KryptonTextBox();
             kryptonLabel10 = new Krypton.Toolkit.KryptonLabel();
             cmbSubject = new Krypton.Toolkit.KryptonComboBox();
+            datePickerDate = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)cmbSubject).BeginInit();
             SuspendLayout();
             // 
@@ -178,40 +179,41 @@
             kryptonLabel2.TabIndex = 22;
             kryptonLabel2.Values.Text = "Name Of Teacher";
             // 
-            // kryptonButton2
+            // btnUploadPicture
             // 
-            kryptonButton2.Location = new Point(21, 20);
-            kryptonButton2.Margin = new Padding(0);
-            kryptonButton2.Name = "kryptonButton2";
-            kryptonButton2.Size = new Size(85, 85);
-            kryptonButton2.StateCommon.Back.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateCommon.Back.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateCommon.Border.Rounding = 50F;
-            kryptonButton2.StateCommon.Content.Padding = new Padding(-1, 6, -1, -1);
-            kryptonButton2.StateCommon.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateCommon.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 35F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
-            kryptonButton2.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            kryptonButton2.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Far;
-            kryptonButton2.StateNormal.Back.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateNormal.Back.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateNormal.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateNormal.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StatePressed.Back.Color1 = Color.FromArgb(208, 222, 220);
-            kryptonButton2.StatePressed.Back.Color2 = Color.FromArgb(208, 222, 220);
-            kryptonButton2.StatePressed.Border.Color1 = Color.FromArgb(43, 154, 143);
-            kryptonButton2.StatePressed.Border.Color2 = Color.FromArgb(43, 154, 143);
-            kryptonButton2.StatePressed.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StatePressed.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateTracking.Border.Color1 = Color.FromArgb(43, 154, 143);
-            kryptonButton2.StateTracking.Border.Color2 = Color.FromArgb(43, 154, 143);
-            kryptonButton2.StateTracking.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.StateTracking.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
-            kryptonButton2.TabIndex = 21;
-            kryptonButton2.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton2.Values.Text = "";
+            btnUploadPicture.Location = new Point(21, 20);
+            btnUploadPicture.Margin = new Padding(0);
+            btnUploadPicture.Name = "btnUploadPicture";
+            btnUploadPicture.Size = new Size(85, 85);
+            btnUploadPicture.StateCommon.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnUploadPicture.StateCommon.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnUploadPicture.StateCommon.Border.Rounding = 50F;
+            btnUploadPicture.StateCommon.Content.Padding = new Padding(-1, 6, -1, -1);
+            btnUploadPicture.StateCommon.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            btnUploadPicture.StateCommon.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            btnUploadPicture.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 35F, FontStyle.Regular, GraphicsUnit.Pixel, 0);
+            btnUploadPicture.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnUploadPicture.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Far;
+            btnUploadPicture.StateNormal.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnUploadPicture.StateNormal.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnUploadPicture.StateNormal.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            btnUploadPicture.StateNormal.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            btnUploadPicture.StatePressed.Back.Color1 = Color.FromArgb(208, 222, 220);
+            btnUploadPicture.StatePressed.Back.Color2 = Color.FromArgb(208, 222, 220);
+            btnUploadPicture.StatePressed.Border.Color1 = Color.FromArgb(43, 154, 143);
+            btnUploadPicture.StatePressed.Border.Color2 = Color.FromArgb(43, 154, 143);
+            btnUploadPicture.StatePressed.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            btnUploadPicture.StatePressed.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            btnUploadPicture.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnUploadPicture.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnUploadPicture.StateTracking.Border.Color1 = Color.FromArgb(43, 154, 143);
+            btnUploadPicture.StateTracking.Border.Color2 = Color.FromArgb(43, 154, 143);
+            btnUploadPicture.StateTracking.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
+            btnUploadPicture.StateTracking.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
+            btnUploadPicture.TabIndex = 21;
+            btnUploadPicture.Values.DropDownArrowColor = Color.Empty;
+            btnUploadPicture.Values.Text = "";
+            btnUploadPicture.Click += btnUploadPicture_Click;
             // 
             // txtFirstName
             // 
@@ -316,17 +318,26 @@
             // cmbSubject
             // 
             cmbSubject.DropDownWidth = 214;
+            cmbSubject.Items.AddRange(new object[] { "Math", "Science", "History", "Literature", "Ar", "Music", "PhysicalEducation", "ComputerScience" });
             cmbSubject.Location = new Point(30, 327);
             cmbSubject.Name = "cmbSubject";
             cmbSubject.Size = new Size(214, 22);
             cmbSubject.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             cmbSubject.TabIndex = 48;
             // 
+            // datePickerDate
+            // 
+            datePickerDate.Location = new Point(288, 243);
+            datePickerDate.Name = "datePickerDate";
+            datePickerDate.Size = new Size(214, 23);
+            datePickerDate.TabIndex = 51;
+            // 
             // UCEditTeacher
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            Controls.Add(datePickerDate);
             Controls.Add(cmbSubject);
             Controls.Add(txtLastName);
             Controls.Add(kryptonLabel10);
@@ -345,7 +356,7 @@
             Controls.Add(kryptonLabel4);
             Controls.Add(kryptonLabel3);
             Controls.Add(kryptonLabel2);
-            Controls.Add(kryptonButton2);
+            Controls.Add(btnUploadPicture);
             Name = "UCEditTeacher";
             Size = new Size(550, 520);
             ((System.ComponentModel.ISupportInitialize)cmbSubject).EndInit();
@@ -363,7 +374,7 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private Krypton.Toolkit.KryptonLabel kryptonLabel3;
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
-        private Krypton.Toolkit.KryptonButton kryptonButton2;
+        private Krypton.Toolkit.KryptonButton btnUploadPicture;
         private Krypton.Toolkit.KryptonTextBox txtFirstName;
         private Krypton.Toolkit.KryptonRichTextBox txtBio;
         private Krypton.Toolkit.KryptonTextBox txtEmail;
@@ -374,5 +385,6 @@
         private Krypton.Toolkit.KryptonTextBox txtLastName;
         private Krypton.Toolkit.KryptonLabel kryptonLabel10;
         private Krypton.Toolkit.KryptonComboBox cmbSubject;
+        private DateTimePicker datePickerDate;
     }
 }

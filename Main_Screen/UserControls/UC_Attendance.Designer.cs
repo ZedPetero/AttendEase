@@ -320,10 +320,10 @@
             btnAddStudent.StateCommon.Content.ShortText.Color1 = Color.White;
             btnAddStudent.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 14.25F);
             btnAddStudent.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            btnAddStudent.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
-            btnAddStudent.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
-            btnAddStudent.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
-            btnAddStudent.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
+            btnAddStudent.StateTracking.Back.Color1 = Color.FromArgb(77, 180, 170);
+            btnAddStudent.StateTracking.Back.Color2 = Color.FromArgb(77, 180, 170);
+            btnAddStudent.StateTracking.Border.Color1 = Color.FromArgb(77, 180, 170);
+            btnAddStudent.StateTracking.Border.Color2 = Color.FromArgb(77, 180, 170);
             btnAddStudent.TabIndex = 22;
             btnAddStudent.Values.DropDownArrowColor = Color.Empty;
             btnAddStudent.Values.ExtraText = "Add Student";

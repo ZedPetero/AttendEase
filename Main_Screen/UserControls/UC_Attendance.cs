@@ -279,39 +279,88 @@ namespace AE.Application
 
         private void ShowCalendarPicker()
         {
-            using (var dlg = new Form())
+            var container = new Panel { BackColor = Color.White, Size = new Size(245, 250) };
+
+            var cbMonth = new Krypton.Toolkit.KryptonComboBox
             {
-                dlg.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                dlg.StartPosition = FormStartPosition.CenterParent;
-                dlg.Width = 260;
-                dlg.Height = 260;
-                dlg.Text = "Choose date";
+                DropDownStyle = ComboBoxStyle.DropDownList,
+                Width = 110,
+                Location = new Point(10, 5)
+            };
+            cbMonth.Items.AddRange(new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" });
+            cbMonth.SelectedIndex = _selectedDate.Month - 1;
 
-                var cal = new MonthCalendar
-                {
-                    MaxSelectionCount = 1,
-                    Dock = DockStyle.Top,
-                    SelectionStart = _selectedDate,
-                    SelectionEnd = _selectedDate
-                };
+            var numYear = new Krypton.Toolkit.KryptonNumericUpDown
+            {
+                Width = 80,
+                Location = new Point(130, 5),
+                Minimum = 2000,
+                Maximum = 2100,
+                Value = _selectedDate.Year
+            };
 
-                var btnOk = new Button { Text = "OK", DialogResult = DialogResult.OK, Dock = DockStyle.Left, Width = 120 };
-                var btnCancel = new Button { Text = "Cancel", DialogResult = DialogResult.Cancel, Dock = DockStyle.Right, Width = 120 };
+            var cal = new Krypton.Toolkit.KryptonMonthCalendar
+            {
+                MaxSelectionCount = 1,
+                SelectionStart = _selectedDate,
+                SelectionEnd = _selectedDate,
+                ShowTodayCircle = false,
+                ShowWeekNumbers = false,
+                Location = new Point(5, 35) 
+            };
 
-                var panel = new Panel { Dock = DockStyle.Bottom, Height = 40 };
-                panel.Controls.Add(btnOk);
-                panel.Controls.Add(btnCancel);
+            cal.StateCommon.Back.Color1 = Color.White;
+            cal.StateCommon.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.None;
 
-                dlg.Controls.Add(cal);
-                dlg.Controls.Add(panel);
+            cal.StateTracking.Day.Back.Color1 = Color.FromArgb(228, 242, 240);
+            cal.StateTracking.Day.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.All;
+            cal.StateTracking.Day.Border.Rounding = 6F;
+            cal.StateTracking.Day.Border.Width = 0;
 
-                if (dlg.ShowDialog(this.FindForm()) == DialogResult.OK)
-                {
-                    _selectedDate = cal.SelectionStart.Date;
-                    UpdateDateDisplay();
-                    LoadStudentsForDate();
-                }
-            }
+            cal.StateCheckedNormal.Day.Back.Color1 = Color.FromArgb(39, 165, 173);
+            cal.StateCheckedNormal.Day.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.All;
+            cal.StateCheckedNormal.Day.Border.Rounding = 6F;
+            cal.StateCheckedNormal.Day.Border.Width = 0;
+            cal.StateCheckedNormal.Day.Content.ShortText.Color1 = Color.White;
+
+            container.Controls.Add(cbMonth);
+            container.Controls.Add(numYear);
+            container.Controls.Add(cal);
+
+            var host = new ToolStripControlHost(container) { Padding = Padding.Empty, Margin = Padding.Empty };
+            var dropDown = new ToolStripDropDown { Padding = new Padding(1), BackColor = Color.FromArgb(224, 230, 235) };
+            dropDown.Items.Add(host);
+
+            bool isNavigating = false; 
+
+            cbMonth.SelectedIndexChanged += (s, e) =>
+            {
+                isNavigating = true;
+                cal.SetDate(new DateTime((int)numYear.Value, cbMonth.SelectedIndex + 1, 1));
+                isNavigating = false;
+            };
+
+            numYear.ValueChanged += (s, e) =>
+            {
+                isNavigating = true;
+                cal.SetDate(new DateTime((int)numYear.Value, cbMonth.SelectedIndex + 1, 1));
+                isNavigating = false;
+            };
+
+            cal.DateChanged += (s, e) =>
+            {
+                if (isNavigating) return;
+
+                _selectedDate = cal.SelectionStart.Date;
+                UpdateDateDisplay();
+                LoadStudentsForDate();
+                dropDown.Close();
+            };
+
+            int offsetX = (lblDateNow.Width - container.Width) / 2;
+            int offsetY = lblDateNow.Height + 4; 
+
+            dropDown.Show(lblDateNow, new Point(offsetX, offsetY));
         }
 
         private void btnMarkAllPresent_Click(object? sender, EventArgs e)

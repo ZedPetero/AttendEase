@@ -30,12 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             imageList1 = new ImageList(components);
-            btnEditProfile = new Krypton.Toolkit.KryptonButton();
             panelTeacherProfile = new Krypton.Toolkit.KryptonPanel();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)panelTeacherProfile).BeginInit();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // imageList1
@@ -43,48 +41,6 @@
             imageList1.ColorDepth = ColorDepth.Depth32Bit;
             imageList1.ImageSize = new Size(16, 16);
             imageList1.TransparentColor = Color.Transparent;
-            // 
-            // btnEditProfile
-            // 
-            btnEditProfile.Location = new Point(109, 3);
-            btnEditProfile.Name = "btnEditProfile";
-            btnEditProfile.Size = new Size(100, 44);
-            btnEditProfile.StateCommon.Back.Color1 = Color.FromArgb(40, 164, 153);
-            btnEditProfile.StateCommon.Back.Color2 = Color.FromArgb(40, 164, 153);
-            btnEditProfile.StateCommon.Border.Rounding = 10F;
-            btnEditProfile.StateCommon.Content.LongText.Color1 = Color.White;
-            btnEditProfile.StateCommon.Content.LongText.Color2 = Color.White;
-            btnEditProfile.StateCommon.Content.LongText.Font = new Font("Inter", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditProfile.StateCommon.Content.ShortText.Color1 = Color.White;
-            btnEditProfile.StateCommon.Content.ShortText.Color2 = Color.White;
-            btnEditProfile.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 22F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditProfile.StateNormal.Back.Color1 = Color.FromArgb(63, 174, 163);
-            btnEditProfile.StateNormal.Back.Color2 = Color.FromArgb(63, 174, 163);
-            btnEditProfile.StateNormal.Content.LongText.Color1 = Color.White;
-            btnEditProfile.StateNormal.Content.LongText.Color2 = Color.White;
-            btnEditProfile.StateNormal.Content.ShortText.Color1 = Color.White;
-            btnEditProfile.StateNormal.Content.ShortText.Color2 = Color.White;
-            btnEditProfile.StatePressed.Back.Color1 = Color.FromArgb(33, 144, 133);
-            btnEditProfile.StatePressed.Back.Color2 = Color.FromArgb(33, 144, 133);
-            btnEditProfile.StatePressed.Border.Color1 = Color.FromArgb(43, 154, 143);
-            btnEditProfile.StatePressed.Border.Color2 = Color.FromArgb(43, 154, 143);
-            btnEditProfile.StatePressed.Content.LongText.Color1 = Color.FromArgb(63, 174, 163);
-            btnEditProfile.StatePressed.Content.LongText.Color2 = Color.FromArgb(63, 174, 163);
-            btnEditProfile.StatePressed.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            btnEditProfile.StatePressed.Content.ShortText.Color2 = Color.FromArgb(63, 174, 163);
-            btnEditProfile.StateTracking.Back.Color1 = Color.FromArgb(83, 194, 183);
-            btnEditProfile.StateTracking.Back.Color2 = Color.FromArgb(83, 194, 183);
-            btnEditProfile.StateTracking.Border.Color1 = Color.FromArgb(50, 174, 163);
-            btnEditProfile.StateTracking.Border.Color2 = Color.FromArgb(50, 174, 163);
-            btnEditProfile.StateTracking.Content.LongText.Color1 = Color.White;
-            btnEditProfile.StateTracking.Content.LongText.Color2 = Color.White;
-            btnEditProfile.StateTracking.Content.ShortText.Color1 = Color.White;
-            btnEditProfile.StateTracking.Content.ShortText.Color2 = Color.White;
-            btnEditProfile.TabIndex = 1;
-            btnEditProfile.Values.DropDownArrowColor = Color.Empty;
-            btnEditProfile.Values.ExtraText = "Edit";
-            btnEditProfile.Values.Text = "";
-            btnEditProfile.Click += btnEditProfile_Click;
             // 
             // panelTeacherProfile
             // 
@@ -108,7 +64,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnEditProfile);
             panel1.Location = new Point(634, 32);
             panel1.Name = "panel1";
             panel1.Size = new Size(215, 50);
@@ -126,14 +81,12 @@
             Name = "UC_Teacher";
             Size = new Size(1150, 640);
             ((System.ComponentModel.ISupportInitialize)panelTeacherProfile).EndInit();
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private ImageList imageList1;
-        private Krypton.Toolkit.KryptonButton btnEditProfile;
         private Krypton.Toolkit.KryptonPanel panelTeacherProfile;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private Panel panel1;

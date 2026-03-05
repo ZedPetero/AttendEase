@@ -36,30 +36,30 @@
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Inter", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitle.Font = new Font("Inter", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitle.Location = new Point(18, 20);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(56, 30);
+            lblTitle.Size = new Size(51, 27);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Title";
             // 
             // lblInteger
             // 
             lblInteger.AutoSize = true;
-            lblInteger.Font = new Font("Inter", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblInteger.Font = new Font("Inter", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblInteger.Location = new Point(18, 74);
             lblInteger.Name = "lblInteger";
-            lblInteger.Size = new Size(48, 53);
+            lblInteger.Size = new Size(46, 50);
             lblInteger.TabIndex = 1;
             lblInteger.Text = "0";
             // 
             // lblPercentage
             // 
             lblPercentage.AutoSize = true;
-            lblPercentage.Font = new Font("Inter", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPercentage.Font = new Font("Inter", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPercentage.Location = new Point(72, 88);
             lblPercentage.Name = "lblPercentage";
-            lblPercentage.Size = new Size(74, 35);
+            lblPercentage.Size = new Size(64, 30);
             lblPercentage.TabIndex = 2;
             lblPercentage.Text = "0.0%";
             // 

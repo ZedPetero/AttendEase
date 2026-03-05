@@ -36,6 +36,7 @@
             btnClasses = new Krypton.Toolkit.KryptonCheckButton();
             btnRecords = new Krypton.Toolkit.KryptonCheckButton();
             btnTeacher = new Krypton.Toolkit.KryptonCheckButton();
+            btnSettings = new Krypton.Toolkit.KryptonCheckButton();
             imageList1 = new ImageList(components);
             sidebarTimer = new System.Windows.Forms.Timer(components);
             pnlMainContent = new Panel();
@@ -64,6 +65,7 @@
             kryptonCheckSet1.CheckButtons.Add(btnClasses);
             kryptonCheckSet1.CheckButtons.Add(btnRecords);
             kryptonCheckSet1.CheckButtons.Add(btnTeacher);
+            kryptonCheckSet1.CheckButtons.Add(btnSettings);
             kryptonCheckSet1.CheckedButtonChanged += btnHome_Click;
             // 
             // btnHome
@@ -158,6 +160,20 @@
             btnTeacher.Values.Text = "";
             btnTeacher.Click += btnTeacher_Click;
             // 
+            // btnSettings
+            // 
+            btnSettings.LocalCustomPalette = ButtonPalette;
+            btnSettings.Location = new Point(0, 240);
+            btnSettings.Margin = new Padding(0);
+            btnSettings.Name = "btnSettings";
+            btnSettings.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
+            btnSettings.Size = new Size(200, 60);
+            btnSettings.TabIndex = 5;
+            btnSettings.Values.DropDownArrowColor = Color.Empty;
+            btnSettings.Values.ExtraText = "Settings";
+            btnSettings.Values.Text = "";
+            btnSettings.Click += btnSettings_Click;
+            // 
             // imageList1
             // 
             imageList1.ColorDepth = ColorDepth.Depth32Bit;
@@ -207,6 +223,7 @@
             flowLayoutPanel2.Controls.Add(btnClasses);
             flowLayoutPanel2.Controls.Add(btnRecords);
             flowLayoutPanel2.Controls.Add(btnTeacher);
+            flowLayoutPanel2.Controls.Add(btnSettings);
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(0, 0);
@@ -311,11 +328,11 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 24F, FontStyle.Bold);
-            label2.Location = new Point(149, 17);
+            label2.Location = new Point(140, 12);
             label2.Name = "label2";
-            label2.Size = new Size(187, 45);
+            label2.Size = new Size(139, 45);
             label2.TabIndex = 3;
-            label2.Text = "AttendEase";
+            label2.Text = "KORUM";
             // 
             // Main_Screen_Form
             // 
@@ -352,7 +369,6 @@
         private Krypton.Toolkit.KryptonCheckButton btnHome;
         private Krypton.Toolkit.KryptonCheckButton btnClasses;
         private Krypton.Toolkit.KryptonCheckButton btnRecords;
-        private Krypton.Toolkit.KryptonCheckButton btnTeacher;
         private Krypton.Toolkit.KryptonButton btnLogout;
         private Krypton.Toolkit.KryptonCustomPaletteBase ButtonPalette;
         private Krypton.Toolkit.KryptonCheckSet kryptonCheckSet1;
@@ -362,5 +378,7 @@
         private Krypton.Toolkit.KryptonButton btnMenu;
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
         private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge2;
+        private Krypton.Toolkit.KryptonCheckButton btnTeacher;
+        private Krypton.Toolkit.KryptonCheckButton btnSettings;
     }
 }

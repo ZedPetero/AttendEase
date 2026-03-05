@@ -14,11 +14,10 @@ namespace AE.Application.UserControls
         {
             InitializeComponent();
         }
-
+        public event EventHandler EditClicked;
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
-            UC_Teacher teacher = new UC_Teacher();
-            teacher.ToEditTeacher();
+            this.OnClick(e); 
         }
     }
 }

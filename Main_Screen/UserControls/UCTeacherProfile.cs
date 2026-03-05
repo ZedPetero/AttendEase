@@ -29,7 +29,14 @@ namespace AE.Application
                     lblTeacherName.Text = $"{teacher.FirstName} {teacher.LastName}";
                     lblEmail.Text = teacher.Email;
                     lblPhoneNum.Text = teacher.PhoneNumber;
-
+                    if (teacher.ProfilePicture != null)
+                    {
+                        var ms = new System.IO.MemoryStream(teacher.ProfilePicture);
+                        Image profilePic = Image.FromStream(ms);
+                        btnProfilePic.StateCommon.Back.Image = profilePic;
+                        btnProfilePic.StateCommon.Back.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Stretch;
+                        btnProfilePic.Values.Text = "";
+                    }
                     if (teacher.Subject != null) 
                     {
                         lblSubject.Text = teacher.Subject.ToString();

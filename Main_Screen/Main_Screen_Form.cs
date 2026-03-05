@@ -83,5 +83,11 @@ namespace AE.Application
         {
             Close();
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            UC_Settings mySettings = new UC_Settings();
+            loadForm(mySettings);
+        }
     }
 }
