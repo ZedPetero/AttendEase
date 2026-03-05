@@ -87,7 +87,7 @@ namespace AE.Application
             {
                 UserName = txtUsername.Text,
                 Email = txtEmail.Text,
-                FirstName = txtMiddleName.Text,
+                FirstName = txtFirstName.Text,
                 MiddleName = txtMiddleName.Text,
                 LastName = txtLastName.Text,
                 PhoneNumber = txtPhoneNum.Text
@@ -102,6 +102,7 @@ namespace AE.Application
                     "Success",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
+                Close();
             }
             else
             {
