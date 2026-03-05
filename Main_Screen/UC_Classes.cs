@@ -103,5 +103,10 @@ namespace AE.Application
         {
 
         }
+
+        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            UIHelper.RoundControl(kryptonPanel1, 50);
+        }
     }
 }

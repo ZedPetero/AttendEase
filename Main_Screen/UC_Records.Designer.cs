@@ -47,6 +47,7 @@
             archivedclasspanel.Controls.Add(restorebutton);
             archivedclasspanel.Controls.Add(archivedclasseslistbox);
             archivedclasspanel.Controls.Add(label3);
+            archivedclasspanel.ForeColor = Color.FromArgb(29, 37, 48);
             archivedclasspanel.Location = new Point(15, 229);
             archivedclasspanel.Name = "archivedclasspanel";
             archivedclasspanel.Size = new Size(587, 146);
@@ -54,13 +55,15 @@
             // 
             // restorebutton
             // 
+            restorebutton.BackColor = Color.FromArgb(39, 165, 153);
             restorebutton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            restorebutton.ForeColor = Color.White;
             restorebutton.Location = new Point(484, 7);
             restorebutton.Name = "restorebutton";
             restorebutton.Size = new Size(84, 38);
             restorebutton.TabIndex = 3;
             restorebutton.Text = "Restore";
-            restorebutton.UseVisualStyleBackColor = true;
+            restorebutton.UseVisualStyleBackColor = false;
             // 
             // archivedclasseslistbox
             // 
@@ -85,6 +88,7 @@
             currentclasspanel.Controls.Add(archivebutton);
             currentclasspanel.Controls.Add(currentclasseslistbox);
             currentclasspanel.Controls.Add(label2);
+            currentclasspanel.ForeColor = Color.FromArgb(29, 37, 48);
             currentclasspanel.Location = new Point(15, 94);
             currentclasspanel.Name = "currentclasspanel";
             currentclasspanel.Size = new Size(587, 129);
@@ -93,13 +97,15 @@
             // 
             // archivebutton
             // 
+            archivebutton.BackColor = Color.FromArgb(39, 165, 153);
             archivebutton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            archivebutton.ForeColor = Color.White;
             archivebutton.Location = new Point(484, 6);
             archivebutton.Name = "archivebutton";
             archivebutton.Size = new Size(84, 38);
             archivebutton.TabIndex = 2;
             archivebutton.Text = "Archive";
-            archivebutton.UseVisualStyleBackColor = true;
+            archivebutton.UseVisualStyleBackColor = false;
             // 
             // currentclasseslistbox
             // 
@@ -123,7 +129,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ControlText;
+            label1.ForeColor = Color.FromArgb(29, 37, 48);
             label1.Location = new Point(15, 27);
             label1.Name = "label1";
             label1.Size = new Size(126, 40);
@@ -134,10 +140,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(249, 250, 251);
             Controls.Add(label1);
             Controls.Add(currentclasspanel);
             Controls.Add(archivedclasspanel);
+            ForeColor = Color.FromArgb(0, 0, 0, 2);
             Name = "UC_Records";
             Size = new Size(1150, 640);
             Load += UC_Records_Load;

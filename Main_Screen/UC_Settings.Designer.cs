@@ -50,7 +50,7 @@
             AccountManagementPanel.Controls.Add(kryptonLabel3);
             AccountManagementPanel.Controls.Add(kryptonLabel2);
             AccountManagementPanel.Controls.Add(label1);
-            AccountManagementPanel.Location = new Point(28, 51);
+            AccountManagementPanel.Location = new Point(28, 114);
             AccountManagementPanel.Name = "AccountManagementPanel";
             AccountManagementPanel.Size = new Size(556, 261);
             AccountManagementPanel.StateCommon.Color1 = Color.White;
@@ -61,8 +61,8 @@
             // 
             PasswordChangeButton.Location = new Point(258, 188);
             PasswordChangeButton.Name = "PasswordChangeButton";
-            PasswordChangeButton.Size = new Size(22, 23);
-            PasswordChangeButton.StateCommon.Content.ShortText.Font = new Font("Material Symbols Sharp", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PasswordChangeButton.Size = new Size(39, 29);
+            PasswordChangeButton.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PasswordChangeButton.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
             PasswordChangeButton.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
             PasswordChangeButton.StateNormal.Border.Color1 = Color.FromArgb(39, 165, 153);
@@ -70,18 +70,18 @@
             PasswordChangeButton.StateNormal.Border.Rounding = 5F;
             PasswordChangeButton.StateNormal.Content.ShortText.Color1 = Color.White;
             PasswordChangeButton.StateNormal.Content.ShortText.Color2 = Color.White;
-            PasswordChangeButton.StateNormal.Content.ShortText.Font = new Font("Material Symbols Sharp", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PasswordChangeButton.StateNormal.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
             PasswordChangeButton.TabIndex = 11;
             PasswordChangeButton.Values.DropDownArrowColor = Color.Empty;
-            PasswordChangeButton.Values.Text = "";
+            PasswordChangeButton.Values.Text = "";
             PasswordChangeButton.Values.UACShieldIconSize = Krypton.Toolkit.IconSize.Tiny;
             // 
             // UsernameChangebutton
             // 
             UsernameChangebutton.Location = new Point(258, 117);
             UsernameChangebutton.Name = "UsernameChangebutton";
-            UsernameChangebutton.Size = new Size(22, 23);
-            UsernameChangebutton.StateCommon.Content.ShortText.Font = new Font("Material Symbols Sharp", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UsernameChangebutton.Size = new Size(39, 29);
+            UsernameChangebutton.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20.2499981F);
             UsernameChangebutton.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
             UsernameChangebutton.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
             UsernameChangebutton.StateNormal.Border.Color1 = Color.FromArgb(39, 165, 153);
@@ -89,48 +89,54 @@
             UsernameChangebutton.StateNormal.Border.Rounding = 5F;
             UsernameChangebutton.StateNormal.Content.ShortText.Color1 = Color.White;
             UsernameChangebutton.StateNormal.Content.ShortText.Color2 = Color.White;
-            UsernameChangebutton.StateNormal.Content.ShortText.Font = new Font("Material Symbols Sharp", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UsernameChangebutton.StateNormal.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
             UsernameChangebutton.TabIndex = 10;
             UsernameChangebutton.Values.DropDownArrowColor = Color.Empty;
-            UsernameChangebutton.Values.Text = "";
+            UsernameChangebutton.Values.Text = "";
             UsernameChangebutton.Values.UACShieldIconSize = Krypton.Toolkit.IconSize.Tiny;
             // 
             // PasswordChangetxtbox
             // 
             PasswordChangetxtbox.Location = new Point(15, 188);
             PasswordChangetxtbox.Name = "PasswordChangetxtbox";
-            PasswordChangetxtbox.Size = new Size(237, 23);
+            PasswordChangetxtbox.Size = new Size(237, 29);
+            PasswordChangetxtbox.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PasswordChangetxtbox.StateNormal.Border.Rounding = 20F;
             PasswordChangetxtbox.TabIndex = 9;
-            PasswordChangetxtbox.Text = "kryptonTextBox2";
             // 
             // UsernameChangetxtbox
             // 
             UsernameChangetxtbox.Location = new Point(15, 117);
             UsernameChangetxtbox.Name = "UsernameChangetxtbox";
-            UsernameChangetxtbox.Size = new Size(237, 23);
+            UsernameChangetxtbox.Size = new Size(237, 29);
+            UsernameChangetxtbox.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UsernameChangetxtbox.StateNormal.Border.Rounding = 20F;
             UsernameChangetxtbox.TabIndex = 8;
-            UsernameChangetxtbox.Text = "kryptonTextBox1";
             // 
             // kryptonLabel3
             // 
             kryptonLabel3.Location = new Point(15, 146);
             kryptonLabel3.Name = "kryptonLabel3";
-            kryptonLabel3.Size = new Size(81, 54);
+            kryptonLabel3.Size = new Size(124, 54);
+            kryptonLabel3.StateCommon.LongText.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel3.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
             kryptonLabel3.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonLabel3.StateCommon.ShortText.Font = new Font("Material Symbols Sharp", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel3.StateDisabled.ShortText.Font = new Font("Material Symbols Sharp", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel3.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel3.StateDisabled.ShortText.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             kryptonLabel3.TabIndex = 7;
             kryptonLabel3.Values.ExtraText = "Password";
             kryptonLabel3.Values.Text = "";
+            kryptonLabel3.Click += kryptonLabel3_Click;
             // 
             // kryptonLabel2
             // 
             kryptonLabel2.Location = new Point(15, 91);
             kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.Size = new Size(81, 20);
-            kryptonLabel2.StateCommon.ShortText.Font = new Font("Material Symbols Sharp", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel2.StateDisabled.ShortText.Font = new Font("Material Symbols Sharp", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel2.Size = new Size(129, 30);
+            kryptonLabel2.StateCommon.LongText.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonLabel2.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel2.StateDisabled.ShortText.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel2.StateNormal.LongText.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel2.TabIndex = 2;
             kryptonLabel2.Values.ExtraText = "Username";
             kryptonLabel2.Values.Text = "";
@@ -152,10 +158,13 @@
             // 
             kryptonLabel1.Location = new Point(28, 21);
             kryptonLabel1.Name = "kryptonLabel1";
-            kryptonLabel1.Size = new Size(24, 24);
-            kryptonLabel1.StateCommon.ShortText.Font = new Font("Material Symbols Sharp", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel1.StateDisabled.ShortText.Font = new Font("Material Symbols Sharp", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel1.Size = new Size(219, 87);
+            kryptonLabel1.StateCommon.LongText.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonLabel1.StateCommon.ShortText.Font = new Font("Material Symbols Outlined", 47.9999924F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel1.StateDisabled.LongText.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonLabel1.StateDisabled.ShortText.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             kryptonLabel1.TabIndex = 1;
+            kryptonLabel1.Values.ExtraText = "Settings";
             kryptonLabel1.Values.Text = "";
             // 
             // UC_Settings

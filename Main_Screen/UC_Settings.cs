@@ -171,5 +171,10 @@ namespace AE.Application
         {
 
         }
+
+        private void kryptonLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -37,8 +37,10 @@
             label2 = new Label();
             label1 = new Label();
             sfDataGrid1 = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)sfDataGrid1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -127,17 +129,27 @@
             sfDataGrid1.CellButtonClick += sfDataGrid1_CellButtonClick;
             sfDataGrid1.Click += sfDataGrid1_Click;
             // 
+            // kryptonPanel1
+            // 
+            kryptonPanel1.Location = new Point(786, 197);
+            kryptonPanel1.Name = "kryptonPanel1";
+            kryptonPanel1.Size = new Size(210, 226);
+            kryptonPanel1.TabIndex = 1;
+            kryptonPanel1.Paint += kryptonPanel1_Paint;
+            // 
             // UC_Classes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(249, 250, 251);
+            Controls.Add(kryptonPanel1);
             Controls.Add(panel1);
             Name = "UC_Classes";
             Size = new Size(1150, 640);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)sfDataGrid1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
             ResumeLayout(false);
         }
 
@@ -148,5 +160,6 @@
         private Label label2;
         private Syncfusion.WinForms.DataGrid.SfDataGrid sfDataGrid1;
         private Syncfusion.WinForms.Controls.SfButton btnAddClass;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }
