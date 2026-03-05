@@ -58,6 +58,10 @@ namespace AE.Application
                         UC_SectionCard card = new UC_SectionCard();
                         card.SetData(section.Id, section.SectionName, section.SubjectName, section.StudentCount, timeString);
                         card.TakeAttendanceClicked += Card_TakeAttendanceClicked;
+                        card.SectionDeleted += (s, sectionId) =>
+                        {
+                            LoadSections();
+                        };
                         flowLayoutPanelCards.Controls.Add(card);
                     }
                 }

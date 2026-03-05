@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             flowLayoutPanelCards = new FlowLayoutPanel();
-            btnAddClass = new Syncfusion.WinForms.Controls.SfButton();
             label2 = new Label();
             lblTeacher = new Label();
             panel1.SuspendLayout();
@@ -38,8 +38,9 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(249, 250, 251);
+            panel1.Controls.Add(kryptonButton1);
             panel1.Controls.Add(flowLayoutPanelCards);
-            panel1.Controls.Add(btnAddClass);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(lblTeacher);
             panel1.Dock = DockStyle.Left;
@@ -48,25 +49,36 @@
             panel1.Size = new Size(1150, 640);
             panel1.TabIndex = 0;
             // 
+            // kryptonButton1
+            // 
+            kryptonButton1.Cursor = Cursors.Hand;
+            kryptonButton1.Location = new Point(961, 84);
+            kryptonButton1.Name = "kryptonButton1";
+            kryptonButton1.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton1.OverrideFocus.Content.Draw = Krypton.Toolkit.InheritBool.False;
+            kryptonButton1.Size = new Size(120, 45);
+            kryptonButton1.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.StateCommon.Back.Color2 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.StateCommon.Border.Color1 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.StateCommon.Border.Color2 = Color.FromArgb(39, 165, 153);
+            kryptonButton1.StateCommon.Border.Rounding = 6F;
+            kryptonButton1.StateCommon.Content.ShortText.Color1 = Color.White;
+            kryptonButton1.StateCommon.Content.ShortText.Font = new Font("Inter", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton1.StateTracking.Back.Color1 = Color.FromArgb(39, 166, 156);
+            kryptonButton1.StateTracking.Back.Color2 = Color.FromArgb(39, 166, 156);
+            kryptonButton1.StateTracking.Border.Color1 = Color.FromArgb(39, 166, 156);
+            kryptonButton1.StateTracking.Border.Color2 = Color.FromArgb(39, 166, 156);
+            kryptonButton1.TabIndex = 5;
+            kryptonButton1.Values.DropDownArrowColor = Color.Empty;
+            kryptonButton1.Values.Text = "+  Add Class ";
+            // 
             // flowLayoutPanelCards
             // 
             flowLayoutPanelCards.AutoScroll = true;
-            flowLayoutPanelCards.Location = new Point(43, 179);
+            flowLayoutPanelCards.Location = new Point(27, 137);
             flowLayoutPanelCards.Name = "flowLayoutPanelCards";
-            flowLayoutPanelCards.Size = new Size(1038, 421);
+            flowLayoutPanelCards.Size = new Size(1096, 463);
             flowLayoutPanelCards.TabIndex = 4;
-            // 
-            // btnAddClass
-            // 
-            btnAddClass.Font = new Font("Segoe UI Semibold", 9F);
-            btnAddClass.ForeColor = Color.Black;
-            btnAddClass.Location = new Point(985, 103);
-            btnAddClass.Name = "btnAddClass";
-            btnAddClass.Size = new Size(96, 28);
-            btnAddClass.Style.ForeColor = Color.Black;
-            btnAddClass.TabIndex = 3;
-            btnAddClass.Text = "Add Class+";
-            btnAddClass.Click += btnAddClass_Click;
             // 
             // label2
             // 
@@ -106,7 +118,7 @@
         private Panel panel1;
         private Label lblTeacher;
         private Label label2;
-        private Syncfusion.WinForms.Controls.SfButton btnAddClass;
         private FlowLayoutPanel flowLayoutPanelCards;
+        private Krypton.Toolkit.KryptonButton kryptonButton1;
     }
 }
