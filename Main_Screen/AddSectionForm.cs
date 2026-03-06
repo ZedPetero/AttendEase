@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace AE.Application
 {
     public partial class AddSectionForm : Form
@@ -15,6 +16,7 @@ namespace AE.Application
         public AddSectionForm()
         {
             InitializeComponent();
+            UIHelper.RoundControl(this, 20);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -65,6 +67,11 @@ namespace AE.Application
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
