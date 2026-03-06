@@ -1,4 +1,5 @@
-﻿using AE.Domain.Models;
+﻿using AE.Application.UserControls;
+using AE.Domain.Models;
 using AE.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -36,7 +37,8 @@ namespace AE.Application
                 using (var db = new AppDbContext())
                 {
                     var mySections = db.Sections
-                        .Where(s => s.TeacherId == UserSession.CurrentTeacherId)
+                        .Where(s => s.TeacherId == UserSession.CurrentTeacherId 
+                                && s.IsArchived == false)
                         .Select(s => new
                         {
                             s.Id,
@@ -44,7 +46,8 @@ namespace AE.Application
                             SubjectName = s.Subject.ToString(),
                             StudentCount = s.Students.Count,
                             s.StartTimeSchedule,
-                            s.EndTimeSchedule
+                            s.EndTimeSchedule,
+                            s.IsArchived
                         })
                         .ToList()
                         .OrderBy(s => s.StartTimeSchedule)
@@ -85,6 +88,9 @@ namespace AE.Application
         {
             try
             {
+                //ShowFloatingPanel cover = new ShowFloatingPanel();
+                //cover.BackColor = Color.FromArgb(128, Color.Gray);
+                //cover.Show();
                 AddSectionForm form = new AddSectionForm();
 
                 if (form.ShowDialog() == DialogResult.OK)

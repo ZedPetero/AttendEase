@@ -304,10 +304,6 @@
             btnAddStudent.Cursor = Cursors.Hand;
             btnAddStudent.Location = new Point(873, 107);
             btnAddStudent.Name = "btnAddStudent";
-            btnAddStudent.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnAddStudent.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            btnAddStudent.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnAddStudent.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnAddStudent.Size = new Size(123, 28);
             btnAddStudent.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
             btnAddStudent.StateCommon.Back.Color2 = Color.FromArgb(39, 165, 153);

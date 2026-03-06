@@ -64,6 +64,7 @@
             restorebutton.TabIndex = 3;
             restorebutton.Text = "Restore";
             restorebutton.UseVisualStyleBackColor = false;
+            restorebutton.Click += restorebutton_Click;
             // 
             // archivedclasseslistbox
             // 
@@ -106,6 +107,7 @@
             archivebutton.TabIndex = 2;
             archivebutton.Text = "Archive";
             archivebutton.UseVisualStyleBackColor = false;
+            archivebutton.Click += archivebutton_Click;
             // 
             // currentclasseslistbox
             // 

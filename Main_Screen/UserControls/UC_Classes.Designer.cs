@@ -65,7 +65,6 @@
             kryptonButton1.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
             kryptonButton1.OverrideFocus.Border.Color1 = Color.FromArgb(39, 165, 153);
             kryptonButton1.OverrideFocus.Border.Color2 = Color.FromArgb(39, 165, 153);
-            kryptonButton1.OverrideFocus.Content.Draw = Krypton.Toolkit.InheritBool.False;
             kryptonButton1.OverrideFocus.Content.LongText.Color1 = Color.White;
             kryptonButton1.OverrideFocus.Content.ShortText.Color1 = Color.White;
             kryptonButton1.Size = new Size(120, 45);

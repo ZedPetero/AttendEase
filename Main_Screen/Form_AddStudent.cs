@@ -10,20 +10,21 @@ using AE.Infrastructure.Data;
 using Krypton.Toolkit;
 namespace AE.Application
 {
-    public partial class Form_AddStudent : KryptonForm
+    public partial class Form_AddStudent : Form
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CurrentSectionId { get; set; }
         public Form_AddStudent()
         {
             InitializeComponent();
+            UIHelper.RoundControl(this, 20);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(txtFirstName.Text) || string.IsNullOrEmpty(txtMiddleName.Text))
+                if (string.IsNullOrEmpty(txtFirstName.Text) || string.IsNullOrEmpty(txtLastName.Text))
                 {
                     MessageBox.Show("First Name and Last Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -40,7 +41,7 @@ namespace AE.Application
                     var student = new Student
                     {
                         FirstName = txtFirstName.Text,
-                        MiddleName = txtMiddleName.Text,
+                        MiddleName = txtLastName.Text,
                         LastName = txtLastName.Text,
                         SectionId = this.CurrentSectionId
                     };
@@ -60,6 +61,11 @@ namespace AE.Application
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -28,29 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             btnSave = new Button();
-            txtFirstName = new TextBox();
-            txtMiddleName = new TextBox();
-            label2 = new Label();
-            txtLastName = new TextBox();
-            label3 = new Label();
+            txtFirstName = new Krypton.Toolkit.KryptonTextBox();
+            txtMiddleName = new Krypton.Toolkit.KryptonTextBox();
+            txtLastName = new Krypton.Toolkit.KryptonTextBox();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
+            btnClose = new Krypton.Toolkit.KryptonButton();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(74, 70);
-            label1.Name = "label1";
-            label1.Size = new Size(67, 15);
-            label1.TabIndex = 0;
-            label1.Text = "First Name:";
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(147, 185);
+            btnSave.Location = new Point(333, 276);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(159, 23);
+            btnSave.Size = new Size(57, 37);
             btnSave.TabIndex = 1;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
@@ -58,81 +50,114 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(147, 62);
+            txtFirstName.Location = new Point(61, 95);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(159, 23);
-            txtFirstName.TabIndex = 2;
+            txtFirstName.Size = new Size(282, 30);
+            txtFirstName.StateCommon.Border.Rounding = 10F;
+            txtFirstName.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtFirstName.TabIndex = 8;
             // 
             // txtMiddleName
             // 
-            txtMiddleName.Location = new Point(147, 103);
+            txtMiddleName.Location = new Point(61, 161);
             txtMiddleName.Name = "txtMiddleName";
-            txtMiddleName.Size = new Size(159, 23);
-            txtMiddleName.TabIndex = 4;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(75, 153);
-            label2.Name = "label2";
-            label2.Size = new Size(66, 15);
-            label2.TabIndex = 3;
-            label2.Text = "Last Name:";
-            label2.Click += label2_Click;
+            txtMiddleName.Size = new Size(282, 30);
+            txtMiddleName.StateCommon.Border.Rounding = 10F;
+            txtMiddleName.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtMiddleName.TabIndex = 9;
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(147, 144);
+            txtLastName.Location = new Point(61, 227);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(159, 23);
-            txtLastName.TabIndex = 5;
+            txtLastName.Size = new Size(282, 30);
+            txtLastName.StateCommon.Border.Rounding = 10F;
+            txtLastName.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtLastName.TabIndex = 10;
             // 
-            // label3
+            // kryptonLabel1
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(59, 110);
-            label3.Name = "label3";
-            label3.Size = new Size(82, 15);
-            label3.TabIndex = 6;
-            label3.Text = "Middle Name:";
+            kryptonLabel1.Location = new Point(61, 64);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(133, 25);
+            kryptonLabel1.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            kryptonLabel1.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            kryptonLabel1.StateCommon.ShortText.Font = new Font("Inter", 10F);
+            kryptonLabel1.TabIndex = 11;
+            kryptonLabel1.Values.Text = "First Name:";
+            // 
+            // kryptonLabel2
+            // 
+            kryptonLabel2.Location = new Point(61, 130);
+            kryptonLabel2.Name = "kryptonLabel2";
+            kryptonLabel2.Size = new Size(133, 25);
+            kryptonLabel2.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            kryptonLabel2.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            kryptonLabel2.StateCommon.ShortText.Font = new Font("Inter", 10F);
+            kryptonLabel2.TabIndex = 12;
+            kryptonLabel2.Values.Text = "Middle Name:";
+            // 
+            // kryptonLabel3
+            // 
+            kryptonLabel3.Location = new Point(61, 196);
+            kryptonLabel3.Name = "kryptonLabel3";
+            kryptonLabel3.Size = new Size(133, 25);
+            kryptonLabel3.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            kryptonLabel3.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            kryptonLabel3.StateCommon.ShortText.Font = new Font("Inter", 10F);
+            kryptonLabel3.TabIndex = 13;
+            kryptonLabel3.Values.Text = "Last Name:";
+            // 
+            // btnClose
+            // 
+            btnClose.AutoSize = true;
+            btnClose.Location = new Point(341, 37);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(49, 46);
+            btnClose.StateCommon.Back.Color1 = Color.Transparent;
+            btnClose.StateCommon.Back.Color2 = Color.Transparent;
+            btnClose.StateCommon.Border.Color1 = Color.Transparent;
+            btnClose.StateCommon.Border.Color2 = Color.Transparent;
+            btnClose.StateCommon.Border.Rounding = 30F;
+            btnClose.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnClose.TabIndex = 14;
+            btnClose.Values.DropDownArrowColor = Color.Empty;
+            btnClose.Values.Text = "";
+            btnClose.Click += btnClose_Click;
             // 
             // Form_AddStudent
             // 
+            AcceptButton = btnSave;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(384, 240);
-            CloseBox = false;
+            ClientSize = new Size(450, 350);
             ControlBox = false;
-            Controls.Add(label3);
+            Controls.Add(btnClose);
+            Controls.Add(kryptonLabel3);
+            Controls.Add(kryptonLabel2);
+            Controls.Add(kryptonLabel1);
             Controls.Add(txtLastName);
             Controls.Add(txtMiddleName);
-            Controls.Add(label2);
             Controls.Add(txtFirstName);
             Controls.Add(btnSave);
-            Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Form_AddStudent";
-            PaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
             StartPosition = FormStartPosition.CenterScreen;
-            StateActive.Back.Color1 = Color.FromArgb(249, 250, 251);
-            StateActive.Back.Color2 = Color.FromArgb(249, 250, 251);
-            StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
-            StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
             Text = "Add Student";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
         private Button btnSave;
-        private TextBox txtFirstName;
-        private TextBox txtMiddleName;
-        private Label label2;
-        private TextBox txtLastName;
-        private Label label3;
+        private Krypton.Toolkit.KryptonTextBox txtFirstName;
+        private Krypton.Toolkit.KryptonTextBox txtMiddleName;
+        private Krypton.Toolkit.KryptonTextBox txtLastName;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel3;
+        private Krypton.Toolkit.KryptonButton btnClose;
     }
 }
