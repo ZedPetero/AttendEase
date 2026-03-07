@@ -88,15 +88,18 @@ namespace AE.Application
         {
             try
             {
-                //ShowFloatingPanel cover = new ShowFloatingPanel();
-                //cover.BackColor = Color.FromArgb(128, Color.Gray);
-                //cover.Show();
+                Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
+
+                mainForm.ShowOverlay();
+
                 AddSectionForm form = new AddSectionForm();
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LoadSections();
                 }
+
+                mainForm.HideOverlay();
             }
             catch (Exception ex)
             {

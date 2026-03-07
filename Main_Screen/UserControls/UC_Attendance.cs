@@ -51,8 +51,11 @@ namespace AE.Application
         {
             using (Form_AddStudent popup = new Form_AddStudent())
             {
+                Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
+                mainForm.ShowOverlay();
                 popup.CurrentSectionId = CurrentSectionId;
                 var result = popup.ShowDialog();
+                mainForm.HideOverlay();
                 LoadStudentsForDate();
                 SetSummaryCards();
             }

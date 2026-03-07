@@ -13,10 +13,16 @@ namespace AE.Application
 {
     public partial class AddSectionForm : Form
     {
+        
+
         public AddSectionForm()
         {
             InitializeComponent();
             UIHelper.RoundControl(this, 20);
+            UIHelper.RoundControl(comboSubject, 10);
+            UIHelper.RoundControl(txtName, 10);
+            UIHelper.RoundControl(dateTimeStarting, 10);
+            UIHelper.RoundControl(dateTimeEnding, 10);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -49,7 +55,6 @@ namespace AE.Application
                     db.Sections.Add(section);
                     db.SaveChanges();
                 }
-
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -64,14 +69,10 @@ namespace AE.Application
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+
+            this.Close();
         }
     }
 }

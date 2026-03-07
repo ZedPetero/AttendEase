@@ -5,6 +5,9 @@ namespace AE.Application
 {
     public partial class Main_Screen_Form : KryptonForm
     {
+        bool sidebarExpand = false;
+        private Form backgroundOverlay;
+
         public Main_Screen_Form()
         {
             InitializeComponent();
@@ -12,7 +15,7 @@ namespace AE.Application
             loadForm(myHome);
             btnHome.Checked = true;
         }
-        bool sidebarExpand = false;
+
         private void btnHome_Click(object sender, EventArgs e)
         {
             UC_Home myHome = new UC_Home();
@@ -96,6 +99,31 @@ namespace AE.Application
         {
             UC_Settings mySettings = new UC_Settings();
             loadForm(mySettings);
+        }
+
+        public void ShowOverlay()
+        {
+            backgroundOverlay = new Form();
+            backgroundOverlay.FormBorderStyle = FormBorderStyle.None;
+            backgroundOverlay.BackColor = Color.Black;
+            backgroundOverlay.Opacity = 0.50;
+            backgroundOverlay.StartPosition = FormStartPosition.Manual;
+            backgroundOverlay.ShowInTaskbar = false;
+
+            backgroundOverlay.Location = this.PointToScreen(Point.Empty);
+            backgroundOverlay.Size = this.ClientSize;
+
+            backgroundOverlay.Show(this);
+        }
+
+        public void HideOverlay()
+        {
+            if (backgroundOverlay != null)
+            {
+                backgroundOverlay.Close();
+                backgroundOverlay.Dispose();
+                backgroundOverlay = null;
+            }
         }
         public void NavigateToClasses()
         {
