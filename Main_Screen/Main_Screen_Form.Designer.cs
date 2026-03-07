@@ -45,9 +45,9 @@
             btnLogout = new Krypton.Toolkit.KryptonButton();
             kryptonBorderEdge2 = new Krypton.Toolkit.KryptonBorderEdge();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            pictureBox1 = new PictureBox();
             kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             btnMenu = new Krypton.Toolkit.KryptonButton();
-            pictureBox1 = new PictureBox();
             kryptonCheckSet1 = new Krypton.Toolkit.KryptonCheckSet(components);
             ((System.ComponentModel.ISupportInitialize)kryptonCheckSet1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sidebar).BeginInit();
@@ -70,11 +70,11 @@
             // btnHome
             // 
             btnHome.LocalCustomPalette = ButtonPalette;
-            btnHome.Location = new Point(0, 0);
-            btnHome.Margin = new Padding(0);
+            btnHome.Location = new Point(4, 5);
+            btnHome.Margin = new Padding(0, 5, 0, 5);
             btnHome.Name = "btnHome";
             btnHome.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnHome.Size = new Size(200, 60);
+            btnHome.Size = new Size(44, 40);
             btnHome.StateTracking.Back.Color1 = Color.FromArgb(240, 247, 246);
             btnHome.TabIndex = 1;
             btnHome.Values.DropDownArrowColor = Color.Empty;
@@ -84,30 +84,72 @@
             // 
             // ButtonPalette
             // 
+            ButtonPalette.ButtonStyles.ButtonStandalone.OverrideFocus.Back.Color1 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.OverrideFocus.Back.Color2 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.OverrideFocus.Border.Color1 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.OverrideFocus.Border.Color2 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.OverrideFocus.Border.Rounding = 5F;
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Back.Color1 = Color.FromArgb(229, 242, 240);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Back.Color2 = Color.FromArgb(229, 242, 240);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Back.Draw = Krypton.Toolkit.InheritBool.True;
-            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Border.Color1 = Color.Transparent;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Border.Color1 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Border.Color2 = Color.FromArgb(229, 242, 240);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Border.Draw = Krypton.Toolkit.InheritBool.True;
-            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Border.Rounding = 3F;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Border.Rounding = 5F;
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Border.Width = 1;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Content.Draw = Krypton.Toolkit.InheritBool.True;
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Content.LongText.Color1 = Color.FromArgb(39, 165, 153);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Content.Padding = new Padding(0);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedNormal.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Back.Color1 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Back.Color2 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Border.Color1 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Border.Color2 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Border.Rounding = 5F;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Border.Width = 1;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Content.LongText.Color1 = Color.FromArgb(39, 165, 153);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Content.Padding = new Padding(0);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedPressed.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Back.Color1 = Color.FromArgb(226, 239, 237);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Back.Color2 = Color.FromArgb(226, 239, 237);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Border.Color1 = Color.FromArgb(226, 239, 237);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Border.Color2 = Color.FromArgb(226, 239, 237);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Border.Rounding = 5F;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Border.Width = 1;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCheckedTracking.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Border.Color1 = Color.FromArgb(250, 250, 250);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Border.Color2 = Color.FromArgb(250, 250, 250);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Border.Rounding = 5F;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Border.Width = 1;
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.AdjacentGap = 12;
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.LongText.Color1 = Color.FromArgb(63, 63, 70);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.LongText.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.Padding = new Padding(8, 8, 12, 8);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.Padding = new Padding(0);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.Color1 = Color.FromArgb(63, 63, 70);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Back.Color1 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Back.Color2 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Border.Color1 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Border.Color2 = Color.FromArgb(229, 242, 240);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Border.Rounding = 5F;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Border.Width = 1;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Content.LongText.Color1 = Color.FromArgb(39, 165, 153);
+            ButtonPalette.ButtonStyles.ButtonStandalone.StatePressed.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Back.Color1 = Color.FromArgb(223, 246, 244);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Back.Color2 = Color.FromArgb(223, 246, 244);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Back.Draw = Krypton.Toolkit.InheritBool.True;
-            ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Border.Draw = Krypton.Toolkit.InheritBool.True;
-            ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Border.Rounding = 3F;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Border.Rounding = 5F;
+            ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Border.Width = 1;
             ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
             ButtonPalette.ButtonStyles.ButtonStandalone.StateTracking.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
@@ -120,11 +162,11 @@
             // btnClasses
             // 
             btnClasses.LocalCustomPalette = ButtonPalette;
-            btnClasses.Location = new Point(0, 60);
-            btnClasses.Margin = new Padding(0);
+            btnClasses.Location = new Point(4, 55);
+            btnClasses.Margin = new Padding(0, 5, 0, 5);
             btnClasses.Name = "btnClasses";
             btnClasses.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnClasses.Size = new Size(200, 60);
+            btnClasses.Size = new Size(44, 40);
             btnClasses.TabIndex = 2;
             btnClasses.Values.DropDownArrowColor = Color.Empty;
             btnClasses.Values.ExtraText = "Classes";
@@ -134,11 +176,11 @@
             // btnRecords
             // 
             btnRecords.LocalCustomPalette = ButtonPalette;
-            btnRecords.Location = new Point(0, 120);
-            btnRecords.Margin = new Padding(0);
+            btnRecords.Location = new Point(4, 105);
+            btnRecords.Margin = new Padding(0, 5, 0, 5);
             btnRecords.Name = "btnRecords";
             btnRecords.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnRecords.Size = new Size(200, 60);
+            btnRecords.Size = new Size(44, 40);
             btnRecords.TabIndex = 3;
             btnRecords.Values.DropDownArrowColor = Color.Empty;
             btnRecords.Values.ExtraText = "Records";
@@ -148,11 +190,11 @@
             // btnTeacher
             // 
             btnTeacher.LocalCustomPalette = ButtonPalette;
-            btnTeacher.Location = new Point(0, 180);
-            btnTeacher.Margin = new Padding(0);
+            btnTeacher.Location = new Point(4, 155);
+            btnTeacher.Margin = new Padding(0, 5, 0, 5);
             btnTeacher.Name = "btnTeacher";
             btnTeacher.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnTeacher.Size = new Size(200, 60);
+            btnTeacher.Size = new Size(44, 40);
             btnTeacher.TabIndex = 4;
             btnTeacher.Values.DropDownArrowColor = Color.Empty;
             btnTeacher.Values.ExtraText = "Teacher";
@@ -162,11 +204,11 @@
             // btnSettings
             // 
             btnSettings.LocalCustomPalette = ButtonPalette;
-            btnSettings.Location = new Point(0, 240);
-            btnSettings.Margin = new Padding(0);
+            btnSettings.Location = new Point(4, 205);
+            btnSettings.Margin = new Padding(0, 5, 0, 5);
             btnSettings.Name = "btnSettings";
             btnSettings.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnSettings.Size = new Size(200, 60);
+            btnSettings.Size = new Size(44, 40);
             btnSettings.TabIndex = 5;
             btnSettings.Values.DropDownArrowColor = Color.Empty;
             btnSettings.Values.ExtraText = "Settings";
@@ -195,10 +237,10 @@
             // pnlMainContent
             // 
             pnlMainContent.BackColor = Color.White;
-            pnlMainContent.Location = new Point(50, 80);
+            pnlMainContent.Location = new Point(55, 59);
             pnlMainContent.Margin = new Padding(0);
             pnlMainContent.Name = "pnlMainContent";
-            pnlMainContent.Size = new Size(1150, 640);
+            pnlMainContent.Size = new Size(1145, 661);
             pnlMainContent.TabIndex = 3;
             // 
             // sidebar
@@ -207,9 +249,9 @@
             sidebar.Controls.Add(btnLogout);
             sidebar.Controls.Add(kryptonBorderEdge2);
             sidebar.Dock = DockStyle.Left;
-            sidebar.Location = new Point(0, 80);
+            sidebar.Location = new Point(0, 59);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(55, 640);
+            sidebar.Size = new Size(55, 661);
             sidebar.StateCommon.Color1 = Color.FromArgb(250, 250, 250);
             sidebar.StateCommon.Color2 = Color.FromArgb(250, 250, 250);
             sidebar.StateCommon.Draw = Krypton.Toolkit.InheritBool.True;
@@ -227,14 +269,15 @@
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(0, 0);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(53, 580);
+            flowLayoutPanel2.Padding = new Padding(4, 0, 0, 0);
+            flowLayoutPanel2.Size = new Size(53, 601);
             flowLayoutPanel2.TabIndex = 2;
             // 
             // btnLogout
             // 
             btnLogout.Dock = DockStyle.Bottom;
             btnLogout.LocalCustomPalette = ButtonPalette;
-            btnLogout.Location = new Point(0, 580);
+            btnLogout.Location = new Point(0, 601);
             btnLogout.Name = "btnLogout";
             btnLogout.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnLogout.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
@@ -269,7 +312,7 @@
             kryptonBorderEdge2.Dock = DockStyle.Right;
             kryptonBorderEdge2.Location = new Point(53, 0);
             kryptonBorderEdge2.Name = "kryptonBorderEdge2";
-            kryptonBorderEdge2.Size = new Size(2, 640);
+            kryptonBorderEdge2.Size = new Size(2, 661);
             kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
             kryptonBorderEdge2.StateCommon.Width = 2;
             kryptonBorderEdge2.Text = "kryptonBorderEdge2";
@@ -282,14 +325,25 @@
             kryptonPanel1.Dock = DockStyle.Top;
             kryptonPanel1.Location = new Point(0, 0);
             kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new Size(1200, 80);
+            kryptonPanel1.Size = new Size(1200, 59);
             kryptonPanel1.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
             kryptonPanel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.logo___text;
+            pictureBox1.Location = new Point(55, 2);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(193, 53);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
             // 
             // kryptonBorderEdge1
             // 
             kryptonBorderEdge1.Dock = DockStyle.Bottom;
-            kryptonBorderEdge1.Location = new Point(0, 78);
+            kryptonBorderEdge1.Location = new Point(0, 57);
             kryptonBorderEdge1.Name = "kryptonBorderEdge1";
             kryptonBorderEdge1.Size = new Size(1200, 2);
             kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
@@ -299,27 +353,30 @@
             // btnMenu
             // 
             btnMenu.LocalCustomPalette = ButtonPalette;
-            btnMenu.Location = new Point(3, 18);
+            btnMenu.Location = new Point(4, 9);
             btnMenu.Name = "btnMenu";
+            btnMenu.OverrideDefault.Border.Color1 = Color.Transparent;
+            btnMenu.OverrideDefault.Border.Color2 = Color.Transparent;
+            btnMenu.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMenu.OverrideDefault.Border.Rounding = 5F;
+            btnMenu.OverrideDefault.Border.Width = 1;
+            btnMenu.OverrideDefault.Content.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMenu.OverrideDefault.Content.Padding = new Padding(0);
+            btnMenu.OverrideFocus.Border.Color1 = Color.Transparent;
+            btnMenu.OverrideFocus.Border.Color2 = Color.Transparent;
+            btnMenu.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMenu.OverrideFocus.Border.Rounding = 5F;
+            btnMenu.OverrideFocus.Border.Width = 1;
+            btnMenu.OverrideFocus.Content.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMenu.OverrideFocus.Content.Padding = new Padding(0);
             btnMenu.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnMenu.Size = new Size(47, 44);
-            btnMenu.StateCommon.Content.Padding = new Padding(3);
+            btnMenu.Size = new Size(47, 42);
+            btnMenu.StateCommon.Content.Padding = new Padding(0, 3, 3, 3);
             btnMenu.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnMenu.TabIndex = 4;
             btnMenu.Values.DropDownArrowColor = Color.Empty;
             btnMenu.Values.Text = "";
             btnMenu.Click += btnMenu_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.logo___text;
-            pictureBox1.Location = new Point(56, 7);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(193, 65);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
             // 
             // Main_Screen_Form
             // 

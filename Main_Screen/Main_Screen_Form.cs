@@ -23,11 +23,14 @@ namespace AE.Application
         {
             int minWidth = 55;
             int maxWidth = 200;
-
             if (sidebarExpand == false)
             {
                 sidebar.Width += 10;
-
+                btnHome.Width += 10;
+                btnClasses.Width += 10;
+                btnRecords.Width += 10;
+                btnTeacher.Width += 10;
+                btnSettings.Width += 10;
                 if (sidebar.Width >= maxWidth)
                 {
                     sidebarExpand = true;
@@ -37,7 +40,11 @@ namespace AE.Application
             else
             {
                 sidebar.Width -= 10;
-
+                btnHome.Width -= 10;
+                btnClasses.Width -= 10;
+                btnRecords.Width -= 10;
+                btnTeacher.Width -= 10;
+                btnSettings.Width -= 10;
                 if (sidebar.Width <= minWidth)
                 {
                     sidebarExpand = false;
