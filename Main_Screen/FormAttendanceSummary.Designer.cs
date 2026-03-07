@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class Form_AttendanceSummary
+    partial class FormAttendanceSummary
     {
         /// <summary>
         /// Required designer variable.

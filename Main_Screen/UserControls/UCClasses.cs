@@ -15,9 +15,9 @@ using System.Windows.Forms;
 
 namespace AE.Application
 {
-    public partial class UC_Classes : UserControl
+    public partial class UCClasses : UserControl
     {
-        public UC_Classes()
+        public UCClasses()
         {
             InitializeComponent();
             lblTeacher.Text = $"Welcome, {UserSession.CurrentTeacherName}!";
@@ -57,7 +57,7 @@ namespace AE.Application
                         string timeString = DateTime.Today.Add(section.StartTimeSchedule).ToString("hh:mm tt") +
                                     " - " +
                                     DateTime.Today.Add(section.EndTimeSchedule).ToString("hh:mm tt");
-                        UC_SectionCard card = new UC_SectionCard();
+                        UCSectionCard card = new UCSectionCard();
                         card.SetData(section.Id, section.SectionName, section.SubjectName, section.StudentCount, timeString);
                         card.TakeAttendanceClicked += Card_TakeAttendanceClicked;
                         card.SectionDeleted += (s, sectionId) =>
@@ -75,8 +75,8 @@ namespace AE.Application
         }
         private void Card_TakeAttendanceClicked(object sender, int sectionId)
         {
-            Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
-            UC_Attendance attendanceScreen = new UC_Attendance();
+            MainScreenForm mainForm = (MainScreenForm)this.FindForm();
+            UCAttendance attendanceScreen = new UCAttendance();
 
             attendanceScreen.CallerControl = this;
             attendanceScreen.SetSection(sectionId);
@@ -88,7 +88,7 @@ namespace AE.Application
         {
             try
             {
-                Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
+                MainScreenForm mainForm = (MainScreenForm)this.FindForm();
 
                 mainForm.ShowOverlay();
 

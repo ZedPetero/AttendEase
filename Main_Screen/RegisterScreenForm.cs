@@ -12,13 +12,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AE.Application
 {
-    public partial class Register_Screen_Form : Form
+    public partial class RegisterScreenForm : Form
     {
         private readonly UserManager<Teacher> _userManager;
         private Dictionary<Control, Point> originalPositions = new();
         private int animationStep = 0;
 
-        public Register_Screen_Form(UserManager<Teacher> userManager)
+        public RegisterScreenForm(UserManager<Teacher> userManager)
         {
             InitializeComponent();
             _userManager = userManager;

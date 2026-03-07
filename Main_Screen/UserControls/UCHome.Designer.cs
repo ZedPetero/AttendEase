@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class UC_Home
+    partial class UCHome
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Home));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCHome));
             panel1 = new Panel();
             btnGetStarted = new Krypton.Toolkit.KryptonButton();
             label4 = new Label();

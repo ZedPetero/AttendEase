@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace AE.Application
 {
-    public partial class Login_Screen_Form : Form
+    public partial class LoginScreenForm : Form
     {
         private readonly UserManager<Teacher> _userManager;
         private Dictionary<Control, Point> originalPositions = new();
         private int animationStep = 0;
         private bool isDarkMode = false;
 
-        public Login_Screen_Form(UserManager<Teacher> userManager)
+        public LoginScreenForm(UserManager<Teacher> userManager)
         {
             InitializeComponent();
             _userManager = userManager;
@@ -127,7 +127,7 @@ namespace AE.Application
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
-            using (var register = new Register_Screen_Form(_userManager))
+            using (var register = new RegisterScreenForm(_userManager))
             {
                 register.ShowDialog();
             }

@@ -15,11 +15,11 @@ using System.Linq;
 
 namespace AE.Application
 {
-    public partial class UC_Settings : UserControl
+    public partial class UCSettings : UserControl
     {
         private readonly UserManager<Teacher> _userManager;
 
-        public UC_Settings()
+        public UCSettings()
         {
             InitializeComponent();
 

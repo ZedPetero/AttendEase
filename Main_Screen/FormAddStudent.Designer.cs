@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class Form_AddStudent
+    partial class FormAddStudent
     {
         /// <summary>
         /// Required designer variable.

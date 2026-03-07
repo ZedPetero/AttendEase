@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class Register_Screen_Form
+    partial class RegisterScreenForm
     {
         /// <summary>
         /// Required designer variable.

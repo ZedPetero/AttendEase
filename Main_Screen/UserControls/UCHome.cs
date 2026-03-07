@@ -9,9 +9,9 @@ using AE.Application;
 using ComponentFactory.Krypton.Toolkit;
 namespace AE.Application
 {
-    public partial class UC_Home : UserControl
+    public partial class UCHome : UserControl
     {
-        public UC_Home()
+        public UCHome()
         {
             InitializeComponent();
             UIHelper.RoundControl(this.kryptonPanel1, 20);
@@ -26,7 +26,7 @@ namespace AE.Application
 
         private void btnGetStarted_Click(object sender, EventArgs e)
         {
-            Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
+            MainScreenForm mainForm = (MainScreenForm)this.FindForm();
             if (mainForm != null) 
             {
                 mainForm.NavigateToClasses();

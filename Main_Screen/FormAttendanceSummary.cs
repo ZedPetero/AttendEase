@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace AE.Application
 {
-    public partial class Form_AttendanceSummary : KryptonForm
+    public partial class FormAttendanceSummary : KryptonForm
     {
         private readonly int _sectionId;
         private List<StudentSummaryDTO> _summaryData;
 
-        public Form_AttendanceSummary(int sectionId)
+        public FormAttendanceSummary(int sectionId)
         {
             InitializeComponent();
             _sectionId = sectionId;

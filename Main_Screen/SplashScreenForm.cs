@@ -9,9 +9,9 @@ using System.Drawing.Drawing2D;
 
 namespace AE.Application
 {
-    public partial class Splash_Screen_Form : Form
+    public partial class SplashScreenForm : Form
     {
-        public Splash_Screen_Form()
+        public SplashScreenForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;

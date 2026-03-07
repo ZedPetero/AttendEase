@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace AE.Application
 {
-    public partial class UC_SummaryCard : UserControl
+    public partial class UCSummaryCard : UserControl
     {
-        public UC_SummaryCard()
+        public UCSummaryCard()
         {
             InitializeComponent();
         }

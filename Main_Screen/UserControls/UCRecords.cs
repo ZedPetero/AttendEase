@@ -12,9 +12,9 @@ using AE.Infrastructure.Data;
 
 namespace AE.Application
 {
-    public partial class UC_Records : UserControl
+    public partial class UCRecords : UserControl
     {
-        public UC_Records()
+        public UCRecords()
         {
             InitializeComponent();
             LoadLists();

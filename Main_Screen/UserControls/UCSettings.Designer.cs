@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class UC_Settings
+    partial class UCSettings
     {
         /// <summary> 
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class Login_Screen_Form
+    partial class LoginScreenForm
     {
         /// <summary>
         /// Required designer variable.

@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace AE.Application
 {
-    public partial class UC_SectionCard : UserControl
+    public partial class UCSectionCard : UserControl
     {
         public int SectionId { get; private set; }
         public event EventHandler<int> TakeAttendanceClicked;
         public event EventHandler<int> SectionDeleted;
         private bool isLifted = false;
         private Padding originalMargin;
-        public UC_SectionCard()
+        public UCSectionCard()
         {
             InitializeComponent();
             originalMargin = this.Margin;

@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class Main_Screen_Form
+    partial class MainScreenForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             Krypton.Toolkit.KryptonCheckSet kryptonCheckSet1;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Screen_Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreenForm));
             btnHome = new Krypton.Toolkit.KryptonCheckButton();
             ButtonPalette = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
             btnClasses = new Krypton.Toolkit.KryptonCheckButton();

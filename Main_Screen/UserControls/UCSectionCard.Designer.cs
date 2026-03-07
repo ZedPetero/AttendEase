@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class UC_SectionCard
+    partial class UCSectionCard
     {
         /// <summary> 
         /// Required designer variable.

@@ -3,22 +3,22 @@ using Krypton.Toolkit;
 using System.Drawing.Drawing2D;
 namespace AE.Application
 {
-    public partial class Main_Screen_Form : KryptonForm
+    public partial class MainScreenForm : KryptonForm
     {
         bool sidebarExpand = false;
         private Form backgroundOverlay;
 
-        public Main_Screen_Form()
+        public MainScreenForm()
         {
             InitializeComponent();
-            UC_Home myHome = new UC_Home();
+            UCHome myHome = new UCHome();
             loadForm(myHome);
             btnHome.Checked = true;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            UC_Home myHome = new UC_Home();
+            UCHome myHome = new UCHome();
             loadForm(myHome);
         }
 
@@ -74,19 +74,19 @@ namespace AE.Application
 
         public void btnClasses_Click(object sender, EventArgs e)
         {
-            UC_Classes myClasses = new UC_Classes();
+            UCClasses myClasses = new UCClasses();
             loadForm(myClasses);
         }
 
         public void btnRecords_Click(object sender, EventArgs e)
         {
-            UC_Records myRecords = new UC_Records();
+            UCRecords myRecords = new UCRecords();
             loadForm(myRecords);
         }
 
         public void btnTeacher_Click(object sender, EventArgs e)
         {
-            UC_Teacher myTeacher = new UC_Teacher();
+            UCTeacher myTeacher = new UCTeacher();
             loadForm(myTeacher);
         }
 
@@ -97,7 +97,7 @@ namespace AE.Application
 
         public void btnSettings_Click(object sender, EventArgs e)
         {
-            UC_Settings mySettings = new UC_Settings();
+            UCSettings mySettings = new UCSettings();
             loadForm(mySettings);
         }
 
@@ -128,7 +128,7 @@ namespace AE.Application
         public void NavigateToClasses()
         {
             btnClasses.Checked = true;
-            loadForm(new UC_Classes());
+            loadForm(new UCClasses());
         }
     }
 }

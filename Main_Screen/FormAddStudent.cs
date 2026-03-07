@@ -10,11 +10,11 @@ using AE.Infrastructure.Data;
 using Krypton.Toolkit;
 namespace AE.Application
 {
-    public partial class Form_AddStudent : Form
+    public partial class FormAddStudent : Form
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int CurrentSectionId { get; set; }
-        public Form_AddStudent()
+        public FormAddStudent()
         {
             InitializeComponent();
             UIHelper.RoundControl(this, 20);

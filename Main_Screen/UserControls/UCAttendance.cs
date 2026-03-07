@@ -13,7 +13,7 @@ using AE.Domain.Models;
 
 namespace AE.Application
 {
-    public partial class UC_Attendance : UserControl
+    public partial class UCAttendance : UserControl
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
@@ -25,7 +25,7 @@ namespace AE.Application
 
         private DateTime _selectedDate = DateTime.Today;
 
-        public UC_Attendance()
+        public UCAttendance()
         {
             InitializeComponent();
             UpdateDateDisplay();
@@ -49,9 +49,9 @@ namespace AE.Application
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
-            using (Form_AddStudent popup = new Form_AddStudent())
+            using (FormAddStudent popup = new FormAddStudent())
             {
-                Main_Screen_Form mainForm = (Main_Screen_Form)this.FindForm();
+                MainScreenForm mainForm = (MainScreenForm)this.FindForm();
                 mainForm.ShowOverlay();
                 popup.CurrentSectionId = CurrentSectionId;
                 var result = popup.ShowDialog();
@@ -232,7 +232,7 @@ namespace AE.Application
                 int count = 1;
                 foreach (var student in students)
                 {
-                    UC_StudentRow studentRow = new UC_StudentRow();
+                    UCStudentRow studentRow = new UCStudentRow();
 
                     studentRow.StudentId = student.Id;
                     studentRow.SectionId = this.CurrentSectionId;
@@ -277,7 +277,7 @@ namespace AE.Application
 
         private void lblBackToClass_Click(object sender, EventArgs e)
         {
-            var mainForm = this.FindForm() as Main_Screen_Form;
+            var mainForm = this.FindForm() as MainScreenForm;
             if (mainForm == null)
                 return;
 
@@ -287,7 +287,7 @@ namespace AE.Application
             }
             else
             {
-                mainForm.loadForm(new UC_Classes());
+                mainForm.loadForm(new UCClasses());
             }
         }
 
@@ -447,7 +447,7 @@ namespace AE.Application
 
             foreach (Control control in layoutStudents.Controls)
             {
-                if (control is UC_StudentRow studentRow)
+                if (control is UCStudentRow studentRow)
                 {
                     studentRow.SetSelectedStatus(AttendanceStatus.Present);
                 }
@@ -483,7 +483,7 @@ namespace AE.Application
 
             foreach (Control control in layoutStudents.Controls)
             {
-                if (control is UC_StudentRow studentRow)
+                if (control is UCStudentRow studentRow)
                 {
                     studentRow.SetSelectedStatus(null);
                 }
@@ -504,7 +504,7 @@ namespace AE.Application
                 return;
             }
 
-            using (Form_AttendanceSummary summaryForm = new Form_AttendanceSummary(CurrentSectionId))
+            using (FormAttendanceSummary summaryForm = new FormAttendanceSummary(CurrentSectionId))
             {
                 summaryForm.ShowDialog();
             }

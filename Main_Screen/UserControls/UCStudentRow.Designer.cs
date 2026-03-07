@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class UC_StudentRow
+    partial class UCStudentRow
     {
         /// <summary> 
         /// Required designer variable.

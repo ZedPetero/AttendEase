@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace AE.Application
 {
-    public partial class UC_Teacher : UserControl
+    public partial class UCTeacher : UserControl
     {
         private UCEditTeacher _activeEditTeacher;
-        public UC_Teacher()
+        public UCTeacher()
         {
             InitializeComponent();
             ShowProfileMode();

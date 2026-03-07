@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class UC_Attendance
+    partial class UCAttendance
     {
         /// <summary> 
         /// Required designer variable.
@@ -38,11 +38,11 @@
             lblClassRoster = new Label();
             layoutStudents = new FlowLayoutPanel();
             lblNumberofStudents = new Label();
-            pnlTotalStudents = new UC_SummaryCard();
-            pnlPresent = new UC_SummaryCard();
-            pnlAbsent = new UC_SummaryCard();
-            pnlLate = new UC_SummaryCard();
-            pnlExcused = new UC_SummaryCard();
+            pnlTotalStudents = new UCSummaryCard();
+            pnlPresent = new UCSummaryCard();
+            pnlAbsent = new UCSummaryCard();
+            pnlLate = new UCSummaryCard();
+            pnlExcused = new UCSummaryCard();
             kryptonCustomPaletteBase1 = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             btnExportSummary = new Krypton.Toolkit.KryptonButton();
@@ -497,11 +497,11 @@
         private Label lblClassRoster;
         private FlowLayoutPanel layoutStudents;
         private Label lblNumberofStudents;
-        private UC_SummaryCard pnlTotalStudents;
-        private UC_SummaryCard pnlPresent;
-        private UC_SummaryCard pnlAbsent;
-        private UC_SummaryCard pnlLate;
-        private UC_SummaryCard pnlExcused;
+        private UCSummaryCard pnlTotalStudents;
+        private UCSummaryCard pnlPresent;
+        private UCSummaryCard pnlAbsent;
+        private UCSummaryCard pnlLate;
+        private UCSummaryCard pnlExcused;
         private Krypton.Toolkit.KryptonCustomPaletteBase kryptonCustomPaletteBase1;
         private Krypton.Toolkit.KryptonButton lblDateNow;
         private Krypton.Toolkit.KryptonButton kryptonButton6;

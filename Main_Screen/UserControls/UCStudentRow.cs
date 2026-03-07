@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace AE.Application
 {
-    public partial class UC_StudentRow : UserControl
+    public partial class UCStudentRow : UserControl
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
@@ -25,7 +25,7 @@ namespace AE.Application
 
         private AttendanceStatus? _selectedStatus;
 
-        public UC_StudentRow()
+        public UCStudentRow()
         {
             InitializeComponent();
             UIHelper.RoundControl(this, 20);
@@ -204,12 +204,12 @@ namespace AE.Application
             }
         }
 
-        private UC_Attendance FindParentAttendance()
+        private UCAttendance FindParentAttendance()
         {
             Control c = this.Parent;
             while (c != null)
             {
-                if (c is UC_Attendance ua)
+                if (c is UCAttendance ua)
                     return ua;
                 c = c.Parent;
             }

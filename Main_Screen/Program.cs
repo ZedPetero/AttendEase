@@ -35,7 +35,7 @@ internal static class Program
             dbContext.Database.Migrate();
         }
 
-        using (var splash = new Splash_Screen_Form())
+        using (var splash = new SplashScreenForm())
         {
             splash.ShowDialog();
         }
@@ -43,13 +43,13 @@ internal static class Program
         while (true)
         {
             var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
-            using (var login = new Login_Screen_Form(userManager))
+            using (var login = new LoginScreenForm(userManager))
             {
                 if (login.ShowDialog() != DialogResult.OK)
                     return;
             }
 
-            var mainForm = new Main_Screen_Form();
+            var mainForm = new MainScreenForm();
             Application.Run(mainForm);
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class UC_Teacher
+    partial class UCTeacher
     {
         /// <summary> 
         /// Required designer variable.

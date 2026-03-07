@@ -1,6 +1,6 @@
 ﻿namespace AE.Application
 {
-    partial class UC_Records
+    partial class UCRecords
     {
         /// <summary> 
         /// Required designer variable.
