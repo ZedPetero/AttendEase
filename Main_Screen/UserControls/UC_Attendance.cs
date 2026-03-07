@@ -31,6 +31,12 @@ namespace AE.Application
             UpdateDateDisplay();
             SetSection(CurrentSectionId);
             UIHelper.RoundControl(panelCalendar, 20);
+            UIHelper.RoundControl(panelCalendarBorder, 20);
+            UIHelper.RoundControl(panelTotalBorder, 20);
+            UIHelper.RoundControl(panelPresentBorder, 20);
+            UIHelper.RoundControl(panelLateBorder, 20);
+            UIHelper.RoundControl(panelAbsentBorder, 20);
+            UIHelper.RoundControl(panelExcusedBorder, 20);
         }
 
         public void SetSection(int sectionId)
@@ -68,7 +74,6 @@ namespace AE.Application
                     pnlTotalStudents.IntegerColor = "39, 165, 173";
                     pnlTotalStudents.Percentage = string.Empty;
                     pnlTotalStudents.PercentageColor = "77, 180, 170";
-                    pnlTotalStudents.BorderColors = "190, 226, 223";
 
                     UIHelper.RoundControl(pnlPresent, 20);
                     pnlPresent.Title = "Present";
@@ -77,7 +82,6 @@ namespace AE.Application
                     pnlPresent.IntegerColor = "34, 195, 93";
                     pnlPresent.Percentage = "0.0%";
                     pnlPresent.PercentageColor = "72, 205, 121";
-                    pnlPresent.BorderColors = "188, 234, 206";
 
                     UIHelper.RoundControl(pnlLate, 20);
                     pnlLate.Title = "Late";
@@ -86,7 +90,6 @@ namespace AE.Application
                     pnlLate.IntegerColor = "245, 159, 10";
                     pnlLate.Percentage = "0.0%";
                     pnlLate.PercentageColor = "246, 175, 53";
-                    pnlLate.BorderColors = "247, 224, 183";
 
                     UIHelper.RoundControl(pnlAbsent, 20);
                     pnlAbsent.Title = "Absent";
@@ -95,7 +98,6 @@ namespace AE.Application
                     pnlAbsent.IntegerColor = "223, 58, 58";
                     pnlAbsent.Percentage = "0.0%";
                     pnlAbsent.PercentageColor = "230, 110, 110";
-                    pnlAbsent.BorderColors = "242, 196, 197";
 
                     UIHelper.RoundControl(pnlExcused, 20);
                     pnlExcused.Title = "Excused";
@@ -104,7 +106,6 @@ namespace AE.Application
                     pnlExcused.IntegerColor = "13, 162, 231";
                     pnlExcused.Percentage = "0.0%";
                     pnlExcused.PercentageColor = "55, 178, 235";
-                    pnlExcused.BorderColors = "183, 224, 244";
                     return;
                 }
 

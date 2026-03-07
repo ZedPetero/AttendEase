@@ -31,10 +31,6 @@
             lblTitle = new Label();
             lblInteger = new Label();
             lblPercentage = new Label();
-            pnlBorderTop = new Krypton.Toolkit.KryptonBorderEdge();
-            pnlBorderRight = new Krypton.Toolkit.KryptonBorderEdge();
-            pnlBorderBottom = new Krypton.Toolkit.KryptonBorderEdge();
-            pnlBorderLeft = new Krypton.Toolkit.KryptonBorderEdge();
             SuspendLayout();
             // 
             // lblTitle
@@ -67,50 +63,10 @@
             lblPercentage.TabIndex = 2;
             lblPercentage.Text = "0.0%";
             // 
-            // pnlBorderTop
-            // 
-            pnlBorderTop.AutoSize = false;
-            pnlBorderTop.Dock = DockStyle.Top;
-            pnlBorderTop.Location = new Point(0, 0);
-            pnlBorderTop.Name = "pnlBorderTop";
-            pnlBorderTop.Size = new Size(227, 2);
-            pnlBorderTop.Text = "kryptonBorderEdge1";
-            // 
-            // pnlBorderRight
-            // 
-            pnlBorderRight.AutoSize = false;
-            pnlBorderRight.Dock = DockStyle.Right;
-            pnlBorderRight.Location = new Point(225, 2);
-            pnlBorderRight.Name = "pnlBorderRight";
-            pnlBorderRight.Size = new Size(2, 132);
-            pnlBorderRight.Text = "kryptonBorderEdge2";
-            // 
-            // pnlBorderBottom
-            // 
-            pnlBorderBottom.AutoSize = false;
-            pnlBorderBottom.Dock = DockStyle.Bottom;
-            pnlBorderBottom.Location = new Point(0, 132);
-            pnlBorderBottom.Name = "pnlBorderBottom";
-            pnlBorderBottom.Size = new Size(225, 2);
-            pnlBorderBottom.Text = "kryptonBorderEdge3";
-            // 
-            // pnlBorderLeft
-            // 
-            pnlBorderLeft.AutoSize = false;
-            pnlBorderLeft.Dock = DockStyle.Left;
-            pnlBorderLeft.Location = new Point(0, 2);
-            pnlBorderLeft.Name = "pnlBorderLeft";
-            pnlBorderLeft.Size = new Size(2, 130);
-            pnlBorderLeft.Text = "kryptonBorderEdge4";
-            // 
             // UC_SummaryCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pnlBorderLeft);
-            Controls.Add(pnlBorderBottom);
-            Controls.Add(pnlBorderRight);
-            Controls.Add(pnlBorderTop);
             Controls.Add(lblPercentage);
             Controls.Add(lblInteger);
             Controls.Add(lblTitle);
@@ -125,9 +81,5 @@
         private Label lblTitle;
         private Label lblInteger;
         private Label lblPercentage;
-        private Krypton.Toolkit.KryptonBorderEdge pnlBorderTop;
-        private Krypton.Toolkit.KryptonBorderEdge pnlBorderRight;
-        private Krypton.Toolkit.KryptonBorderEdge pnlBorderBottom;
-        private Krypton.Toolkit.KryptonBorderEdge pnlBorderLeft;
     }
 }

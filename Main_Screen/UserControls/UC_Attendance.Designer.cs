@@ -31,10 +31,6 @@
             components = new System.ComponentModel.Container();
             lblSectionName = new Label();
             panelCalendar = new Panel();
-            kryptonBorderEdge4 = new Krypton.Toolkit.KryptonBorderEdge();
-            kryptonBorderEdge3 = new Krypton.Toolkit.KryptonBorderEdge();
-            kryptonBorderEdge2 = new Krypton.Toolkit.KryptonBorderEdge();
-            kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
             lblDateNow = new Krypton.Toolkit.KryptonButton();
             kryptonButton2 = new Krypton.Toolkit.KryptonButton();
             kryptonButton6 = new Krypton.Toolkit.KryptonButton();
@@ -53,6 +49,12 @@
             btnAddStudent = new Krypton.Toolkit.KryptonButton();
             btnMarkAllPresent = new Krypton.Toolkit.KryptonButton();
             btnReset = new Krypton.Toolkit.KryptonButton();
+            panelCalendarBorder = new Panel();
+            panelTotalBorder = new Panel();
+            panelPresentBorder = new Panel();
+            panelLateBorder = new Panel();
+            panelAbsentBorder = new Panel();
+            panelExcusedBorder = new Panel();
             panelCalendar.SuspendLayout();
             SuspendLayout();
             // 
@@ -69,10 +71,6 @@
             // panelCalendar
             // 
             panelCalendar.BackColor = Color.White;
-            panelCalendar.Controls.Add(kryptonBorderEdge4);
-            panelCalendar.Controls.Add(kryptonBorderEdge3);
-            panelCalendar.Controls.Add(kryptonBorderEdge2);
-            panelCalendar.Controls.Add(kryptonBorderEdge1);
             panelCalendar.Controls.Add(lblDateNow);
             panelCalendar.Controls.Add(kryptonButton2);
             panelCalendar.Controls.Add(kryptonButton6);
@@ -82,46 +80,6 @@
             panelCalendar.Size = new Size(887, 62);
             panelCalendar.TabIndex = 2;
             panelCalendar.Paint += panelCalendar_Paint;
-            // 
-            // kryptonBorderEdge4
-            // 
-            kryptonBorderEdge4.AutoSize = false;
-            kryptonBorderEdge4.Dock = DockStyle.Top;
-            kryptonBorderEdge4.Location = new Point(2, 0);
-            kryptonBorderEdge4.Name = "kryptonBorderEdge4";
-            kryptonBorderEdge4.Size = new Size(883, 2);
-            kryptonBorderEdge4.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
-            kryptonBorderEdge4.Text = "kryptonBorderEdge4";
-            // 
-            // kryptonBorderEdge3
-            // 
-            kryptonBorderEdge3.AutoSize = false;
-            kryptonBorderEdge3.Dock = DockStyle.Right;
-            kryptonBorderEdge3.Location = new Point(885, 0);
-            kryptonBorderEdge3.Name = "kryptonBorderEdge3";
-            kryptonBorderEdge3.Size = new Size(2, 60);
-            kryptonBorderEdge3.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
-            kryptonBorderEdge3.Text = "kryptonBorderEdge3";
-            // 
-            // kryptonBorderEdge2
-            // 
-            kryptonBorderEdge2.AutoSize = false;
-            kryptonBorderEdge2.Dock = DockStyle.Bottom;
-            kryptonBorderEdge2.Location = new Point(2, 60);
-            kryptonBorderEdge2.Name = "kryptonBorderEdge2";
-            kryptonBorderEdge2.Size = new Size(885, 2);
-            kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
-            kryptonBorderEdge2.Text = "kryptonBorderEdge2";
-            // 
-            // kryptonBorderEdge1
-            // 
-            kryptonBorderEdge1.AutoSize = false;
-            kryptonBorderEdge1.Dock = DockStyle.Left;
-            kryptonBorderEdge1.Location = new Point(0, 0);
-            kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            kryptonBorderEdge1.Size = new Size(2, 62);
-            kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
-            kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // lblDateNow
             // 
@@ -447,6 +405,54 @@
             btnReset.Values.Text = "";
             btnReset.Click += btnReset_Click;
             // 
+            // panelCalendarBorder
+            // 
+            panelCalendarBorder.BackColor = Color.FromArgb(224, 230, 235);
+            panelCalendarBorder.Location = new Point(107, 155);
+            panelCalendarBorder.Name = "panelCalendarBorder";
+            panelCalendarBorder.Size = new Size(891, 66);
+            panelCalendarBorder.TabIndex = 25;
+            // 
+            // panelTotalBorder
+            // 
+            panelTotalBorder.BackColor = Color.FromArgb(190, 226, 223);
+            panelTotalBorder.Location = new Point(107, 311);
+            panelTotalBorder.Name = "panelTotalBorder";
+            panelTotalBorder.Size = new Size(162, 124);
+            panelTotalBorder.TabIndex = 26;
+            // 
+            // panelPresentBorder
+            // 
+            panelPresentBorder.BackColor = Color.FromArgb(188, 234, 206);
+            panelPresentBorder.Location = new Point(289, 311);
+            panelPresentBorder.Name = "panelPresentBorder";
+            panelPresentBorder.Size = new Size(162, 124);
+            panelPresentBorder.TabIndex = 27;
+            // 
+            // panelLateBorder
+            // 
+            panelLateBorder.BackColor = Color.FromArgb(247, 224, 183);
+            panelLateBorder.Location = new Point(471, 311);
+            panelLateBorder.Name = "panelLateBorder";
+            panelLateBorder.Size = new Size(162, 124);
+            panelLateBorder.TabIndex = 27;
+            // 
+            // panelAbsentBorder
+            // 
+            panelAbsentBorder.BackColor = Color.FromArgb(242, 196, 197);
+            panelAbsentBorder.Location = new Point(653, 311);
+            panelAbsentBorder.Name = "panelAbsentBorder";
+            panelAbsentBorder.Size = new Size(162, 124);
+            panelAbsentBorder.TabIndex = 28;
+            // 
+            // panelExcusedBorder
+            // 
+            panelExcusedBorder.BackColor = Color.FromArgb(183, 224, 244);
+            panelExcusedBorder.Location = new Point(835, 311);
+            panelExcusedBorder.Name = "panelExcusedBorder";
+            panelExcusedBorder.Size = new Size(162, 124);
+            panelExcusedBorder.TabIndex = 29;
+            // 
             // UC_Attendance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -455,10 +461,15 @@
             BackColor = Color.FromArgb(249, 250, 251);
             Controls.Add(kryptonButton1);
             Controls.Add(pnlExcused);
+            Controls.Add(panelExcusedBorder);
             Controls.Add(pnlAbsent);
+            Controls.Add(panelAbsentBorder);
             Controls.Add(pnlLate);
+            Controls.Add(panelLateBorder);
             Controls.Add(pnlPresent);
+            Controls.Add(panelPresentBorder);
             Controls.Add(pnlTotalStudents);
+            Controls.Add(panelTotalBorder);
             Controls.Add(lblNumberofStudents);
             Controls.Add(btnReset);
             Controls.Add(btnMarkAllPresent);
@@ -468,6 +479,7 @@
             Controls.Add(btnExportSummary);
             Controls.Add(lblSubjectName);
             Controls.Add(panelCalendar);
+            Controls.Add(panelCalendarBorder);
             Controls.Add(lblSectionName);
             Name = "UC_Attendance";
             Size = new Size(1150, 713);
@@ -498,9 +510,11 @@
         private Krypton.Toolkit.KryptonButton btnAddStudent;
         private Krypton.Toolkit.KryptonButton btnReset;
         private Krypton.Toolkit.KryptonButton kryptonButton2;
-        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge4;
-        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge3;
-        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge2;
-        private Krypton.Toolkit.KryptonBorderEdge kryptonBorderEdge1;
+        private Panel panelCalendarBorder;
+        private Panel panelTotalBorder;
+        private Panel panelPresentBorder;
+        private Panel panelLateBorder;
+        private Panel panelAbsentBorder;
+        private Panel panelExcusedBorder;
     }
 }

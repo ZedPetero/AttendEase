@@ -116,32 +116,5 @@ namespace AE.Application
                 }
             }
         }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string BorderColors
-        {
-            get => $"{pnlBorderTop.BackColor.R},{pnlBorderTop.BackColor.G},{pnlBorderTop.BackColor.B}";
-            set
-            {
-                try
-                {
-                    string[] rgbValues = value.Split(',');
-                    if (rgbValues.Length == 3)
-                    {
-                        int r = Convert.ToInt32(rgbValues[0].Trim());
-                        int g = Convert.ToInt32(rgbValues[1].Trim());
-                        int b = Convert.ToInt32(rgbValues[2].Trim());
-                        Color borderColor = Color.FromArgb(r, g, b);
-                        pnlBorderTop.StateCommon.Color1 = borderColor;
-                        pnlBorderBottom.StateCommon.Color1 = borderColor;
-                        pnlBorderLeft.StateCommon.Color1 = borderColor;
-                        pnlBorderRight.StateCommon.Color1 = borderColor;
-                    }
-                }
-                catch
-                {
-                }
-            }
-        }
     }
 }
