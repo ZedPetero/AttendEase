@@ -133,6 +133,16 @@ namespace AE.Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap homepageimg {
+            get {
+                object obj = ResourceManager.GetObject("homepageimg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
@@ -236,6 +246,16 @@ namespace AE.Application.Properties {
         internal static System.Drawing.Bitmap reject__2_ {
             get {
                 object obj = ResourceManager.GetObject("reject (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap resized_400x298 {
+            get {
+                object obj = ResourceManager.GetObject("resized_400x298", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

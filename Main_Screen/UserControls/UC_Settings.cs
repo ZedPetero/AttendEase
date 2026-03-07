@@ -149,7 +149,7 @@ namespace AE.Application
         }
         private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
         {
-            UIHelper.RoundControl(AccountManagementPanel, 50);
+            UIHelper.RoundControl(AccountManagementPanel, 20);
         }
 
         private void kryptonLabel2_Click(object sender, EventArgs e)
@@ -173,6 +173,26 @@ namespace AE.Application
         }
 
         private void kryptonLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonPanel1_Paint_1(object sender, PaintEventArgs e)
+        {
+            UIHelper.RoundControl(kryptonPanel1, 20);
+        }
+
+        private void kryptonRadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void kryptonLabel4_Click(object sender, EventArgs e)
         {
 
         }
