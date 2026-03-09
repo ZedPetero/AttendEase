@@ -25,6 +25,9 @@ namespace AE.Application
 
         private AttendanceStatus? _selectedStatus;
 
+        public event EventHandler<int> AttendanceStatusChanged;
+
+        private readonly int _studentId;
         public UCStudentRow()
         {
             InitializeComponent();
@@ -101,22 +104,25 @@ namespace AE.Application
         private void BtnPresent_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Present);
-
+            AttendanceStatusChanged?.Invoke(this, _studentId);
         }
 
         private void BtnLate_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Late);
+            AttendanceStatusChanged?.Invoke(this, _studentId);
         }
 
         private void BtnExcused_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Excused);
+            AttendanceStatusChanged?.Invoke(this, _studentId);
         }
 
         private void BtnAbsent_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Absent);
+            AttendanceStatusChanged?.Invoke(this, _studentId);
         }
 
         private void BtnDeleteStudent_Click(object? sender, EventArgs e)

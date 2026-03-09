@@ -144,6 +144,18 @@
             btnGetStarted.Cursor = Cursors.Hand;
             btnGetStarted.Location = new Point(489, 335);
             btnGetStarted.Name = "btnGetStarted";
+            btnGetStarted.OverrideDefault.Back.Color1 = Color.FromArgb(40, 164, 153);
+            btnGetStarted.OverrideDefault.Back.Color2 = Color.FromArgb(40, 164, 153);
+            btnGetStarted.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnGetStarted.OverrideDefault.Border.Color1 = Color.FromArgb(40, 164, 153);
+            btnGetStarted.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnGetStarted.OverrideDefault.Border.Rounding = 8F;
+            btnGetStarted.OverrideFocus.Back.Color1 = Color.FromArgb(40, 164, 153);
+            btnGetStarted.OverrideFocus.Back.Color2 = Color.FromArgb(40, 164, 153);
+            btnGetStarted.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnGetStarted.OverrideFocus.Border.Color1 = Color.FromArgb(40, 164, 153);
+            btnGetStarted.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnGetStarted.OverrideFocus.Border.Rounding = 8F;
             btnGetStarted.Size = new Size(173, 48);
             btnGetStarted.StateCommon.Back.Color1 = Color.FromArgb(40, 164, 153);
             btnGetStarted.StateCommon.Back.Color2 = Color.FromArgb(40, 164, 153);
@@ -1025,6 +1037,18 @@
             btnViewClasses.Cursor = Cursors.Hand;
             btnViewClasses.Location = new Point(499, 955);
             btnViewClasses.Name = "btnViewClasses";
+            btnViewClasses.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnViewClasses.OverrideDefault.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnViewClasses.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnViewClasses.OverrideDefault.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnViewClasses.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnViewClasses.OverrideDefault.Border.Rounding = 8F;
+            btnViewClasses.OverrideFocus.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnViewClasses.OverrideFocus.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnViewClasses.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnViewClasses.OverrideFocus.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnViewClasses.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnViewClasses.OverrideFocus.Border.Rounding = 8F;
             btnViewClasses.Size = new Size(152, 40);
             btnViewClasses.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnViewClasses.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
@@ -1062,7 +1086,7 @@
             kryptonLabel17.TabIndex = 18;
             kryptonLabel17.Values.Text = "";
             // 
-            // UC_Home
+            // UCHome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -1074,7 +1098,7 @@
             Controls.Add(label6);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "UC_Home";
+            Name = "UCHome";
             Size = new Size(1150, 1100);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

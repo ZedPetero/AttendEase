@@ -2,6 +2,7 @@
 using AE.Domain.Repositories.IRepositories;
 using AE.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -270,7 +271,7 @@ namespace AE.Application
                     {
                         studentRow.SetSelectedStatus(null);
                     }
-
+                    studentRow.AttendanceStatusChanged += StudentRow_AttendanceStatusChanged;
                     layoutStudents.Controls.Add(studentRow);
                     count++;
                 }
@@ -283,6 +284,10 @@ namespace AE.Application
             layoutStudents.AutoScrollPosition = new Point(Math.Abs(scrollPos.X), Math.Abs(scrollPos.Y));
 
             SetSummaryCards();
+        }
+        private void StudentRow_AttendanceStatusChanged(object sender, int studentId)
+        {
+            RecalculateSingleStudentGrade(studentId, CurrentSectionId);
         }
 
         private void UC_Attendance_Load(object sender, EventArgs e)
@@ -460,6 +465,9 @@ namespace AE.Application
                 }
 
                 _context.SaveChanges();
+
+                RecalculateClassGrades(_context, CurrentSectionId);
+                _context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -495,6 +503,9 @@ namespace AE.Application
                 {
                     _context.AttendanceRecords.RemoveRange(toRemove);
                     _context.SaveChanges();
+
+                    RecalculateClassGrades(_context, CurrentSectionId);
+                    _context.SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -527,7 +538,10 @@ namespace AE.Application
 
             using (FormAttendanceSummary summaryForm = new FormAttendanceSummary(CurrentSectionId))
             {
+                MainScreenForm mainForm = (MainScreenForm)this.FindForm();
+                if (mainForm != null) mainForm.ShowOverlay();
                 summaryForm.ShowDialog();
+                if (mainForm != null) mainForm.HideOverlay();
             }
         }
 
@@ -541,6 +555,84 @@ namespace AE.Application
         {
             _currentSort = SortMethod.FirstName;
             LoadStudentsForDate();
+        }
+        public void RecalculateSingleStudentGrade(int studentId, int sectionId)
+        {
+            using (var db = new AppDbContext())
+            {
+                var section = db.Sections.FirstOrDefault(s => s.Id == sectionId);
+                if (section == null) return;
+
+                var records = db.AttendanceRecords
+                                .Where(a => a.StudentId == studentId && a.SectionId == sectionId)
+                                .ToList();
+
+                int total = records.Count;
+                int p = records.Count(r => r.Status == AttendanceStatus.Present);
+                int e = records.Count(r => r.Status == AttendanceStatus.Excused);
+                int l = records.Count(r => r.Status == AttendanceStatus.Late);
+                int a = records.Count(r => r.Status == AttendanceStatus.Absent);
+
+                double points = (p * 1.0) + (e * 1.0) + (l * 0.5) + (a * 0.0);
+                double percentage = total > 0 ? (points / total) * 100.0 : 0;
+
+                var grade = db.Grades.FirstOrDefault(g => g.StudentId == studentId && g.SectionId == sectionId);
+
+                if (grade == null)
+                {
+                    db.Grades.Add(new Grade
+                    {
+                        StudentId = studentId,
+                        SectionId = sectionId,
+                        Subject = section.Subject,
+                        Percentage = percentage
+                    });
+                }
+                else
+                {
+                    grade.Percentage = percentage;
+                }
+
+                db.SaveChanges();
+            }
+        }
+        public void RecalculateClassGrades(AppDbContext db, int sectionId)
+        {
+            var section = db.Sections.FirstOrDefault(s => s.Id == sectionId);
+            if (section == null) return;
+
+            var studentIds = db.Students.Where(s => s.SectionId == sectionId).Select(s => s.Id).ToList();
+            var allAttendance = db.AttendanceRecords.Where(a => a.SectionId == sectionId).ToList();
+            var allGrades = db.Grades.Where(g => g.SectionId == sectionId).ToList();
+
+            foreach (var sId in studentIds)
+            {
+                var records = allAttendance.Where(a => a.StudentId == sId).ToList();
+
+                int total = records.Count;
+                int p = records.Count(r => r.Status == AttendanceStatus.Present);
+                int e = records.Count(r => r.Status == AttendanceStatus.Excused);
+                int l = records.Count(r => r.Status == AttendanceStatus.Late);
+
+                double points = p + e + (l * 0.5);
+                double percentage = total > 0 ? (points / total) * 100.0 : 0;
+
+                var grade = allGrades.FirstOrDefault(g => g.StudentId == sId);
+                if (grade == null)
+                {
+                    db.Grades.Add(new Grade
+                    {
+                        StudentId = sId,
+                        SectionId = sectionId,
+                        Subject = section.Subject,
+                        Percentage = percentage
+                    });
+                }
+                else
+                {
+                    grade.Percentage = percentage;
+                }
+            }
         }
     }
 }
