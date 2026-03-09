@@ -46,7 +46,7 @@
             // lblStudentName
             // 
             lblStudentName.AutoSize = true;
-            lblStudentName.BackColor = Color.White;
+            lblStudentName.BackColor = Color.Transparent;
             lblStudentName.Font = new Font("Inter", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblStudentName.ForeColor = Color.FromArgb(29, 37, 48);
             lblStudentName.Location = new Point(97, 22);
@@ -58,7 +58,7 @@
             // lblStatus
             // 
             lblStatus.AutoSize = true;
-            lblStatus.BackColor = Color.White;
+            lblStatus.BackColor = Color.Transparent;
             lblStatus.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblStatus.ForeColor = Color.FromArgb(29, 37, 48);
             lblStatus.Location = new Point(99, 56);
@@ -70,6 +70,8 @@
             // pnlContent
             // 
             pnlContent.BackColor = Color.White;
+            pnlContent.Controls.Add(lblStatus);
+            pnlContent.Controls.Add(lblStudentName);
             pnlContent.Controls.Add(btnAbsent);
             pnlContent.Controls.Add(btnExcused);
             pnlContent.Controls.Add(btnLate);
@@ -133,7 +135,7 @@
             btnAbsent.StateTracking.Border.Rounding = 5F;
             btnAbsent.StateTracking.Border.Width = 1;
             btnAbsent.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            btnAbsent.TabIndex = 9;
+            btnAbsent.TabIndex = 3;
             btnAbsent.Values.DropDownArrowColor = Color.Empty;
             btnAbsent.Values.Text = "";
             btnAbsent.Click += BtnAbsent_Click;
@@ -190,7 +192,7 @@
             btnExcused.StateTracking.Border.Rounding = 5F;
             btnExcused.StateTracking.Border.Width = 1;
             btnExcused.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            btnExcused.TabIndex = 8;
+            btnExcused.TabIndex = 2;
             btnExcused.Values.DropDownArrowColor = Color.Empty;
             btnExcused.Values.Text = "";
             btnExcused.Click += BtnExcused_Click;
@@ -245,7 +247,7 @@
             btnLate.StateTracking.Border.Rounding = 5F;
             btnLate.StateTracking.Border.Width = 1;
             btnLate.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            btnLate.TabIndex = 7;
+            btnLate.TabIndex = 1;
             btnLate.Values.DropDownArrowColor = Color.Empty;
             btnLate.Values.Text = "";
             btnLate.Click += BtnLate_Click;
@@ -302,7 +304,7 @@
             btnPresent.StateTracking.Border.Rounding = 5F;
             btnPresent.StateTracking.Border.Width = 1;
             btnPresent.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            btnPresent.TabIndex = 6;
+            btnPresent.TabIndex = 0;
             btnPresent.Values.DropDownArrowColor = Color.Empty;
             btnPresent.Values.Text = "";
             btnPresent.Click += BtnPresent_Click;
@@ -324,7 +326,7 @@
             btnDeleteStudent.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
             btnDeleteStudent.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
             btnDeleteStudent.StateTracking.Content.ShortText.Color1 = Color.FromArgb(223, 58, 58);
-            btnDeleteStudent.TabIndex = 5;
+            btnDeleteStudent.TabIndex = 4;
             btnDeleteStudent.Values.DropDownArrowColor = Color.Empty;
             btnDeleteStudent.Values.Text = "";
             btnDeleteStudent.Click += BtnDeleteStudent_Click;
@@ -344,6 +346,7 @@
             lblNumber.StateCommon.Content.ShortText.Font = new Font("Inter", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNumber.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             lblNumber.TabIndex = 0;
+            lblNumber.TabStop = false;
             lblNumber.Values.DropDownArrowColor = Color.Empty;
             lblNumber.Values.Text = "1";
             // 
@@ -354,21 +357,18 @@
             kryptonCheckSet1.CheckButtons.Add(btnExcused);
             kryptonCheckSet1.CheckButtons.Add(btnAbsent);
             // 
-            // UC_StudentRow
+            // UCStudentRow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(211, 215, 222);
-            Controls.Add(lblStatus);
-            Controls.Add(lblStudentName);
             Controls.Add(pnlContent);
-            Name = "UC_StudentRow";
+            Name = "UCStudentRow";
             Size = new Size(800, 100);
-            Load += UC_StudentRow_Load;
             pnlContent.ResumeLayout(false);
+            pnlContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonCheckSet1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

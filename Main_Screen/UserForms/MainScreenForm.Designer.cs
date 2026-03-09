@@ -1,4 +1,6 @@
-﻿namespace AE.Application
+﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
+namespace AE.Application
 {
     partial class MainScreenForm
     {
@@ -332,10 +334,10 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.logo___text;
-            pictureBox1.Location = new Point(55, 2);
+            pictureBox1.Image = Properties.Resources.Logo_Name_only_removedBg;
+            pictureBox1.Location = new Point(53, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(193, 53);
+            pictureBox1.Size = new Size(158, 56);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -378,7 +380,7 @@
             btnMenu.Values.Text = "";
             btnMenu.Click += btnMenu_Click;
             // 
-            // Main_Screen_Form
+            // MainScreenForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -391,7 +393,7 @@
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "Main_Screen_Form";
+            Name = "MainScreenForm";
             StartPosition = FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)kryptonCheckSet1).EndInit();
             ((System.ComponentModel.ISupportInitialize)sidebar).EndInit();

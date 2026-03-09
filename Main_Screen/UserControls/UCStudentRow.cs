@@ -56,19 +56,6 @@ namespace AE.Application
             set { lblStatus.Text = value; }
         }
 
-        private void UC_StudentRow_Load(object sender, EventArgs e)
-        {
-            UIHelper.RoundControl(this, 20);
-            UIHelper.RoundControl(lblNumber, 18);
-            foreach (Control c in this.Controls)
-            {
-                if (c is Button)
-                {
-                    UIHelper.RoundControl(c, 5);
-                }
-            }
-        }
-
         public void SetSelectedStatus(AttendanceStatus? status)
         {
             _selectedStatus = status;
@@ -77,6 +64,8 @@ namespace AE.Application
             {
                 StudentStatus = "No Record";
                 kryptonCheckSet1.CheckedButton = null;
+                this.BackColor = Color.FromArgb(211, 215, 222);
+                pnlContent.BackColor = Color.FromArgb(255, 255, 255);
             }
             else
             {
@@ -86,15 +75,23 @@ namespace AE.Application
                 {
                     case AttendanceStatus.Present:
                         btnPresent.Checked = true;
+                        this.BackColor = Color.FromArgb(224, 230, 235);
+                        pnlContent.BackColor = Color.FromArgb(238, 247, 243);
                         break;
                     case AttendanceStatus.Late:
                         btnLate.Checked = true;
+                        this.BackColor = Color.FromArgb(224, 230, 235);
+                        pnlContent.BackColor = Color.FromArgb(248, 245, 239);
                         break;
                     case AttendanceStatus.Excused:
                         btnExcused.Checked = true;
+                        this.BackColor = Color.FromArgb(224, 230, 235);
+                        pnlContent.BackColor = Color.FromArgb(237, 245, 250);
                         break;
                     case AttendanceStatus.Absent:
                         btnAbsent.Checked = true;
+                        this.BackColor = Color.FromArgb(223, 58, 58);
+                        pnlContent.BackColor = Color.FromArgb(247, 240, 241);
                         break;
                 }
             }
@@ -104,6 +101,7 @@ namespace AE.Application
         private void BtnPresent_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Present);
+
         }
 
         private void BtnLate_Click(object? sender, EventArgs e)
@@ -147,6 +145,8 @@ namespace AE.Application
                 }
 
                 parentAttendance?.RefreshSummaryAndRoster();
+                parentAttendance?.LoadStudentsForDate();
+                MessageBox.Show("Student Successfully Deleted!");
             }
             catch (Exception ex)
             {

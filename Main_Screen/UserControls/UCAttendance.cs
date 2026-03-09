@@ -25,6 +25,8 @@ namespace AE.Application
         public UserControl CallerControl { get; set; }
 
         private DateTime _selectedDate = DateTime.Today;
+        private enum SortMethod { Surname, FirstName }
+        private SortMethod _currentSort = SortMethod.Surname;
 
         private readonly ISectionService _sectionService;
 
@@ -202,7 +204,7 @@ namespace AE.Application
             }
         }
 
-        private void LoadStudentsForDate()
+        public void LoadStudentsForDate()
         {
             if (CurrentSectionId == 0)
             {
@@ -217,10 +219,18 @@ namespace AE.Application
 
             using (var _context = new AppDbContext())
             {
-                var students = _context.Students
-                    .Where(s => s.SectionId == this.CurrentSectionId)
-                    .OrderBy(s => s.LastName).ThenBy(s => s.FirstName)
-                    .ToList();
+                var studentsQuery = _context.Students.Where(s => s.SectionId == this.CurrentSectionId);
+
+                if (_currentSort == SortMethod.Surname)
+                {
+                    studentsQuery = studentsQuery.OrderBy(s => s.LastName).ThenBy(s => s.FirstName);
+                }
+                else
+                {
+                    studentsQuery = studentsQuery.OrderBy(s => s.FirstName).ThenBy(s => s.LastName);
+                }
+
+                var students = studentsQuery.ToList();
 
                 DateTime dateStart = _selectedDate.Date;
                 DateTime dateEnd = dateStart.AddDays(1);
@@ -241,7 +251,15 @@ namespace AE.Application
                     studentRow.SectionId = this.CurrentSectionId;
                     studentRow.AttendanceDate = _selectedDate;
 
-                    studentRow.StudentName = $"{student.FirstName} {student.LastName}";
+                    if (_currentSort == SortMethod.Surname)
+                    {
+                        studentRow.StudentName = $"{student.LastName}, {student.FirstName}";
+                    }
+                    else
+                    {
+                        studentRow.StudentName = $"{student.FirstName} {student.LastName}";
+                    }
+
                     studentRow.StudentNumber = count.ToString();
 
                     if (attendanceForDay.TryGetValue(student.Id, out var status))
@@ -513,19 +531,16 @@ namespace AE.Application
             }
         }
 
-        private void kryptonCustomPaletteBase1_PalettePaint(object sender, Krypton.Toolkit.PaletteLayoutEventArgs e)
+        private void btnSortSurname_Click(object sender, EventArgs e)
         {
-
+            _currentSort = SortMethod.Surname;
+            LoadStudentsForDate();
         }
 
-        private void panelCalendar_Paint(object sender, PaintEventArgs e)
+        private void btnSortFirstname_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void pnlPresent_Load(object sender, EventArgs e)
-        {
-
+            _currentSort = SortMethod.FirstName;
+            LoadStudentsForDate();
         }
     }
 }
