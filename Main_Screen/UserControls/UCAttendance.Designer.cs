@@ -32,8 +32,8 @@
             lblSectionName = new Label();
             panelCalendar = new Panel();
             lblDateNow = new Krypton.Toolkit.KryptonButton();
-            kryptonButton2 = new Krypton.Toolkit.KryptonButton();
-            kryptonButton6 = new Krypton.Toolkit.KryptonButton();
+            btnNextDate = new Krypton.Toolkit.KryptonButton();
+            btnPreviousDate = new Krypton.Toolkit.KryptonButton();
             lblSubjectName = new Label();
             lblClassRoster = new Label();
             layoutStudents = new FlowLayoutPanel();
@@ -44,7 +44,7 @@
             pnlLate = new UCSummaryCard();
             pnlExcused = new UCSummaryCard();
             kryptonCustomPaletteBase1 = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
-            kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            btnBackToClass = new Krypton.Toolkit.KryptonButton();
             btnExportSummary = new Krypton.Toolkit.KryptonButton();
             btnAddStudent = new Krypton.Toolkit.KryptonButton();
             btnMarkAllPresent = new Krypton.Toolkit.KryptonButton();
@@ -55,6 +55,9 @@
             panelLateBorder = new Panel();
             panelAbsentBorder = new Panel();
             panelExcusedBorder = new Panel();
+            btnSortSurname = new Krypton.Toolkit.KryptonButton();
+            toolTip1 = new ToolTip(components);
+            btnSortFirstname = new Krypton.Toolkit.KryptonButton();
             panelCalendar.SuspendLayout();
             SuspendLayout();
             // 
@@ -72,14 +75,13 @@
             // 
             panelCalendar.BackColor = Color.White;
             panelCalendar.Controls.Add(lblDateNow);
-            panelCalendar.Controls.Add(kryptonButton2);
-            panelCalendar.Controls.Add(kryptonButton6);
+            panelCalendar.Controls.Add(btnNextDate);
+            panelCalendar.Controls.Add(btnPreviousDate);
             panelCalendar.ForeColor = SystemColors.ActiveCaptionText;
             panelCalendar.Location = new Point(109, 157);
             panelCalendar.Name = "panelCalendar";
             panelCalendar.Size = new Size(887, 62);
             panelCalendar.TabIndex = 2;
-            panelCalendar.Paint += panelCalendar_Paint;
             // 
             // lblDateNow
             // 
@@ -104,61 +106,61 @@
             lblDateNow.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
             lblDateNow.StateTracking.Border.Rounding = 4F;
             lblDateNow.StateTracking.Border.Width = 1;
-            lblDateNow.TabIndex = 25;
+            lblDateNow.TabIndex = 4;
             lblDateNow.Values.DropDownArrowColor = Color.Empty;
             lblDateNow.Values.ExtraText = "Saturday, February 14, 2026";
             lblDateNow.Values.Text = "";
             lblDateNow.Click += lblDateNow_Click;
             // 
-            // kryptonButton2
+            // btnNextDate
             // 
-            kryptonButton2.Location = new Point(836, 13);
-            kryptonButton2.Name = "kryptonButton2";
-            kryptonButton2.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton2.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton2.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton2.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton2.Size = new Size(36, 36);
-            kryptonButton2.StateCommon.Back.Color1 = Color.White;
-            kryptonButton2.StateCommon.Back.Color2 = Color.White;
-            kryptonButton2.StateCommon.Border.Color1 = Color.White;
-            kryptonButton2.StateCommon.Border.Color2 = Color.White;
-            kryptonButton2.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
-            kryptonButton2.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonButton2.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton2.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            kryptonButton2.TabIndex = 27;
-            kryptonButton2.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton2.Values.Text = "";
-            kryptonButton2.Click += btnNextDate_Click;
+            btnNextDate.Location = new Point(836, 13);
+            btnNextDate.Name = "btnNextDate";
+            btnNextDate.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnNextDate.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnNextDate.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnNextDate.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnNextDate.Size = new Size(36, 36);
+            btnNextDate.StateCommon.Back.Color1 = Color.White;
+            btnNextDate.StateCommon.Back.Color2 = Color.White;
+            btnNextDate.StateCommon.Border.Color1 = Color.White;
+            btnNextDate.StateCommon.Border.Color2 = Color.White;
+            btnNextDate.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
+            btnNextDate.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNextDate.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnNextDate.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnNextDate.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
+            btnNextDate.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
+            btnNextDate.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
+            btnNextDate.TabIndex = 5;
+            btnNextDate.Values.DropDownArrowColor = Color.Empty;
+            btnNextDate.Values.Text = "";
+            btnNextDate.Click += btnNextDate_Click;
             // 
-            // kryptonButton6
+            // btnPreviousDate
             // 
-            kryptonButton6.Location = new Point(13, 13);
-            kryptonButton6.Name = "kryptonButton6";
-            kryptonButton6.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton6.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton6.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton6.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton6.Size = new Size(36, 36);
-            kryptonButton6.StateCommon.Back.Color1 = Color.White;
-            kryptonButton6.StateCommon.Back.Color2 = Color.White;
-            kryptonButton6.StateCommon.Border.Color1 = Color.White;
-            kryptonButton6.StateCommon.Border.Color2 = Color.White;
-            kryptonButton6.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
-            kryptonButton6.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonButton6.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton6.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton6.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
-            kryptonButton6.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
-            kryptonButton6.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            kryptonButton6.TabIndex = 25;
-            kryptonButton6.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton6.Values.Text = "";
-            kryptonButton6.Click += btnPreviousDate_Click;
+            btnPreviousDate.Location = new Point(13, 13);
+            btnPreviousDate.Name = "btnPreviousDate";
+            btnPreviousDate.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnPreviousDate.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnPreviousDate.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnPreviousDate.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnPreviousDate.Size = new Size(36, 36);
+            btnPreviousDate.StateCommon.Back.Color1 = Color.White;
+            btnPreviousDate.StateCommon.Back.Color2 = Color.White;
+            btnPreviousDate.StateCommon.Border.Color1 = Color.White;
+            btnPreviousDate.StateCommon.Border.Color2 = Color.White;
+            btnPreviousDate.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
+            btnPreviousDate.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPreviousDate.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnPreviousDate.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnPreviousDate.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
+            btnPreviousDate.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
+            btnPreviousDate.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
+            btnPreviousDate.TabIndex = 6;
+            btnPreviousDate.Values.DropDownArrowColor = Color.Empty;
+            btnPreviousDate.Values.Text = "";
+            btnPreviousDate.Click += btnPreviousDate_Click;
             // 
             // lblSubjectName
             // 
@@ -221,13 +223,12 @@
             pnlPresent.Name = "pnlPresent";
             pnlPresent.Size = new Size(158, 120);
             pnlPresent.TabIndex = 16;
-            pnlPresent.Load += pnlPresent_Load;
             // 
             // pnlAbsent
             // 
             pnlAbsent.BackColor = Color.FromArgb(246, 231, 231);
             pnlAbsent.ForeColor = Color.FromArgb(29, 37, 48);
-            pnlAbsent.Location = new Point(655, 313);
+            pnlAbsent.Location = new Point(837, 313);
             pnlAbsent.Name = "pnlAbsent";
             pnlAbsent.Size = new Size(158, 120);
             pnlAbsent.TabIndex = 18;
@@ -245,7 +246,7 @@
             // 
             pnlExcused.BackColor = Color.FromArgb(225, 241, 248);
             pnlExcused.ForeColor = Color.FromArgb(29, 37, 48);
-            pnlExcused.Location = new Point(837, 313);
+            pnlExcused.Location = new Point(655, 313);
             pnlExcused.Name = "pnlExcused";
             pnlExcused.Size = new Size(158, 120);
             pnlExcused.TabIndex = 19;
@@ -254,51 +255,61 @@
             // 
             kryptonCustomPaletteBase1.ButtonStyles.ButtonStandalone.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 8.25F);
             kryptonCustomPaletteBase1.UseThemeFormChromeBorderWidth = Krypton.Toolkit.InheritBool.True;
-            kryptonCustomPaletteBase1.PalettePaint += kryptonCustomPaletteBase1_PalettePaint;
             // 
-            // kryptonButton1
+            // btnBackToClass
             // 
-            kryptonButton1.Location = new Point(102, 22);
-            kryptonButton1.Name = "kryptonButton1";
-            kryptonButton1.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton1.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton1.Size = new Size(169, 31);
-            kryptonButton1.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
-            kryptonButton1.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
-            kryptonButton1.StateCommon.Border.Color1 = Color.FromArgb(249, 250, 251);
-            kryptonButton1.StateCommon.Border.Color2 = Color.FromArgb(249, 250, 251);
-            kryptonButton1.StateCommon.Content.LongText.Color1 = Color.FromArgb(108, 124, 137);
-            kryptonButton1.StateCommon.Content.LongText.Font = new Font("Inter SemiBold", 11.25F, FontStyle.Bold);
-            kryptonButton1.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            kryptonButton1.StateCommon.Content.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonButton1.StateCommon.Content.ShortText.Color1 = Color.FromArgb(108, 124, 137);
-            kryptonButton1.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonButton1.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            kryptonButton1.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            kryptonButton1.StateTracking.Back.Color1 = Color.FromArgb(249, 250, 251);
-            kryptonButton1.StateTracking.Back.Color2 = Color.FromArgb(249, 250, 251);
-            kryptonButton1.StateTracking.Content.LongText.Color1 = Color.FromArgb(26, 37, 48);
-            kryptonButton1.StateTracking.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
-            kryptonButton1.TabIndex = 20;
-            kryptonButton1.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton1.Values.ExtraText = "Back to Classes";
-            kryptonButton1.Values.Text = "";
-            kryptonButton1.Click += lblBackToClass_Click;
+            btnBackToClass.Location = new Point(102, 22);
+            btnBackToClass.Name = "btnBackToClass";
+            btnBackToClass.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnBackToClass.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnBackToClass.Size = new Size(169, 31);
+            btnBackToClass.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnBackToClass.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnBackToClass.StateCommon.Border.Color1 = Color.FromArgb(249, 250, 251);
+            btnBackToClass.StateCommon.Border.Color2 = Color.FromArgb(249, 250, 251);
+            btnBackToClass.StateCommon.Content.LongText.Color1 = Color.FromArgb(108, 124, 137);
+            btnBackToClass.StateCommon.Content.LongText.Font = new Font("Inter SemiBold", 11.25F, FontStyle.Bold);
+            btnBackToClass.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnBackToClass.StateCommon.Content.LongText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            btnBackToClass.StateCommon.Content.ShortText.Color1 = Color.FromArgb(108, 124, 137);
+            btnBackToClass.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBackToClass.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnBackToClass.StateCommon.Content.ShortText.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            btnBackToClass.StateTracking.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnBackToClass.StateTracking.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnBackToClass.StateTracking.Content.LongText.Color1 = Color.FromArgb(26, 37, 48);
+            btnBackToClass.StateTracking.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
+            btnBackToClass.TabIndex = 9;
+            btnBackToClass.Values.DropDownArrowColor = Color.Empty;
+            btnBackToClass.Values.ExtraText = "Back to Classes";
+            btnBackToClass.Values.Text = "";
+            btnBackToClass.Click += lblBackToClass_Click;
             // 
             // btnExportSummary
             // 
             btnExportSummary.Cursor = Cursors.Hand;
             btnExportSummary.Location = new Point(721, 107);
             btnExportSummary.Name = "btnExportSummary";
-            btnExportSummary.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnExportSummary.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            btnExportSummary.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnExportSummary.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnExportSummary.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnExportSummary.OverrideDefault.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnExportSummary.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnExportSummary.OverrideDefault.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnExportSummary.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnExportSummary.OverrideDefault.Border.Rounding = 6F;
+            btnExportSummary.OverrideDefault.Border.Width = 1;
+            btnExportSummary.OverrideFocus.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnExportSummary.OverrideFocus.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnExportSummary.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnExportSummary.OverrideFocus.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnExportSummary.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnExportSummary.OverrideFocus.Border.Rounding = 6F;
+            btnExportSummary.OverrideFocus.Border.Width = 1;
             btnExportSummary.Size = new Size(146, 28);
             btnExportSummary.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnExportSummary.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
             btnExportSummary.StateCommon.Border.Color1 = Color.FromArgb(224, 230, 235);
-            btnExportSummary.StateCommon.Border.Rounding = 4F;
+            btnExportSummary.StateCommon.Border.Rounding = 6F;
+            btnExportSummary.StateCommon.Border.Width = 1;
             btnExportSummary.StateCommon.Content.LongText.Font = new Font("Inter", 9.75F);
             btnExportSummary.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             btnExportSummary.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 14.25F);
@@ -309,7 +320,7 @@
             btnExportSummary.StateTracking.Border.Color2 = Color.FromArgb(224, 230, 235);
             btnExportSummary.StateTracking.Content.LongText.Color1 = Color.FromArgb(39, 165, 173);
             btnExportSummary.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            btnExportSummary.TabIndex = 21;
+            btnExportSummary.TabIndex = 3;
             btnExportSummary.Values.DropDownArrowColor = Color.Empty;
             btnExportSummary.Values.ExtraText = "Export Summary";
             btnExportSummary.Values.Text = "";
@@ -320,12 +331,28 @@
             btnAddStudent.Cursor = Cursors.Hand;
             btnAddStudent.Location = new Point(873, 107);
             btnAddStudent.Name = "btnAddStudent";
+            btnAddStudent.OverrideDefault.Back.Color1 = Color.FromArgb(39, 165, 153);
+            btnAddStudent.OverrideDefault.Back.Color2 = Color.FromArgb(39, 165, 153);
+            btnAddStudent.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnAddStudent.OverrideDefault.Border.Color1 = Color.FromArgb(39, 165, 153);
+            btnAddStudent.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnAddStudent.OverrideDefault.Border.Rounding = 6F;
+            btnAddStudent.OverrideDefault.Border.Width = 1;
+            btnAddStudent.OverrideFocus.Back.Color1 = Color.FromArgb(39, 165, 153);
+            btnAddStudent.OverrideFocus.Back.Color2 = Color.FromArgb(39, 165, 153);
+            btnAddStudent.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnAddStudent.OverrideFocus.Border.Color1 = Color.FromArgb(39, 165, 153);
+            btnAddStudent.OverrideFocus.Border.Color2 = Color.FromArgb(39, 165, 153);
+            btnAddStudent.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnAddStudent.OverrideFocus.Border.Rounding = 6F;
+            btnAddStudent.OverrideFocus.Border.Width = 1;
             btnAddStudent.Size = new Size(123, 28);
             btnAddStudent.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
             btnAddStudent.StateCommon.Back.Color2 = Color.FromArgb(39, 165, 153);
             btnAddStudent.StateCommon.Border.Color1 = Color.FromArgb(39, 165, 153);
             btnAddStudent.StateCommon.Border.Color2 = Color.FromArgb(39, 165, 153);
-            btnAddStudent.StateCommon.Border.Rounding = 4F;
+            btnAddStudent.StateCommon.Border.Rounding = 6F;
+            btnAddStudent.StateCommon.Border.Width = 1;
             btnAddStudent.StateCommon.Content.LongText.Color1 = Color.White;
             btnAddStudent.StateCommon.Content.LongText.Font = new Font("Inter", 9.75F);
             btnAddStudent.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
@@ -336,7 +363,7 @@
             btnAddStudent.StateTracking.Back.Color2 = Color.FromArgb(77, 180, 170);
             btnAddStudent.StateTracking.Border.Color1 = Color.FromArgb(77, 180, 170);
             btnAddStudent.StateTracking.Border.Color2 = Color.FromArgb(77, 180, 170);
-            btnAddStudent.TabIndex = 22;
+            btnAddStudent.TabIndex = 0;
             btnAddStudent.Values.DropDownArrowColor = Color.Empty;
             btnAddStudent.Values.ExtraText = "Add Student";
             btnAddStudent.Values.Text = "";
@@ -347,10 +374,20 @@
             btnMarkAllPresent.Cursor = Cursors.Hand;
             btnMarkAllPresent.Location = new Point(109, 248);
             btnMarkAllPresent.Name = "btnMarkAllPresent";
-            btnMarkAllPresent.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnMarkAllPresent.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            btnMarkAllPresent.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnMarkAllPresent.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnMarkAllPresent.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnMarkAllPresent.OverrideDefault.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnMarkAllPresent.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMarkAllPresent.OverrideDefault.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnMarkAllPresent.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMarkAllPresent.OverrideDefault.Border.Rounding = 6F;
+            btnMarkAllPresent.OverrideDefault.Border.Width = 1;
+            btnMarkAllPresent.OverrideFocus.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnMarkAllPresent.OverrideFocus.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnMarkAllPresent.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMarkAllPresent.OverrideFocus.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnMarkAllPresent.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMarkAllPresent.OverrideFocus.Border.Rounding = 6F;
+            btnMarkAllPresent.OverrideFocus.Border.Width = 1;
             btnMarkAllPresent.Size = new Size(145, 31);
             btnMarkAllPresent.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnMarkAllPresent.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
@@ -368,7 +405,7 @@
             btnMarkAllPresent.StateTracking.Border.Color2 = Color.FromArgb(224, 230, 235);
             btnMarkAllPresent.StateTracking.Content.LongText.Color1 = Color.FromArgb(39, 165, 173);
             btnMarkAllPresent.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            btnMarkAllPresent.TabIndex = 23;
+            btnMarkAllPresent.TabIndex = 1;
             btnMarkAllPresent.Values.DropDownArrowColor = Color.Empty;
             btnMarkAllPresent.Values.ExtraText = "Mark All Present";
             btnMarkAllPresent.Values.Text = "";
@@ -379,10 +416,20 @@
             btnReset.Cursor = Cursors.Hand;
             btnReset.Location = new Point(273, 248);
             btnReset.Name = "btnReset";
-            btnReset.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnReset.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            btnReset.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnReset.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnReset.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnReset.OverrideDefault.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnReset.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnReset.OverrideDefault.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnReset.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnReset.OverrideDefault.Border.Rounding = 6F;
+            btnReset.OverrideDefault.Border.Width = 1;
+            btnReset.OverrideFocus.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnReset.OverrideFocus.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnReset.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnReset.OverrideFocus.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnReset.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnReset.OverrideFocus.Border.Rounding = 6F;
+            btnReset.OverrideFocus.Border.Width = 1;
             btnReset.Size = new Size(121, 31);
             btnReset.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnReset.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
@@ -400,7 +447,7 @@
             btnReset.StateTracking.Border.Color2 = Color.FromArgb(224, 230, 235);
             btnReset.StateTracking.Content.LongText.Color1 = Color.FromArgb(39, 165, 173);
             btnReset.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            btnReset.TabIndex = 24;
+            btnReset.TabIndex = 2;
             btnReset.Values.DropDownArrowColor = Color.Empty;
             btnReset.Values.ExtraText = "Reset Day";
             btnReset.Values.Text = "";
@@ -441,7 +488,7 @@
             // panelAbsentBorder
             // 
             panelAbsentBorder.BackColor = Color.FromArgb(242, 196, 197);
-            panelAbsentBorder.Location = new Point(653, 311);
+            panelAbsentBorder.Location = new Point(835, 311);
             panelAbsentBorder.Name = "panelAbsentBorder";
             panelAbsentBorder.Size = new Size(162, 124);
             panelAbsentBorder.TabIndex = 28;
@@ -449,18 +496,107 @@
             // panelExcusedBorder
             // 
             panelExcusedBorder.BackColor = Color.FromArgb(183, 224, 244);
-            panelExcusedBorder.Location = new Point(835, 311);
+            panelExcusedBorder.Location = new Point(653, 311);
             panelExcusedBorder.Name = "panelExcusedBorder";
             panelExcusedBorder.Size = new Size(162, 124);
             panelExcusedBorder.TabIndex = 29;
             // 
-            // UC_Attendance
+            // btnSortSurname
+            // 
+            btnSortSurname.AutoSize = true;
+            btnSortSurname.Cursor = Cursors.Hand;
+            btnSortSurname.Location = new Point(278, 478);
+            btnSortSurname.Name = "btnSortSurname";
+            btnSortSurname.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnSortSurname.OverrideDefault.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnSortSurname.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnSortSurname.OverrideDefault.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnSortSurname.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnSortSurname.OverrideDefault.Border.Rounding = 6F;
+            btnSortSurname.OverrideDefault.Border.Width = 1;
+            btnSortSurname.OverrideFocus.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnSortSurname.OverrideFocus.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnSortSurname.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnSortSurname.OverrideFocus.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnSortSurname.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnSortSurname.OverrideFocus.Border.Rounding = 6F;
+            btnSortSurname.OverrideFocus.Border.Width = 1;
+            btnSortSurname.Size = new Size(31, 31);
+            btnSortSurname.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnSortSurname.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnSortSurname.StateCommon.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnSortSurname.StateCommon.Border.Rounding = 6F;
+            btnSortSurname.StateCommon.Border.Width = 1;
+            btnSortSurname.StateCommon.Content.LongText.Font = new Font("Inter", 9.75F);
+            btnSortSurname.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnSortSurname.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
+            btnSortSurname.StateCommon.Content.ShortText.Font = new Font("Inter", 9F);
+            btnSortSurname.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnSortSurname.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnSortSurname.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnSortSurname.StateTracking.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnSortSurname.StateTracking.Border.Color2 = Color.FromArgb(224, 230, 235);
+            btnSortSurname.StateTracking.Content.LongText.Color1 = Color.FromArgb(39, 165, 173);
+            btnSortSurname.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
+            btnSortSurname.TabIndex = 7;
+            toolTip1.SetToolTip(btnSortSurname, "Sort by Surname");
+            btnSortSurname.Values.DropDownArrowColor = Color.Empty;
+            btnSortSurname.Values.Text = "AZ";
+            btnSortSurname.Click += btnSortSurname_Click;
+            // 
+            // btnSortFirstname
+            // 
+            btnSortFirstname.AutoSize = true;
+            btnSortFirstname.Cursor = Cursors.Hand;
+            btnSortFirstname.Location = new Point(315, 478);
+            btnSortFirstname.Name = "btnSortFirstname";
+            btnSortFirstname.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnSortFirstname.OverrideDefault.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnSortFirstname.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnSortFirstname.OverrideDefault.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnSortFirstname.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnSortFirstname.OverrideDefault.Border.Rounding = 6F;
+            btnSortFirstname.OverrideDefault.Border.Width = 1;
+            btnSortFirstname.OverrideFocus.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnSortFirstname.OverrideFocus.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnSortFirstname.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnSortFirstname.OverrideFocus.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnSortFirstname.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnSortFirstname.OverrideFocus.Border.Rounding = 6F;
+            btnSortFirstname.OverrideFocus.Border.Width = 1;
+            btnSortFirstname.Size = new Size(31, 31);
+            btnSortFirstname.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnSortFirstname.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnSortFirstname.StateCommon.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnSortFirstname.StateCommon.Border.Rounding = 6F;
+            btnSortFirstname.StateCommon.Border.Width = 1;
+            btnSortFirstname.StateCommon.Content.LongText.Font = new Font("Inter", 9.75F);
+            btnSortFirstname.StateCommon.Content.LongText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnSortFirstname.StateCommon.Content.Padding = new Padding(3, -1, -1, -1);
+            btnSortFirstname.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
+            btnSortFirstname.StateCommon.Content.ShortText.Font = new Font("Inter", 9F);
+            btnSortFirstname.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            btnSortFirstname.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnSortFirstname.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnSortFirstname.StateTracking.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnSortFirstname.StateTracking.Border.Color2 = Color.FromArgb(224, 230, 235);
+            btnSortFirstname.StateTracking.Content.LongText.Color1 = Color.FromArgb(39, 165, 173);
+            btnSortFirstname.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
+            btnSortFirstname.TabIndex = 8;
+            toolTip1.SetToolTip(btnSortFirstname, "Sort by First Name");
+            btnSortFirstname.Values.DropDownArrowColor = Color.Empty;
+            btnSortFirstname.Values.Text = "az";
+            btnSortFirstname.Click += btnSortFirstname_Click;
+            // 
+            // UCAttendance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.FromArgb(249, 250, 251);
-            Controls.Add(kryptonButton1);
+            Controls.Add(btnSortFirstname);
+            Controls.Add(btnSortSurname);
+            Controls.Add(btnBackToClass);
             Controls.Add(pnlExcused);
             Controls.Add(panelExcusedBorder);
             Controls.Add(pnlAbsent);
@@ -482,7 +618,7 @@
             Controls.Add(panelCalendar);
             Controls.Add(panelCalendarBorder);
             Controls.Add(lblSectionName);
-            Name = "UC_Attendance";
+            Name = "UCAttendance";
             Size = new Size(1150, 761);
             Load += UC_Attendance_Load;
             panelCalendar.ResumeLayout(false);
@@ -504,18 +640,21 @@
         private UCSummaryCard pnlExcused;
         private Krypton.Toolkit.KryptonCustomPaletteBase kryptonCustomPaletteBase1;
         private Krypton.Toolkit.KryptonButton lblDateNow;
-        private Krypton.Toolkit.KryptonButton kryptonButton6;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private Krypton.Toolkit.KryptonButton btnPreviousDate;
+        private Krypton.Toolkit.KryptonButton btnBackToClass;
         private Krypton.Toolkit.KryptonButton btnMarkAllPresent;
         private Krypton.Toolkit.KryptonButton btnExportSummary;
         private Krypton.Toolkit.KryptonButton btnAddStudent;
         private Krypton.Toolkit.KryptonButton btnReset;
-        private Krypton.Toolkit.KryptonButton kryptonButton2;
+        private Krypton.Toolkit.KryptonButton btnNextDate;
         private Panel panelCalendarBorder;
         private Panel panelTotalBorder;
         private Panel panelPresentBorder;
         private Panel panelLateBorder;
         private Panel panelAbsentBorder;
         private Panel panelExcusedBorder;
+        private Krypton.Toolkit.KryptonButton btnSortSurname;
+        private ToolTip toolTip1;
+        private Krypton.Toolkit.KryptonButton btnSortFirstname;
     }
 }

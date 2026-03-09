@@ -1,7 +1,6 @@
 ﻿using AE.Application.DTO;
 using AE.Domain.Models;
 using AE.Infrastructure.Data;
-using Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +12,7 @@ using System.Windows.Forms;
 
 namespace AE.Application
 {
-    public partial class FormAttendanceSummary : KryptonForm
+    public partial class FormAttendanceSummary : Form
     {
         private readonly int _sectionId;
         private List<StudentSummaryDTO> _summaryData;
@@ -22,6 +21,7 @@ namespace AE.Application
         {
             InitializeComponent();
             _sectionId = sectionId;
+            UIHelper.RoundControl(pnlContent, 30);
 
             gridSummary.AutoGenerateColumns = false;
 
@@ -45,8 +45,10 @@ namespace AE.Application
             using (var db = new AppDbContext())
             {
                 var students = db.Students
-                                 .Where(s => s.SectionId == _sectionId)
-                                 .ToList();
+                         .Where(s => s.SectionId == _sectionId)
+                         .OrderBy(s => s.LastName)
+                         .ThenBy(s => s.FirstName)
+                         .ToList();
 
                 var attendance = db.AttendanceRecords
                                    .Where(a => a.SectionId == _sectionId)
@@ -63,20 +65,26 @@ namespace AE.Application
                     int a = records.Count(r => r.Status == AttendanceStatus.Absent);
                     int e = records.Count(r => r.Status == AttendanceStatus.Excused);
 
-                    double points = p + e + (l * 0.5);
-                    double percentage = total > 0 ? (points / total) * 100 : 0;
+                    double points = (p * 1.0) + (e * 1.0) + (l * 0.5) + (a * 0.0);
+                    double finalPercentage = total > 0 ? (points / total) * 100.0 : 0;
+
+                    string middleInitial = string.IsNullOrWhiteSpace(student.MiddleName)
+                                ? ""
+                                : $" {student.MiddleName.Substring(0, 1).ToUpper()}.";
+                    string fullName = $"{student.LastName}, {student.FirstName}{middleInitial}";
 
                     summaryList.Add(new StudentSummaryDTO
                     {
+                        StudentId = student.Id,
                         RollNo = counter.ToString("D3"),
-                        Name = $"{student.LastName}, {student.FirstName}",
+                        Name = fullName,
                         Days = total,
                         Present = p,
                         Late = l,
                         Absent = a,
                         Excused = e,
-                        RawScore = percentage,
-                        Score = $"{Math.Round(percentage)}/100"
+                        RawScore = finalPercentage,
+                        Score = $"{Math.Round(finalPercentage)}/100"
                     });
                     counter++;
                 }
@@ -105,11 +113,11 @@ namespace AE.Application
                     e.CellStyle.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
 
                     if (rowData.RawScore >= 80)
-                        e.CellStyle.ForeColor = Color.FromArgb(34, 197, 94); 
+                        e.CellStyle.ForeColor = Color.FromArgb(34, 197, 94);
                     else if (rowData.RawScore >= 50)
-                        e.CellStyle.ForeColor = Color.FromArgb(245, 158, 11); 
+                        e.CellStyle.ForeColor = Color.FromArgb(245, 158, 11);
                     else
-                        e.CellStyle.ForeColor = Color.FromArgb(239, 68, 68); 
+                        e.CellStyle.ForeColor = Color.FromArgb(239, 68, 68);
                 }
             }
         }
@@ -121,12 +129,12 @@ namespace AE.Application
                 e.PaintBackground(e.CellBounds, true);
 
                 string colName = gridSummary.Columns[e.ColumnIndex].Name;
-                Color textColor = Color.FromArgb(107, 114, 128); 
+                Color textColor = Color.FromArgb(107, 114, 128);
 
-                if (colName == "Present") textColor = Color.FromArgb(34, 197, 94);      
-                else if (colName == "Late") textColor = Color.FromArgb(245, 158, 11);   
-                else if (colName == "Absent") textColor = Color.FromArgb(239, 68, 68);   
-                else if (colName == "Excused") textColor = Color.FromArgb(59, 130, 246); 
+                if (colName == "Present") textColor = Color.FromArgb(34, 197, 94);
+                else if (colName == "Late") textColor = Color.FromArgb(245, 158, 11);
+                else if (colName == "Absent") textColor = Color.FromArgb(239, 68, 68);
+                else if (colName == "Excused") textColor = Color.FromArgb(59, 130, 246);
 
                 TextFormatFlags flags = TextFormatFlags.VerticalCenter | TextFormatFlags.WordBreak;
                 if (colName == "RollNo" || colName == "Name")
@@ -164,13 +172,49 @@ namespace AE.Application
                 {
                     try
                     {
+                        using var db = new AppDbContext();
+
+                        var allSectionAttendance = db.AttendanceRecords
+                            .Where(a => a.SectionId == _sectionId)
+                            .ToList();
+
+                        var uniqueDates = allSectionAttendance
+                            .Select(a => a.Date.Date)
+                            .Distinct()
+                            .OrderBy(d => d)
+                            .ToList();
+
                         var sb = new StringBuilder();
-                        sb.AppendLine("Roll No,Name,Days,Present,Late,Absent,Excused,Score");
+
+                        var headerBuilder = new StringBuilder("Roll No,Name,Days,Present,Late,Absent,Excused,Score");
+                        foreach (var date in uniqueDates)
+                        {
+                            headerBuilder.Append($",{date.ToString("MMM dd yyyy")}");
+                        }
+                        sb.AppendLine(headerBuilder.ToString());
 
                         foreach (var row in _summaryData)
                         {
                             string safeName = $"\"{row.Name}\"";
-                            sb.AppendLine($"{row.RollNo},{safeName},{row.Days},{row.Present},{row.Late},{row.Absent},{row.Excused},{row.Score}");
+                            var rowBuilder = new StringBuilder($"{row.RollNo},{safeName},{row.Days},{row.Present},{row.Late},{row.Absent},{row.Excused},{row.Score}");
+
+                            var studentRecords = allSectionAttendance.Where(a => a.StudentId == row.StudentId).ToList();
+
+                            foreach (var date in uniqueDates)
+                            {
+                                var recordForDate = studentRecords.FirstOrDefault(a => a.Date.Date == date);
+
+                                if (recordForDate != null)
+                                {
+                                    rowBuilder.Append($",{recordForDate.Status.ToString()}");
+                                }
+                                else
+                                {
+                                    rowBuilder.Append(",-");
+                                }
+                            }
+
+                            sb.AppendLine(rowBuilder.ToString());
                         }
 
                         File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
@@ -182,6 +226,11 @@ namespace AE.Application
                     }
                 }
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

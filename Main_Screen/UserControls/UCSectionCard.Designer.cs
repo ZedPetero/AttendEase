@@ -54,7 +54,18 @@
             // 
             btnTakeAttendance.Location = new Point(181, 140);
             btnTakeAttendance.Name = "btnTakeAttendance";
-            btnTakeAttendance.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnTakeAttendance.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnTakeAttendance.OverrideDefault.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnTakeAttendance.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnTakeAttendance.OverrideDefault.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnTakeAttendance.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnTakeAttendance.OverrideDefault.Border.Rounding = 4F;
+            btnTakeAttendance.OverrideFocus.Back.Color1 = Color.FromArgb(249, 250, 251);
+            btnTakeAttendance.OverrideFocus.Back.Color2 = Color.FromArgb(249, 250, 251);
+            btnTakeAttendance.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnTakeAttendance.OverrideFocus.Border.Color1 = Color.FromArgb(224, 230, 235);
+            btnTakeAttendance.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnTakeAttendance.OverrideFocus.Border.Rounding = 4F;
             btnTakeAttendance.Size = new Size(148, 34);
             btnTakeAttendance.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnTakeAttendance.StateCommon.Back.Color2 = Color.FromArgb(249, 250, 251);
@@ -143,7 +154,7 @@
             lblTime.MouseEnter += Card_MouseEnter;
             lblTime.MouseLeave += Card_MouseLeave;
             // 
-            // UC_SectionCard
+            // UCSectionCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -155,7 +166,7 @@
             Controls.Add(btnTakeAttendance);
             Controls.Add(lblSectionName);
             Margin = new Padding(3, 10, 3, 10);
-            Name = "UC_SectionCard";
+            Name = "UCSectionCard";
             Size = new Size(344, 190);
             MouseEnter += Card_MouseEnter;
             MouseLeave += Card_MouseLeave;

@@ -41,7 +41,10 @@
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             btnDownloadCSV = new Krypton.Toolkit.KryptonButton();
+            btnClose = new Krypton.Toolkit.KryptonButton();
+            pnlContent = new Panel();
             ((System.ComponentModel.ISupportInitialize)gridSummary).BeginInit();
+            pnlContent.SuspendLayout();
             SuspendLayout();
             // 
             // gridSummary
@@ -143,8 +146,14 @@
             // 
             // btnDownloadCSV
             // 
-            btnDownloadCSV.Location = new Point(645, 29);
+            btnDownloadCSV.Location = new Point(645, 69);
             btnDownloadCSV.Name = "btnDownloadCSV";
+            btnDownloadCSV.OverrideDefault.Back.Color1 = Color.Teal;
+            btnDownloadCSV.OverrideDefault.Back.Color2 = Color.Teal;
+            btnDownloadCSV.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnDownloadCSV.OverrideDefault.Border.Color1 = Color.Teal;
+            btnDownloadCSV.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnDownloadCSV.OverrideDefault.Border.Rounding = 5F;
             btnDownloadCSV.Size = new Size(122, 34);
             btnDownloadCSV.StateCommon.Back.Color1 = Color.Teal;
             btnDownloadCSV.StateCommon.Back.Color2 = Color.Teal;
@@ -160,26 +169,60 @@
             btnDownloadCSV.Values.Text = "";
             btnDownloadCSV.Click += btnDownloadCSV_Click;
             // 
-            // Form_AttendanceSummary
+            // btnClose
+            // 
+            btnClose.Cursor = Cursors.Hand;
+            btnClose.Location = new Point(757, 0);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(44, 44);
+            btnClose.StateCommon.Back.Color1 = Color.White;
+            btnClose.StateCommon.Back.Color2 = Color.White;
+            btnClose.StateCommon.Border.Color1 = Color.White;
+            btnClose.StateCommon.Border.Color2 = Color.White;
+            btnClose.StateCommon.Border.Rounding = 20F;
+            btnClose.StateCommon.Content.Padding = new Padding(0, 0, 1, 6);
+            btnClose.StateCommon.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            btnClose.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClose.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnClose.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnClose.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
+            btnClose.TabIndex = 26;
+            btnClose.TabStop = false;
+            btnClose.Values.DropDownArrowColor = Color.Empty;
+            btnClose.Values.Text = "";
+            btnClose.Click += btnClose_Click;
+            // 
+            // pnlContent
+            // 
+            pnlContent.BackColor = Color.White;
+            pnlContent.Controls.Add(gridSummary);
+            pnlContent.Controls.Add(kryptonLabel2);
+            pnlContent.Controls.Add(btnDownloadCSV);
+            pnlContent.Controls.Add(kryptonLabel1);
+            pnlContent.Controls.Add(btnClose);
+            pnlContent.Dock = DockStyle.Fill;
+            pnlContent.Location = new Point(0, 0);
+            pnlContent.Name = "pnlContent";
+            pnlContent.Size = new Size(800, 450);
+            pnlContent.TabIndex = 28;
+            // 
+            // FormAttendanceSummary
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(kryptonLabel1);
-            Controls.Add(btnDownloadCSV);
-            Controls.Add(kryptonLabel2);
-            Controls.Add(gridSummary);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            PaletteMode = Krypton.Toolkit.PaletteMode.Office2013White;
+            ControlBox = false;
+            Controls.Add(pnlContent);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            MinimizeBox = false;
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            StateCommon.Back.Color1 = Color.White;
-            StateCommon.Back.Color2 = Color.White;
-            StateCommon.Border.Color1 = Color.White;
             Load += Form_AttendanceSummary_Load;
             ((System.ComponentModel.ISupportInitialize)gridSummary).EndInit();
+            pnlContent.ResumeLayout(false);
+            pnlContent.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -197,5 +240,7 @@
         private DataGridViewTextBoxColumn Excused;
         private DataGridViewTextBoxColumn Score;
         private DataGridViewTextBoxColumn RawScore;
+        private Krypton.Toolkit.KryptonButton btnClose;
+        private Panel pnlContent;
     }
 }
