@@ -55,5 +55,10 @@ internal static class Program
             var mainForm = new MainScreenForm();
             Application.Run(mainForm);
         }
+
+        //using (var userLogin = new UserLoginForm())
+        //{
+        //    userLogin.ShowDialog();
+        //}
     }
 }
