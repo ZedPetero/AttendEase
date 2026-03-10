@@ -24,5 +24,10 @@ namespace AE.Application
         {
             UIHelper.RoundControl(kryptonLabel2, 20);
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
