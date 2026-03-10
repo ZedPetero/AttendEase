@@ -1,7 +1,5 @@
-
 using AE.Domain.Repositories.IRepositories;
 using AE.Infrastructure.Data;
-using Krypton.Toolkit;
 using System.Drawing.Drawing2D;
 namespace AE.Application
 {
