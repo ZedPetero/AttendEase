@@ -14,5 +14,22 @@ namespace AE.Application
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                
+            }
+            else
+            {
+                
+            }
+        }
     }
 }

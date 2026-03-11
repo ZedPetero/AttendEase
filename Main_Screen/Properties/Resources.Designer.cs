@@ -103,6 +103,16 @@ namespace AE.Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap green_circle {
+            get {
+                object obj = ResourceManager.GetObject("green-circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap homepageimg {
             get {
                 object obj = ResourceManager.GetObject("homepageimg", resourceCulture);
@@ -243,6 +253,16 @@ namespace AE.Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap red_circle {
+            get {
+                object obj = ResourceManager.GetObject("red-circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap reject {
             get {
                 object obj = ResourceManager.GetObject("reject", resourceCulture);
@@ -326,6 +346,16 @@ namespace AE.Application.Properties {
         internal static System.Drawing.Bitmap trashbin_red {
             get {
                 object obj = ResourceManager.GetObject("trashbin red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yellow_circle {
+            get {
+                object obj = ResourceManager.GetObject("yellow-circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

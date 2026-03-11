@@ -121,7 +121,7 @@
             btnClose.TabStop = false;
             btnClose.Values.DropDownArrowColor = Color.Empty;
             btnClose.Values.Text = "";
-            btnClose.Click += this.btnClose_Click;
+            btnClose.Click += btnClose_Click;
             // 
             // btnSave
             // 
@@ -177,8 +177,9 @@
             btnCancel.Values.Text = "Cancel";
             btnCancel.Click += btnClose_Click;
             // 
-            // Form_AddStudent
+            // FormAddStudent
             // 
+            AcceptButton = btnSave;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
@@ -197,7 +198,7 @@
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "Form_AddStudent";
+            Name = "FormAddStudent";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Student";
             ResumeLayout(false);
