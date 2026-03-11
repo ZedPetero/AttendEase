@@ -74,6 +74,7 @@
             gridSummary.StateCommon.HeaderColumn.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Bottom;
             gridSummary.StateCommon.HeaderColumn.Content.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gridSummary.TabIndex = 0;
+            gridSummary.CellContentClick += gridSummary_CellContentClick;
             gridSummary.CellFormatting += gridSummary_CellFormatting;
             // 
             // RollNo
@@ -216,6 +217,7 @@
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
+            Name = "FormAttendanceSummary";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Load += Form_AttendanceSummary_Load;

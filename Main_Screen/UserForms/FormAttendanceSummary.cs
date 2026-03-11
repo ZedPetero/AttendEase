@@ -232,5 +232,10 @@ namespace AE.Application
         {
             Close();
         }
+
+        private void gridSummary_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
