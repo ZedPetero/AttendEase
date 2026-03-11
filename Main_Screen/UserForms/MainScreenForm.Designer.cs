@@ -75,11 +75,11 @@ namespace AE.Application
             // btnHome
             // 
             btnHome.LocalCustomPalette = ButtonPalette;
-            btnHome.Location = new Point(4, 5);
-            btnHome.Margin = new Padding(0, 5, 0, 5);
+            btnHome.Location = new Point(5, 7);
+            btnHome.Margin = new Padding(0, 7, 0, 7);
             btnHome.Name = "btnHome";
             btnHome.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnHome.Size = new Size(44, 40);
+            btnHome.Size = new Size(50, 53);
             btnHome.StateTracking.Back.Color1 = Color.FromArgb(240, 247, 246);
             btnHome.TabIndex = 1;
             btnHome.Values.DropDownArrowColor = Color.Empty;
@@ -167,11 +167,11 @@ namespace AE.Application
             // btnClasses
             // 
             btnClasses.LocalCustomPalette = ButtonPalette;
-            btnClasses.Location = new Point(4, 55);
-            btnClasses.Margin = new Padding(0, 5, 0, 5);
+            btnClasses.Location = new Point(5, 74);
+            btnClasses.Margin = new Padding(0, 7, 0, 7);
             btnClasses.Name = "btnClasses";
             btnClasses.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnClasses.Size = new Size(44, 40);
+            btnClasses.Size = new Size(50, 53);
             btnClasses.TabIndex = 2;
             btnClasses.Values.DropDownArrowColor = Color.Empty;
             btnClasses.Values.ExtraText = "Classes";
@@ -181,11 +181,11 @@ namespace AE.Application
             // btnRecords
             // 
             btnRecords.LocalCustomPalette = ButtonPalette;
-            btnRecords.Location = new Point(4, 105);
-            btnRecords.Margin = new Padding(0, 5, 0, 5);
+            btnRecords.Location = new Point(5, 141);
+            btnRecords.Margin = new Padding(0, 7, 0, 7);
             btnRecords.Name = "btnRecords";
             btnRecords.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnRecords.Size = new Size(44, 40);
+            btnRecords.Size = new Size(50, 53);
             btnRecords.TabIndex = 3;
             btnRecords.Values.DropDownArrowColor = Color.Empty;
             btnRecords.Values.ExtraText = "Records";
@@ -195,11 +195,11 @@ namespace AE.Application
             // btnTeacher
             // 
             btnTeacher.LocalCustomPalette = ButtonPalette;
-            btnTeacher.Location = new Point(4, 155);
-            btnTeacher.Margin = new Padding(0, 5, 0, 5);
+            btnTeacher.Location = new Point(5, 208);
+            btnTeacher.Margin = new Padding(0, 7, 0, 7);
             btnTeacher.Name = "btnTeacher";
             btnTeacher.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnTeacher.Size = new Size(44, 40);
+            btnTeacher.Size = new Size(50, 53);
             btnTeacher.TabIndex = 4;
             btnTeacher.Values.DropDownArrowColor = Color.Empty;
             btnTeacher.Values.ExtraText = "Teacher";
@@ -209,11 +209,11 @@ namespace AE.Application
             // btnSettings
             // 
             btnSettings.LocalCustomPalette = ButtonPalette;
-            btnSettings.Location = new Point(4, 205);
-            btnSettings.Margin = new Padding(0, 5, 0, 5);
+            btnSettings.Location = new Point(5, 275);
+            btnSettings.Margin = new Padding(0, 7, 0, 7);
             btnSettings.Name = "btnSettings";
             btnSettings.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnSettings.Size = new Size(44, 40);
+            btnSettings.Size = new Size(50, 53);
             btnSettings.TabIndex = 5;
             btnSettings.Values.DropDownArrowColor = Color.Empty;
             btnSettings.Values.ExtraText = "Settings";
@@ -241,12 +241,12 @@ namespace AE.Application
             // 
             // pnlMainContent
             // 
+            pnlMainContent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlMainContent.BackColor = Color.White;
-            pnlMainContent.Dock = DockStyle.Fill;
-            pnlMainContent.Location = new Point(55, 60);
+            pnlMainContent.Location = new Point(63, 80);
             pnlMainContent.Margin = new Padding(0);
             pnlMainContent.Name = "pnlMainContent";
-            pnlMainContent.Size = new Size(1145, 660);
+            pnlMainContent.Size = new Size(1309, 880);
             pnlMainContent.TabIndex = 3;
             pnlMainContent.Paint += pnlMainContent_Paint;
             // 
@@ -256,9 +256,10 @@ namespace AE.Application
             sidebar.Controls.Add(btnLogout);
             sidebar.Controls.Add(kryptonBorderEdge2);
             sidebar.Dock = DockStyle.Left;
-            sidebar.Location = new Point(0, 60);
+            sidebar.Location = new Point(0, 80);
+            sidebar.Margin = new Padding(3, 4, 3, 4);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(55, 660);
+            sidebar.Size = new Size(63, 880);
             sidebar.StateCommon.Color1 = Color.FromArgb(250, 250, 250);
             sidebar.StateCommon.Color2 = Color.FromArgb(250, 250, 250);
             sidebar.StateCommon.Draw = Krypton.Toolkit.InheritBool.True;
@@ -275,20 +276,22 @@ namespace AE.Application
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel2.Location = new Point(0, 0);
+            flowLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Padding = new Padding(4, 0, 0, 0);
-            flowLayoutPanel2.Size = new Size(53, 600);
+            flowLayoutPanel2.Padding = new Padding(5, 0, 0, 0);
+            flowLayoutPanel2.Size = new Size(61, 800);
             flowLayoutPanel2.TabIndex = 2;
             // 
             // btnLogout
             // 
             btnLogout.Dock = DockStyle.Bottom;
             btnLogout.LocalCustomPalette = ButtonPalette;
-            btnLogout.Location = new Point(0, 600);
+            btnLogout.Location = new Point(0, 800);
+            btnLogout.Margin = new Padding(3, 4, 3, 4);
             btnLogout.Name = "btnLogout";
             btnLogout.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnLogout.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnLogout.Size = new Size(53, 60);
+            btnLogout.Size = new Size(61, 80);
             btnLogout.StateCommon.Back.Color1 = Color.Transparent;
             btnLogout.StateCommon.Back.Color2 = Color.Transparent;
             btnLogout.StateCommon.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -317,9 +320,10 @@ namespace AE.Application
             // 
             kryptonBorderEdge2.AutoSize = false;
             kryptonBorderEdge2.Dock = DockStyle.Right;
-            kryptonBorderEdge2.Location = new Point(53, 0);
+            kryptonBorderEdge2.Location = new Point(61, 0);
+            kryptonBorderEdge2.Margin = new Padding(3, 4, 3, 4);
             kryptonBorderEdge2.Name = "kryptonBorderEdge2";
-            kryptonBorderEdge2.Size = new Size(2, 660);
+            kryptonBorderEdge2.Size = new Size(2, 880);
             kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
             kryptonBorderEdge2.StateCommon.Width = 2;
             kryptonBorderEdge2.Text = "kryptonBorderEdge2";
@@ -334,17 +338,19 @@ namespace AE.Application
             kryptonPanel1.Controls.Add(btnMenu);
             kryptonPanel1.Dock = DockStyle.Top;
             kryptonPanel1.Location = new Point(0, 0);
+            kryptonPanel1.Margin = new Padding(3, 4, 3, 4);
             kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new Size(1200, 60);
+            kryptonPanel1.Size = new Size(1371, 80);
             kryptonPanel1.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
             kryptonPanel1.TabIndex = 0;
             // 
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnClose.Location = new Point(1152, 11);
+            btnClose.Location = new Point(1317, 15);
+            btnClose.Margin = new Padding(3, 4, 3, 4);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(36, 36);
+            btnClose.Size = new Size(41, 48);
             btnClose.StateCommon.Back.Color1 = Color.FromArgb(223, 58, 58);
             btnClose.StateCommon.Back.Color2 = Color.FromArgb(223, 58, 58);
             btnClose.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
@@ -357,9 +363,10 @@ namespace AE.Application
             // btnMaximize
             // 
             btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnMaximize.Location = new Point(1110, 11);
+            btnMaximize.Location = new Point(1269, 15);
+            btnMaximize.Margin = new Padding(3, 4, 3, 4);
             btnMaximize.Name = "btnMaximize";
-            btnMaximize.Size = new Size(36, 36);
+            btnMaximize.Size = new Size(41, 48);
             btnMaximize.StateCommon.Back.Color1 = Color.FromArgb(245, 159, 10);
             btnMaximize.StateCommon.Back.Color2 = Color.FromArgb(245, 159, 10);
             btnMaximize.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
@@ -372,9 +379,10 @@ namespace AE.Application
             // btnMinimize
             // 
             btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnMinimize.Location = new Point(1068, 11);
+            btnMinimize.Location = new Point(1221, 15);
+            btnMinimize.Margin = new Padding(3, 4, 3, 4);
             btnMinimize.Name = "btnMinimize";
-            btnMinimize.Size = new Size(36, 36);
+            btnMinimize.Size = new Size(41, 48);
             btnMinimize.StateCommon.Back.Color1 = Color.FromArgb(34, 195, 93);
             btnMinimize.StateCommon.Back.Color2 = Color.FromArgb(34, 195, 93);
             btnMinimize.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
@@ -388,9 +396,10 @@ namespace AE.Application
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = Properties.Resources.Logo_Name_only_removedBg;
-            pictureBox1.Location = new Point(53, 1);
+            pictureBox1.Location = new Point(61, 1);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(158, 56);
+            pictureBox1.Size = new Size(181, 75);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
@@ -398,9 +407,10 @@ namespace AE.Application
             // kryptonBorderEdge1
             // 
             kryptonBorderEdge1.Dock = DockStyle.Bottom;
-            kryptonBorderEdge1.Location = new Point(0, 58);
+            kryptonBorderEdge1.Location = new Point(0, 78);
+            kryptonBorderEdge1.Margin = new Padding(3, 4, 3, 4);
             kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            kryptonBorderEdge1.Size = new Size(1200, 2);
+            kryptonBorderEdge1.Size = new Size(1371, 2);
             kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
             kryptonBorderEdge1.StateCommon.Width = 2;
             kryptonBorderEdge1.Text = "kryptonBorderEdge1";
@@ -408,7 +418,8 @@ namespace AE.Application
             // btnMenu
             // 
             btnMenu.LocalCustomPalette = ButtonPalette;
-            btnMenu.Location = new Point(4, 9);
+            btnMenu.Location = new Point(5, 12);
+            btnMenu.Margin = new Padding(3, 4, 3, 4);
             btnMenu.Name = "btnMenu";
             btnMenu.OverrideDefault.Border.Color1 = Color.Transparent;
             btnMenu.OverrideDefault.Border.Color2 = Color.Transparent;
@@ -425,7 +436,7 @@ namespace AE.Application
             btnMenu.OverrideFocus.Content.Draw = Krypton.Toolkit.InheritBool.True;
             btnMenu.OverrideFocus.Content.Padding = new Padding(0);
             btnMenu.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnMenu.Size = new Size(47, 42);
+            btnMenu.Size = new Size(54, 56);
             btnMenu.StateCommon.Content.Padding = new Padding(0, 3, 3, 3);
             btnMenu.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnMenu.TabIndex = 4;
@@ -435,14 +446,15 @@ namespace AE.Application
             // 
             // MainScreenForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 720);
+            ClientSize = new Size(1371, 960);
             ControlBox = false;
             Controls.Add(pnlMainContent);
             Controls.Add(sidebar);
             Controls.Add(kryptonPanel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "MainScreenForm";

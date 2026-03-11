@@ -32,29 +32,29 @@ internal static class Program
 
         var serviceProvider = services.BuildServiceProvider();
 
-        //using (var scope = serviceProvider.CreateScope())
-        //{
-        //    var dbContext = scope.ServiceProvider.GetService(typeof(AppDbContext)) as AppDbContext;
-        //    dbContext.Database.Migrate();
-        //}
+        using (var scope = serviceProvider.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetService(typeof(AppDbContext)) as AppDbContext;
+            dbContext.Database.Migrate();
+        }
 
-        //using (var splash = new SplashScreenForm())
-        //{
-        //    splash.ShowDialog();
-        //}
+        using (var splash = new SplashScreenForm())
+        {
+            splash.ShowDialog();
+        }
 
-        //while (true)
-        //{
-        //    var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
-        //    using (var login = new LoginScreenForm(userManager))
-        //    {
-        //        if (login.ShowDialog() != DialogResult.OK)
-        //            return;
-        //    }
+        while (true)
+        {
+            var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
+            using (var login = new LoginScreenForm(userManager))
+            {
+                if (login.ShowDialog() != DialogResult.OK)
+                    return;
+            }
 
-        //    var mainForm = new MainScreenForm();
-        //    Application.Run(mainForm);
-        //}
+            var mainForm = new MainScreenForm();
+            Application.Run(mainForm);
+        }
 
         using (var userLogin = new LoginFormUser())
         {
