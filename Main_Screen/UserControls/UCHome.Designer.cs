@@ -103,7 +103,7 @@
             label6 = new Label();
             label7 = new Label();
             btnViewClasses = new Krypton.Toolkit.KryptonButton();
-            kryptonLabel17 = new Krypton.Toolkit.KryptonLabel();
+            panel3 = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel4).BeginInit();
@@ -122,11 +122,12 @@
             kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel5).BeginInit();
             kryptonPanel5.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(241, 247, 247);
             panel1.Controls.Add(btnGetStarted);
             panel1.Controls.Add(label4);
@@ -136,7 +137,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 3, 3, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1320, 460);
+            panel1.Size = new Size(1145, 460);
             panel1.TabIndex = 0;
             // 
             // btnGetStarted
@@ -145,7 +146,7 @@
             btnGetStarted.AutoSize = true;
             btnGetStarted.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             btnGetStarted.Cursor = Cursors.Hand;
-            btnGetStarted.Location = new Point(545, 335);
+            btnGetStarted.Location = new Point(457, 335);
             btnGetStarted.Name = "btnGetStarted";
             btnGetStarted.OverrideDefault.Back.Color1 = Color.FromArgb(40, 164, 153);
             btnGetStarted.OverrideDefault.Back.Color2 = Color.FromArgb(40, 164, 153);
@@ -187,7 +188,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Inter", 18F);
             label4.ForeColor = Color.FromArgb(107, 124, 143);
-            label4.Location = new Point(266, 262);
+            label4.Location = new Point(178, 262);
             label4.Name = "label4";
             label4.Size = new Size(789, 35);
             label4.TabIndex = 3;
@@ -200,7 +201,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Inter", 18F);
             label3.ForeColor = Color.FromArgb(107, 124, 143);
-            label3.Location = new Point(229, 226);
+            label3.Location = new Point(141, 226);
             label3.Name = "label3";
             label3.Size = new Size(862, 35);
             label3.TabIndex = 2;
@@ -212,7 +213,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.Font = new Font("Inter", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(40, 164, 153);
-            label2.Location = new Point(283, 121);
+            label2.Location = new Point(195, 121);
             label2.Name = "label2";
             label2.Size = new Size(754, 86);
             label2.TabIndex = 1;
@@ -224,7 +225,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.Font = new Font("Inter", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(28, 35, 46);
-            label1.Location = new Point(411, 36);
+            label1.Location = new Point(323, 36);
             label1.Name = "label1";
             label1.Size = new Size(499, 86);
             label1.TabIndex = 0;
@@ -241,7 +242,7 @@
             // 
             // panel2
             // 
-            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.White;
             panel2.Controls.Add(kryptonPanel4);
             panel2.Controls.Add(kryptonPanel8);
@@ -255,11 +256,13 @@
             panel2.Location = new Point(0, 460);
             panel2.Margin = new Padding(3, 0, 3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1320, 355);
+            panel2.Size = new Size(1145, 489);
             panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
             // 
             // kryptonPanel4
             // 
+            kryptonPanel4.Anchor = AnchorStyles.None;
             kryptonPanel4.Controls.Add(kryptonLabel9);
             kryptonPanel4.Controls.Add(kryptonLabel10);
             kryptonPanel4.Controls.Add(kryptonLabel11);
@@ -269,7 +272,7 @@
             kryptonPanel4.Controls.Add(kryptonBorderEdge11);
             kryptonPanel4.Controls.Add(kryptonLabel12);
             kryptonPanel4.Controls.Add(kryptonButton3);
-            kryptonPanel4.Location = new Point(949, 100);
+            kryptonPanel4.Location = new Point(861, 167);
             kryptonPanel4.Name = "kryptonPanel4";
             kryptonPanel4.Size = new Size(248, 211);
             kryptonPanel4.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
@@ -293,7 +296,7 @@
             // 
             kryptonLabel10.Location = new Point(11, 147);
             kryptonLabel10.Name = "kryptonLabel10";
-            kryptonLabel10.Size = new Size(292, 29);
+            kryptonLabel10.Size = new Size(235, 29);
             kryptonLabel10.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
             kryptonLabel10.StateCommon.ShortText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel10.TabIndex = 12;
@@ -305,7 +308,7 @@
             // 
             kryptonLabel11.Location = new Point(11, 122);
             kryptonLabel11.Name = "kryptonLabel11";
-            kryptonLabel11.Size = new Size(280, 31);
+            kryptonLabel11.Size = new Size(229, 31);
             kryptonLabel11.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
             kryptonLabel11.StateCommon.ShortText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel11.TabIndex = 11;
@@ -391,11 +394,12 @@
             // 
             // kryptonPanel8
             // 
+            kryptonPanel8.Anchor = AnchorStyles.None;
             kryptonPanel8.Controls.Add(kryptonBorderEdge28);
             kryptonPanel8.Controls.Add(kryptonBorderEdge29);
             kryptonPanel8.Controls.Add(kryptonBorderEdge30);
             kryptonPanel8.Controls.Add(kryptonBorderEdge31);
-            kryptonPanel8.Location = new Point(949, 100);
+            kryptonPanel8.Location = new Point(861, 167);
             kryptonPanel8.Name = "kryptonPanel8";
             kryptonPanel8.Size = new Size(248, 211);
             kryptonPanel8.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
@@ -447,6 +451,7 @@
             // 
             // kryptonPanel3
             // 
+            kryptonPanel3.Anchor = AnchorStyles.None;
             kryptonPanel3.Controls.Add(kryptonLabel13);
             kryptonPanel3.Controls.Add(kryptonLabel14);
             kryptonPanel3.Controls.Add(kryptonLabel15);
@@ -456,7 +461,7 @@
             kryptonPanel3.Controls.Add(kryptonBorderEdge15);
             kryptonPanel3.Controls.Add(kryptonLabel16);
             kryptonPanel3.Controls.Add(kryptonButton4);
-            kryptonPanel3.Location = new Point(674, 100);
+            kryptonPanel3.Location = new Point(586, 167);
             kryptonPanel3.Name = "kryptonPanel3";
             kryptonPanel3.Size = new Size(248, 211);
             kryptonPanel3.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
@@ -578,11 +583,12 @@
             // 
             // kryptonPanel7
             // 
+            kryptonPanel7.Anchor = AnchorStyles.None;
             kryptonPanel7.Controls.Add(kryptonBorderEdge24);
             kryptonPanel7.Controls.Add(kryptonBorderEdge25);
             kryptonPanel7.Controls.Add(kryptonBorderEdge26);
             kryptonPanel7.Controls.Add(kryptonBorderEdge27);
-            kryptonPanel7.Location = new Point(674, 100);
+            kryptonPanel7.Location = new Point(586, 167);
             kryptonPanel7.Name = "kryptonPanel7";
             kryptonPanel7.Size = new Size(248, 211);
             kryptonPanel7.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
@@ -634,6 +640,7 @@
             // 
             // kryptonPanel2
             // 
+            kryptonPanel2.Anchor = AnchorStyles.None;
             kryptonPanel2.Controls.Add(kryptonLabel5);
             kryptonPanel2.Controls.Add(kryptonLabel6);
             kryptonPanel2.Controls.Add(kryptonLabel7);
@@ -643,7 +650,7 @@
             kryptonPanel2.Controls.Add(kryptonBorderEdge7);
             kryptonPanel2.Controls.Add(kryptonLabel8);
             kryptonPanel2.Controls.Add(kryptonButton2);
-            kryptonPanel2.Location = new Point(399, 100);
+            kryptonPanel2.Location = new Point(311, 167);
             kryptonPanel2.Name = "kryptonPanel2";
             kryptonPanel2.Size = new Size(248, 211);
             kryptonPanel2.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
@@ -667,7 +674,7 @@
             // 
             kryptonLabel6.Location = new Point(11, 147);
             kryptonLabel6.Name = "kryptonLabel6";
-            kryptonLabel6.Size = new Size(244, 29);
+            kryptonLabel6.Size = new Size(228, 29);
             kryptonLabel6.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
             kryptonLabel6.StateCommon.ShortText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel6.TabIndex = 12;
@@ -765,11 +772,12 @@
             // 
             // kryptonPanel6
             // 
+            kryptonPanel6.Anchor = AnchorStyles.None;
             kryptonPanel6.Controls.Add(kryptonBorderEdge20);
             kryptonPanel6.Controls.Add(kryptonBorderEdge21);
             kryptonPanel6.Controls.Add(kryptonBorderEdge22);
             kryptonPanel6.Controls.Add(kryptonBorderEdge23);
-            kryptonPanel6.Location = new Point(399, 100);
+            kryptonPanel6.Location = new Point(311, 167);
             kryptonPanel6.Name = "kryptonPanel6";
             kryptonPanel6.Size = new Size(248, 211);
             kryptonPanel6.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
@@ -821,6 +829,7 @@
             // 
             // kryptonPanel1
             // 
+            kryptonPanel1.Anchor = AnchorStyles.None;
             kryptonPanel1.Controls.Add(kryptonLabel4);
             kryptonPanel1.Controls.Add(kryptonLabel3);
             kryptonPanel1.Controls.Add(kryptonLabel2);
@@ -830,7 +839,7 @@
             kryptonPanel1.Controls.Add(kryptonBorderEdge1);
             kryptonPanel1.Controls.Add(kryptonLabel1);
             kryptonPanel1.Controls.Add(kryptonButton1);
-            kryptonPanel1.Location = new Point(124, 100);
+            kryptonPanel1.Location = new Point(36, 167);
             kryptonPanel1.Name = "kryptonPanel1";
             kryptonPanel1.Size = new Size(248, 211);
             kryptonPanel1.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
@@ -866,7 +875,7 @@
             // 
             kryptonLabel2.Location = new Point(11, 122);
             kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.Size = new Size(284, 31);
+            kryptonLabel2.Size = new Size(233, 31);
             kryptonLabel2.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
             kryptonLabel2.StateCommon.ShortText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel2.TabIndex = 11;
@@ -952,11 +961,12 @@
             // 
             // kryptonPanel5
             // 
+            kryptonPanel5.Anchor = AnchorStyles.None;
             kryptonPanel5.Controls.Add(kryptonBorderEdge16);
             kryptonPanel5.Controls.Add(kryptonBorderEdge17);
             kryptonPanel5.Controls.Add(kryptonBorderEdge18);
             kryptonPanel5.Controls.Add(kryptonBorderEdge19);
-            kryptonPanel5.Location = new Point(124, 100);
+            kryptonPanel5.Location = new Point(36, 167);
             kryptonPanel5.Name = "kryptonPanel5";
             kryptonPanel5.Size = new Size(248, 211);
             kryptonPanel5.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
@@ -1008,10 +1018,11 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.None;
             label5.AutoSize = true;
             label5.Font = new Font("Inter", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(28, 35, 46);
-            label5.Location = new Point(532, 28);
+            label5.Location = new Point(444, 73);
             label5.Name = "label5";
             label5.Size = new Size(257, 35);
             label5.TabIndex = 6;
@@ -1023,11 +1034,11 @@
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label6.Anchor = AnchorStyles.None;
             label6.AutoSize = true;
             label6.Font = new Font("Inter", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(28, 35, 46);
-            label6.Location = new Point(430, 859);
+            label6.Location = new Point(342, 37);
             label6.Name = "label6";
             label6.Size = new Size(461, 35);
             label6.TabIndex = 21;
@@ -1036,11 +1047,11 @@
             // 
             // label7
             // 
-            label7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Inter SemiBold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(108, 124, 137);
-            label7.Location = new Point(385, 905);
+            label7.Location = new Point(297, 86);
             label7.Name = "label7";
             label7.Size = new Size(550, 30);
             label7.TabIndex = 22;
@@ -1052,7 +1063,7 @@
             btnViewClasses.Anchor = AnchorStyles.None;
             btnViewClasses.AutoSize = true;
             btnViewClasses.Cursor = Cursors.Hand;
-            btnViewClasses.Location = new Point(583, 965);
+            btnViewClasses.Location = new Point(489, 149);
             btnViewClasses.Name = "btnViewClasses";
             btnViewClasses.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnViewClasses.OverrideDefault.Back.Color2 = Color.FromArgb(249, 250, 251);
@@ -1093,15 +1104,17 @@
             btnViewClasses.Values.Text = "View Classes";
             btnViewClasses.Click += btnGetStarted_Click;
             // 
-            // kryptonLabel17
+            // panel3
             // 
-            kryptonLabel17.Location = new Point(588, 1026);
-            kryptonLabel17.Name = "kryptonLabel17";
-            kryptonLabel17.Size = new Size(228, 26);
-            kryptonLabel17.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
-            kryptonLabel17.StateCommon.ShortText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            kryptonLabel17.TabIndex = 18;
-            kryptonLabel17.Values.Text = "";
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.AutoSize = true;
+            panel3.Controls.Add(btnViewClasses);
+            panel3.Controls.Add(label7);
+            panel3.Controls.Add(label6);
+            panel3.Location = new Point(0, 949);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1145, 251);
+            panel3.TabIndex = 26;
             // 
             // UCHome
             // 
@@ -1109,14 +1122,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.FromArgb(249, 250, 251);
-            Controls.Add(kryptonLabel17);
-            Controls.Add(btnViewClasses);
-            Controls.Add(label7);
-            Controls.Add(label6);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Controls.Add(panel3);
             Name = "UCHome";
-            Size = new Size(1320, 1200);
+            Size = new Size(1145, 1200);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -1141,6 +1151,8 @@
             kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel5).EndInit();
             kryptonPanel5.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1220,6 +1232,6 @@
         private Label label7;
         private Krypton.Toolkit.KryptonButton btnGetStarted;
         private Krypton.Toolkit.KryptonButton btnViewClasses;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel17;
+        private Panel panel3;
     }
 }

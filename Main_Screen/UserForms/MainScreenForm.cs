@@ -12,8 +12,7 @@ namespace AE.Application
         public MainScreenForm()
         {
             InitializeComponent();
-            // Ensure main content is correctly sized/positioned relative to the header and sidebar
-            this.Resize += MainScreenForm_Resize;
+            //this.Resize += MainScreenForm_Resize;
             UpdateMainContentBounds();
             var db = new AppDbContext();
             _sectionService = new SectionService(db);
@@ -61,7 +60,7 @@ namespace AE.Application
                     sidebarTimer.Stop();
                 }
             }
-            UpdateMainContentBounds();
+            //UpdateMainContentBounds();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -76,7 +75,6 @@ namespace AE.Application
 
         private void UpdateMainContentBounds()
         {
-            // Position pnlMainContent to the right of the sidebar and below the header panel (kryptonPanel1)
             int left = sidebar.Right;
             int top = kryptonPanel1.Bottom;
             int width = this.ClientSize.Width - left;
@@ -96,7 +94,7 @@ namespace AE.Application
 
             pnlMainContent.Controls.Add(customizedControl);
 
-            pnlMainContent.SendToBack();
+            //pnlMainContent.SendToBack();
             customizedControl.Focus();
         }
 
