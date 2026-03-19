@@ -73,6 +73,7 @@
             // 
             // panelCalendar
             // 
+            panelCalendar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelCalendar.BackColor = Color.White;
             panelCalendar.Controls.Add(lblDateNow);
             panelCalendar.Controls.Add(btnNextDate);
@@ -185,6 +186,7 @@
             // 
             // layoutStudents
             // 
+            layoutStudents.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             layoutStudents.AutoSize = true;
             layoutStudents.FlowDirection = FlowDirection.TopDown;
             layoutStudents.ForeColor = SystemColors.ActiveCaption;
@@ -196,6 +198,7 @@
             // 
             // lblNumberofStudents
             // 
+            lblNumberofStudents.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblNumberofStudents.AutoSize = true;
             lblNumberofStudents.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNumberofStudents.ForeColor = Color.FromArgb(108, 124, 137);
@@ -208,6 +211,7 @@
             // 
             // pnlTotalStudents
             // 
+            pnlTotalStudents.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlTotalStudents.BackColor = Color.FromArgb(228, 242, 240);
             pnlTotalStudents.ForeColor = Color.FromArgb(29, 37, 48);
             pnlTotalStudents.Location = new Point(109, 313);
@@ -217,6 +221,7 @@
             // 
             // pnlPresent
             // 
+            pnlPresent.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlPresent.BackColor = Color.FromArgb(227, 245, 234);
             pnlPresent.ForeColor = Color.FromArgb(29, 37, 48);
             pnlPresent.Location = new Point(291, 313);
@@ -226,6 +231,7 @@
             // 
             // pnlAbsent
             // 
+            pnlAbsent.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlAbsent.BackColor = Color.FromArgb(246, 231, 231);
             pnlAbsent.ForeColor = Color.FromArgb(29, 37, 48);
             pnlAbsent.Location = new Point(837, 313);
@@ -235,6 +241,7 @@
             // 
             // pnlLate
             // 
+            pnlLate.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlLate.BackColor = Color.FromArgb(248, 241, 226);
             pnlLate.ForeColor = Color.FromArgb(29, 37, 48);
             pnlLate.Location = new Point(473, 313);
@@ -244,6 +251,7 @@
             // 
             // pnlExcused
             // 
+            pnlExcused.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlExcused.BackColor = Color.FromArgb(225, 241, 248);
             pnlExcused.ForeColor = Color.FromArgb(29, 37, 48);
             pnlExcused.Location = new Point(655, 313);
@@ -287,6 +295,7 @@
             // 
             // btnExportSummary
             // 
+            btnExportSummary.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnExportSummary.Cursor = Cursors.Hand;
             btnExportSummary.Location = new Point(721, 107);
             btnExportSummary.Name = "btnExportSummary";
@@ -328,6 +337,7 @@
             // 
             // btnAddStudent
             // 
+            btnAddStudent.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAddStudent.Cursor = Cursors.Hand;
             btnAddStudent.Location = new Point(873, 107);
             btnAddStudent.Name = "btnAddStudent";
@@ -463,6 +473,7 @@
             // 
             // panelTotalBorder
             // 
+            panelTotalBorder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelTotalBorder.BackColor = Color.FromArgb(190, 226, 223);
             panelTotalBorder.Location = new Point(107, 311);
             panelTotalBorder.Name = "panelTotalBorder";
@@ -471,6 +482,7 @@
             // 
             // panelPresentBorder
             // 
+            panelPresentBorder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelPresentBorder.BackColor = Color.FromArgb(188, 234, 206);
             panelPresentBorder.Location = new Point(289, 311);
             panelPresentBorder.Name = "panelPresentBorder";
@@ -479,6 +491,7 @@
             // 
             // panelLateBorder
             // 
+            panelLateBorder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelLateBorder.BackColor = Color.FromArgb(247, 224, 183);
             panelLateBorder.Location = new Point(471, 311);
             panelLateBorder.Name = "panelLateBorder";
@@ -487,6 +500,7 @@
             // 
             // panelAbsentBorder
             // 
+            panelAbsentBorder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelAbsentBorder.BackColor = Color.FromArgb(242, 196, 197);
             panelAbsentBorder.Location = new Point(835, 311);
             panelAbsentBorder.Name = "panelAbsentBorder";
@@ -495,6 +509,7 @@
             // 
             // panelExcusedBorder
             // 
+            panelExcusedBorder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelExcusedBorder.BackColor = Color.FromArgb(183, 224, 244);
             panelExcusedBorder.Location = new Point(653, 311);
             panelExcusedBorder.Name = "panelExcusedBorder";

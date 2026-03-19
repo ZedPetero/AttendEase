@@ -38,12 +38,12 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(249, 250, 251);
             panel1.Controls.Add(kryptonButton1);
             panel1.Controls.Add(flowLayoutPanelCards);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(lblTeacher);
-            panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1150, 640);
@@ -51,6 +51,7 @@
             // 
             // kryptonButton1
             // 
+            kryptonButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             kryptonButton1.Cursor = Cursors.Hand;
             kryptonButton1.Location = new Point(961, 84);
             kryptonButton1.Name = "kryptonButton1";
@@ -88,6 +89,7 @@
             // 
             // flowLayoutPanelCards
             // 
+            flowLayoutPanelCards.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanelCards.AutoScroll = true;
             flowLayoutPanelCards.Location = new Point(27, 137);
             flowLayoutPanelCards.Name = "flowLayoutPanelCards";
