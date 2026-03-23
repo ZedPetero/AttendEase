@@ -31,8 +31,9 @@
             components = new System.ComponentModel.Container();
             lblSectionName = new Label();
             panelCalendar = new Panel();
-            lblDateNow = new Krypton.Toolkit.KryptonButton();
+            panel6 = new Panel();
             btnNextDate = new Krypton.Toolkit.KryptonButton();
+            lblDateNow = new Krypton.Toolkit.KryptonButton();
             btnPreviousDate = new Krypton.Toolkit.KryptonButton();
             lblSubjectName = new Label();
             lblClassRoster = new Label();
@@ -65,6 +66,7 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panelCalendar.SuspendLayout();
+            panel6.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
@@ -77,7 +79,7 @@
             // 
             lblSectionName.AutoSize = true;
             lblSectionName.Font = new Font("Inter", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSectionName.Location = new Point(124, 70);
+            lblSectionName.Location = new Point(127, 73);
             lblSectionName.Name = "lblSectionName";
             lblSectionName.Size = new Size(197, 45);
             lblSectionName.TabIndex = 1;
@@ -87,19 +89,55 @@
             // 
             panelCalendar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelCalendar.BackColor = Color.White;
+            panelCalendar.Controls.Add(panel6);
             panelCalendar.Controls.Add(lblDateNow);
-            panelCalendar.Controls.Add(btnNextDate);
             panelCalendar.Controls.Add(btnPreviousDate);
             panelCalendar.ForeColor = SystemColors.ActiveCaptionText;
-            panelCalendar.Location = new Point(123, 157);
+            panelCalendar.Location = new Point(133, 157);
             panelCalendar.Name = "panelCalendar";
-            panelCalendar.Size = new Size(899, 62);
+            panelCalendar.Size = new Size(889, 62);
             panelCalendar.TabIndex = 2;
+            panelCalendar.SizeChanged += RoundPanel;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.Transparent;
+            panel6.Controls.Add(btnNextDate);
+            panel6.Dock = DockStyle.Right;
+            panel6.Location = new Point(835, 0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(54, 62);
+            panel6.TabIndex = 31;
+            // 
+            // btnNextDate
+            // 
+            btnNextDate.Location = new Point(3, 13);
+            btnNextDate.Name = "btnNextDate";
+            btnNextDate.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnNextDate.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnNextDate.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnNextDate.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnNextDate.Size = new Size(36, 36);
+            btnNextDate.StateCommon.Back.Color1 = Color.White;
+            btnNextDate.StateCommon.Back.Color2 = Color.White;
+            btnNextDate.StateCommon.Border.Color1 = Color.White;
+            btnNextDate.StateCommon.Border.Color2 = Color.White;
+            btnNextDate.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
+            btnNextDate.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNextDate.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
+            btnNextDate.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
+            btnNextDate.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
+            btnNextDate.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
+            btnNextDate.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
+            btnNextDate.TabIndex = 5;
+            btnNextDate.Values.DropDownArrowColor = Color.Empty;
+            btnNextDate.Values.Text = "";
+            btnNextDate.Click += btnNextDate_Click;
             // 
             // lblDateNow
             // 
             lblDateNow.Anchor = AnchorStyles.Top;
-            lblDateNow.Location = new Point(272, 10);
+            lblDateNow.Location = new Point(267, 10);
             lblDateNow.Name = "lblDateNow";
             lblDateNow.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
             lblDateNow.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
@@ -125,32 +163,6 @@
             lblDateNow.Values.ExtraText = "Saturday, February 14, 2026";
             lblDateNow.Values.Text = "";
             lblDateNow.Click += lblDateNow_Click;
-            // 
-            // btnNextDate
-            // 
-            btnNextDate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnNextDate.Location = new Point(836, 13);
-            btnNextDate.Name = "btnNextDate";
-            btnNextDate.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnNextDate.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            btnNextDate.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            btnNextDate.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            btnNextDate.Size = new Size(36, 36);
-            btnNextDate.StateCommon.Back.Color1 = Color.White;
-            btnNextDate.StateCommon.Back.Color2 = Color.White;
-            btnNextDate.StateCommon.Border.Color1 = Color.White;
-            btnNextDate.StateCommon.Border.Color2 = Color.White;
-            btnNextDate.StateCommon.Content.ShortText.Color1 = Color.FromArgb(26, 37, 48);
-            btnNextDate.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNextDate.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
-            btnNextDate.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
-            btnNextDate.StateTracking.Border.Color1 = Color.FromArgb(228, 242, 240);
-            btnNextDate.StateTracking.Border.Color2 = Color.FromArgb(228, 242, 240);
-            btnNextDate.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 173);
-            btnNextDate.TabIndex = 5;
-            btnNextDate.Values.DropDownArrowColor = Color.Empty;
-            btnNextDate.Values.Text = "";
-            btnNextDate.Click += btnNextDate_Click;
             // 
             // btnPreviousDate
             // 
@@ -200,15 +212,16 @@
             // 
             // layoutStudents
             // 
-            layoutStudents.Anchor = AnchorStyles.None;
+            layoutStudents.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             layoutStudents.AutoSize = true;
             layoutStudents.FlowDirection = FlowDirection.TopDown;
             layoutStudents.ForeColor = SystemColors.ActiveCaption;
-            layoutStudents.Location = new Point(129, 525);
+            layoutStudents.Location = new Point(124, 525);
             layoutStudents.Margin = new Padding(3, 3, 3, 20);
             layoutStudents.Name = "layoutStudents";
-            layoutStudents.Size = new Size(887, 195);
+            layoutStudents.Size = new Size(898, 195);
             layoutStudents.TabIndex = 10;
+            layoutStudents.SizeChanged += layoutStudents_SizeChanged;
             // 
             // lblNumberofStudents
             // 
@@ -216,7 +229,7 @@
             lblNumberofStudents.AutoSize = true;
             lblNumberofStudents.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNumberofStudents.ForeColor = Color.FromArgb(108, 124, 137);
-            lblNumberofStudents.Location = new Point(817, 481);
+            lblNumberofStudents.Location = new Point(930, 486);
             lblNumberofStudents.Name = "lblNumberofStudents";
             lblNumberofStudents.Size = new Size(94, 23);
             lblNumberofStudents.TabIndex = 14;
@@ -230,8 +243,9 @@
             pnlTotalStudents.ForeColor = Color.FromArgb(29, 37, 48);
             pnlTotalStudents.Location = new Point(7, 16);
             pnlTotalStudents.Name = "pnlTotalStudents";
-            pnlTotalStudents.Size = new Size(158, 120);
+            pnlTotalStudents.Size = new Size(165, 126);
             pnlTotalStudents.TabIndex = 15;
+            pnlTotalStudents.SizeChanged += RoundPanel;
             // 
             // pnlPresent
             // 
@@ -240,18 +254,20 @@
             pnlPresent.ForeColor = Color.FromArgb(29, 37, 48);
             pnlPresent.Location = new Point(7, 16);
             pnlPresent.Name = "pnlPresent";
-            pnlPresent.Size = new Size(158, 120);
+            pnlPresent.Size = new Size(165, 126);
             pnlPresent.TabIndex = 16;
+            pnlPresent.SizeChanged += RoundPanel;
             // 
             // pnlAbsent
             // 
             pnlAbsent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlAbsent.BackColor = Color.FromArgb(246, 231, 231);
             pnlAbsent.ForeColor = Color.FromArgb(29, 37, 48);
-            pnlAbsent.Location = new Point(4, 11);
+            pnlAbsent.Location = new Point(9, 16);
             pnlAbsent.Name = "pnlAbsent";
-            pnlAbsent.Size = new Size(168, 130);
+            pnlAbsent.Size = new Size(164, 126);
             pnlAbsent.TabIndex = 18;
+            pnlAbsent.SizeChanged += RoundPanel;
             // 
             // pnlLate
             // 
@@ -259,19 +275,23 @@
             pnlLate.BackColor = Color.FromArgb(248, 241, 226);
             pnlLate.ForeColor = Color.FromArgb(29, 37, 48);
             pnlLate.Location = new Point(7, 16);
+            pnlLate.Margin = new Padding(0);
             pnlLate.Name = "pnlLate";
-            pnlLate.Size = new Size(158, 120);
+            pnlLate.Size = new Size(165, 126);
             pnlLate.TabIndex = 17;
+            pnlLate.SizeChanged += RoundPanel;
             // 
             // pnlExcused
             // 
             pnlExcused.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlExcused.BackColor = Color.FromArgb(225, 241, 248);
             pnlExcused.ForeColor = Color.FromArgb(29, 37, 48);
-            pnlExcused.Location = new Point(2, 11);
+            pnlExcused.Location = new Point(7, 16);
+            pnlExcused.Margin = new Padding(0);
             pnlExcused.Name = "pnlExcused";
-            pnlExcused.Size = new Size(168, 130);
+            pnlExcused.Size = new Size(165, 126);
             pnlExcused.TabIndex = 19;
+            pnlExcused.SizeChanged += RoundPanel;
             // 
             // kryptonCustomPaletteBase1
             // 
@@ -480,11 +500,13 @@
             // panelCalendarBorder
             // 
             panelCalendarBorder.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelCalendarBorder.AutoSize = true;
             panelCalendarBorder.BackColor = Color.FromArgb(224, 230, 235);
-            panelCalendarBorder.Location = new Point(121, 155);
+            panelCalendarBorder.Location = new Point(131, 155);
             panelCalendarBorder.Name = "panelCalendarBorder";
-            panelCalendarBorder.Size = new Size(903, 66);
+            panelCalendarBorder.Size = new Size(893, 66);
             panelCalendarBorder.TabIndex = 25;
+            panelCalendarBorder.SizeChanged += RoundPanel;
             // 
             // panelTotalBorder
             // 
@@ -492,8 +514,9 @@
             panelTotalBorder.BackColor = Color.FromArgb(190, 226, 223);
             panelTotalBorder.Location = new Point(5, 14);
             panelTotalBorder.Name = "panelTotalBorder";
-            panelTotalBorder.Size = new Size(162, 124);
+            panelTotalBorder.Size = new Size(169, 130);
             panelTotalBorder.TabIndex = 26;
+            panelTotalBorder.SizeChanged += RoundPanel;
             // 
             // panelPresentBorder
             // 
@@ -501,35 +524,40 @@
             panelPresentBorder.BackColor = Color.FromArgb(188, 234, 206);
             panelPresentBorder.Location = new Point(5, 14);
             panelPresentBorder.Name = "panelPresentBorder";
-            panelPresentBorder.Size = new Size(162, 124);
+            panelPresentBorder.Size = new Size(169, 130);
             panelPresentBorder.TabIndex = 27;
+            panelPresentBorder.SizeChanged += RoundPanel;
             // 
             // panelLateBorder
             // 
             panelLateBorder.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelLateBorder.BackColor = Color.FromArgb(247, 224, 183);
             panelLateBorder.Location = new Point(5, 14);
+            panelLateBorder.Margin = new Padding(0);
             panelLateBorder.Name = "panelLateBorder";
-            panelLateBorder.Size = new Size(162, 124);
+            panelLateBorder.Size = new Size(169, 130);
             panelLateBorder.TabIndex = 27;
+            panelLateBorder.SizeChanged += RoundPanel;
             // 
             // panelAbsentBorder
             // 
             panelAbsentBorder.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelAbsentBorder.BackColor = Color.FromArgb(242, 196, 197);
-            panelAbsentBorder.Location = new Point(2, 9);
+            panelAbsentBorder.Location = new Point(7, 14);
             panelAbsentBorder.Name = "panelAbsentBorder";
-            panelAbsentBorder.Size = new Size(172, 134);
+            panelAbsentBorder.Size = new Size(168, 130);
             panelAbsentBorder.TabIndex = 28;
+            panelAbsentBorder.SizeChanged += RoundPanel;
             // 
             // panelExcusedBorder
             // 
             panelExcusedBorder.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelExcusedBorder.BackColor = Color.FromArgb(183, 224, 244);
-            panelExcusedBorder.Location = new Point(0, 9);
+            panelExcusedBorder.Location = new Point(5, 14);
             panelExcusedBorder.Name = "panelExcusedBorder";
-            panelExcusedBorder.Size = new Size(172, 134);
+            panelExcusedBorder.Size = new Size(169, 130);
             panelExcusedBorder.TabIndex = 29;
+            panelExcusedBorder.SizeChanged += RoundPanel;
             // 
             // btnSortSurname
             // 
@@ -621,6 +649,7 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.BackColor = Color.Black;
             tableLayoutPanel1.ColumnCount = 5;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
@@ -632,66 +661,81 @@
             tableLayoutPanel1.Controls.Add(panel3, 2, 0);
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
             tableLayoutPanel1.Controls.Add(panel2, 1, 0);
-            tableLayoutPanel1.Location = new Point(123, 297);
+            tableLayoutPanel1.Location = new Point(127, 297);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(899, 159);
+            tableLayoutPanel1.Size = new Size(903, 159);
             tableLayoutPanel1.TabIndex = 30;
             // 
             // panel5
             // 
+            panel5.BackColor = Color.FromArgb(249, 250, 251);
             panel5.Controls.Add(pnlAbsent);
             panel5.Controls.Add(panelAbsentBorder);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(719, 3);
+            panel5.ForeColor = SystemColors.ControlText;
+            panel5.Location = new Point(720, 0);
+            panel5.Margin = new Padding(0);
             panel5.Name = "panel5";
             panel5.Padding = new Padding(3);
-            panel5.Size = new Size(177, 153);
+            panel5.Size = new Size(183, 159);
             panel5.TabIndex = 33;
             // 
             // panel4
             // 
+            panel4.BackColor = Color.FromArgb(249, 250, 251);
             panel4.Controls.Add(pnlExcused);
             panel4.Controls.Add(panelExcusedBorder);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(540, 3);
+            panel4.ForeColor = SystemColors.ControlText;
+            panel4.Location = new Point(540, 0);
+            panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(3);
-            panel4.Size = new Size(173, 153);
+            panel4.Size = new Size(180, 159);
             panel4.TabIndex = 33;
             // 
             // panel3
             // 
+            panel3.BackColor = Color.FromArgb(249, 250, 251);
             panel3.Controls.Add(pnlLate);
             panel3.Controls.Add(panelLateBorder);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(361, 3);
+            panel3.ForeColor = SystemColors.ControlText;
+            panel3.Location = new Point(360, 0);
+            panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(3);
-            panel3.Size = new Size(173, 153);
+            panel3.Size = new Size(180, 159);
             panel3.TabIndex = 33;
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(249, 250, 251);
             panel1.Controls.Add(pnlTotalStudents);
             panel1.Controls.Add(panelTotalBorder);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
+            panel1.ForeColor = SystemColors.ControlText;
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
             panel1.Padding = new Padding(3);
-            panel1.Size = new Size(173, 153);
+            panel1.Size = new Size(180, 159);
             panel1.TabIndex = 31;
             // 
             // panel2
             // 
+            panel2.BackColor = Color.FromArgb(249, 250, 251);
             panel2.Controls.Add(pnlPresent);
             panel2.Controls.Add(panelPresentBorder);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(182, 3);
+            panel2.ForeColor = SystemColors.ControlText;
+            panel2.Location = new Point(180, 0);
+            panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(3);
-            panel2.Size = new Size(173, 153);
+            panel2.Size = new Size(180, 159);
             panel2.TabIndex = 32;
             // 
             // UCAttendance
@@ -715,10 +759,12 @@
             Controls.Add(panelCalendar);
             Controls.Add(panelCalendarBorder);
             Controls.Add(lblSectionName);
+            Margin = new Padding(0);
             Name = "UCAttendance";
             Size = new Size(1145, 761);
             Load += UC_Attendance_Load;
             panelCalendar.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
@@ -765,5 +811,6 @@
         private Panel panel4;
         private Panel panel3;
         private Panel panel2;
+        private Panel panel6;
     }
 }

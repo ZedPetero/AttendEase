@@ -30,8 +30,18 @@ namespace AE.Application
         public UCStudentRow()
         {
             InitializeComponent();
-            UIHelper.RoundControl(this, 20);
-            UIHelper.RoundControl(pnlContent, 20);
+        }
+        private void RoundPanel(object sender, EventArgs e)
+        {
+            if (sender is Control panel)
+            {
+                UIHelper.RoundControl(panel, 20);
+
+                if (panel == this)
+                {
+                    pnlContent.Width = this.Width - 10;
+                }
+            }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
