@@ -1,6 +1,6 @@
-﻿using AE.Application.DTO;
-using AE.Domain.Models;
-using AE.Infrastructure.Data;
+﻿using Brevi.Application.DTO;
+using Brevi.Domain.Models;
+using Brevi.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class FormAttendanceSummary : Form
     {

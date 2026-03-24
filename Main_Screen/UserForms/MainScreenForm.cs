@@ -1,7 +1,8 @@
-using AE.Domain.Repositories.IRepositories;
-using AE.Infrastructure.Data;
+using Brevi.Domain.Repositories.IRepositories;
+using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories;
 using System.Drawing.Drawing2D;
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class MainScreenForm : Form
     {

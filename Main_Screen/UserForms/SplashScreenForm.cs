@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class SplashScreenForm : Form
     {

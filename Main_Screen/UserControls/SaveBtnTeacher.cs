@@ -1,4 +1,4 @@
-﻿using AE.Infrastructure.Data;
+﻿using Brevi.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application.UserControls
+namespace Brevi.Application.UserControls
 {
     public partial class SaveBtnTeacher : UserControl
     {

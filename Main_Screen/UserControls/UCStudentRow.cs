@@ -3,11 +3,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using AE.Infrastructure.Data;
-using AE.Domain.Models;
+using Brevi.Infrastructure.Data;
+using Brevi.Domain.Models;
 using System.Diagnostics;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCStudentRow : UserControl
     {

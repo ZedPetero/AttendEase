@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace AE.Infrastructure.Migrations
+namespace Brevi.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class Please : Migration

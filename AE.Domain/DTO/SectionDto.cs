@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AE.Domain.DTO
+namespace Brevi.Domain.DTO
 {
     public class SectionDto
     {

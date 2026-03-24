@@ -1,5 +1,5 @@
-﻿using AE.Domain.Models;
-using AE.Infrastructure.Data;
+﻿using Brevi.Domain.Models;
+using Brevi.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class AddSectionForm : Form
     {

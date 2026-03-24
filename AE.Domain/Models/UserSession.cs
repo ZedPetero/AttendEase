@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public static class UserSession
     {

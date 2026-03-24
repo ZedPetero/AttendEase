@@ -1,4 +1,4 @@
-﻿using AE.Domain.Models;
+﻿using Brevi.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class LoginScreenForm : Form
     {

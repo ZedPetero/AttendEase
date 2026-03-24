@@ -1,12 +1,13 @@
-namespace AE.Application;
+namespace Brevi.Application;
 
-using AE.Domain.Models;
-using AE.Infrastructure.Data;
-using AE.Domain.Repositories;
-using AE.Domain.Repositories.IRepositories;
+using Brevi.Domain.Models;
+using Brevi.Domain.Repositories;
+using Brevi.Domain.Repositories.IRepositories;
+using Brevi.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Windows.Forms;
 
@@ -43,23 +44,33 @@ internal static class Program
             splash.ShowDialog();
         }
 
-        while (true)
-        {
-            var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
-            using (var login = new LoginScreenForm(userManager))
-            {
-                if (login.ShowDialog() != DialogResult.OK)
-                    return;
-            }
+        // ====================================== For the old login form ======================================
 
-            var mainForm = new MainScreenForm();
-            Application.Run(mainForm);
+        //while (true)
+        //{
+        //    var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
+        //    using (var login = new LoginScreenForm(userManager))
+        //    {
+        //        if (login.ShowDialog() != DialogResult.OK)
+        //            return;
+        //    }
+
+        //    var mainForm = new MainScreenForm();
+        //    Application.Run(mainForm);
+        //}
+
+        // ====================================== For the new login form ======================================
+
+        var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
+
+        using (var userLogin = new LoginFormUser(userManager))
+        {
+            if (userLogin.ShowDialog() != DialogResult.OK)
+                return;
         }
 
-        using (var userLogin = new LoginFormUser())
-        {
-            userLogin.ShowDialog();
-        }
+        var mainForm = new MainScreenForm();
+        Application.Run(mainForm);
 
         //using (var userLogin = new UserLoginForm())
         //{

@@ -1,5 +1,5 @@
-﻿using AE.Infrastructure.Data;
-using AE.Domain.Models;
+﻿using Brevi.Infrastructure.Data;
+using Brevi.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCTeacherProfile : UserControl
     {

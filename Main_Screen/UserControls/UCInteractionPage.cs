@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCInteractionPage : UserControl
     {

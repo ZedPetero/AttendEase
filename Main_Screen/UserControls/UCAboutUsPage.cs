@@ -6,14 +6,13 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application
+namespace Brevi.Application
 {
-    public partial class UCLoginPage : UserControl
+    public partial class UCAboutUsPage : UserControl
     {
-        public UCLoginPage()
+        public UCAboutUsPage()
         {
             InitializeComponent();
-            UIHelper.RoundControl(panel1, 15);
         }
     }
 }

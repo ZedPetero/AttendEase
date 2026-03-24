@@ -1,6 +1,6 @@
-﻿using AE.Domain.Models;
-using AE.Domain.Repositories.IRepositories;
-using AE.Infrastructure.Data;
+﻿using Brevi.Domain.Models;
+using Brevi.Domain.Repositories.IRepositories;
+using Brevi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 using System;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCAttendance : UserControl
     {

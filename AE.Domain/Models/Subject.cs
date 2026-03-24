@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AE.Domain.Models
+namespace Brevi.Domain.Models
 {
     public enum Subject
     {

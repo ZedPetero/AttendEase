@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AE.Domain.Models
+namespace Brevi.Domain.Models
 {
     public class Section
     {

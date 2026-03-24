@@ -1,4 +1,4 @@
-﻿using AE.Domain.Models;
+﻿using Brevi.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.LinkLabel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class RegisterScreenForm : Form
     {

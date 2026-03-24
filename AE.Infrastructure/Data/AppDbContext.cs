@@ -1,11 +1,11 @@
-﻿using AE.Domain.Models;
+﻿using Brevi.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-namespace AE.Infrastructure.Data
+namespace Brevi.Infrastructure.Data
 {
     public class AppDbContext : DbContext
     {

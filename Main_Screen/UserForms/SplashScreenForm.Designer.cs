@@ -1,4 +1,4 @@
-﻿namespace AE.Application
+﻿namespace Brevi.Application
 {
     partial class SplashScreenForm
     {

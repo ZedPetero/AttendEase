@@ -1,4 +1,4 @@
-﻿namespace AE.Application
+﻿namespace Brevi.Application
 {
     partial class UCInteractionPage
     {
@@ -72,7 +72,7 @@
             // 
             // btnStartNow
             // 
-            btnStartNow.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnStartNow.Anchor = AnchorStyles.None;
             btnStartNow.Location = new Point(124, 353);
             btnStartNow.Name = "btnStartNow";
             btnStartNow.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;

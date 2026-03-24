@@ -5,9 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using AE.Application;
+using Brevi.Application;
 using ComponentFactory.Krypton.Toolkit;
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCHome : UserControl
     {

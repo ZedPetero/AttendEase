@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AE.Infrastructure.Migrations
+namespace Brevi.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class TryFix : Migration

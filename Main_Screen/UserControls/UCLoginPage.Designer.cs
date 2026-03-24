@@ -1,4 +1,4 @@
-﻿namespace AE.Application
+﻿namespace Brevi.Application
 {
     partial class UCLoginPage
     {
@@ -49,12 +49,12 @@
             linkLabel2.AutoSize = true;
             linkLabel2.BackColor = Color.Transparent;
             linkLabel2.Cursor = Cursors.Hand;
-            linkLabel2.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            linkLabel2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             linkLabel2.ForeColor = Color.White;
             linkLabel2.LinkColor = Color.FromArgb(40, 164, 153);
-            linkLabel2.Location = new Point(261, 318);
+            linkLabel2.Location = new Point(250, 344);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(102, 25);
+            linkLabel2.Size = new Size(87, 21);
             linkLabel2.TabIndex = 19;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Click Here";
@@ -62,11 +62,11 @@
             // autoLabel3
             // 
             autoLabel3.BackColor = Color.Transparent;
-            autoLabel3.Font = new Font("Segoe UI", 14F);
+            autoLabel3.Font = new Font("Segoe UI", 12F);
             autoLabel3.ForeColor = Color.FromArgb(108, 124, 137);
-            autoLabel3.Location = new Point(59, 318);
+            autoLabel3.Location = new Point(85, 344);
             autoLabel3.Name = "autoLabel3";
-            autoLabel3.Size = new Size(209, 25);
+            autoLabel3.Size = new Size(171, 21);
             autoLabel3.TabIndex = 18;
             autoLabel3.Text = "Don't have an account?";
             // 
@@ -75,21 +75,22 @@
             btnLogin.BackColor = Color.FromArgb(40, 164, 153);
             btnLogin.Font = new Font("Inter SemiBold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(39, 248);
+            btnLogin.Location = new Point(39, 294);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(345, 40);
+            btnLogin.Size = new Size(345, 35);
             btnLogin.Style.BackColor = Color.FromArgb(40, 164, 153);
             btnLogin.Style.ForeColor = Color.White;
             btnLogin.TabIndex = 17;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // autoLabel2
             // 
             autoLabel2.BackColor = Color.Transparent;
             autoLabel2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             autoLabel2.ForeColor = Color.FromArgb(29, 37, 48);
-            autoLabel2.Location = new Point(39, 161);
+            autoLabel2.Location = new Point(39, 194);
             autoLabel2.Name = "autoLabel2";
             autoLabel2.Size = new Size(79, 21);
             autoLabel2.TabIndex = 16;
@@ -97,17 +98,17 @@
             // 
             // txtPassword
             // 
-            txtPassword.BeforeTouchSize = new Size(155, 36);
+            txtPassword.BeforeTouchSize = new Size(345, 32);
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 5;
-            txtPassword.Font = new Font("Segoe UI", 16F);
-            txtPassword.Location = new Point(39, 189);
+            txtPassword.Font = new Font("Segoe UI", 14F);
+            txtPassword.Location = new Point(39, 222);
             txtPassword.MaximumSize = new Size(9999, 9999);
             txtPassword.MinimumSize = new Size(34, 30);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '●';
-            txtPassword.Size = new Size(345, 36);
+            txtPassword.Size = new Size(345, 32);
             txtPassword.TabIndex = 15;
             txtPassword.Tag = "";
             txtPassword.UseSystemPasswordChar = true;
@@ -117,7 +118,7 @@
             autoLabel1.BackColor = Color.Transparent;
             autoLabel1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             autoLabel1.ForeColor = Color.FromArgb(29, 37, 48);
-            autoLabel1.Location = new Point(39, 89);
+            autoLabel1.Location = new Point(39, 110);
             autoLabel1.Name = "autoLabel1";
             autoLabel1.Size = new Size(83, 21);
             autoLabel1.TabIndex = 14;
@@ -125,21 +126,22 @@
             // 
             // txtUsername
             // 
-            txtUsername.BeforeTouchSize = new Size(155, 36);
+            txtUsername.BeforeTouchSize = new Size(345, 32);
             txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
             txtUsername.CornerRadius = 5;
-            txtUsername.Font = new Font("Segoe UI", 16F);
-            txtUsername.Location = new Point(39, 117);
+            txtUsername.Font = new Font("Segoe UI", 14F);
+            txtUsername.Location = new Point(39, 138);
             txtUsername.MaximumSize = new Size(9999, 9999);
             txtUsername.MinimumSize = new Size(34, 30);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(345, 36);
+            txtUsername.Size = new Size(345, 32);
             txtUsername.TabIndex = 13;
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.White;
             panel1.Controls.Add(autoLabel5);
             panel1.Controls.Add(autoLabel4);
@@ -150,9 +152,9 @@
             panel1.Controls.Add(autoLabel3);
             panel1.Controls.Add(autoLabel2);
             panel1.Controls.Add(btnLogin);
-            panel1.Location = new Point(350, 130);
+            panel1.Location = new Point(381, 108);
             panel1.Name = "panel1";
-            panel1.Size = new Size(422, 364);
+            panel1.Size = new Size(422, 383);
             panel1.TabIndex = 22;
             // 
             // autoLabel5
@@ -160,7 +162,7 @@
             autoLabel5.BackColor = Color.Transparent;
             autoLabel5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             autoLabel5.ForeColor = Color.FromArgb(108, 124, 137);
-            autoLabel5.Location = new Point(94, 55);
+            autoLabel5.Location = new Point(94, 58);
             autoLabel5.Name = "autoLabel5";
             autoLabel5.Size = new Size(235, 21);
             autoLabel5.TabIndex = 21;
@@ -171,7 +173,7 @@
             autoLabel4.BackColor = Color.Transparent;
             autoLabel4.Font = new Font("Inter", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             autoLabel4.ForeColor = Color.FromArgb(29, 37, 48);
-            autoLabel4.Location = new Point(117, 20);
+            autoLabel4.Location = new Point(117, 23);
             autoLabel4.Name = "autoLabel4";
             autoLabel4.Size = new Size(189, 35);
             autoLabel4.TabIndex = 20;
@@ -179,6 +181,7 @@
             // 
             // UCLoginPage
             // 
+            AccessibleRole = AccessibleRole.IpAddress;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);

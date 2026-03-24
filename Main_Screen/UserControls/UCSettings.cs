@@ -7,13 +7,13 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using AE.Infrastructure.Data;
+using Brevi.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
-using AE.Domain.Models;
+using Brevi.Domain.Models;
 using System.Text.RegularExpressions;
 using System.Linq;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCSettings : UserControl
     {

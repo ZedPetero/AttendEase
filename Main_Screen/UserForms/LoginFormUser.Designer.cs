@@ -1,4 +1,4 @@
-﻿namespace AE.Application
+﻿namespace Brevi.Application
 {
     partial class LoginFormUser
     {
@@ -33,8 +33,8 @@
             btnMaximize = new Krypton.Toolkit.KryptonButton();
             btnClose = new Krypton.Toolkit.KryptonButton();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            kryptonButton6 = new Krypton.Toolkit.KryptonButton();
+            pictureBox1 = new PictureBox();
+            btnAboutUs = new Krypton.Toolkit.KryptonButton();
             btnLogin = new Krypton.Toolkit.KryptonButton();
             btnSignUp = new Krypton.Toolkit.KryptonButton();
             pnlMainContent = new Panel();
@@ -42,6 +42,7 @@
             kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).BeginInit();
             kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // kryptonPanel1
@@ -123,8 +124,8 @@
             // 
             // kryptonPanel2
             // 
-            kryptonPanel2.Controls.Add(kryptonLabel1);
-            kryptonPanel2.Controls.Add(kryptonButton6);
+            kryptonPanel2.Controls.Add(pictureBox1);
+            kryptonPanel2.Controls.Add(btnAboutUs);
             kryptonPanel2.Controls.Add(btnLogin);
             kryptonPanel2.Controls.Add(btnSignUp);
             kryptonPanel2.Dock = DockStyle.Top;
@@ -134,76 +135,87 @@
             kryptonPanel2.StateCommon.Color1 = Color.White;
             kryptonPanel2.TabIndex = 1;
             // 
-            // kryptonLabel1
+            // pictureBox1
             // 
-            kryptonLabel1.Location = new Point(38, 13);
-            kryptonLabel1.Name = "kryptonLabel1";
-            kryptonLabel1.Size = new Size(174, 25);
-            kryptonLabel1.StateCommon.ShortText.Font = new Font("Inter", 9.75F);
-            kryptonLabel1.TabIndex = 3;
-            kryptonLabel1.Values.Text = "(Korum label here) Korum";
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackgroundImage = Properties.Resources.Logo_Name_only_removedBg;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(54, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(129, 50);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
-            // kryptonButton6
+            // btnAboutUs
             // 
-            kryptonButton6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            kryptonButton6.Location = new Point(811, 9);
-            kryptonButton6.Name = "kryptonButton6";
-            kryptonButton6.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton6.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton6.OverrideFocus.Back.Color1 = Color.FromArgb(229, 242, 240);
-            kryptonButton6.OverrideFocus.Back.Color2 = Color.FromArgb(229, 242, 240);
-            kryptonButton6.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton6.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            kryptonButton6.OverrideFocus.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.OverrideFocus.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.OverrideFocus.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.OverrideFocus.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.Size = new Size(110, 32);
-            kryptonButton6.StateCommon.Back.Color1 = Color.White;
-            kryptonButton6.StateCommon.Back.Color2 = Color.White;
-            kryptonButton6.StateCommon.Border.Color1 = Color.White;
-            kryptonButton6.StateCommon.Border.Color2 = Color.White;
-            kryptonButton6.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
-            kryptonButton6.StateCommon.Border.Rounding = 10F;
-            kryptonButton6.StateCommon.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StateCommon.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StateCommon.Content.LongText.Font = new Font("Inter", 9.75F);
-            kryptonButton6.StateCommon.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StateCommon.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
-            kryptonButton6.StateNormal.Back.Color1 = Color.White;
-            kryptonButton6.StateNormal.Back.Color2 = Color.White;
-            kryptonButton6.StateNormal.Border.Color1 = Color.White;
-            kryptonButton6.StateNormal.Border.Color2 = Color.White;
-            kryptonButton6.StateNormal.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StateNormal.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StatePressed.Back.Color1 = Color.FromArgb(209, 222, 220);
-            kryptonButton6.StatePressed.Back.Color2 = Color.FromArgb(209, 222, 220);
-            kryptonButton6.StatePressed.Border.Color1 = Color.Transparent;
-            kryptonButton6.StatePressed.Border.Color2 = Color.Transparent;
-            kryptonButton6.StatePressed.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StatePressed.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StatePressed.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StatePressed.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonButton6.StateTracking.Back.Color1 = Color.FromArgb(239, 252, 250);
-            kryptonButton6.StateTracking.Border.Color1 = Color.Transparent;
-            kryptonButton6.StateTracking.Border.Color2 = Color.Transparent;
-            kryptonButton6.StateTracking.Border.Draw = Krypton.Toolkit.InheritBool.True;
-            kryptonButton6.TabIndex = 2;
-            kryptonButton6.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton6.Values.ExtraText = "About Us";
-            kryptonButton6.Values.Text = "";
+            btnAboutUs.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAboutUs.Location = new Point(811, 9);
+            btnAboutUs.Name = "btnAboutUs";
+            btnAboutUs.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnAboutUs.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnAboutUs.OverrideFocus.Back.Color1 = Color.FromArgb(229, 242, 240);
+            btnAboutUs.OverrideFocus.Back.Color2 = Color.FromArgb(229, 242, 240);
+            btnAboutUs.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnAboutUs.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
+            btnAboutUs.OverrideFocus.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.OverrideFocus.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.OverrideFocus.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.OverrideFocus.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.Size = new Size(110, 32);
+            btnAboutUs.StateCommon.Back.Color1 = Color.White;
+            btnAboutUs.StateCommon.Back.Color2 = Color.White;
+            btnAboutUs.StateCommon.Border.Color1 = Color.White;
+            btnAboutUs.StateCommon.Border.Color2 = Color.White;
+            btnAboutUs.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnAboutUs.StateCommon.Border.Rounding = 10F;
+            btnAboutUs.StateCommon.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StateCommon.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StateCommon.Content.LongText.Font = new Font("Inter", 9.75F);
+            btnAboutUs.StateCommon.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StateCommon.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
+            btnAboutUs.StateNormal.Back.Color1 = Color.White;
+            btnAboutUs.StateNormal.Back.Color2 = Color.White;
+            btnAboutUs.StateNormal.Border.Color1 = Color.White;
+            btnAboutUs.StateNormal.Border.Color2 = Color.White;
+            btnAboutUs.StateNormal.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StateNormal.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StatePressed.Back.Color1 = Color.FromArgb(209, 222, 220);
+            btnAboutUs.StatePressed.Back.Color2 = Color.FromArgb(209, 222, 220);
+            btnAboutUs.StatePressed.Border.Color1 = Color.Transparent;
+            btnAboutUs.StatePressed.Border.Color2 = Color.Transparent;
+            btnAboutUs.StatePressed.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StatePressed.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StatePressed.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StatePressed.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            btnAboutUs.StateTracking.Back.Color1 = Color.FromArgb(239, 252, 250);
+            btnAboutUs.StateTracking.Border.Color1 = Color.Transparent;
+            btnAboutUs.StateTracking.Border.Color2 = Color.Transparent;
+            btnAboutUs.StateTracking.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnAboutUs.TabIndex = 2;
+            btnAboutUs.Values.DropDownArrowColor = Color.Empty;
+            btnAboutUs.Values.ExtraText = "About Us";
+            btnAboutUs.Values.Text = "";
+            btnAboutUs.Click += btnAboutUs_Click;
             // 
             // btnLogin
             // 
             btnLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnLogin.Location = new Point(943, 9);
             btnLogin.Name = "btnLogin";
-            btnLogin.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnLogin.OverrideDefault.Back.Color1 = Color.FromArgb(229, 242, 240);
+            btnLogin.OverrideDefault.Back.Color2 = Color.FromArgb(229, 242, 240);
+            btnLogin.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnLogin.OverrideDefault.Border.Color1 = Color.White;
+            btnLogin.OverrideDefault.Border.Color2 = Color.White;
             btnLogin.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnLogin.OverrideFocus.Back.Color1 = Color.FromArgb(229, 242, 240);
             btnLogin.OverrideFocus.Back.Color2 = Color.FromArgb(229, 242, 240);
-            btnLogin.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnLogin.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnLogin.OverrideFocus.Border.Color1 = Color.White;
+            btnLogin.OverrideFocus.Border.Color2 = Color.White;
             btnLogin.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnLogin.OverrideFocus.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
             btnLogin.OverrideFocus.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
@@ -235,6 +247,7 @@
             btnLogin.StatePressed.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
             btnLogin.StatePressed.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             btnLogin.StateTracking.Back.Color1 = Color.FromArgb(239, 252, 250);
+            btnLogin.StateTracking.Back.Color2 = Color.FromArgb(239, 252, 250);
             btnLogin.StateTracking.Border.Color1 = Color.Transparent;
             btnLogin.StateTracking.Border.Color2 = Color.Transparent;
             btnLogin.StateTracking.Border.Draw = Krypton.Toolkit.InheritBool.True;
@@ -301,7 +314,7 @@
             kryptonPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).EndInit();
             kryptonPanel2.ResumeLayout(false);
-            kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -312,10 +325,10 @@
         private Krypton.Toolkit.KryptonButton btnMaximize;
         private Krypton.Toolkit.KryptonButton btnClose;
         private Krypton.Toolkit.KryptonPanel kryptonPanel2;
-        private Krypton.Toolkit.KryptonButton kryptonButton6;
+        private Krypton.Toolkit.KryptonButton btnAboutUs;
         private Krypton.Toolkit.KryptonButton btnLogin;
         private Krypton.Toolkit.KryptonButton btnSignUp;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private Panel pnlMainContent;
+        private PictureBox pictureBox1;
     }
 }

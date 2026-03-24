@@ -5,10 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using AE.Domain.Models;
-using AE.Infrastructure.Data;
+using Brevi.Domain.Models;
+using Brevi.Infrastructure.Data;
 using Krypton.Toolkit;
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class FormAddStudent : Form
     {
