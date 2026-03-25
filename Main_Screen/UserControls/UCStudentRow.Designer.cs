@@ -71,6 +71,7 @@
             // 
             // pnlContent
             // 
+            pnlContent.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlContent.BackColor = Color.White;
             pnlContent.Controls.Add(lblStatus);
             pnlContent.Controls.Add(lblStudentName);

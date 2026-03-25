@@ -213,7 +213,7 @@
             // layoutStudents
             // 
             layoutStudents.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            layoutStudents.AutoSize = true;
+            layoutStudents.BackColor = Color.FromArgb(249, 250, 251);
             layoutStudents.FlowDirection = FlowDirection.TopDown;
             layoutStudents.ForeColor = SystemColors.ActiveCaption;
             layoutStudents.Location = new Point(124, 525);

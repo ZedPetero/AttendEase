@@ -20,6 +20,15 @@ namespace Brevi.Application
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         public int CurrentSectionId { get; set; }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
@@ -72,6 +81,11 @@ namespace Brevi.Application
         {
             try
             {
+                pnlTotalStudents.SuspendLayout();
+                pnlPresent.SuspendLayout();
+                pnlLate.SuspendLayout();
+                pnlAbsent.SuspendLayout();
+                pnlExcused.SuspendLayout();
                 if (CurrentSectionId == 0)
                 {
                     pnlTotalStudents.Title = "Total Students";
@@ -152,6 +166,12 @@ namespace Brevi.Application
                 pnlExcused.Title = "Excused";
                 pnlExcused.Integer = excused;
                 pnlExcused.Percentage = $"{pctExcused:0.0}%";
+
+                pnlTotalStudents.ResumeLayout();
+                pnlPresent.ResumeLayout();
+                pnlLate.ResumeLayout();
+                pnlAbsent.ResumeLayout();
+                pnlExcused.ResumeLayout();
             }
             catch (Exception ex)
             {
@@ -268,7 +288,7 @@ namespace Brevi.Application
                     {
                         studentRow.SetSelectedStatus(null);
                     }
-                    studentRow.Width = layoutStudents.ClientSize.Width - studentRow.Margin.Left - studentRow.Margin.Right - 5;
+                    studentRow.Width1 = layoutStudents.ClientSize.Width - 10;
                     studentRow.AttendanceStatusChanged += StudentRow_AttendanceStatusChanged;
                     layoutStudents.Controls.Add(studentRow);
                     count++;

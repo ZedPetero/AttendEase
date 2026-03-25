@@ -67,7 +67,13 @@ namespace Brevi.Application
             get { return lblStatus.Text; }
             set { lblStatus.Text = value; }
         }
-
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Bindable(true)]
+        public int Width1
+        {
+            get { return this.Width; }
+            set { this.Width = value; }
+        }
         public void SetSelectedStatus(AttendanceStatus? status)
         {
             _selectedStatus = status;
