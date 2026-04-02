@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application.UserControls
+namespace Brevi.Application.UserControls
 {
     public partial class EditBtnTeacher : UserControl
     {

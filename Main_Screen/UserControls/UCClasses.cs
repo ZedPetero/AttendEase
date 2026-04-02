@@ -1,7 +1,7 @@
-﻿using AE.Application.UserControls;
-using AE.Domain.Models;
-using AE.Domain.Repositories.IRepositories;
-using AE.Infrastructure.Data;
+﻿using Brevi.Application.UserControls;
+using Brevi.Domain.Models;
+using Brevi.Domain.Repositories.IRepositories;
+using Brevi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Syncfusion.Grouping;
@@ -14,7 +14,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCClasses : UserControl
     {
@@ -79,7 +79,7 @@ namespace AE.Application
             attendanceScreen.CallerControl = this;
             attendanceScreen.SetSection(sectionId);
 
-            mainForm.loadForm(attendanceScreen);
+            mainForm.LoadForm(attendanceScreen);
         }
 
         private void btnAddClass_Click(object sender, EventArgs e)

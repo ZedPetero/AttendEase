@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AE.Application.Properties {
+namespace Brevi.Application.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AE.Application.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AE.Application.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Brevi.Application.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,6 +66,46 @@ namespace AE.Application.Properties {
         internal static System.Drawing.Bitmap circle_128 {
             get {
                 object obj = ResourceManager.GetObject("circle-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap circle_green {
+            get {
+                object obj = ResourceManager.GetObject("circle-green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap circle_red {
+            get {
+                object obj = ResourceManager.GetObject("circle-red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap circle_yellow {
+            get {
+                object obj = ResourceManager.GetObject("circle-yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap green_circle {
+            get {
+                object obj = ResourceManager.GetObject("green-circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +176,16 @@ namespace AE.Application.Properties {
         internal static System.Drawing.Bitmap Logo_Name_only_removedBg {
             get {
                 object obj = ResourceManager.GetObject("Logo_Name_only-removedBg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo_Name_only_removedBg__WHITE {
+            get {
+                object obj = ResourceManager.GetObject("Logo_Name_only-removedBg- WHITE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +273,9 @@ namespace AE.Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap photo {
+        internal static System.Drawing.Bitmap red_circle {
             get {
-                object obj = ResourceManager.GetObject("photo", resourceCulture);
+                object obj = ResourceManager.GetObject("red-circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -316,6 +366,16 @@ namespace AE.Application.Properties {
         internal static System.Drawing.Bitmap trashbin_red {
             get {
                 object obj = ResourceManager.GetObject("trashbin red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yellow_circle {
+            get {
+                object obj = ResourceManager.GetObject("yellow-circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

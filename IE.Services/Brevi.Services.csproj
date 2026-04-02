@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AE.Infrastructure\AE.Infrastructure.csproj" />
+    <ProjectReference Include="..\AE.Infrastructure\Brevi.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

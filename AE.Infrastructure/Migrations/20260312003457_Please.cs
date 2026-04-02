@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace AE.Infrastructure.Migrations
+namespace Brevi.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class changedSection : Migration
+    public partial class Please : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

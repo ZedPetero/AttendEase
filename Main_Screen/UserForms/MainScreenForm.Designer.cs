@@ -1,6 +1,6 @@
 ﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     partial class MainScreenForm
     {
@@ -241,12 +241,14 @@ namespace AE.Application
             // 
             // pnlMainContent
             // 
+            pnlMainContent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlMainContent.BackColor = Color.White;
             pnlMainContent.Location = new Point(55, 60);
             pnlMainContent.Margin = new Padding(0);
             pnlMainContent.Name = "pnlMainContent";
             pnlMainContent.Size = new Size(1145, 660);
             pnlMainContent.TabIndex = 3;
+            pnlMainContent.Paint += pnlMainContent_Paint;
             // 
             // sidebar
             // 
@@ -256,7 +258,7 @@ namespace AE.Application
             sidebar.Dock = DockStyle.Left;
             sidebar.Location = new Point(0, 0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(55, 720);
+            sidebar.Size = new Size(55, 630);
             sidebar.StateCommon.Color1 = Color.FromArgb(250, 250, 250);
             sidebar.StateCommon.Color2 = Color.FromArgb(250, 250, 250);
             sidebar.StateCommon.Draw = Krypton.Toolkit.InheritBool.True;
@@ -275,14 +277,14 @@ namespace AE.Application
             flowLayoutPanel2.Location = new Point(0, 0);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Padding = new Padding(4, 0, 0, 0);
-            flowLayoutPanel2.Size = new Size(53, 660);
+            flowLayoutPanel2.Size = new Size(53, 570);
             flowLayoutPanel2.TabIndex = 2;
             // 
             // btnLogout
             // 
             btnLogout.Dock = DockStyle.Bottom;
             btnLogout.LocalCustomPalette = ButtonPalette;
-            btnLogout.Location = new Point(0, 660);
+            btnLogout.Location = new Point(0, 570);
             btnLogout.Name = "btnLogout";
             btnLogout.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnLogout.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
@@ -317,7 +319,7 @@ namespace AE.Application
             kryptonBorderEdge2.Dock = DockStyle.Right;
             kryptonBorderEdge2.Location = new Point(53, 0);
             kryptonBorderEdge2.Name = "kryptonBorderEdge2";
-            kryptonBorderEdge2.Size = new Size(2, 720);
+            kryptonBorderEdge2.Size = new Size(2, 630);
             kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
             kryptonBorderEdge2.StateCommon.Width = 2;
             kryptonBorderEdge2.Text = "kryptonBorderEdge2";
@@ -495,10 +497,10 @@ namespace AE.Application
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 720);
+            ClientSize = new Size(1200, 690);
             ControlBox = false;
-            Controls.Add(kryptonPanel1);
             Controls.Add(sidebar);
+            Controls.Add(kryptonPanel1);
             Controls.Add(pnlMainContent);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;

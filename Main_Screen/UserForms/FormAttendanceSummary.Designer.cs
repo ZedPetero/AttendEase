@@ -1,4 +1,4 @@
-﻿namespace AE.Application
+﻿namespace Brevi.Application
 {
     partial class FormAttendanceSummary
     {
@@ -74,6 +74,7 @@
             gridSummary.StateCommon.HeaderColumn.Border.DrawBorders = Krypton.Toolkit.PaletteDrawBorders.Bottom;
             gridSummary.StateCommon.HeaderColumn.Content.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gridSummary.TabIndex = 0;
+            gridSummary.CellContentClick += gridSummary_CellContentClick;
             gridSummary.CellFormatting += gridSummary_CellFormatting;
             // 
             // RollNo

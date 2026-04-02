@@ -1,6 +1,6 @@
-﻿using AE.Domain.Models;
+﻿using Brevi.Domain.Models;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     partial class AddSectionForm
     {

@@ -1,4 +1,4 @@
-﻿using AE.Application.UserControls;
+﻿using Brevi.Application.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCTeacher : UserControl
     {

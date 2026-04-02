@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace AE.Domain.Models
+namespace Brevi.Domain.Models
 {
     public class Teacher : IdentityUser<int>
     {

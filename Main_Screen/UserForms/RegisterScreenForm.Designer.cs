@@ -1,4 +1,4 @@
-﻿namespace AE.Application
+﻿namespace Brevi.Application
 {
     partial class RegisterScreenForm
     {
@@ -61,10 +61,10 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.logo;
-            pictureBox1.Location = new Point(23, 206);
+            pictureBox1.Image = Properties.Resources.Logo_Name_only_removedBg;
+            pictureBox1.Location = new Point(38, 266);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(361, 239);
+            pictureBox1.Size = new Size(283, 119);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
@@ -318,7 +318,7 @@
             kryptonLabel8.TabStop = false;
             kryptonLabel8.Values.Text = "Already have an account?";
             // 
-            // Register_Screen_Form
+            // RegisterScreenForm
             // 
             AcceptButton = btnRegister;
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -345,7 +345,7 @@
             Controls.Add(loginLink);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Register_Screen_Form";
+            Name = "RegisterScreenForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Register_Screen_Form";
             Load += Register_Screen_Form_Load;

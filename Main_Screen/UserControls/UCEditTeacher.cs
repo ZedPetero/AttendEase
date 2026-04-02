@@ -1,4 +1,4 @@
-﻿using AE.Infrastructure.Data;
+﻿using Brevi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,9 +7,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using AE.Domain.Models;
+using Brevi.Domain.Models;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCEditTeacher : UserControl
     {

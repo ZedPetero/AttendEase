@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AE.Infrastructure.Migrations
+namespace Brevi.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class fixedDb : Migration
+    public partial class TryFix : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,6 +20,10 @@ namespace AE.Infrastructure.Migrations
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
                     MiddleName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
+                    ProfilePicture = table.Column<byte[]>(type: "BLOB", nullable: true),
+                    Birthday = table.Column<DateOnly>(type: "TEXT", nullable: true),
+                    Subject = table.Column<int>(type: "INTEGER", nullable: true),
+                    Bio = table.Column<string>(type: "TEXT", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", nullable: true),
                     Email = table.Column<string>(type: "TEXT", nullable: true),
@@ -48,7 +52,8 @@ namespace AE.Infrastructure.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     SectionName = table.Column<string>(type: "TEXT", nullable: false),
                     Subject = table.Column<int>(type: "INTEGER", nullable: false),
-                    TimeSchedule = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    StartTimeSchedule = table.Column<TimeSpan>(type: "TEXT", nullable: false),
+                    EndTimeSchedule = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     TeacherId = table.Column<int>(type: "INTEGER", nullable: false),
                     IsArchived = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
@@ -122,7 +127,8 @@ namespace AE.Infrastructure.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Subject = table.Column<int>(type: "INTEGER", nullable: false),
-                    Score = table.Column<double>(type: "REAL", nullable: false),
+                    SectionId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Percentage = table.Column<double>(type: "REAL", nullable: false),
                     StudentId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

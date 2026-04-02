@@ -1,6 +1,6 @@
-﻿using AE.Domain.Models;
-using AE.Domain.Repositories.IRepositories;
-using AE.Infrastructure.Data;
+﻿using Brevi.Domain.Models;
+using Brevi.Domain.Repositories.IRepositories;
+using Brevi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using SQLitePCL;
 using System;
@@ -13,13 +13,22 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCAttendance : UserControl
     {
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
         public int CurrentSectionId { get; set; }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         [Browsable(false)]
@@ -36,13 +45,6 @@ namespace AE.Application
             InitializeComponent();
             UpdateDateDisplay();
             SetSection(CurrentSectionId);
-            UIHelper.RoundControl(panelCalendar, 20);
-            UIHelper.RoundControl(panelCalendarBorder, 20);
-            UIHelper.RoundControl(panelTotalBorder, 20);
-            UIHelper.RoundControl(panelPresentBorder, 20);
-            UIHelper.RoundControl(panelLateBorder, 20);
-            UIHelper.RoundControl(panelAbsentBorder, 20);
-            UIHelper.RoundControl(panelExcusedBorder, 20);
         }
 
         public void SetSection(int sectionId)
@@ -51,6 +53,14 @@ namespace AE.Application
             LoadSectionInfo();
             LoadStudentsForDate();
             SetSummaryCards();
+        }
+
+        private void RoundPanel(object sender, EventArgs e)
+        {
+            if (sender is Control panel)
+            {
+                UIHelper.RoundControl(panel, 20);
+            }
         }
 
         private void btnAddStudent_Click(object sender, EventArgs e)
@@ -71,9 +81,13 @@ namespace AE.Application
         {
             try
             {
+                pnlTotalStudents.SuspendLayout();
+                pnlPresent.SuspendLayout();
+                pnlLate.SuspendLayout();
+                pnlAbsent.SuspendLayout();
+                pnlExcused.SuspendLayout();
                 if (CurrentSectionId == 0)
                 {
-                    UIHelper.RoundControl(pnlTotalStudents, 20);
                     pnlTotalStudents.Title = "Total Students";
                     pnlTotalStudents.TitleColor = "77, 180, 170";
                     pnlTotalStudents.Integer = 0;
@@ -81,7 +95,6 @@ namespace AE.Application
                     pnlTotalStudents.Percentage = string.Empty;
                     pnlTotalStudents.PercentageColor = "77, 180, 170";
 
-                    UIHelper.RoundControl(pnlPresent, 20);
                     pnlPresent.Title = "Present";
                     pnlPresent.TitleColor = "72, 205, 121";
                     pnlPresent.Integer = 0;
@@ -89,7 +102,6 @@ namespace AE.Application
                     pnlPresent.Percentage = "0.0%";
                     pnlPresent.PercentageColor = "72, 205, 121";
 
-                    UIHelper.RoundControl(pnlLate, 20);
                     pnlLate.Title = "Late";
                     pnlLate.TitleColor = "246, 175, 53";
                     pnlLate.Integer = 0;
@@ -97,7 +109,6 @@ namespace AE.Application
                     pnlLate.Percentage = "0.0%";
                     pnlLate.PercentageColor = "246, 175, 53";
 
-                    UIHelper.RoundControl(pnlAbsent, 20);
                     pnlAbsent.Title = "Absent";
                     pnlAbsent.TitleColor = "230, 110, 110";
                     pnlAbsent.Integer = 0;
@@ -105,7 +116,6 @@ namespace AE.Application
                     pnlAbsent.Percentage = "0.0%";
                     pnlAbsent.PercentageColor = "230, 110, 110";
 
-                    UIHelper.RoundControl(pnlExcused, 20);
                     pnlExcused.Title = "Excused";
                     pnlExcused.TitleColor = "55, 178, 235";
                     pnlExcused.Integer = 0;
@@ -156,6 +166,12 @@ namespace AE.Application
                 pnlExcused.Title = "Excused";
                 pnlExcused.Integer = excused;
                 pnlExcused.Percentage = $"{pctExcused:0.0}%";
+
+                pnlTotalStudents.ResumeLayout();
+                pnlPresent.ResumeLayout();
+                pnlLate.ResumeLayout();
+                pnlAbsent.ResumeLayout();
+                pnlExcused.ResumeLayout();
             }
             catch (Exception ex)
             {
@@ -218,6 +234,7 @@ namespace AE.Application
             layoutStudents.SuspendLayout();
             layoutStudents.Controls.Clear();
 
+            layoutStudents.AutoScrollPosition = new Point(0, 0);
             using (var _context = new AppDbContext())
             {
                 var studentsQuery = _context.Students.Where(s => s.SectionId == this.CurrentSectionId);
@@ -271,6 +288,7 @@ namespace AE.Application
                     {
                         studentRow.SetSelectedStatus(null);
                     }
+                    studentRow.Width1 = layoutStudents.ClientSize.Width - 10;
                     studentRow.AttendanceStatusChanged += StudentRow_AttendanceStatusChanged;
                     layoutStudents.Controls.Add(studentRow);
                     count++;
@@ -299,6 +317,19 @@ namespace AE.Application
                 LoadSectionInfo();
                 LoadStudentsForDate();
             }
+
+            RoundPanel(pnlTotalStudents, EventArgs.Empty);
+            RoundPanel(panelTotalBorder, EventArgs.Empty);
+            RoundPanel(pnlPresent, EventArgs.Empty);
+            RoundPanel(panelPresentBorder, EventArgs.Empty);
+            RoundPanel(pnlLate, EventArgs.Empty);
+            RoundPanel(panelLateBorder, EventArgs.Empty);
+            RoundPanel(pnlAbsent, EventArgs.Empty);
+            RoundPanel(panelAbsentBorder, EventArgs.Empty);
+            RoundPanel(pnlExcused, EventArgs.Empty);
+            RoundPanel(panelExcusedBorder, EventArgs.Empty);
+            RoundPanel(panelCalendar, EventArgs.Empty);
+            RoundPanel(panelCalendarBorder, EventArgs.Empty);
         }
 
         private void lblBackToClass_Click(object sender, EventArgs e)
@@ -309,11 +340,11 @@ namespace AE.Application
 
             if (CallerControl != null)
             {
-                mainForm.loadForm(CallerControl);
+                mainForm.LoadForm(CallerControl);
             }
             else
             {
-                mainForm.loadForm(new UCClasses(_sectionService));
+                mainForm.LoadForm(new UCClasses(_sectionService));
             }
         }
 
@@ -633,6 +664,22 @@ namespace AE.Application
                     grade.Percentage = percentage;
                 }
             }
+        }
+        private void layoutStudents_SizeChanged(object sender, EventArgs e)
+        {
+            layoutStudents.SuspendLayout();
+
+            int targetWidth = layoutStudents.ClientSize.Width - 3 - 3 - 5;
+
+            foreach (Control ctrl in layoutStudents.Controls)
+            {
+                if (ctrl is UCStudentRow)
+                {
+                    ctrl.Width = targetWidth;
+                }
+            }
+
+            layoutStudents.ResumeLayout();
         }
     }
 }

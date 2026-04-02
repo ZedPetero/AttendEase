@@ -7,10 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using AE.Domain.Models;
-using AE.Infrastructure.Data;
+using Brevi.Domain.Models;
+using Brevi.Infrastructure.Data;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCRecords : UserControl
     {

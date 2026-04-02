@@ -1,38 +1,41 @@
-﻿using AE.Domain.DTO;
-using AE.Infrastructure.Data;
-using AE.Domain.DTO;
-using AE.Domain.Repositories.IRepositories;
+﻿using Brevi.Infrastructure.Data;
+using Brevi.Domain.DTO;
+using Brevi.Domain.Repositories.IRepositories;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-public class SectionService : ISectionService
+namespace Brevi.Services.Repositories
 {
-    private readonly AppDbContext _context;
-
-    public SectionService(AppDbContext context)
+    public class SectionService : ISectionService
     {
-        _context = context;
-    }
+        private readonly AppDbContext _context;
 
-    public async Task<List<SectionDto>> GetTeacherSectionsAsync(int teacherId)
-    {
-        var sections = await _context.Sections
-            .Where(s => s.TeacherId == teacherId && !s.IsArchived)
-            .Select(s => new SectionDto
-            {
-                Id = s.Id,
-                SectionName = s.SectionName,
-                SubjectName = s.Subject.ToString(),
-                StudentCount = s.Students.Count,
-                StartTime = s.StartTimeSchedule,
-                EndTime = s.EndTimeSchedule
-            })
-            .ToListAsync();
+        public SectionService(AppDbContext context)
+        {
+            _context = context;
+        }
 
-        return sections
-            .OrderBy(s => s.StartTime)
-            .ToList();
+        public async Task<List<SectionDto>> GetTeacherSectionsAsync(int teacherId)
+        {
+            var sections = await _context.Sections
+                .Where(s => s.TeacherId == teacherId && !s.IsArchived)
+                .Select(s => new SectionDto
+                {
+                    Id = s.Id,
+                    SectionName = s.SectionName,
+                    SubjectName = s.Subject.ToString(),
+                    StudentCount = s.Students.Count,
+                    StartTime = s.StartTimeSchedule,
+                    EndTime = s.EndTimeSchedule
+                })
+                .ToListAsync();
+
+            return sections
+                .OrderBy(s => s.StartTime)
+                .ToList();
+        }
     }
 }

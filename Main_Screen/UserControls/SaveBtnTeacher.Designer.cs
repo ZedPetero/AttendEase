@@ -1,4 +1,4 @@
-﻿namespace AE.Application.UserControls
+﻿namespace Brevi.Application.UserControls
 {
     partial class SaveBtnTeacher
     {

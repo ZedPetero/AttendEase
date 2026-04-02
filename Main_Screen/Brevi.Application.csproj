@@ -32,8 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AE.Infrastructure\AE.Infrastructure.csproj" />
-    <ProjectReference Include="..\IE.Services\AE.Services.csproj" />
+    <ProjectReference Include="..\AE.Infrastructure\Brevi.Infrastructure.csproj" />
+    <ProjectReference Include="..\IE.Services\Brevi.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

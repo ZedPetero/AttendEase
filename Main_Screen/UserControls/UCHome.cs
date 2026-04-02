@@ -5,9 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using AE.Application;
+using Brevi.Application;
 using ComponentFactory.Krypton.Toolkit;
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCHome : UserControl
     {
@@ -27,7 +27,7 @@ namespace AE.Application
         private void btnGetStarted_Click(object sender, EventArgs e)
         {
             MainScreenForm mainForm = (MainScreenForm)this.FindForm();
-            if (mainForm != null) 
+            if (mainForm != null)
             {
                 mainForm.NavigateToClasses();
             }
@@ -123,6 +123,16 @@ namespace AE.Application
                 int y = kryptonPanel4.Location.Y;
                 kryptonPanel4.Location = new Point(x, y + 5);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

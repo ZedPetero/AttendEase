@@ -1,6 +1,0 @@
-<Solution>
-  <Project Path="AE.Domain/AE.Domain.csproj" Id="b2ed507a-971f-411b-b2f2-41b9517288aa" />
-  <Project Path="AE.Infrastructure/AE.Infrastructure.csproj" Id="29360887-9a54-4b76-8e8b-2d8714a27c1d" />
-  <Project Path="IE.Services/AE.Services.csproj" Id="8c5495f4-c0a5-4f64-8598-5bbca6a2077a" />
-  <Project Path="Main_Screen/AE.Application.csproj" />
-</Solution>

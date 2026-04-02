@@ -1,7 +1,8 @@
-using AE.Domain.Repositories.IRepositories;
-using AE.Infrastructure.Data;
+using Brevi.Domain.Repositories.IRepositories;
+using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories;
 using System.Drawing.Drawing2D;
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class MainScreenForm : Form
     {
@@ -12,21 +13,20 @@ namespace AE.Application
         public MainScreenForm()
         {
             InitializeComponent();
-            // Ensure main content is correctly sized/positioned relative to the header and sidebar
-            this.Resize += MainScreenForm_Resize;
+            //this.Resize += MainScreenForm_Resize;
             UpdateMainContentBounds();
             var db = new AppDbContext();
             _sectionService = new SectionService(db);
 
             UCHome myHome = new UCHome();
-            loadForm(myHome);
+            LoadForm(myHome);
             btnHome.Checked = true;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
             UCHome myHome = new UCHome();
-            loadForm(myHome);
+            LoadForm(myHome);
         }
 
         private void sidebarTimer_Tick(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace AE.Application
                     sidebarTimer.Stop();
                 }
             }
-            UpdateMainContentBounds();
+            //UpdateMainContentBounds();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -76,7 +76,6 @@ namespace AE.Application
 
         private void UpdateMainContentBounds()
         {
-            // Position pnlMainContent to the right of the sidebar and below the header panel (kryptonPanel1)
             int left = sidebar.Right;
             int top = kryptonPanel1.Bottom;
             int width = this.ClientSize.Width - left;
@@ -88,32 +87,34 @@ namespace AE.Application
             pnlMainContent.Location = new Point(left, top);
             pnlMainContent.Size = new Size(width, height);
         }
-        public void loadForm(UserControl customizedControl)
+        public void LoadForm(UserControl customizedControl)
         {
             pnlMainContent.Controls.Clear();
 
             customizedControl.Dock = DockStyle.Fill;
 
             pnlMainContent.Controls.Add(customizedControl);
+
+            //pnlMainContent.SendToBack();
             customizedControl.Focus();
         }
 
         public void btnClasses_Click(object sender, EventArgs e)
         {
             UCClasses myClasses = new UCClasses(_sectionService);
-            loadForm(myClasses);
+            LoadForm(myClasses);
         }
 
         public void btnRecords_Click(object sender, EventArgs e)
         {
             UCRecords myRecords = new UCRecords();
-            loadForm(myRecords);
+            LoadForm(myRecords);
         }
 
         public void btnTeacher_Click(object sender, EventArgs e)
         {
             UCTeacher myTeacher = new UCTeacher();
-            loadForm(myTeacher);
+            LoadForm(myTeacher);
         }
 
         public void btnLogOut_Click(object sender, EventArgs e)
@@ -124,7 +125,7 @@ namespace AE.Application
         public void btnSettings_Click(object sender, EventArgs e)
         {
             UCSettings mySettings = new UCSettings();
-            loadForm(mySettings);
+            LoadForm(mySettings);
         }
 
         public void ShowOverlay()
@@ -154,7 +155,7 @@ namespace AE.Application
         public void NavigateToClasses()
         {
             btnClasses.Checked = true;
-            loadForm(new UCClasses(_sectionService));
+            LoadForm(new UCClasses(_sectionService));
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
@@ -179,6 +180,11 @@ namespace AE.Application
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pnlMainContent_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

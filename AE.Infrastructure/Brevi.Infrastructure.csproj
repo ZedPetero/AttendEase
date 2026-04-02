@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AE.Domain\AE.Domain.csproj" />
+    <ProjectReference Include="..\AE.Domain\Brevi.Domain.csproj" />
   </ItemGroup>
 
 </Project>

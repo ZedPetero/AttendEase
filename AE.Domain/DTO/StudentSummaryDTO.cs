@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AE.Application.DTO
+namespace Brevi.Application.DTO
 {
     public class StudentSummaryDTO
     {

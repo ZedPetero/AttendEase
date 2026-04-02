@@ -1,4 +1,4 @@
-﻿namespace AE.Application
+﻿namespace Brevi.Application
 {
     partial class SplashScreenForm
     {
@@ -52,10 +52,10 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.logo__not_final_;
-            pictureBox1.Location = new Point(77, 28);
+            pictureBox1.Image = Properties.Resources.Logo_Name_only_removedBg__WHITE;
+            pictureBox1.Location = new Point(101, 41);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(371, 237);
+            pictureBox1.Size = new Size(316, 166);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -141,7 +141,7 @@
             timer8.Interval = 30;
             timer8.Tick += timer8_Tick;
             // 
-            // Splash_Screen_Form
+            // SplashScreenForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -153,7 +153,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Splash_Screen_Form";
+            Name = "SplashScreenForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             Load += Splash_Screen_Form_Load;

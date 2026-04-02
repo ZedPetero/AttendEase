@@ -4,7 +4,7 @@ using System.Drawing.Text;
 using System.Runtime.InteropServices;
 using System.Linq;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public static class FontEngine
     {

@@ -1,9 +1,9 @@
-﻿using AE.Domain.DTO;
+﻿using Brevi.Domain.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AE.Domain.Repositories.IRepositories
+namespace Brevi.Domain.Repositories.IRepositories
 {
     public interface ISectionService
     {

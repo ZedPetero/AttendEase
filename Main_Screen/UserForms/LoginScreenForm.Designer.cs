@@ -1,4 +1,4 @@
-﻿namespace AE.Application
+﻿namespace Brevi.Application
 {
     partial class LoginScreenForm
     {
@@ -49,10 +49,10 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.logo;
-            pictureBox1.Location = new Point(168, -55);
+            pictureBox1.Image = Properties.Resources.Logo_Name_only_removedBg;
+            pictureBox1.Location = new Point(223, 33);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(465, 288);
+            pictureBox1.Size = new Size(355, 96);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -209,7 +209,7 @@
             btnDarkMode.UseVisualStyleBackColor = false;
             btnDarkMode.Click += btnDarkMode_Click;
             // 
-            // Login_Screen_Form
+            // LoginScreenForm
             // 
             AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -229,7 +229,7 @@
             Controls.Add(txtUsername);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Login_Screen_Form";
+            Name = "LoginScreenForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login_Screen_Form";
             Load += Login_Screen_Form_Load;

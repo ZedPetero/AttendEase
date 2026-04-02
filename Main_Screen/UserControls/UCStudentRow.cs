@@ -3,11 +3,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using AE.Infrastructure.Data;
-using AE.Domain.Models;
+using Brevi.Infrastructure.Data;
+using Brevi.Domain.Models;
 using System.Diagnostics;
 
-namespace AE.Application
+namespace Brevi.Application
 {
     public partial class UCStudentRow : UserControl
     {
@@ -27,12 +27,21 @@ namespace AE.Application
 
         public event EventHandler<int> AttendanceStatusChanged;
 
-        private readonly int _studentId;
         public UCStudentRow()
         {
             InitializeComponent();
-            UIHelper.RoundControl(this, 20);
-            UIHelper.RoundControl(pnlContent, 20);
+        }
+        private void RoundPanel(object sender, EventArgs e)
+        {
+            if (sender is Control panel)
+            {
+                UIHelper.RoundControl(panel, 20);
+
+                if (panel == this)
+                {
+                    pnlContent.Width = this.Width - 10;
+                }
+            }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -58,7 +67,13 @@ namespace AE.Application
             get { return lblStatus.Text; }
             set { lblStatus.Text = value; }
         }
-
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [Bindable(true)]
+        public int Width1
+        {
+            get { return this.Width; }
+            set { this.Width = value; }
+        }
         public void SetSelectedStatus(AttendanceStatus? status)
         {
             _selectedStatus = status;
@@ -104,25 +119,25 @@ namespace AE.Application
         private void BtnPresent_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Present);
-            AttendanceStatusChanged?.Invoke(this, _studentId);
+            AttendanceStatusChanged?.Invoke(this, StudentId);
         }
 
         private void BtnLate_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Late);
-            AttendanceStatusChanged?.Invoke(this, _studentId);
+            AttendanceStatusChanged?.Invoke(this, StudentId);
         }
 
         private void BtnExcused_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Excused);
-            AttendanceStatusChanged?.Invoke(this, _studentId);
+            AttendanceStatusChanged?.Invoke(this, StudentId);
         }
 
         private void BtnAbsent_Click(object? sender, EventArgs e)
         {
             SaveStatusAndRefresh(AttendanceStatus.Absent);
-            AttendanceStatusChanged?.Invoke(this, _studentId);
+            AttendanceStatusChanged?.Invoke(this, StudentId);
         }
 
         private void BtnDeleteStudent_Click(object? sender, EventArgs e)
