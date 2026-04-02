@@ -148,7 +148,7 @@
             // pictureBox4
             // 
             pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.Image = Properties.Resources.photo;
+            //pictureBox4.Image = Properties.Resources.photo;
             pictureBox4.Location = new Point(674, 225);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(642, 367);
