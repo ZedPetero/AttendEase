@@ -51,26 +51,40 @@ namespace Brevi.Application
             customizedControl.Focus();
         }
 
+        public void LinkEventHandler()
+        {
+
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            LoadForm(new UCLoginPage(_userManager));
+            UCLoginPage loginPage = new UCLoginPage(_userManager);
+            loginPage.GoToSignUpPage += (s, e) => LoadForm(new UCSignUpPage(_userManager));
+            LoadForm(loginPage);
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             var signUp = new UCSignUpPage(_userManager);
-            signUp.SignUpComplete += (s, e) => LoadForm(new UCLoginPage(_userManager));
+            signUp.ToLoginPage += (s, e) => LoadForm(new UCLoginPage(_userManager));
             LoadForm(signUp);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            LoadForm(new UCInteractionPage());
+            UCInteractionPage iPage = new UCInteractionPage();
+            iPage.StartNowClicked += (s, e) => LoadForm(new UCSignUpPage(_userManager));
+            LoadForm(iPage);
         }
 
         private void btnAboutUs_Click(object sender, EventArgs e)
         {
             LoadForm(new UCAboutUsPage());
+        }
+
+        private void btnCollapse_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

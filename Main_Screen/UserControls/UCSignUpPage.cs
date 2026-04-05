@@ -13,7 +13,7 @@ namespace Brevi.Application
     public partial class UCSignUpPage : UserControl
     {
         private readonly UserManager<Teacher> _userManager;
-        public event EventHandler? SignUpComplete;
+        public event EventHandler? ToLoginPage;
 
         public UCSignUpPage(UserManager<Teacher> userManager)
         {
@@ -42,7 +42,7 @@ namespace Brevi.Application
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 // Go to login page 
-                SignUpComplete?.Invoke(this, EventArgs.Empty);
+                ToLoginPage?.Invoke(this, EventArgs.Empty);
             }
             else
             {
@@ -52,6 +52,11 @@ namespace Brevi.Application
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void linkSignIn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ToLoginPage?.Invoke(this, EventArgs.Empty);
         }
     }
 }

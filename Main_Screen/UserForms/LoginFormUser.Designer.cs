@@ -77,6 +77,7 @@
             btnCollapse.Values.DropDownArrowColor = Color.Empty;
             btnCollapse.Values.Image = Properties.Resources.green_circle;
             btnCollapse.Values.Text = "";
+            btnCollapse.Click += btnCollapse_Click;
             // 
             // btnMaximize
             // 

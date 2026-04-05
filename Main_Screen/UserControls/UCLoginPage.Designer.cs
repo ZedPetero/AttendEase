@@ -58,6 +58,7 @@
             linkLabel2.TabIndex = 19;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Click Here";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
             // 
             // autoLabel3
             // 
@@ -98,7 +99,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.BeforeTouchSize = new Size(345, 32);
+            txtPassword.BeforeTouchSize = new Size(141, 32);
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 5;
@@ -126,7 +127,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.BeforeTouchSize = new Size(345, 32);
+            txtUsername.BeforeTouchSize = new Size(141, 32);
             txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;

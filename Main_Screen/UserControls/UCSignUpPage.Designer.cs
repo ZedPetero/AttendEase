@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            txtEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            txtPhoneNumber = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            txtUsername = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            txtPassword = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             autoLabel10 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             autoLabel9 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             autoLabel8 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -44,18 +48,14 @@
             linkSignIn = new LinkLabel();
             autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             btnSignUp = new Syncfusion.WinForms.Controls.SfButton();
-            txtPassword = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            txtUsername = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            txtPhoneNumber = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            txtEmail = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)txtEmail).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtUsername).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtPassword).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtMiddleName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtLastName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtFirstName).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtPassword).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtUsername).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)txtEmail).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -85,6 +85,66 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(521, 525);
             panel1.TabIndex = 0;
+            // 
+            // txtEmail
+            // 
+            txtEmail.BeforeTouchSize = new Size(141, 32);
+            txtEmail.Border3DStyle = Border3DStyle.SunkenOuter;
+            txtEmail.BorderColor = Color.DimGray;
+            txtEmail.BorderStyle = BorderStyle.FixedSingle;
+            txtEmail.CornerRadius = 5;
+            txtEmail.Font = new Font("Segoe UI", 14F);
+            txtEmail.Location = new Point(34, 184);
+            txtEmail.MaximumSize = new Size(9999, 9999);
+            txtEmail.MinimumSize = new Size(34, 30);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(453, 32);
+            txtEmail.TabIndex = 44;
+            // 
+            // txtPhoneNumber
+            // 
+            txtPhoneNumber.BeforeTouchSize = new Size(141, 32);
+            txtPhoneNumber.Border3DStyle = Border3DStyle.SunkenOuter;
+            txtPhoneNumber.BorderColor = Color.DimGray;
+            txtPhoneNumber.BorderStyle = BorderStyle.FixedSingle;
+            txtPhoneNumber.CornerRadius = 5;
+            txtPhoneNumber.Font = new Font("Segoe UI", 14F);
+            txtPhoneNumber.Location = new Point(34, 248);
+            txtPhoneNumber.MaximumSize = new Size(9999, 9999);
+            txtPhoneNumber.MinimumSize = new Size(34, 30);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(453, 32);
+            txtPhoneNumber.TabIndex = 43;
+            // 
+            // txtUsername
+            // 
+            txtUsername.BeforeTouchSize = new Size(141, 32);
+            txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
+            txtUsername.BorderColor = Color.DimGray;
+            txtUsername.BorderStyle = BorderStyle.FixedSingle;
+            txtUsername.CornerRadius = 5;
+            txtUsername.Font = new Font("Segoe UI", 14F);
+            txtUsername.Location = new Point(34, 312);
+            txtUsername.MaximumSize = new Size(9999, 9999);
+            txtUsername.MinimumSize = new Size(34, 30);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(453, 32);
+            txtUsername.TabIndex = 42;
+            // 
+            // txtPassword
+            // 
+            txtPassword.BeforeTouchSize = new Size(141, 32);
+            txtPassword.Border3DStyle = Border3DStyle.SunkenOuter;
+            txtPassword.BorderColor = Color.DimGray;
+            txtPassword.BorderStyle = BorderStyle.FixedSingle;
+            txtPassword.CornerRadius = 5;
+            txtPassword.Font = new Font("Segoe UI", 14F);
+            txtPassword.Location = new Point(34, 376);
+            txtPassword.MaximumSize = new Size(9999, 9999);
+            txtPassword.MinimumSize = new Size(34, 30);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(453, 32);
+            txtPassword.TabIndex = 41;
             // 
             // autoLabel10
             // 
@@ -132,7 +192,7 @@
             // 
             // txtMiddleName
             // 
-            txtMiddleName.BeforeTouchSize = new Size(453, 32);
+            txtMiddleName.BeforeTouchSize = new Size(141, 32);
             txtMiddleName.Border3DStyle = Border3DStyle.SunkenOuter;
             txtMiddleName.BorderColor = Color.DimGray;
             txtMiddleName.BorderStyle = BorderStyle.FixedSingle;
@@ -158,7 +218,7 @@
             // 
             // txtLastName
             // 
-            txtLastName.BeforeTouchSize = new Size(453, 32);
+            txtLastName.BeforeTouchSize = new Size(141, 32);
             txtLastName.Border3DStyle = Border3DStyle.SunkenOuter;
             txtLastName.BorderColor = Color.DimGray;
             txtLastName.BorderStyle = BorderStyle.FixedSingle;
@@ -208,7 +268,7 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.BeforeTouchSize = new Size(453, 32);
+            txtFirstName.BeforeTouchSize = new Size(141, 32);
             txtFirstName.Border3DStyle = Border3DStyle.SunkenOuter;
             txtFirstName.BorderColor = Color.DimGray;
             txtFirstName.BorderStyle = BorderStyle.FixedSingle;
@@ -247,6 +307,7 @@
             linkSignIn.TabIndex = 28;
             linkSignIn.TabStop = true;
             linkSignIn.Text = "Click Here";
+            linkSignIn.LinkClicked += linkSignIn_LinkClicked;
             // 
             // autoLabel3
             // 
@@ -274,66 +335,6 @@
             btnSignUp.UseVisualStyleBackColor = false;
             btnSignUp.Click += btnSignUp_Click;
             // 
-            // txtPassword
-            // 
-            txtPassword.BeforeTouchSize = new Size(453, 32);
-            txtPassword.Border3DStyle = Border3DStyle.SunkenOuter;
-            txtPassword.BorderColor = Color.DimGray;
-            txtPassword.BorderStyle = BorderStyle.FixedSingle;
-            txtPassword.CornerRadius = 5;
-            txtPassword.Font = new Font("Segoe UI", 14F);
-            txtPassword.Location = new Point(34, 376);
-            txtPassword.MaximumSize = new Size(9999, 9999);
-            txtPassword.MinimumSize = new Size(34, 30);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(453, 32);
-            txtPassword.TabIndex = 41;
-            // 
-            // txtUsername
-            // 
-            txtUsername.BeforeTouchSize = new Size(453, 32);
-            txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
-            txtUsername.BorderColor = Color.DimGray;
-            txtUsername.BorderStyle = BorderStyle.FixedSingle;
-            txtUsername.CornerRadius = 5;
-            txtUsername.Font = new Font("Segoe UI", 14F);
-            txtUsername.Location = new Point(34, 312);
-            txtUsername.MaximumSize = new Size(9999, 9999);
-            txtUsername.MinimumSize = new Size(34, 30);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(453, 32);
-            txtUsername.TabIndex = 42;
-            // 
-            // txtPhoneNumber
-            // 
-            txtPhoneNumber.BeforeTouchSize = new Size(453, 32);
-            txtPhoneNumber.Border3DStyle = Border3DStyle.SunkenOuter;
-            txtPhoneNumber.BorderColor = Color.DimGray;
-            txtPhoneNumber.BorderStyle = BorderStyle.FixedSingle;
-            txtPhoneNumber.CornerRadius = 5;
-            txtPhoneNumber.Font = new Font("Segoe UI", 14F);
-            txtPhoneNumber.Location = new Point(34, 248);
-            txtPhoneNumber.MaximumSize = new Size(9999, 9999);
-            txtPhoneNumber.MinimumSize = new Size(34, 30);
-            txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(453, 32);
-            txtPhoneNumber.TabIndex = 43;
-            // 
-            // txtEmail
-            // 
-            txtEmail.BeforeTouchSize = new Size(453, 32);
-            txtEmail.Border3DStyle = Border3DStyle.SunkenOuter;
-            txtEmail.BorderColor = Color.DimGray;
-            txtEmail.BorderStyle = BorderStyle.FixedSingle;
-            txtEmail.CornerRadius = 5;
-            txtEmail.Font = new Font("Segoe UI", 14F);
-            txtEmail.Location = new Point(34, 184);
-            txtEmail.MaximumSize = new Size(9999, 9999);
-            txtEmail.MinimumSize = new Size(34, 30);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(453, 32);
-            txtEmail.TabIndex = 44;
-            // 
             // UCSignUpPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -343,13 +344,13 @@
             Size = new Size(1184, 599);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)txtEmail).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtUsername).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtPassword).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtMiddleName).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtLastName).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtFirstName).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtPassword).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtUsername).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)txtEmail).EndInit();
             ResumeLayout(false);
         }
 

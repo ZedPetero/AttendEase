@@ -13,6 +13,9 @@ namespace Brevi.Application
         public UCAboutUsPage()
         {
             InitializeComponent();
+            UIHelper.RoundControl(panel2, 10);
+            UIHelper.RoundControl(panel4, 10);
+            UIHelper.RoundControl(panel6, 10);
         }
     }
 }
