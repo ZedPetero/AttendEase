@@ -256,7 +256,7 @@ namespace Brevi.Application
             sidebar.Controls.Add(btnLogout);
             sidebar.Controls.Add(kryptonBorderEdge2);
             sidebar.Dock = DockStyle.Left;
-            sidebar.Location = new Point(0, 60);
+            sidebar.Location = new Point(0, 0);
             sidebar.Name = "sidebar";
             sidebar.Size = new Size(55, 630);
             sidebar.StateCommon.Color1 = Color.FromArgb(250, 250, 250);
@@ -333,22 +333,41 @@ namespace Brevi.Application
             kryptonPanel1.Controls.Add(kryptonBorderEdge1);
             kryptonPanel1.Controls.Add(btnMenu);
             kryptonPanel1.Dock = DockStyle.Top;
-            kryptonPanel1.Location = new Point(0, 0);
+            kryptonPanel1.Location = new Point(55, 0);
             kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new Size(1200, 60);
+            kryptonPanel1.Size = new Size(1145, 60);
             kryptonPanel1.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
             kryptonPanel1.TabIndex = 0;
             // 
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnClose.Location = new Point(1152, 11);
+            btnClose.Cursor = Cursors.Hand;
+            btnClose.Location = new Point(1097, 11);
             btnClose.Name = "btnClose";
+            btnClose.OverrideDefault.Back.Color1 = Color.FromArgb(223, 58, 58);
+            btnClose.OverrideDefault.Back.Color2 = Color.FromArgb(223, 58, 58);
+            btnClose.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnClose.OverrideDefault.Border.Color1 = Color.FromArgb(223, 58, 58);
+            btnClose.OverrideDefault.Border.Rounding = 50F;
+            btnClose.OverrideFocus.Back.Color1 = Color.FromArgb(223, 58, 58);
+            btnClose.OverrideFocus.Back.Color2 = Color.FromArgb(223, 58, 58);
+            btnClose.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnClose.OverrideFocus.Border.Color1 = Color.FromArgb(223, 58, 58);
+            btnClose.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnClose.OverrideFocus.Border.Rounding = 50F;
             btnClose.Size = new Size(36, 36);
             btnClose.StateCommon.Back.Color1 = Color.FromArgb(223, 58, 58);
             btnClose.StateCommon.Back.Color2 = Color.FromArgb(223, 58, 58);
+            btnClose.StateCommon.Border.Color1 = Color.FromArgb(223, 58, 58);
             btnClose.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
             btnClose.StateCommon.Border.Rounding = 50F;
+            btnClose.StateTracking.Back.Color1 = Color.FromArgb(223, 58, 58);
+            btnClose.StateTracking.Back.Color2 = Color.FromArgb(223, 58, 58);
+            btnClose.StateTracking.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnClose.StateTracking.Border.Color1 = Color.FromArgb(223, 58, 58);
+            btnClose.StateTracking.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnClose.StateTracking.Border.Rounding = 50F;
             btnClose.TabIndex = 9;
             btnClose.Values.DropDownArrowColor = Color.Empty;
             btnClose.Values.Text = "";
@@ -357,13 +376,33 @@ namespace Brevi.Application
             // btnMaximize
             // 
             btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnMaximize.Location = new Point(1110, 11);
+            btnMaximize.Cursor = Cursors.Hand;
+            btnMaximize.Enabled = false;
+            btnMaximize.Location = new Point(1055, 11);
             btnMaximize.Name = "btnMaximize";
+            btnMaximize.OverrideDefault.Back.Color1 = Color.FromArgb(245, 159, 10);
+            btnMaximize.OverrideDefault.Back.Color2 = Color.FromArgb(245, 159, 10);
+            btnMaximize.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMaximize.OverrideDefault.Border.Color1 = Color.FromArgb(245, 159, 10);
+            btnMaximize.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMaximize.OverrideDefault.Border.Rounding = 50F;
+            btnMaximize.OverrideFocus.Back.Color1 = Color.FromArgb(245, 159, 10);
+            btnMaximize.OverrideFocus.Back.Color2 = Color.FromArgb(245, 159, 10);
+            btnMaximize.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMaximize.OverrideFocus.Border.Color1 = Color.FromArgb(245, 159, 10);
+            btnMaximize.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMaximize.OverrideFocus.Border.Rounding = 50F;
             btnMaximize.Size = new Size(36, 36);
             btnMaximize.StateCommon.Back.Color1 = Color.FromArgb(245, 159, 10);
             btnMaximize.StateCommon.Back.Color2 = Color.FromArgb(245, 159, 10);
+            btnMaximize.StateCommon.Border.Color1 = Color.FromArgb(245, 159, 10);
             btnMaximize.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
             btnMaximize.StateCommon.Border.Rounding = 50F;
+            btnMaximize.StateTracking.Back.Color1 = Color.FromArgb(245, 159, 10);
+            btnMaximize.StateTracking.Back.Color2 = Color.FromArgb(245, 159, 10);
+            btnMaximize.StateTracking.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMaximize.StateTracking.Border.Color1 = Color.FromArgb(245, 159, 10);
+            btnMaximize.StateTracking.Border.Rounding = 50F;
             btnMaximize.TabIndex = 8;
             btnMaximize.Values.DropDownArrowColor = Color.Empty;
             btnMaximize.Values.Text = "";
@@ -372,13 +411,34 @@ namespace Brevi.Application
             // btnMinimize
             // 
             btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnMinimize.Location = new Point(1068, 11);
+            btnMinimize.Cursor = Cursors.Hand;
+            btnMinimize.Location = new Point(1013, 11);
             btnMinimize.Name = "btnMinimize";
+            btnMinimize.OverrideDefault.Back.Color1 = Color.FromArgb(34, 195, 93);
+            btnMinimize.OverrideDefault.Back.Color2 = Color.FromArgb(34, 195, 93);
+            btnMinimize.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMinimize.OverrideDefault.Border.Color1 = Color.FromArgb(34, 195, 93);
+            btnMinimize.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMinimize.OverrideDefault.Border.Rounding = 50F;
+            btnMinimize.OverrideFocus.Back.Color1 = Color.FromArgb(34, 195, 93);
+            btnMinimize.OverrideFocus.Back.Color2 = Color.FromArgb(34, 195, 93);
+            btnMinimize.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMinimize.OverrideFocus.Border.Color1 = Color.FromArgb(34, 195, 93);
+            btnMinimize.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMinimize.OverrideFocus.Border.Rounding = 50F;
             btnMinimize.Size = new Size(36, 36);
             btnMinimize.StateCommon.Back.Color1 = Color.FromArgb(34, 195, 93);
             btnMinimize.StateCommon.Back.Color2 = Color.FromArgb(34, 195, 93);
+            btnMinimize.StateCommon.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMinimize.StateCommon.Border.Color1 = Color.FromArgb(34, 195, 93);
             btnMinimize.StateCommon.Border.Draw = Krypton.Toolkit.InheritBool.True;
             btnMinimize.StateCommon.Border.Rounding = 50F;
+            btnMinimize.StateTracking.Back.Color1 = Color.FromArgb(34, 195, 93);
+            btnMinimize.StateTracking.Back.Color2 = Color.FromArgb(34, 195, 93);
+            btnMinimize.StateTracking.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMinimize.StateTracking.Border.Color1 = Color.FromArgb(34, 195, 93);
+            btnMinimize.StateTracking.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMinimize.StateTracking.Border.Rounding = 50F;
             btnMinimize.TabIndex = 7;
             btnMinimize.Values.DropDownArrowColor = Color.Empty;
             btnMinimize.Values.Text = "";
@@ -400,7 +460,7 @@ namespace Brevi.Application
             kryptonBorderEdge1.Dock = DockStyle.Bottom;
             kryptonBorderEdge1.Location = new Point(0, 58);
             kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            kryptonBorderEdge1.Size = new Size(1200, 2);
+            kryptonBorderEdge1.Size = new Size(1145, 2);
             kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
             kryptonBorderEdge1.StateCommon.Width = 2;
             kryptonBorderEdge1.Text = "kryptonBorderEdge1";
@@ -477,8 +537,8 @@ namespace Brevi.Application
         private Krypton.Toolkit.KryptonCheckButton btnTeacher;
         private Krypton.Toolkit.KryptonCheckButton btnSettings;
         private PictureBox pictureBox1;
-        private Krypton.Toolkit.KryptonButton btnMinimize;
         private Krypton.Toolkit.KryptonButton btnClose;
         private Krypton.Toolkit.KryptonButton btnMaximize;
+        private Krypton.Toolkit.KryptonButton btnMinimize;
     }
 }

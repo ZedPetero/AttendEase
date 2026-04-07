@@ -231,6 +231,16 @@ namespace Brevi.Application.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo_Name_with_Motto_removebg_preview2 {
+            get {
+                object obj = ResourceManager.GetObject("Logo_Name_with_Motto-removebg-preview2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] MaterialSymbolsOutlined {
