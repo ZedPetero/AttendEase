@@ -99,7 +99,7 @@
             txtEmail.MinimumSize = new Size(34, 30);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(453, 32);
-            txtEmail.TabIndex = 44;
+            txtEmail.TabIndex = 4;
             // 
             // txtPhoneNumber
             // 
@@ -114,7 +114,7 @@
             txtPhoneNumber.MinimumSize = new Size(34, 30);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(453, 32);
-            txtPhoneNumber.TabIndex = 43;
+            txtPhoneNumber.TabIndex = 5;
             // 
             // txtUsername
             // 
@@ -129,7 +129,7 @@
             txtUsername.MinimumSize = new Size(34, 30);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(453, 32);
-            txtUsername.TabIndex = 42;
+            txtUsername.TabIndex = 6;
             // 
             // txtPassword
             // 
@@ -144,7 +144,7 @@
             txtPassword.MinimumSize = new Size(34, 30);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(453, 32);
-            txtPassword.TabIndex = 41;
+            txtPassword.TabIndex = 7;
             // 
             // autoLabel10
             // 
@@ -203,7 +203,7 @@
             txtMiddleName.MinimumSize = new Size(34, 30);
             txtMiddleName.Name = "txtMiddleName";
             txtMiddleName.Size = new Size(141, 32);
-            txtMiddleName.TabIndex = 33;
+            txtMiddleName.TabIndex = 2;
             // 
             // autoLabel7
             // 
@@ -229,7 +229,7 @@
             txtLastName.MinimumSize = new Size(34, 30);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(141, 32);
-            txtLastName.TabIndex = 31;
+            txtLastName.TabIndex = 3;
             // 
             // autoLabel6
             // 
@@ -279,7 +279,7 @@
             txtFirstName.MinimumSize = new Size(34, 30);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(141, 32);
-            txtFirstName.TabIndex = 22;
+            txtFirstName.TabIndex = 1;
             // 
             // autoLabel1
             // 
@@ -304,7 +304,7 @@
             linkSignIn.Location = new Point(291, 489);
             linkSignIn.Name = "linkSignIn";
             linkSignIn.Size = new Size(87, 21);
-            linkSignIn.TabIndex = 28;
+            linkSignIn.TabIndex = 9;
             linkSignIn.TabStop = true;
             linkSignIn.Text = "Click Here";
             linkSignIn.LinkClicked += linkSignIn_LinkClicked;
@@ -330,7 +330,7 @@
             btnSignUp.Size = new Size(453, 35);
             btnSignUp.Style.BackColor = Color.FromArgb(40, 164, 153);
             btnSignUp.Style.ForeColor = Color.White;
-            btnSignUp.TabIndex = 26;
+            btnSignUp.TabIndex = 8;
             btnSignUp.Text = "Sign Up";
             btnSignUp.UseVisualStyleBackColor = false;
             btnSignUp.Click += btnSignUp_Click;

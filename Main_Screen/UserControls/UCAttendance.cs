@@ -233,6 +233,8 @@ namespace Brevi.Application
 
             layoutStudents.SuspendLayout();
             layoutStudents.Controls.Clear();
+            layoutStudents.FlowDirection = FlowDirection.TopDown;
+            layoutStudents.WrapContents = false;
 
             layoutStudents.AutoScrollPosition = new Point(0, 0);
             using (var _context = new AppDbContext())
