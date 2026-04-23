@@ -43,11 +43,13 @@
             timer6 = new System.Windows.Forms.Timer(components);
             timer7 = new System.Windows.Forms.Timer(components);
             timer8 = new System.Windows.Forms.Timer(components);
+            pictureBox6 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -63,43 +65,55 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.ErrorImage = null;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(157, 235);
+            pictureBox2.InitialImage = null;
+            pictureBox2.Location = new Point(156, 297);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(32, 30);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
+            pictureBox2.Visible = false;
             // 
             // pictureBox3
             // 
+            pictureBox3.ErrorImage = null;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(277, 235);
+            pictureBox3.InitialImage = null;
+            pictureBox3.Location = new Point(276, 297);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(32, 30);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
+            pictureBox3.Visible = false;
             // 
             // pictureBox4
             // 
+            pictureBox4.ErrorImage = null;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(217, 235);
+            pictureBox4.InitialImage = null;
+            pictureBox4.Location = new Point(216, 297);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(32, 30);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 3;
             pictureBox4.TabStop = false;
+            pictureBox4.Visible = false;
             // 
             // pictureBox5
             // 
+            pictureBox5.ErrorImage = null;
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(335, 235);
+            pictureBox5.InitialImage = null;
+            pictureBox5.Location = new Point(334, 297);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(32, 30);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 4;
             pictureBox5.TabStop = false;
+            pictureBox5.Visible = false;
             // 
             // timer1
             // 
@@ -141,12 +155,24 @@
             timer8.Interval = 30;
             timer8.Tick += timer8_Tick;
             // 
+            // pictureBox6
+            // 
+            pictureBox6.ErrorImage = (Image)resources.GetObject("pictureBox6.ErrorImage");
+            pictureBox6.InitialImage = (Image)resources.GetObject("pictureBox6.InitialImage");
+            pictureBox6.Location = new Point(156, 213);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(214, 114);
+            pictureBox6.TabIndex = 5;
+            pictureBox6.TabStop = false;
+            pictureBox6.Click += pictureBox6_Click;
+            // 
             // SplashScreenForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 164, 153);
             ClientSize = new Size(518, 339);
+            Controls.Add(pictureBox6);
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
@@ -162,6 +188,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ResumeLayout(false);
         }
 
@@ -180,5 +207,6 @@
         private System.Windows.Forms.Timer timer6;
         private System.Windows.Forms.Timer timer7;
         private System.Windows.Forms.Timer timer8;
+        private PictureBox pictureBox6;
     }
 }

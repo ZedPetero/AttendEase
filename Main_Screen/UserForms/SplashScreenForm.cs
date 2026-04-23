@@ -1,137 +1,159 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace Brevi.Application
 {
     public partial class SplashScreenForm : Form
     {
+        private Panel loadingPanel;
+        private System.Windows.Forms.Timer animationTimer;
+        private System.Windows.Forms.Timer fadeTimer;
+        private Stopwatch stopwatch;
+        private readonly int animationDurationMs = 3000;
+
         public SplashScreenForm()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.StartPosition = FormStartPosition.CenterScreen;
+
+            // ensure no border and centered
+            FormBorderStyle = FormBorderStyle.None;
+            StartPosition = FormStartPosition.CenterScreen;
+
+            // create loading panel placed relative to pictureBox1 (from designer)
+            loadingPanel = new DoubleBufferedPanel();
+            loadingPanel.Size = new Size(120, 36);
+            loadingPanel.BackColor = Color.Transparent;
+            loadingPanel.Paint += LoadingPanel_Paint;
+
+            // timers
+            stopwatch = new Stopwatch();
+            animationTimer = new System.Windows.Forms.Timer { Interval = 16 };
+            animationTimer.Tick += AnimationTimer_Tick;
+            fadeTimer = new System.Windows.Forms.Timer { Interval = 30 };
+            fadeTimer.Tick += FadeTimer_Tick;
+
+            Shown += SplashScreenForm_Shown;
+            FormClosed += SplashScreenForm_FormClosed;
+            Resize += SplashScreenForm_Resize;
         }
-        private void Splash_Screen_Form_Load(object sender, EventArgs e)
+
+        private void SplashScreenForm_Shown(object? sender, EventArgs e)
         {
-            ApplyRoundedCorners(30); // adjust radius here
+            // add loadingPanel after designer created pictureBox1
+            if (!Controls.Contains(loadingPanel))
+                Controls.Add(loadingPanel);
 
-            pictureBox2.Size = pictureBox3.Size = pictureBox4.Size = pictureBox5.Size = new Size(0, 0);
-            timer1.Start();
+            PositionLoadingPanel();
+            stopwatch.Restart();
+            animationTimer.Start();
         }
-        private void ApplyRoundedCorners(int radius)
+
+        private void SplashScreenForm_Resize(object? sender, EventArgs e)
         {
-            GraphicsPath path = new GraphicsPath();
-            int d = radius * 2;
-
-            path.StartFigure();
-            path.AddArc(0, 0, d, d, 180, 90);
-            path.AddArc(Width - d, 0, d, d, 270, 90);
-            path.AddArc(Width - d, Height - d, d, d, 0, 90);
-            path.AddArc(0, Height - d, d, d, 90, 90);
-            path.CloseFigure();
-
-            this.Region = new Region(path);
+            PositionLoadingPanel();
         }
+
+        private void PositionLoadingPanel()
+        {
+            if (pictureBox1 != null && loadingPanel != null)
+            {
+                loadingPanel.Location = new Point(
+                    pictureBox1.Location.X + (pictureBox1.Width - loadingPanel.Width) / 2,
+                    pictureBox1.Location.Y + pictureBox1.Height - loadingPanel.Height - 12);
+                loadingPanel.BringToFront();
+            }
+        }
+
+        private void AnimationTimer_Tick(object? sender, EventArgs e)
+        {
+            loadingPanel.Invalidate();
+            if (stopwatch.ElapsedMilliseconds >= animationDurationMs)
+            {
+                animationTimer.Stop();
+                fadeTimer.Start();
+            }
+        }
+
+        private void FadeTimer_Tick(object? sender, EventArgs e)
+        {
+            Opacity -= 0.12;
+            if (Opacity <= 0)
+            {
+                fadeTimer.Stop();
+                Close();
+            }
+        }
+
+        private void SplashScreenForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            animationTimer?.Stop();
+            fadeTimer?.Stop();
+            stopwatch?.Stop();
+            animationTimer?.Dispose();
+            fadeTimer?.Dispose();
+        }
+
+        private void LoadingPanel_Paint(object? sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+
+            long t = stopwatch.ElapsedMilliseconds;
+            float baseX = loadingPanel.Width / 2f;
+            float baseY = loadingPanel.Height / 2f;
+
+            int dots = 3;
+            float maxRadius = 8f;
+            float spacing = 22f;
+            float totalWidth = (dots - 1) * spacing;
+            float startX = baseX - totalWidth / 2f;
+
+            for (int i = 0; i < dots; i++)
+            {
+                double phase = (t / 200.0) + i * 0.6;
+                float dy = (float)(Math.Sin(phase) * 6.0);
+                float scale = 0.6f + (float)((Math.Sin(phase) + 1.0) * 0.4f);
+
+                float radius = maxRadius * scale * 0.7f;
+                float cx = startX + i * spacing;
+                float cy = baseY - dy;
+
+                int alpha = (int)(180 + (Math.Abs(dy) / 6.0) * 75);
+                alpha = Math.Max(100, Math.Min(255, alpha));
+
+                using var brush = new SolidBrush(Color.FromArgb(alpha, Color.White));
+                g.FillEllipse(brush, cx - radius / 2f, cy - radius / 2f, radius, radius);
+            }
+        }
+
+        private class DoubleBufferedPanel : Panel
+        {
+            public DoubleBufferedPanel()
+            {
+                DoubleBuffered = true;
+                SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
+            }
+        }
+
+        // Empty handlers to satisfy designer event hookups from the original designer file.
         private void pictureBox1_Click(object sender, EventArgs e) { }
-        private void timer1_Tick(object sender, EventArgs e)
-        { 
-            pictureBox2.Size = new Size(pictureBox2.Width + 2, pictureBox2.Height + 2);
-            pictureBox2.Location = new Point(pictureBox2.Location.X - 1, pictureBox2.Location.Y - 1);
-            if (pictureBox2.Width == 24)
-            {
-                timer3.Start();
-            }
-            else if (pictureBox2.Width == 50)
-            {
-                timer1.Stop(); timer2.Start();
-            }
-        }
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            pictureBox2.Size = new Size(pictureBox2.Width - 2, pictureBox2.Height - 2);
-            pictureBox2.Location = new Point(pictureBox2.Location.X + 1, pictureBox2.Location.Y + 1);
-            if (pictureBox2.Width == 0)
-            {
-                timer2.Stop();
-            }
-            
-        }
+        private void timer1_Tick(object sender, EventArgs e) { }
+        private void timer2_Tick(object sender, EventArgs e) { }
+        private void timer3_Tick(object sender, EventArgs e) { }
+        private void timer4_Tick(object sender, EventArgs e) { }
+        private void timer5_Tick(object sender, EventArgs e) { }
+        private void timer6_Tick(object sender, EventArgs e) { }
+        private void timer7_Tick(object sender, EventArgs e) { }
+        private void timer8_Tick(object sender, EventArgs e) { }
+        private void Splash_Screen_Form_Load(object sender, EventArgs e) { }
 
-        private void timer3_Tick(object sender, EventArgs e)
+        private void pictureBox6_Click(object sender, EventArgs e)
         {
-            pictureBox3.Size = new Size(pictureBox3.Width + 2, pictureBox3.Height + 2);
-            pictureBox3.Location = new Point(pictureBox3.Location.X - 1, pictureBox3.Location.Y - 1);
-            if (pictureBox3.Width == 24)
-            {
-                timer5.Start();
-            }
-            else if (pictureBox3.Width == 50)
-            {
-                timer3.Stop(); timer4.Start();
-            }
-        }
 
-        private void timer4_Tick(object sender, EventArgs e)
-        {
-            pictureBox3.Size = new Size(pictureBox3.Width - 2, pictureBox3.Height - 2);
-            pictureBox3.Location = new Point(pictureBox3.Location.X + 1, pictureBox3.Location.Y + 1);
-            if (pictureBox3.Width == 0)
-            {
-                timer4.Stop();
-            }
-        }
-
-        private void timer5_Tick(object sender, EventArgs e)
-        {
-            pictureBox4.Size = new Size(pictureBox4 .Width + 2, pictureBox4.Height + 2);
-            pictureBox4.Location = new Point(pictureBox4.Location.X - 1, pictureBox4.Location.Y - 1);
-            if (pictureBox4.Width == 24)
-            {
-                timer7.Start();
-            }
-            else if (pictureBox4.Width == 50)
-            {
-                timer5.Stop(); timer6.Start();
-            }
-        }
-
-        private void timer6_Tick(object sender, EventArgs e)
-        {
-            pictureBox4.Size = new Size(pictureBox4.Width - 2, pictureBox4.Height - 2);
-            pictureBox4.Location = new Point(pictureBox4.Location.X + 1, pictureBox4.Location.Y + 1);
-            if (pictureBox4.Width == 0)
-            {
-                timer6.Stop();
-            }
-        }
-
-        private void timer7_Tick(object sender, EventArgs e)
-        {
-            pictureBox5.Size = new Size(pictureBox5.Width + 2, pictureBox5.Height + 2);
-            pictureBox5.Location = new Point(pictureBox5.Location.X - 1, pictureBox5.Location.Y - 1);
-            
-            if (pictureBox5.Width == 50)
-            {
-                timer7.Stop(); timer8.Start(); timer1.Start();
-            }
-        }
-
-        private void timer8_Tick(object sender, EventArgs e)
-        {
-            pictureBox5.Size = new Size(pictureBox5.Width - 2, pictureBox5.Height - 2);
-            pictureBox5.Location = new Point(pictureBox5.Location.X + 1, pictureBox5.Location.Y + 1);
-            if (pictureBox5.Width == 0)
-            {
-                timer8.Stop();
-                // sequence finished — close the splash so Program.Main can open the main form
-                this.Close();       
-            }
         }
     }
 }
