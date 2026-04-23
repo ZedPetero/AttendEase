@@ -39,7 +39,7 @@
             Score = new DataGridViewTextBoxColumn();
             RawScore = new DataGridViewTextBoxColumn();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            scoreCalculationLabel = new Krypton.Toolkit.KryptonLabel();
             btnDownloadCSV = new Krypton.Toolkit.KryptonButton();
             btnClose = new Krypton.Toolkit.KryptonButton();
             pnlContent = new Panel();
@@ -76,6 +76,7 @@
             gridSummary.TabIndex = 0;
             gridSummary.CellContentClick += gridSummary_CellContentClick;
             gridSummary.CellFormatting += gridSummary_CellFormatting;
+            gridSummary.CellPainting += gridSummary_CellPainting;
             // 
             // RollNo
             // 
@@ -134,16 +135,16 @@
             kryptonLabel1.TabIndex = 1;
             kryptonLabel1.Values.Text = "Attendance Summary";
             // 
-            // kryptonLabel2
+            // scoreCalculationLabel
             // 
-            kryptonLabel2.Location = new Point(31, 75);
-            kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.PaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
-            kryptonLabel2.Size = new Size(580, 28);
-            kryptonLabel2.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
-            kryptonLabel2.StateCommon.ShortText.Font = new Font("Inter", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel2.TabIndex = 2;
-            kryptonLabel2.Values.Text = "Score calculation: Present = 100%, Late = 50%, Absent = 0%";
+            scoreCalculationLabel.Location = new Point(31, 75);
+            scoreCalculationLabel.Name = "scoreCalculationLabel";
+            scoreCalculationLabel.PaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
+            scoreCalculationLabel.Size = new Size(590, 41);
+            scoreCalculationLabel.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
+            scoreCalculationLabel.StateCommon.ShortText.Font = new Font("Inter", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            scoreCalculationLabel.TabIndex = 2;
+            scoreCalculationLabel.Values.Text = "Score calculation: Present = 100%, Late = 50%, Absent = 0%, Excused = 100%\r\n\r\n";
             // 
             // btnDownloadCSV
             // 
@@ -197,7 +198,7 @@
             // 
             pnlContent.BackColor = Color.White;
             pnlContent.Controls.Add(gridSummary);
-            pnlContent.Controls.Add(kryptonLabel2);
+            pnlContent.Controls.Add(scoreCalculationLabel);
             pnlContent.Controls.Add(btnDownloadCSV);
             pnlContent.Controls.Add(kryptonLabel1);
             pnlContent.Controls.Add(btnClose);
@@ -230,7 +231,7 @@
 
         private Krypton.Toolkit.KryptonDataGridView gridSummary;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private Krypton.Toolkit.KryptonLabel scoreCalculationLabel;
         private Krypton.Toolkit.KryptonButton btnDownloadCSV;
         private DataGridViewTextBoxColumn RollNo;
         private DataGridViewTextBoxColumn Name;

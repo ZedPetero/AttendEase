@@ -44,7 +44,7 @@
             darkmoderadiobtn = new Krypton.Toolkit.KryptonRadioButton();
             label2 = new Label();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            saveFormulaBtn = new Krypton.Toolkit.KryptonButton();
             Excusedtxtbox = new Krypton.Toolkit.KryptonTextBox();
             kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
             Absenttxtbox = new Krypton.Toolkit.KryptonTextBox();
@@ -272,7 +272,7 @@
             // 
             // kryptonPanel2
             // 
-            kryptonPanel2.Controls.Add(kryptonButton1);
+            kryptonPanel2.Controls.Add(saveFormulaBtn);
             kryptonPanel2.Controls.Add(Excusedtxtbox);
             kryptonPanel2.Controls.Add(kryptonLabel7);
             kryptonPanel2.Controls.Add(Absenttxtbox);
@@ -289,29 +289,30 @@
             kryptonPanel2.StateCommon.Color2 = Color.White;
             kryptonPanel2.TabIndex = 8;
             // 
-            // kryptonButton1
+            // saveFormulaBtn
             // 
-            kryptonButton1.Location = new Point(12, 184);
-            kryptonButton1.Name = "kryptonButton1";
-            kryptonButton1.Size = new Size(166, 41);
-            kryptonButton1.StateCommon.Border.Rounding = 20F;
-            kryptonButton1.StateCommon.Content.LongText.Color1 = Color.White;
-            kryptonButton1.StateCommon.Content.LongText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            kryptonButton1.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonButton1.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
-            kryptonButton1.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
-            kryptonButton1.StateNormal.Border.Color1 = Color.FromArgb(39, 165, 153);
-            kryptonButton1.StateNormal.Border.Color2 = Color.FromArgb(39, 165, 153);
-            kryptonButton1.StateNormal.Border.Rounding = 20F;
-            kryptonButton1.StateNormal.Content.ShortText.Color1 = Color.White;
-            kryptonButton1.StateNormal.Content.ShortText.Color2 = Color.White;
-            kryptonButton1.StateNormal.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
-            kryptonButton1.StateTracking.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
-            kryptonButton1.TabIndex = 13;
-            kryptonButton1.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton1.Values.ExtraText = "Save Formula";
-            kryptonButton1.Values.Text = "";
-            kryptonButton1.Values.UACShieldIconSize = Krypton.Toolkit.IconSize.Tiny;
+            saveFormulaBtn.Location = new Point(12, 184);
+            saveFormulaBtn.Name = "saveFormulaBtn";
+            saveFormulaBtn.Size = new Size(166, 41);
+            saveFormulaBtn.StateCommon.Border.Rounding = 20F;
+            saveFormulaBtn.StateCommon.Content.LongText.Color1 = Color.White;
+            saveFormulaBtn.StateCommon.Content.LongText.Font = new Font("Inter SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            saveFormulaBtn.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            saveFormulaBtn.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
+            saveFormulaBtn.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
+            saveFormulaBtn.StateNormal.Border.Color1 = Color.FromArgb(39, 165, 153);
+            saveFormulaBtn.StateNormal.Border.Color2 = Color.FromArgb(39, 165, 153);
+            saveFormulaBtn.StateNormal.Border.Rounding = 20F;
+            saveFormulaBtn.StateNormal.Content.ShortText.Color1 = Color.White;
+            saveFormulaBtn.StateNormal.Content.ShortText.Color2 = Color.White;
+            saveFormulaBtn.StateNormal.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
+            saveFormulaBtn.StateTracking.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
+            saveFormulaBtn.TabIndex = 13;
+            saveFormulaBtn.Values.DropDownArrowColor = Color.Empty;
+            saveFormulaBtn.Values.ExtraText = "Save Formula";
+            saveFormulaBtn.Values.Text = "";
+            saveFormulaBtn.Values.UACShieldIconSize = Krypton.Toolkit.IconSize.Tiny;
+            saveFormulaBtn.Click += saveFormulaBtn_Click;
             // 
             // Excusedtxtbox
             // 
@@ -474,7 +475,7 @@
         private Krypton.Toolkit.KryptonTextBox Excusedtxtbox;
         private Krypton.Toolkit.KryptonLabel kryptonLabel7;
         private Krypton.Toolkit.KryptonTextBox Absenttxtbox;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private Krypton.Toolkit.KryptonButton saveFormulaBtn;
         private Krypton.Toolkit.KryptonToggleSwitch kryptonToggleSwitch1;
         private Krypton.Toolkit.KryptonTextBox newPassTxtBox;
         private Krypton.Toolkit.KryptonLabel kryptonLabel8;

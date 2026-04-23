@@ -162,9 +162,44 @@ namespace Brevi.Application
 
         }
 
-        private void PasswordChangeButton_Click_1(object sender, EventArgs e)
+        private void saveFormulaBtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // 1. Validate and Parse inputs
+                if (!double.TryParse(PresenttxtBox.Text, out double p) ||
+                    !double.TryParse(Latetxtbox.Text, out double l) ||
+                    !double.TryParse(Absenttxtbox.Text, out double a) ||
+                    !double.TryParse(Excusedtxtbox.Text, out double ex))
+                {
+                    MessageBox.Show("Please enter valid numbers for all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                using (var db = new AppDbContext())
+                {
+                    // 2. Find existing settings or create new
+                    var settings = db.AttendanceWeights.FirstOrDefault();
+                    if (settings == null)
+                    {
+                        settings = new AttendanceWeights();
+                        db.AttendanceWeights.Add(settings);
+                    }
+
+                    // 3. Update values
+                    settings.PresentWeight = p/100;
+                    settings.LateWeight = l/100;
+                    settings.AbsentWeight = a/100;
+                    settings.ExcusedWeight = ex/100;
+
+                    db.SaveChanges();
+                    MessageBox.Show("Formula weights saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving settings: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

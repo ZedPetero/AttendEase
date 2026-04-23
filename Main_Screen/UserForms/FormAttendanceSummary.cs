@@ -34,8 +34,6 @@ namespace Brevi.Application
             gridSummary.Columns["Excused"].DataPropertyName = "Excused";
             gridSummary.Columns["Score"].DataPropertyName = "Score";
             gridSummary.Columns["RawScore"].DataPropertyName = "RawScore";
-
-            gridSummary.CellPainting += gridSummary_CellPainting;
         }
 
         private void LoadSummaryData()
@@ -44,6 +42,7 @@ namespace Brevi.Application
 
             using (var db = new AppDbContext())
             {
+                var weights = db.AttendanceWeights.FirstOrDefault() ?? new AttendanceWeights();
                 var students = db.Students
                          .Where(s => s.SectionId == _sectionId)
                          .OrderBy(s => s.LastName)
@@ -65,7 +64,10 @@ namespace Brevi.Application
                     int a = records.Count(r => r.Status == AttendanceStatus.Absent);
                     int e = records.Count(r => r.Status == AttendanceStatus.Excused);
 
-                    double points = (p * 1.0) + (e * 1.0) + (l * 0.5) + (a * 0.0);
+                    double points = (p * weights.PresentWeight) +
+                            (e * weights.ExcusedWeight) +
+                            (l * weights.LateWeight) +
+                            (a * weights.AbsentWeight);
                     double finalPercentage = total > 0 ? (points / total) * 100.0 : 0;
 
                     string middleInitial = string.IsNullOrWhiteSpace(student.MiddleName)
@@ -99,6 +101,12 @@ namespace Brevi.Application
                 {
                     gridSummary.Columns[col].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
+
+                scoreCalculationLabel.Text = "Score calculation: Present = " 
+                    + weights.PresentWeight*100 + "%, Late = "
+                    + weights.LateWeight*100 + "%, Absent = "
+                    + weights.AbsentWeight*100 + "%, Excused = "
+                    + weights.ExcusedWeight*100 + "%";
             }
         }
 
