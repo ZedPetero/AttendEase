@@ -106,8 +106,9 @@
             // 
             circularPictureBox1.Anchor = AnchorStyles.Top;
             circularPictureBox1.BackColor = SystemColors.Control;
-            circularPictureBox1.BackgroundImage = Properties.Resources.number_one;
+            circularPictureBox1.BackgroundImage = Properties.Resources.petero;
             circularPictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            circularPictureBox1.ErrorImage = Properties.Resources.number_1;
             circularPictureBox1.Location = new Point(207, 527);
             circularPictureBox1.Name = "circularPictureBox1";
             circularPictureBox1.Size = new Size(135, 135);
@@ -118,8 +119,9 @@
             // 
             circularPictureBox2.Anchor = AnchorStyles.Top;
             circularPictureBox2.BackColor = SystemColors.Control;
-            circularPictureBox2.BackgroundImage = Properties.Resources.number_two;
+            circularPictureBox2.BackgroundImage = Properties.Resources.balbero;
             circularPictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
+            circularPictureBox2.ErrorImage = Properties.Resources.number_2;
             circularPictureBox2.Location = new Point(525, 527);
             circularPictureBox2.Name = "circularPictureBox2";
             circularPictureBox2.Size = new Size(135, 135);
@@ -130,8 +132,9 @@
             // 
             circularPictureBox3.Anchor = AnchorStyles.Top;
             circularPictureBox3.BackColor = SystemColors.Control;
-            circularPictureBox3.BackgroundImage = Properties.Resources.number_three;
+            circularPictureBox3.BackgroundImage = Properties.Resources.balansag;
             circularPictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
+            circularPictureBox3.ErrorImage = Properties.Resources.number_3;
             circularPictureBox3.Location = new Point(844, 527);
             circularPictureBox3.Name = "circularPictureBox3";
             circularPictureBox3.Size = new Size(135, 135);
@@ -145,6 +148,8 @@
             kryptonLabel4.Location = new Point(502, 467);
             kryptonLabel4.Name = "kryptonLabel4";
             kryptonLabel4.Size = new Size(180, 34);
+            kryptonLabel4.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            kryptonLabel4.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             kryptonLabel4.StateCommon.ShortText.Font = new Font("Inter", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel4.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonLabel4.TabIndex = 16;
@@ -157,6 +162,8 @@
             kryptonLabel5.Location = new Point(163, 668);
             kryptonLabel5.Name = "kryptonLabel5";
             kryptonLabel5.Size = new Size(222, 34);
+            kryptonLabel5.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            kryptonLabel5.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             kryptonLabel5.StateCommon.ShortText.Font = new Font("Inter", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel5.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonLabel5.TabIndex = 17;
@@ -169,6 +176,8 @@
             kryptonLabel6.Location = new Point(481, 668);
             kryptonLabel6.Name = "kryptonLabel6";
             kryptonLabel6.Size = new Size(222, 34);
+            kryptonLabel6.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            kryptonLabel6.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             kryptonLabel6.StateCommon.ShortText.Font = new Font("Inter", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel6.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonLabel6.TabIndex = 18;
@@ -181,6 +190,8 @@
             kryptonLabel7.Location = new Point(799, 668);
             kryptonLabel7.Name = "kryptonLabel7";
             kryptonLabel7.Size = new Size(222, 34);
+            kryptonLabel7.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            kryptonLabel7.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
             kryptonLabel7.StateCommon.ShortText.Font = new Font("Inter", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             kryptonLabel7.StateCommon.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
             kryptonLabel7.TabIndex = 19;

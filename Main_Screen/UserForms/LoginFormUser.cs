@@ -19,7 +19,7 @@ namespace Brevi.Application
             _userManager = userManager;
             InitializeComponent();
             UCInteractionPage iPage = new UCInteractionPage();
-            iPage.StartNowClicked += (s, e) => LoadForm(new UCSignUpPage(_userManager));
+            iPage.StartNowClicked += (s, e) => btnSignUp_Click(s, e);
             LoadForm(iPage);
         }
 
@@ -59,21 +59,21 @@ namespace Brevi.Application
         private void btnLogin_Click(object sender, EventArgs e)
         {
             UCLoginPage loginPage = new UCLoginPage(_userManager);
-            loginPage.GoToSignUpPage += (s, e) => LoadForm(new UCSignUpPage(_userManager));
+            loginPage.GoToSignUpPage += (s, e) => btnSignUp_Click(s,e);
             LoadForm(loginPage);
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             var signUp = new UCSignUpPage(_userManager);
-            signUp.ToLoginPage += (s, e) => LoadForm(new UCLoginPage(_userManager));
+            signUp.ToLoginPage += (s, e) => btnLogin_Click(s,e);
             LoadForm(signUp);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             UCInteractionPage iPage = new UCInteractionPage();
-            iPage.StartNowClicked += (s, e) => LoadForm(new UCSignUpPage(_userManager));
+            iPage.StartNowClicked += (s, e) => btnSignUp_Click(s,e);
             LoadForm(iPage);
         }
 

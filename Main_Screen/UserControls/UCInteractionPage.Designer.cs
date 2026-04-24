@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             pictureBox1 = new PictureBox();
-            kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             btnStartNow = new Krypton.Toolkit.KryptonButton();
+            kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
@@ -46,34 +47,10 @@
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
-            // kryptonLabel3
-            // 
-            kryptonLabel3.Anchor = AnchorStyles.None;
-            kryptonLabel3.Location = new Point(113, 299);
-            kryptonLabel3.Name = "kryptonLabel3";
-            kryptonLabel3.Size = new Size(286, 35);
-            kryptonLabel3.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
-            kryptonLabel3.StateCommon.ShortText.Color2 = Color.FromArgb(108, 124, 137);
-            kryptonLabel3.StateCommon.ShortText.Font = new Font("Inter Medium", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            kryptonLabel3.TabIndex = 7;
-            kryptonLabel3.Values.Text = "Your Presence Matters";
-            // 
-            // kryptonLabel2
-            // 
-            kryptonLabel2.Anchor = AnchorStyles.None;
-            kryptonLabel2.Location = new Point(107, 206);
-            kryptonLabel2.Name = "kryptonLabel2";
-            kryptonLabel2.Size = new Size(204, 74);
-            kryptonLabel2.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
-            kryptonLabel2.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonLabel2.StateCommon.ShortText.Font = new Font("Inter", 40F, FontStyle.Bold);
-            kryptonLabel2.TabIndex = 6;
-            kryptonLabel2.Values.Text = "Korum";
-            // 
             // btnStartNow
             // 
             btnStartNow.Anchor = AnchorStyles.None;
-            btnStartNow.Location = new Point(124, 353);
+            btnStartNow.Location = new Point(124, 398);
             btnStartNow.Name = "btnStartNow";
             btnStartNow.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
             btnStartNow.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
@@ -102,26 +79,49 @@
             btnStartNow.Values.Text = "";
             btnStartNow.Click += btnStartNow_Click;
             // 
+            // kryptonWrapLabel1
+            // 
+            kryptonWrapLabel1.Anchor = AnchorStyles.None;
+            kryptonWrapLabel1.AutoSize = false;
+            kryptonWrapLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
+            kryptonWrapLabel1.Location = new Point(116, 299);
+            kryptonWrapLabel1.Name = "kryptonWrapLabel1";
+            kryptonWrapLabel1.Size = new Size(332, 73);
+            kryptonWrapLabel1.StateCommon.Font = new Font("Inter Medium", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonWrapLabel1.StateCommon.TextColor = Color.FromArgb(108, 124, 137);
+            kryptonWrapLabel1.Text = "\"Less Time Counting, More Time Teaching\"";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.None;
+            pictureBox2.BackgroundImage = Properties.Resources.Logo_Name_only_removedBg;
+            pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox2.Location = new Point(113, 161);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(256, 119);
+            pictureBox2.TabIndex = 12;
+            pictureBox2.TabStop = false;
+            // 
             // UCInteractionPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(pictureBox2);
+            Controls.Add(kryptonWrapLabel1);
             Controls.Add(btnStartNow);
             Controls.Add(pictureBox1);
-            Controls.Add(kryptonLabel3);
-            Controls.Add(kryptonLabel2);
             Name = "UCInteractionPage";
             Size = new Size(1184, 599);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private PictureBox pictureBox1;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel3;
-        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private Krypton.Toolkit.KryptonButton btnStartNow;
+        private Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel1;
+        private PictureBox pictureBox2;
     }
 }
