@@ -28,14 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pictureBox1 = new PictureBox();
             btnStartNow = new Krypton.Toolkit.KryptonButton();
             kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
             pictureBox2 = new PictureBox();
             label1 = new Label();
-            sfListView1 = new Syncfusion.WinForms.ListView.SfListView();
+            loggedInViewPanel = new Krypton.Toolkit.KryptonPanel();
+            borderPanel = new Krypton.Toolkit.KryptonPanel();
+            label2 = new Label();
+            timerSlide = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)loggedInViewPanel).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)borderPanel).BeginInit();
+            borderPanel.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -52,6 +59,7 @@
             // btnStartNow
             // 
             btnStartNow.Anchor = AnchorStyles.Top;
+            btnStartNow.Cursor = Cursors.Hand;
             btnStartNow.Location = new Point(124, 373);
             btnStartNow.Name = "btnStartNow";
             btnStartNow.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -75,7 +83,8 @@
             btnStartNow.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnStartNow.StatePressed.Border.Color1 = Color.DarkGray;
             btnStartNow.StatePressed.Border.Color2 = Color.DarkGray;
-            btnStartNow.TabIndex = 10;
+            btnStartNow.TabIndex = 25;
+            btnStartNow.TabStop = false;
             btnStartNow.Values.DropDownArrowColor = Color.Empty;
             btnStartNow.Values.ExtraText = "Start Now ->";
             btnStartNow.Values.Text = "";
@@ -116,35 +125,62 @@
             label1.TabIndex = 15;
             label1.Text = "Already logged in here? Select your account to quickly log in:";
             // 
-            // sfListView1
+            // loggedInViewPanel
             // 
-            sfListView1.AccessibleName = "ScrollControl";
-            sfListView1.Anchor = AnchorStyles.Top;
-            sfListView1.AutoHideScrollBars = true;
-            sfListView1.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            sfListView1.Location = new Point(124, 597);
-            sfListView1.Name = "sfListView1";
-            sfListView1.Size = new Size(299, 107);
-            sfListView1.Style.BorderColor = Color.FromArgb(100, 100, 100);
-            sfListView1.TabIndex = 16;
-            sfListView1.Text = "sfListView1";
-            sfListView1.VerticalScrollIncrement = 20;
+            loggedInViewPanel.Location = new Point(1, 1);
+            loggedInViewPanel.Name = "loggedInViewPanel";
+            loggedInViewPanel.Size = new Size(350, 150);
+            loggedInViewPanel.StateCommon.Color1 = Color.White;
+            loggedInViewPanel.StateCommon.Color2 = Color.White;
+            loggedInViewPanel.TabIndex = 18;
+            // 
+            // borderPanel
+            // 
+            borderPanel.Anchor = AnchorStyles.Top;
+            borderPanel.Controls.Add(loggedInViewPanel);
+            borderPanel.Location = new Point(124, 613);
+            borderPanel.Name = "borderPanel";
+            borderPanel.Size = new Size(352, 152);
+            borderPanel.StateCommon.Color1 = Color.Black;
+            borderPanel.TabIndex = 19;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top;
+            label2.AutoSize = true;
+            label2.Font = new Font("Inter", 4F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(29, 37, 48);
+            label2.Location = new Point(125, 835);
+            label2.Name = "label2";
+            label2.Size = new Size(7, 9);
+            label2.TabIndex = 21;
+            label2.Text = ".";
+            // 
+            // timerSlide
+            // 
+            timerSlide.Interval = 50;
+            timerSlide.Tick += timerSlide_Tick;
             // 
             // UCInteractionPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            Controls.Add(sfListView1);
+            Controls.Add(label2);
+            Controls.Add(borderPanel);
             Controls.Add(label1);
             Controls.Add(pictureBox2);
             Controls.Add(kryptonWrapLabel1);
             Controls.Add(btnStartNow);
             Controls.Add(pictureBox1);
             Name = "UCInteractionPage";
-            Size = new Size(1184, 1000);
+            Size = new Size(1184, 869);
+            Load += UCInteractionPage_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)loggedInViewPanel).EndInit();
+            ((System.ComponentModel.ISupportInitialize)borderPanel).EndInit();
+            borderPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -156,6 +192,9 @@
         private Krypton.Toolkit.KryptonWrapLabel kryptonWrapLabel1;
         private PictureBox pictureBox2;
         private Label label1;
-        private Syncfusion.WinForms.ListView.SfListView sfListView1;
+        private Krypton.Toolkit.KryptonPanel loggedInViewPanel;
+        private Krypton.Toolkit.KryptonPanel borderPanel;
+        private Label label2;
+        private System.Windows.Forms.Timer timerSlide;
     }
 }

@@ -66,14 +66,24 @@ internal static class Program
         var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
         var userService = (IUserService)serviceProvider.GetService(typeof(IUserService));
 
-        using (var userLogin = new LoginFormUser(userManager, userService))
-        {
-            if (userLogin.ShowDialog() != DialogResult.OK)
-                return;
-        }
+        bool exitClicked = false;
 
-        var mainForm = new MainScreenForm();
-        Application.Run(mainForm);
+        while (!exitClicked)
+        {
+            using (var userLogin = new LoginFormUser(userManager, userService))
+            {
+                if (userLogin.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+            }
+
+            using (var mainForm = new MainScreenForm())
+            {
+                mainForm.ExitClicked += (sender, e) => exitClicked = true;
+                mainForm.ShowDialog();
+            }
+        }
 
         //using (var userLogin = new UserLoginForm())
         //{

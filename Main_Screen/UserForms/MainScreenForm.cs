@@ -9,6 +9,7 @@ namespace Brevi.Application
         bool sidebarExpand = false;
         private Form backgroundOverlay;
         private readonly ISectionService _sectionService;
+        public event EventHandler? ExitClicked;
 
         public MainScreenForm()
         {
@@ -179,6 +180,7 @@ namespace Brevi.Application
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            ExitClicked.Invoke(this, EventArgs.Empty);
             this.Close();
         }
 
