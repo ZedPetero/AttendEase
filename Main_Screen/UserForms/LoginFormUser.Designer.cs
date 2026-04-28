@@ -28,16 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             btnCollapse = new Krypton.Toolkit.KryptonButton();
             btnMaximize = new Krypton.Toolkit.KryptonButton();
             btnClose = new Krypton.Toolkit.KryptonButton();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            kryptonToggleSwitch1 = new Krypton.Toolkit.KryptonToggleSwitch();
             pictureBox1 = new PictureBox();
             btnAboutUs = new Krypton.Toolkit.KryptonButton();
             btnLogin = new Krypton.Toolkit.KryptonButton();
+            lightModePallete = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
             btnSignUp = new Krypton.Toolkit.KryptonButton();
             pnlMainContent = new Panel();
+            darkModePallete = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel2).BeginInit();
@@ -125,6 +129,7 @@
             // 
             // kryptonPanel2
             // 
+            kryptonPanel2.Controls.Add(kryptonToggleSwitch1);
             kryptonPanel2.Controls.Add(pictureBox1);
             kryptonPanel2.Controls.Add(btnAboutUs);
             kryptonPanel2.Controls.Add(btnLogin);
@@ -135,6 +140,14 @@
             kryptonPanel2.Size = new Size(1184, 50);
             kryptonPanel2.StateCommon.Color1 = Color.White;
             kryptonPanel2.TabIndex = 1;
+            // 
+            // kryptonToggleSwitch1
+            // 
+            kryptonToggleSwitch1.Location = new Point(693, 9);
+            kryptonToggleSwitch1.Name = "kryptonToggleSwitch1";
+            kryptonToggleSwitch1.Size = new Size(90, 28);
+            kryptonToggleSwitch1.TabIndex = 3;
+            kryptonToggleSwitch1.CheckedChanged += kryptonToggleSwitch1_CheckedChanged;
             // 
             // pictureBox1
             // 
@@ -204,6 +217,8 @@
             // btnLogin
             // 
             btnLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnLogin.ButtonStyle = Krypton.Toolkit.ButtonStyle.Custom1;
+            btnLogin.LocalCustomPalette = lightModePallete;
             btnLogin.Location = new Point(943, 9);
             btnLogin.Name = "btnLogin";
             btnLogin.OverrideDefault.Back.Color1 = Color.FromArgb(229, 242, 240);
@@ -222,6 +237,7 @@
             btnLogin.OverrideFocus.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
             btnLogin.OverrideFocus.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
             btnLogin.OverrideFocus.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            btnLogin.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
             btnLogin.Size = new Size(79, 32);
             btnLogin.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
             btnLogin.StateCommon.Back.Color2 = Color.FromArgb(39, 165, 153);
@@ -258,9 +274,47 @@
             btnLogin.Values.Text = "";
             btnLogin.Click += btnLogin_Click;
             // 
+            // lightModePallete
+            // 
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideDefault.Back.Color1 = Color.FromArgb(229, 242, 240);
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideDefault.Back.Color2 = Color.FromArgb(229, 242, 240);
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideDefault.Border.Color1 = Color.White;
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideDefault.Border.Color2 = Color.White;
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideFocus.Back.Color1 = Color.FromArgb(229, 242, 240);
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideFocus.Back.Color2 = Color.FromArgb(229, 242, 240);
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideFocus.Border.Color1 = Color.White;
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideFocus.Border.Color2 = Color.White;
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideFocus.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideFocus.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideFocus.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            lightModePallete.ButtonStyles.ButtonCustom1.OverrideFocus.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            lightModePallete.ButtonStyles.ButtonCustom1.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
+            lightModePallete.ButtonStyles.ButtonCustom1.StateCommon.Back.Color2 = Color.FromArgb(39, 165, 153);
+            lightModePallete.ButtonStyles.ButtonCustom1.StateCommon.Border.Color1 = Color.White;
+            lightModePallete.ButtonStyles.ButtonCustom1.StateCommon.Border.Color2 = Color.White;
+            lightModePallete.ButtonStyles.ButtonCustom1.StateCommon.Border.Rounding = 5F;
+            lightModePallete.ButtonStyles.ButtonCustom1.StateCommon.Content.LongText.Font = new Font("Inter", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lightModePallete.ButtonStyles.ButtonCustom1.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lightModePallete.ButtonStyles.ButtonCustom1.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
+            lightModePallete.ButtonStyles.ButtonCustom1.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
+            lightModePallete.ButtonStyles.ButtonCustom1.StatePressed.Back.Color1 = Color.FromArgb(209, 222, 220);
+            lightModePallete.ButtonStyles.ButtonCustom1.StatePressed.Back.Color2 = Color.FromArgb(209, 222, 220);
+            lightModePallete.ButtonStyles.ButtonCustom1.StatePressed.Border.Color1 = Color.DarkGray;
+            lightModePallete.ButtonStyles.ButtonCustom1.StatePressed.Border.Color2 = Color.DarkGray;
+            lightModePallete.ButtonStyles.ButtonCustom1.StatePressed.Content.LongText.Color1 = Color.FromArgb(29, 37, 48);
+            lightModePallete.ButtonStyles.ButtonCustom1.StatePressed.Content.LongText.Color2 = Color.FromArgb(29, 37, 48);
+            lightModePallete.ButtonStyles.ButtonCustom1.StatePressed.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
+            lightModePallete.ButtonStyles.ButtonCustom1.StatePressed.Content.ShortText.Color2 = Color.FromArgb(29, 37, 48);
+            lightModePallete.ButtonStyles.ButtonCustom1.StateTracking.Back.Color1 = Color.FromArgb(239, 252, 250);
+            lightModePallete.ButtonStyles.ButtonCustom1.StateTracking.Back.Color2 = Color.FromArgb(239, 252, 250);
+            lightModePallete.ButtonStyles.ButtonCustom1.StateTracking.Border.Color1 = Color.Transparent;
+            lightModePallete.ButtonStyles.ButtonCustom1.StateTracking.Border.Color2 = Color.Transparent;
+            lightModePallete.UseThemeFormChromeBorderWidth = Krypton.Toolkit.InheritBool.True;
+            // 
             // btnSignUp
             // 
             btnSignUp.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSignUp.ButtonStyle = Krypton.Toolkit.ButtonStyle.Custom1;
             btnSignUp.Location = new Point(1040, 9);
             btnSignUp.Name = "btnSignUp";
             btnSignUp.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -298,6 +352,14 @@
             pnlMainContent.Size = new Size(1184, 599);
             pnlMainContent.TabIndex = 2;
             // 
+            // darkModePallete
+            // 
+            darkModePallete.ButtonStyles.ButtonCustom1.StateCommon.Back.Color1 = Color.DarkBlue;
+            darkModePallete.ButtonStyles.ButtonCustom1.StateCommon.Back.Color2 = Color.DarkBlue;
+            darkModePallete.ButtonStyles.ButtonCustom1.StateCommon.Border.Color1 = Color.DarkBlue;
+            darkModePallete.ButtonStyles.ButtonCustom1.StateCommon.Border.Color2 = Color.DarkBlue;
+            darkModePallete.UseThemeFormChromeBorderWidth = Krypton.Toolkit.InheritBool.True;
+            // 
             // LoginFormUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -331,5 +393,8 @@
         private Krypton.Toolkit.KryptonButton btnSignUp;
         private Panel pnlMainContent;
         private PictureBox pictureBox1;
+        private Krypton.Toolkit.KryptonCustomPaletteBase lightModePallete;
+        private Krypton.Toolkit.KryptonCustomPaletteBase darkModePallete;
+        private Krypton.Toolkit.KryptonToggleSwitch kryptonToggleSwitch1;
     }
 }
