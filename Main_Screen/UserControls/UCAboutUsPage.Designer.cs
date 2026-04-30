@@ -401,10 +401,10 @@
             kryptonWrapLabel5.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
             kryptonWrapLabel5.Location = new Point(159, 705);
             kryptonWrapLabel5.Name = "kryptonWrapLabel5";
-            kryptonWrapLabel5.Size = new Size(230, 130);
+            kryptonWrapLabel5.Size = new Size(230, 212);
             kryptonWrapLabel5.StateCommon.Font = new Font("Inter", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             kryptonWrapLabel5.StateCommon.TextColor = Color.FromArgb(108, 124, 137);
-            kryptonWrapLabel5.Text = "Your bio...";
+            kryptonWrapLabel5.Text = resources.GetString("kryptonWrapLabel5.Text");
             kryptonWrapLabel5.TextAlign = ContentAlignment.TopCenter;
             // 
             // kryptonWrapLabel6

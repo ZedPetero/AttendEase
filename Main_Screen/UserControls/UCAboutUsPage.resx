@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="kryptonWrapLabel5.Text" xml:space="preserve">
+    <value>A student at the University of Mindanao, pursuing a degree in Bachelor of Science in Computer Engineering. He aspires to make digital solutions that can help people's lives easier. He also wants to focus on the automation aspect of things and likes the logic side of programming. </value>
+  </data>
   <data name="kryptonWrapLabel6.Text" xml:space="preserve">
     <value>Currently studying at University of Mindanao, pursuing a Bachelor of Science in Computer Engineering. John Ely is developing the skills needed to design and build innovative technological solutions. He aspire to create software that simplifies people’s online experiences while achieving global competitiveness and impact worldwide.</value>
   </data>
