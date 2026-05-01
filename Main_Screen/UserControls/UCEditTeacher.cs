@@ -80,9 +80,9 @@ namespace Brevi.Application
                     return false; 
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                MessageBox.Show("Error saving data: " + ex.Message, "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Fill up all necessary contents before saving. Please try again.");
                 return false;
             }
         }

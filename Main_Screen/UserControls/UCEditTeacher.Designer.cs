@@ -60,7 +60,7 @@
             kryptonLabel5.StateCommon.ShortText.Color2 = Color.FromArgb(108, 124, 137);
             kryptonLabel5.StateCommon.ShortText.Font = new Font("Inter", 10F);
             kryptonLabel5.TabIndex = 34;
-            kryptonLabel5.Values.Text = "Bio";
+            kryptonLabel5.Values.Text = "Bio (optional)";
             // 
             // kryptonLabel9
             // 
@@ -327,6 +327,7 @@
             // 
             // datePickerDate
             // 
+            datePickerDate.CalendarTitleBackColor = Color.FromArgb(39, 165, 153);
             datePickerDate.Location = new Point(288, 243);
             datePickerDate.Name = "datePickerDate";
             datePickerDate.Size = new Size(214, 23);

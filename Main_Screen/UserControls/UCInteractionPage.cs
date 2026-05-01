@@ -10,8 +10,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using Timer = System.Windows.Forms.Timer;
 
 namespace Brevi.Application
 {
@@ -20,65 +18,13 @@ namespace Brevi.Application
         private readonly IUserService _userService;
         public event EventHandler? StartNowClicked;
         public event Action<string>? AccountSelected;
-        private Dictionary<Control, Point> originalPositions = new();
-        private int animationStep = 0;
 
         public UCInteractionPage(IUserService userService)
         {
             _userService = userService;
             InitializeComponent();
-            PrepareControlsForAnimation();
             UIHelper.RoundControl(pictureBox1, 10);
             LoadSavedAccounts();
-        }
-
-        // Store original positions and set initial state for animation (opacity and offset).
-
-        private void PrepareControlsForAnimation()
-        {
-            foreach (Control ctrl in this.Controls)
-            {
-                if (ctrl is System.Windows.Forms.Timer) continue;
-
-                originalPositions[ctrl] = ctrl.Location;
-                ctrl.Location = new Point(ctrl.Location.X, ctrl.Location.Y + 40);
-            }
-        }
-
-        private void UCInteractionPage_Load(object sender, EventArgs e)
-        {
-            animationStep = 0;
-            timerSlide.Start();
-        }
-
-        private void timerSlide_Tick(object sender, EventArgs e)
-        {
-            animationStep++;
-
-            foreach (var pair in originalPositions)
-            {
-                Control ctrl = pair.Key;
-                Point target = pair.Value;
-
-                int newY = ctrl.Location.Y - 4;
-                if (newY < target.Y)
-                    newY = target.Y;
-
-                ctrl.Location = new Point(ctrl.Location.X, newY);
-            }
-
-            if (animationStep >= 15)
-            {
-                timerSlide.Stop();
-                foreach (Control ctrl in this.Controls)
-                {
-                    if (ctrl is System.Windows.Forms.Timer) continue;
-                    ctrl.Location = originalPositions[ctrl];
-                }
-
-                foreach (var pair in originalPositions)
-                    pair.Key.Location = pair.Value;
-            }
         }
 
         // Load saved accounts from the user service and create a label for each username in the panel.
@@ -144,7 +90,10 @@ namespace Brevi.Application
                     lbl.ForeColor = selected ? SystemColors.ControlText : SystemColors.HighlightText;
                 }
             }
-            catch { /* swallow */ }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private void Label_DoubleClick(object? sender, EventArgs e)

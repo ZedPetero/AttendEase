@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             pictureBox1 = new PictureBox();
             btnStartNow = new Krypton.Toolkit.KryptonButton();
             kryptonWrapLabel1 = new Krypton.Toolkit.KryptonWrapLabel();
@@ -37,7 +36,6 @@
             loggedInViewPanel = new Krypton.Toolkit.KryptonPanel();
             borderPanel = new Krypton.Toolkit.KryptonPanel();
             label2 = new Label();
-            timerSlide = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)loggedInViewPanel).BeginInit();
@@ -156,11 +154,6 @@
             label2.TabIndex = 21;
             label2.Text = ".";
             // 
-            // timerSlide
-            // 
-            timerSlide.Interval = 50;
-            timerSlide.Tick += timerSlide_Tick;
-            // 
             // UCInteractionPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -175,7 +168,6 @@
             Controls.Add(pictureBox1);
             Name = "UCInteractionPage";
             Size = new Size(1184, 869);
-            Load += UCInteractionPage_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)loggedInViewPanel).EndInit();
@@ -195,6 +187,5 @@
         private Krypton.Toolkit.KryptonPanel loggedInViewPanel;
         private Krypton.Toolkit.KryptonPanel borderPanel;
         private Label label2;
-        private System.Windows.Forms.Timer timerSlide;
     }
 }

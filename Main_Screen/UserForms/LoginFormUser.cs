@@ -72,11 +72,6 @@ namespace Brevi.Application
             customizedControl.Focus();
         }
 
-        public void LinkEventHandler()
-        {
-
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             UCLoginPage loginPage = new UCLoginPage(_userManager, uName);
@@ -108,35 +103,6 @@ namespace Brevi.Application
         private void btnCollapse_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void kryptonToggleSwitch1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (kryptonToggleSwitch1.Checked)
-            {
-                var darkTheme = darkModePallete;
-                ChangeTheme(darkModePallete);
-            }
-            else
-            {
-                var lightTheme = lightModePallete;
-                ChangeTheme(lightModePallete);
-            }
-        }
-
-        private void ChangeTheme(Object currentTheme)
-        {
-            foreach (var control in pnlMainContent.Controls)
-            {
-                try
-                {
-                    control.GetType().GetProperty("Palette")?.SetValue(control, currentTheme);
-                    control.GetType().GetProperty("ButtonStyle")?.SetValue(control, "Custom_1");
-                } catch (Exception e) 
-                {
-                    MessageBox.Show($"{e.Message} \n {control.GetType().Name}");
-                }
-            }
         }
 
     }

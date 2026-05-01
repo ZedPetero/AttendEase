@@ -148,7 +148,7 @@ namespace Brevi.Application
 
         private void UC_Settings_Load(object sender, EventArgs e)
         {
-
+            PresenttxtBox.Text = string.Empty;
         }
 
         private void kryptonLabel3_Click(object sender, EventArgs e)

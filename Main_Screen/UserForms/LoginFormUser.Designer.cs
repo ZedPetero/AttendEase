@@ -34,7 +34,6 @@
             btnMaximize = new Krypton.Toolkit.KryptonButton();
             btnClose = new Krypton.Toolkit.KryptonButton();
             kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
-            kryptonToggleSwitch1 = new Krypton.Toolkit.KryptonToggleSwitch();
             pictureBox1 = new PictureBox();
             btnAboutUs = new Krypton.Toolkit.KryptonButton();
             btnLogin = new Krypton.Toolkit.KryptonButton();
@@ -129,7 +128,6 @@
             // 
             // kryptonPanel2
             // 
-            kryptonPanel2.Controls.Add(kryptonToggleSwitch1);
             kryptonPanel2.Controls.Add(pictureBox1);
             kryptonPanel2.Controls.Add(btnAboutUs);
             kryptonPanel2.Controls.Add(btnLogin);
@@ -140,14 +138,6 @@
             kryptonPanel2.Size = new Size(1184, 50);
             kryptonPanel2.StateCommon.Color1 = Color.White;
             kryptonPanel2.TabIndex = 1;
-            // 
-            // kryptonToggleSwitch1
-            // 
-            kryptonToggleSwitch1.Location = new Point(693, 9);
-            kryptonToggleSwitch1.Name = "kryptonToggleSwitch1";
-            kryptonToggleSwitch1.Size = new Size(90, 28);
-            kryptonToggleSwitch1.TabIndex = 3;
-            kryptonToggleSwitch1.CheckedChanged += kryptonToggleSwitch1_CheckedChanged;
             // 
             // pictureBox1
             // 
@@ -395,6 +385,5 @@
         private PictureBox pictureBox1;
         private Krypton.Toolkit.KryptonCustomPaletteBase lightModePallete;
         private Krypton.Toolkit.KryptonCustomPaletteBase darkModePallete;
-        private Krypton.Toolkit.KryptonToggleSwitch kryptonToggleSwitch1;
     }
 }

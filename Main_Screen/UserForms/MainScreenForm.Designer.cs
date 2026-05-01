@@ -248,7 +248,6 @@ namespace Brevi.Application
             pnlMainContent.Name = "pnlMainContent";
             pnlMainContent.Size = new Size(1145, 660);
             pnlMainContent.TabIndex = 3;
-            pnlMainContent.Paint += pnlMainContent_Paint;
             // 
             // sidebar
             // 

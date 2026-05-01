@@ -15,8 +15,10 @@ namespace Brevi.Application.UserControls
         {
             InitializeComponent();
         }
+
         public event EventHandler SaveChangesClicked;
         public event EventHandler CancelEditClicked;
+
         private void btnCancelEdit_Click(object sender, EventArgs e)
         {
             CancelEditClicked?.Invoke(this, e);
@@ -24,7 +26,14 @@ namespace Brevi.Application.UserControls
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            SaveChangesClicked?.Invoke(this, e);
+            try
+            {
+                SaveChangesClicked?.Invoke(this, e);
+            } catch 
+            {
+                MessageBox.Show("Fill up all contents before saving. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

@@ -120,7 +120,15 @@ namespace Brevi.Application
 
         public void btnLogOut_Click(object sender, EventArgs e)
         {
-            Close();
+            if (MessageBox.Show("Do you want to log out?",
+                "Log Out", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question) 
+                == DialogResult.Yes)
+            {
+                this.Close();
+            }
+
         }
 
         public void btnSettings_Click(object sender, EventArgs e)
@@ -180,13 +188,16 @@ namespace Brevi.Application
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            ExitClicked.Invoke(this, EventArgs.Empty);
-            this.Close();
+            if (MessageBox.Show("Are you sure you want to close the app?",
+                "Exit Application",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question)
+                == DialogResult.Yes)
+            {
+                ExitClicked.Invoke(this, EventArgs.Empty);
+                this.Close();
+            }
         }
 
-        private void pnlMainContent_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
