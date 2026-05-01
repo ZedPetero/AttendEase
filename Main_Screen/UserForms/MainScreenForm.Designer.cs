@@ -47,12 +47,12 @@ namespace Brevi.Application
             btnLogout = new Krypton.Toolkit.KryptonButton();
             kryptonBorderEdge2 = new Krypton.Toolkit.KryptonBorderEdge();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            pictureBox1 = new PictureBox();
-            kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
-            btnMenu = new Krypton.Toolkit.KryptonButton();
             btnCollapse = new Krypton.Toolkit.KryptonButton();
             kryptonButton1 = new Krypton.Toolkit.KryptonButton();
             kryptonButton2 = new Krypton.Toolkit.KryptonButton();
+            pictureBox1 = new PictureBox();
+            kryptonBorderEdge1 = new Krypton.Toolkit.KryptonBorderEdge();
+            btnMenu = new Krypton.Toolkit.KryptonButton();
             kryptonCheckSet1 = new Krypton.Toolkit.KryptonCheckSet(components);
             ((System.ComponentModel.ISupportInitialize)kryptonCheckSet1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sidebar).BeginInit();
@@ -339,55 +339,6 @@ namespace Brevi.Application
             kryptonPanel1.StateCommon.Color1 = Color.FromArgb(249, 250, 251);
             kryptonPanel1.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.Logo_Name_only_removedBg;
-            pictureBox1.Location = new Point(53, 1);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(158, 56);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
-            // 
-            // kryptonBorderEdge1
-            // 
-            kryptonBorderEdge1.Dock = DockStyle.Bottom;
-            kryptonBorderEdge1.Location = new Point(0, 58);
-            kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            kryptonBorderEdge1.Size = new Size(1200, 2);
-            kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
-            kryptonBorderEdge1.StateCommon.Width = 2;
-            kryptonBorderEdge1.Text = "kryptonBorderEdge1";
-            // 
-            // btnMenu
-            // 
-            btnMenu.LocalCustomPalette = ButtonPalette;
-            btnMenu.Location = new Point(4, 9);
-            btnMenu.Name = "btnMenu";
-            btnMenu.OverrideDefault.Border.Color1 = Color.Transparent;
-            btnMenu.OverrideDefault.Border.Color2 = Color.Transparent;
-            btnMenu.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
-            btnMenu.OverrideDefault.Border.Rounding = 5F;
-            btnMenu.OverrideDefault.Border.Width = 1;
-            btnMenu.OverrideDefault.Content.Draw = Krypton.Toolkit.InheritBool.True;
-            btnMenu.OverrideDefault.Content.Padding = new Padding(0);
-            btnMenu.OverrideFocus.Border.Color1 = Color.Transparent;
-            btnMenu.OverrideFocus.Border.Color2 = Color.Transparent;
-            btnMenu.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
-            btnMenu.OverrideFocus.Border.Rounding = 5F;
-            btnMenu.OverrideFocus.Border.Width = 1;
-            btnMenu.OverrideFocus.Content.Draw = Krypton.Toolkit.InheritBool.True;
-            btnMenu.OverrideFocus.Content.Padding = new Padding(0);
-            btnMenu.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnMenu.Size = new Size(47, 42);
-            btnMenu.StateCommon.Content.Padding = new Padding(0, 3, 3, 3);
-            btnMenu.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnMenu.TabIndex = 4;
-            btnMenu.Values.DropDownArrowColor = Color.Empty;
-            btnMenu.Values.Text = "";
-            btnMenu.Click += btnMenu_Click;
-            // 
             // btnCollapse
             // 
             btnCollapse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -453,6 +404,55 @@ namespace Brevi.Application
             kryptonButton2.Values.Image = Properties.Resources.red_circle;
             kryptonButton2.Values.Text = "";
             kryptonButton2.Click += btnClose_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.Logo_Name_only_removedBg;
+            pictureBox1.Location = new Point(53, 1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(158, 56);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // kryptonBorderEdge1
+            // 
+            kryptonBorderEdge1.Dock = DockStyle.Bottom;
+            kryptonBorderEdge1.Location = new Point(0, 58);
+            kryptonBorderEdge1.Name = "kryptonBorderEdge1";
+            kryptonBorderEdge1.Size = new Size(1200, 2);
+            kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
+            kryptonBorderEdge1.StateCommon.Width = 2;
+            kryptonBorderEdge1.Text = "kryptonBorderEdge1";
+            // 
+            // btnMenu
+            // 
+            btnMenu.LocalCustomPalette = ButtonPalette;
+            btnMenu.Location = new Point(4, 9);
+            btnMenu.Name = "btnMenu";
+            btnMenu.OverrideDefault.Border.Color1 = Color.Transparent;
+            btnMenu.OverrideDefault.Border.Color2 = Color.Transparent;
+            btnMenu.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMenu.OverrideDefault.Border.Rounding = 5F;
+            btnMenu.OverrideDefault.Border.Width = 1;
+            btnMenu.OverrideDefault.Content.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMenu.OverrideDefault.Content.Padding = new Padding(0);
+            btnMenu.OverrideFocus.Border.Color1 = Color.Transparent;
+            btnMenu.OverrideFocus.Border.Color2 = Color.Transparent;
+            btnMenu.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMenu.OverrideFocus.Border.Rounding = 5F;
+            btnMenu.OverrideFocus.Border.Width = 1;
+            btnMenu.OverrideFocus.Content.Draw = Krypton.Toolkit.InheritBool.True;
+            btnMenu.OverrideFocus.Content.Padding = new Padding(0);
+            btnMenu.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
+            btnMenu.Size = new Size(47, 42);
+            btnMenu.StateCommon.Content.Padding = new Padding(0, 3, 3, 3);
+            btnMenu.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMenu.TabIndex = 4;
+            btnMenu.Values.DropDownArrowColor = Color.Empty;
+            btnMenu.Values.Text = "";
+            btnMenu.Click += btnMenu_Click;
             // 
             // MainScreenForm
             // 

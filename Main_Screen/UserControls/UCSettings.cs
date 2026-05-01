@@ -36,6 +36,10 @@ namespace Brevi.Application
 
             _userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
 
+            UIHelper.RoundControl(AccountManagementPanel, 20);
+            UIHelper.RoundControl(GradeFormulaPanel, 20);
+            UIHelper.RoundControl(DarkModePanel, 20);
+
         }
 
         private async void PasswordChangebutton_Click(object? sender, EventArgs e)

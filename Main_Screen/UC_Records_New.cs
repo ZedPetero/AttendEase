@@ -15,7 +15,6 @@ namespace Brevi.Application
         {
             InitializeComponent();
 
-            // FIX #1: Round the controls here in the constructor, NOT in the Paint event!
             UIHelper.RoundControl(CurrentClassespanel, 20);
             UIHelper.RoundControl(ArchivedClassespanel, 20);
         }
@@ -56,7 +55,6 @@ namespace Brevi.Application
             }
             catch (Exception ex)
             {
-                // Better to output the error to debug rather than silently swallowing it
                 System.Diagnostics.Debug.WriteLine("Error loading sections: " + ex.Message);
             }
         }

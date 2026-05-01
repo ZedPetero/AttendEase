@@ -39,11 +39,11 @@
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             label1 = new Label();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            DarkModePanel = new Krypton.Toolkit.KryptonPanel();
             kryptonToggleSwitch1 = new Krypton.Toolkit.KryptonToggleSwitch();
             darkmoderadiobtn = new Krypton.Toolkit.KryptonRadioButton();
             label2 = new Label();
-            kryptonPanel2 = new Krypton.Toolkit.KryptonPanel();
+            GradeFormulaPanel = new Krypton.Toolkit.KryptonPanel();
             saveFormulaBtn = new Krypton.Toolkit.KryptonButton();
             Excusedtxtbox = new Krypton.Toolkit.KryptonTextBox();
             kryptonLabel7 = new Krypton.Toolkit.KryptonLabel();
@@ -54,16 +54,19 @@
             kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             label3 = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)AccountManagementPanel).BeginInit();
             AccountManagementPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
-            kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel2).BeginInit();
-            kryptonPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DarkModePanel).BeginInit();
+            DarkModePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)GradeFormulaPanel).BeginInit();
+            GradeFormulaPanel.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // AccountManagementPanel
             // 
+            AccountManagementPanel.Anchor = AnchorStyles.None;
             AccountManagementPanel.Controls.Add(newPassTxtBox);
             AccountManagementPanel.Controls.Add(kryptonLabel8);
             AccountManagementPanel.Controls.Add(label4);
@@ -73,7 +76,7 @@
             AccountManagementPanel.Controls.Add(kryptonLabel3);
             AccountManagementPanel.Controls.Add(kryptonLabel2);
             AccountManagementPanel.Controls.Add(label1);
-            AccountManagementPanel.Location = new Point(236, 114);
+            AccountManagementPanel.Location = new Point(236, 104);
             AccountManagementPanel.Name = "AccountManagementPanel";
             AccountManagementPanel.Size = new Size(610, 429);
             AccountManagementPanel.StateCommon.Color1 = Color.White;
@@ -213,7 +216,8 @@
             // 
             // kryptonLabel1
             // 
-            kryptonLabel1.Location = new Point(235, 35);
+            kryptonLabel1.Anchor = AnchorStyles.None;
+            kryptonLabel1.Location = new Point(238, 25);
             kryptonLabel1.Name = "kryptonLabel1";
             kryptonLabel1.Size = new Size(179, 73);
             kryptonLabel1.StateCommon.LongText.Color1 = Color.FromArgb(29, 37, 48);
@@ -227,17 +231,18 @@
             kryptonLabel1.Values.ExtraText = "Settings";
             kryptonLabel1.Values.Text = "";
             // 
-            // kryptonPanel1
+            // DarkModePanel
             // 
-            kryptonPanel1.Controls.Add(kryptonToggleSwitch1);
-            kryptonPanel1.Controls.Add(darkmoderadiobtn);
-            kryptonPanel1.Controls.Add(label2);
-            kryptonPanel1.Location = new Point(235, 795);
-            kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new Size(610, 132);
-            kryptonPanel1.StateCommon.Color1 = Color.White;
-            kryptonPanel1.StateCommon.Color2 = Color.White;
-            kryptonPanel1.TabIndex = 2;
+            DarkModePanel.Anchor = AnchorStyles.None;
+            DarkModePanel.Controls.Add(kryptonToggleSwitch1);
+            DarkModePanel.Controls.Add(darkmoderadiobtn);
+            DarkModePanel.Controls.Add(label2);
+            DarkModePanel.Location = new Point(236, 785);
+            DarkModePanel.Name = "DarkModePanel";
+            DarkModePanel.Size = new Size(610, 132);
+            DarkModePanel.StateCommon.Color1 = Color.White;
+            DarkModePanel.StateCommon.Color2 = Color.White;
+            DarkModePanel.TabIndex = 2;
             // 
             // kryptonToggleSwitch1
             // 
@@ -270,24 +275,25 @@
             label2.TabIndex = 7;
             label2.Text = "Preference";
             // 
-            // kryptonPanel2
+            // GradeFormulaPanel
             // 
-            kryptonPanel2.Controls.Add(saveFormulaBtn);
-            kryptonPanel2.Controls.Add(Excusedtxtbox);
-            kryptonPanel2.Controls.Add(kryptonLabel7);
-            kryptonPanel2.Controls.Add(Absenttxtbox);
-            kryptonPanel2.Controls.Add(Latetxtbox);
-            kryptonPanel2.Controls.Add(PresenttxtBox);
-            kryptonPanel2.Controls.Add(kryptonLabel6);
-            kryptonPanel2.Controls.Add(kryptonLabel5);
-            kryptonPanel2.Controls.Add(kryptonLabel4);
-            kryptonPanel2.Controls.Add(label3);
-            kryptonPanel2.Location = new Point(235, 549);
-            kryptonPanel2.Name = "kryptonPanel2";
-            kryptonPanel2.Size = new Size(610, 240);
-            kryptonPanel2.StateCommon.Color1 = Color.White;
-            kryptonPanel2.StateCommon.Color2 = Color.White;
-            kryptonPanel2.TabIndex = 8;
+            GradeFormulaPanel.Anchor = AnchorStyles.None;
+            GradeFormulaPanel.Controls.Add(saveFormulaBtn);
+            GradeFormulaPanel.Controls.Add(Excusedtxtbox);
+            GradeFormulaPanel.Controls.Add(kryptonLabel7);
+            GradeFormulaPanel.Controls.Add(Absenttxtbox);
+            GradeFormulaPanel.Controls.Add(Latetxtbox);
+            GradeFormulaPanel.Controls.Add(PresenttxtBox);
+            GradeFormulaPanel.Controls.Add(kryptonLabel6);
+            GradeFormulaPanel.Controls.Add(kryptonLabel5);
+            GradeFormulaPanel.Controls.Add(kryptonLabel4);
+            GradeFormulaPanel.Controls.Add(label3);
+            GradeFormulaPanel.Location = new Point(236, 539);
+            GradeFormulaPanel.Name = "GradeFormulaPanel";
+            GradeFormulaPanel.Size = new Size(610, 240);
+            GradeFormulaPanel.StateCommon.Color1 = Color.White;
+            GradeFormulaPanel.StateCommon.Color2 = Color.White;
+            GradeFormulaPanel.TabIndex = 8;
             // 
             // saveFormulaBtn
             // 
@@ -425,30 +431,41 @@
             label3.TabIndex = 7;
             label3.Text = "Grade Formula";
             // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(DarkModePanel);
+            panel1.Controls.Add(GradeFormulaPanel);
+            panel1.Controls.Add(kryptonLabel1);
+            panel1.Controls.Add(AccountManagementPanel);
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1082, 957);
+            panel1.TabIndex = 9;
+            // 
             // UCSettings
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.FromArgb(249, 250, 251);
-            Controls.Add(kryptonPanel2);
-            Controls.Add(kryptonPanel1);
-            Controls.Add(kryptonLabel1);
-            Controls.Add(AccountManagementPanel);
+            Controls.Add(panel1);
             Name = "UCSettings";
-            Size = new Size(1082, 952);
+            Size = new Size(1082, 957);
             Load += UC_Settings_Load;
             ((System.ComponentModel.ISupportInitialize)AccountManagementPanel).EndInit();
             AccountManagementPanel.ResumeLayout(false);
             AccountManagementPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
-            kryptonPanel1.ResumeLayout(false);
-            kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)kryptonPanel2).EndInit();
-            kryptonPanel2.ResumeLayout(false);
-            kryptonPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DarkModePanel).EndInit();
+            DarkModePanel.ResumeLayout(false);
+            DarkModePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)GradeFormulaPanel).EndInit();
+            GradeFormulaPanel.ResumeLayout(false);
+            GradeFormulaPanel.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -461,9 +478,9 @@
         private Krypton.Toolkit.KryptonTextBox currentPasstxtbox;
         private Krypton.Toolkit.KryptonTextBox UsernameChangetxtbox;
         private Krypton.Toolkit.KryptonButton PasswordChangeButton;
-        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private Krypton.Toolkit.KryptonPanel DarkModePanel;
         private Krypton.Toolkit.KryptonRadioButton darkmoderadiobtn;
-        private Krypton.Toolkit.KryptonPanel kryptonPanel2;
+        private Krypton.Toolkit.KryptonPanel GradeFormulaPanel;
         private Label label3;
         private Label label2;
         private Krypton.Toolkit.KryptonLabel kryptonLabel6;
@@ -479,5 +496,6 @@
         private Krypton.Toolkit.KryptonToggleSwitch kryptonToggleSwitch1;
         private Krypton.Toolkit.KryptonTextBox newPassTxtBox;
         private Krypton.Toolkit.KryptonLabel kryptonLabel8;
+        private Panel panel1;
     }
 }

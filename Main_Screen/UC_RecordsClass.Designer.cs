@@ -41,6 +41,7 @@
             // 
             // ArchiveorRestorebutton
             // 
+            ArchiveorRestorebutton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ArchiveorRestorebutton.Location = new Point(650, 6);
             ArchiveorRestorebutton.Name = "ArchiveorRestorebutton";
             ArchiveorRestorebutton.OverrideDefault.Back.Color1 = Color.FromArgb(39, 165, 153);
@@ -66,6 +67,7 @@
             // 
             // sidebarbtn
             // 
+            sidebarbtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             sidebarbtn.Location = new Point(753, 10);
             sidebarbtn.Name = "sidebarbtn";
             sidebarbtn.OverrideDefault.Back.Color1 = Color.White;

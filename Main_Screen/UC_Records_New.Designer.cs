@@ -46,7 +46,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(29, 37, 48);
-            label1.Location = new Point(15, 27);
+            label1.Location = new Point(24, 28);
             label1.Name = "label1";
             label1.Size = new Size(126, 40);
             label1.TabIndex = 6;
@@ -100,12 +100,13 @@
             // 
             // currentclassesflowpanel
             // 
+            currentclassesflowpanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             currentclassesflowpanel.AutoScroll = true;
             currentclassesflowpanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             currentclassesflowpanel.FlowDirection = FlowDirection.TopDown;
             currentclassesflowpanel.Location = new Point(44, 156);
             currentclassesflowpanel.Name = "currentclassesflowpanel";
-            currentclassesflowpanel.Size = new Size(911, 259);
+            currentclassesflowpanel.Size = new Size(1038, 259);
             currentclassesflowpanel.TabIndex = 11;
             currentclassesflowpanel.WrapContents = false;
             currentclassesflowpanel.SizeChanged += currentclassesflowpanel_SizeChanged;
@@ -114,12 +115,13 @@
             // archivedClassFlowpanel
             // 
             archivedClassFlowpanel.AccessibleDescription = "archivedclassesflowpanel";
+            archivedClassFlowpanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             archivedClassFlowpanel.AutoScroll = true;
             archivedClassFlowpanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             archivedClassFlowpanel.FlowDirection = FlowDirection.TopDown;
             archivedClassFlowpanel.Location = new Point(44, 502);
             archivedClassFlowpanel.Name = "archivedClassFlowpanel";
-            archivedClassFlowpanel.Size = new Size(911, 259);
+            archivedClassFlowpanel.Size = new Size(1038, 259);
             archivedClassFlowpanel.TabIndex = 10;
             archivedClassFlowpanel.WrapContents = false;
             archivedClassFlowpanel.Resize += archivedClassFlowpanel_Resize;
@@ -136,7 +138,7 @@
             Controls.Add(CurrentClassespanel);
             Controls.Add(label1);
             Name = "UC_Records_New";
-            Size = new Size(963, 747);
+            Size = new Size(1136, 777);
             Load += UC_Records_New_Load;
             ((System.ComponentModel.ISupportInitialize)CurrentClassespanel).EndInit();
             CurrentClassespanel.ResumeLayout(false);
