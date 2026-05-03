@@ -181,6 +181,7 @@
             // 
             // btnUploadPicture
             // 
+            btnUploadPicture.Cursor = Cursors.Hand;
             btnUploadPicture.Location = new Point(21, 20);
             btnUploadPicture.Margin = new Padding(0);
             btnUploadPicture.Name = "btnUploadPicture";

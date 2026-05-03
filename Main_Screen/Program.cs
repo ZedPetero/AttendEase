@@ -46,23 +46,6 @@ internal static class Program
             splash.ShowDialog();
         }
 
-        // ====================================== For the old login form ======================================
-
-        //while (true)
-        //{
-        //    var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
-        //    using (var login = new LoginScreenForm(userManager))
-        //    {
-        //        if (login.ShowDialog() != DialogResult.OK)
-        //            return;
-        //    }
-
-        //    var mainForm = new MainScreenForm();
-        //    Application.Run(mainForm);
-        //}
-
-        // ====================================== For the new login form ======================================
-
         var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
         var userService = (IUserService)serviceProvider.GetService(typeof(IUserService));
 

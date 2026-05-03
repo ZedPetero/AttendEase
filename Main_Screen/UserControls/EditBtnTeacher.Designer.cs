@@ -33,6 +33,7 @@
             // 
             // btnEditProfile
             // 
+            btnEditProfile.Cursor = Cursors.Hand;
             btnEditProfile.Location = new Point(112, 3);
             btnEditProfile.Name = "btnEditProfile";
             btnEditProfile.Size = new Size(100, 44);

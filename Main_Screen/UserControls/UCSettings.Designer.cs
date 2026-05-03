@@ -124,6 +124,7 @@
             // 
             // PasswordChangeButton
             // 
+            PasswordChangeButton.Cursor = Cursors.Hand;
             PasswordChangeButton.Location = new Point(12, 353);
             PasswordChangeButton.Name = "PasswordChangeButton";
             PasswordChangeButton.Size = new Size(166, 41);
@@ -297,6 +298,7 @@
             // 
             // saveFormulaBtn
             // 
+            saveFormulaBtn.Cursor = Cursors.Hand;
             saveFormulaBtn.Location = new Point(12, 184);
             saveFormulaBtn.Name = "saveFormulaBtn";
             saveFormulaBtn.Size = new Size(166, 41);

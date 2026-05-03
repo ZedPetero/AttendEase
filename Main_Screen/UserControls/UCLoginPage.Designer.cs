@@ -74,6 +74,7 @@
             // btnLogin
             // 
             btnLogin.BackColor = Color.FromArgb(40, 164, 153);
+            btnLogin.Cursor = Cursors.Hand;
             btnLogin.Font = new Font("Inter SemiBold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(39, 294);
@@ -99,7 +100,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.BeforeTouchSize = new Size(345, 32);
+            txtPassword.BeforeTouchSize = new Size(141, 32);
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 5;
@@ -127,7 +128,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.BeforeTouchSize = new Size(345, 32);
+            txtUsername.BeforeTouchSize = new Size(141, 32);
             txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;

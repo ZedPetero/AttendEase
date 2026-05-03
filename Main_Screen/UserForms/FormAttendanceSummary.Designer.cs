@@ -148,6 +148,7 @@
             // 
             // btnDownloadCSV
             // 
+            btnDownloadCSV.Cursor = Cursors.Hand;
             btnDownloadCSV.Location = new Point(645, 69);
             btnDownloadCSV.Name = "btnDownloadCSV";
             btnDownloadCSV.OverrideDefault.Back.Color1 = Color.Teal;
@@ -218,6 +219,7 @@
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
+            Name = "FormAttendanceSummary";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Load += Form_AttendanceSummary_Load;

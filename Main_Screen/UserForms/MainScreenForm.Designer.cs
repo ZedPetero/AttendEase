@@ -74,6 +74,7 @@ namespace Brevi.Application
             // 
             // btnHome
             // 
+            btnHome.Cursor = Cursors.Hand;
             btnHome.LocalCustomPalette = ButtonPalette;
             btnHome.Location = new Point(4, 5);
             btnHome.Margin = new Padding(0, 5, 0, 5);
@@ -166,6 +167,7 @@ namespace Brevi.Application
             // 
             // btnClasses
             // 
+            btnClasses.Cursor = Cursors.Hand;
             btnClasses.LocalCustomPalette = ButtonPalette;
             btnClasses.Location = new Point(4, 55);
             btnClasses.Margin = new Padding(0, 5, 0, 5);
@@ -180,6 +182,7 @@ namespace Brevi.Application
             // 
             // btnRecords
             // 
+            btnRecords.Cursor = Cursors.Hand;
             btnRecords.LocalCustomPalette = ButtonPalette;
             btnRecords.Location = new Point(4, 105);
             btnRecords.Margin = new Padding(0, 5, 0, 5);
@@ -194,6 +197,7 @@ namespace Brevi.Application
             // 
             // btnTeacher
             // 
+            btnTeacher.Cursor = Cursors.Hand;
             btnTeacher.LocalCustomPalette = ButtonPalette;
             btnTeacher.Location = new Point(4, 155);
             btnTeacher.Margin = new Padding(0, 5, 0, 5);
@@ -208,6 +212,7 @@ namespace Brevi.Application
             // 
             // btnSettings
             // 
+            btnSettings.Cursor = Cursors.Hand;
             btnSettings.LocalCustomPalette = ButtonPalette;
             btnSettings.Location = new Point(4, 205);
             btnSettings.Margin = new Padding(0, 5, 0, 5);
@@ -281,6 +286,7 @@ namespace Brevi.Application
             // 
             // btnLogout
             // 
+            btnLogout.Cursor = Cursors.Hand;
             btnLogout.Dock = DockStyle.Bottom;
             btnLogout.LocalCustomPalette = ButtonPalette;
             btnLogout.Location = new Point(0, 570);
@@ -341,6 +347,7 @@ namespace Brevi.Application
             // btnCollapse
             // 
             btnCollapse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCollapse.Cursor = Cursors.Hand;
             btnCollapse.Location = new Point(1104, 12);
             btnCollapse.Name = "btnCollapse";
             btnCollapse.OverrideDefault.Back.Color1 = Color.Transparent;
@@ -363,6 +370,7 @@ namespace Brevi.Application
             // kryptonButton1
             // 
             kryptonButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            kryptonButton1.Cursor = Cursors.Hand;
             kryptonButton1.Location = new Point(1134, 12);
             kryptonButton1.Name = "kryptonButton1";
             kryptonButton1.OverrideDefault.Back.Color1 = Color.Transparent;
@@ -385,6 +393,7 @@ namespace Brevi.Application
             // kryptonButton2
             // 
             kryptonButton2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            kryptonButton2.Cursor = Cursors.Hand;
             kryptonButton2.Location = new Point(1164, 12);
             kryptonButton2.Name = "kryptonButton2";
             kryptonButton2.OverrideDefault.Back.Color1 = Color.Transparent;
@@ -427,6 +436,7 @@ namespace Brevi.Application
             // 
             // btnMenu
             // 
+            btnMenu.Cursor = Cursors.Hand;
             btnMenu.LocalCustomPalette = ButtonPalette;
             btnMenu.Location = new Point(4, 9);
             btnMenu.Name = "btnMenu";

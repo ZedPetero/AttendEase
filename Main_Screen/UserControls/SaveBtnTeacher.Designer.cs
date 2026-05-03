@@ -34,6 +34,7 @@
             // 
             // btnSaveChanges
             // 
+            btnSaveChanges.Cursor = Cursors.Hand;
             btnSaveChanges.Location = new Point(112, 3);
             btnSaveChanges.Name = "btnSaveChanges";
             btnSaveChanges.Size = new Size(100, 44);
@@ -76,6 +77,7 @@
             // 
             // btnCancelEdit
             // 
+            btnCancelEdit.Cursor = Cursors.Hand;
             btnCancelEdit.Location = new Point(6, 3);
             btnCancelEdit.Name = "btnCancelEdit";
             btnCancelEdit.Size = new Size(100, 44);

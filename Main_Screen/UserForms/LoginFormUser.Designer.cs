@@ -63,6 +63,7 @@
             // btnCollapse
             // 
             btnCollapse.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCollapse.Cursor = Cursors.Hand;
             btnCollapse.Location = new Point(1091, 4);
             btnCollapse.Name = "btnCollapse";
             btnCollapse.OverrideDefault.Back.Color1 = Color.Transparent;
@@ -85,6 +86,7 @@
             // btnMaximize
             // 
             btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMaximize.Cursor = Cursors.Hand;
             btnMaximize.Location = new Point(1121, 4);
             btnMaximize.Name = "btnMaximize";
             btnMaximize.OverrideDefault.Back.Color1 = Color.Transparent;
@@ -107,6 +109,7 @@
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.Cursor = Cursors.Hand;
             btnClose.Location = new Point(1151, 4);
             btnClose.Name = "btnClose";
             btnClose.OverrideDefault.Back.Color1 = Color.Transparent;
@@ -145,6 +148,7 @@
             pictureBox1.BackColor = Color.White;
             pictureBox1.BackgroundImage = Properties.Resources.Logo_Name_only_removedBg;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Location = new Point(54, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(129, 50);
@@ -155,6 +159,7 @@
             // btnAboutUs
             // 
             btnAboutUs.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAboutUs.Cursor = Cursors.Hand;
             btnAboutUs.Location = new Point(811, 9);
             btnAboutUs.Name = "btnAboutUs";
             btnAboutUs.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -208,6 +213,7 @@
             // 
             btnLogin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnLogin.ButtonStyle = Krypton.Toolkit.ButtonStyle.Custom1;
+            btnLogin.Cursor = Cursors.Hand;
             btnLogin.LocalCustomPalette = lightModePallete;
             btnLogin.Location = new Point(943, 9);
             btnLogin.Name = "btnLogin";
@@ -305,6 +311,7 @@
             // 
             btnSignUp.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSignUp.ButtonStyle = Krypton.Toolkit.ButtonStyle.Custom1;
+            btnSignUp.Cursor = Cursors.Hand;
             btnSignUp.Location = new Point(1040, 9);
             btnSignUp.Name = "btnSignUp";
             btnSignUp.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;

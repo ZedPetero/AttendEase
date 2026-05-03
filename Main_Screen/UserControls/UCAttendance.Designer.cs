@@ -111,6 +111,7 @@
             // 
             // btnNextDate
             // 
+            btnNextDate.Cursor = Cursors.Hand;
             btnNextDate.Location = new Point(3, 13);
             btnNextDate.Name = "btnNextDate";
             btnNextDate.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -137,6 +138,7 @@
             // lblDateNow
             // 
             lblDateNow.Anchor = AnchorStyles.Top;
+            lblDateNow.Cursor = Cursors.Hand;
             lblDateNow.Location = new Point(267, 10);
             lblDateNow.Name = "lblDateNow";
             lblDateNow.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -166,6 +168,7 @@
             // 
             // btnPreviousDate
             // 
+            btnPreviousDate.Cursor = Cursors.Hand;
             btnPreviousDate.Location = new Point(13, 13);
             btnPreviousDate.Name = "btnPreviousDate";
             btnPreviousDate.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -301,6 +304,7 @@
             // 
             // btnBackToClass
             // 
+            btnBackToClass.Cursor = Cursors.Hand;
             btnBackToClass.Location = new Point(127, 22);
             btnBackToClass.Name = "btnBackToClass";
             btnBackToClass.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;

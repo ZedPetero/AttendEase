@@ -323,6 +323,7 @@
             // btnSignUp
             // 
             btnSignUp.BackColor = Color.FromArgb(40, 164, 153);
+            btnSignUp.Cursor = Cursors.Hand;
             btnSignUp.Font = new Font("Inter SemiBold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSignUp.ForeColor = Color.White;
             btnSignUp.Location = new Point(34, 439);

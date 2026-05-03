@@ -52,6 +52,7 @@
             // 
             // btnTakeAttendance
             // 
+            btnTakeAttendance.Cursor = Cursors.Hand;
             btnTakeAttendance.Location = new Point(181, 140);
             btnTakeAttendance.Name = "btnTakeAttendance";
             btnTakeAttendance.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
@@ -92,6 +93,7 @@
             // 
             // btnDeleteSection
             // 
+            btnDeleteSection.Cursor = Cursors.Hand;
             btnDeleteSection.Location = new Point(297, 25);
             btnDeleteSection.Name = "btnDeleteSection";
             btnDeleteSection.Size = new Size(32, 32);
