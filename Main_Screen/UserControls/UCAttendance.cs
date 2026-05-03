@@ -45,6 +45,7 @@ namespace Brevi.Application
             InitializeComponent();
             UpdateDateDisplay();
             SetSection(CurrentSectionId);
+            FilterComboBox.SelectedIndexChanged += (s, ev) => LoadStudentsForDate();
         }
 
         public void SetSection(int sectionId)
@@ -196,6 +197,7 @@ namespace Brevi.Application
                 using var _context = new AppDbContext();
 
                 var section = _context.Sections
+                    .Include(s => s.Subject)
                     .AsNoTracking()
                     .Where(s => s.Id == CurrentSectionId)
                     .Select(s => new { s.SectionName, s.Subject })
@@ -204,7 +206,7 @@ namespace Brevi.Application
                 if (section != null)
                 {
                     lblSectionName.Text = section.SectionName;
-                    lblSubjectName.Text = section.Subject.ToString();
+                    lblSubjectName.Text = section.Subject?.Name ?? "No Subject";
                 }
                 else
                 {
@@ -261,9 +263,21 @@ namespace Brevi.Application
                     .AsNoTracking()
                     .ToList()
                     .ToDictionary(a => a.StudentId, a => a.Status);
+                
+                string selectedFilter = FilterComboBox.SelectedItem?.ToString() ?? "All";
+                List<Student> filteredStudents = students.Where(student => { 
+                    if (attendanceForDay.TryGetValue(student.Id, out var status))
+                    {
+                        return selectedFilter == "All" || status.ToString() == selectedFilter;
+                    }
+                    else
+                    {
+                        return selectedFilter == "All";
+                    }
+                }).ToList();
 
                 int count = 1;
-                foreach (var student in students)
+                foreach (var student in filteredStudents)
                 {
                     UCStudentRow studentRow = new UCStudentRow();
 
@@ -353,6 +367,12 @@ namespace Brevi.Application
         private void UpdateDateDisplay()
         {
             lblDateNow.Values.ExtraText = _selectedDate.ToString("D");
+
+            // Automatically disable the Next button if we've reached Today
+            if (btnNextDate != null)
+            {
+                btnNextDate.Enabled = _selectedDate.Date < DateTime.Today;
+            }
         }
 
         private void lblDateNow_Click(object? sender, EventArgs e)
@@ -362,6 +382,11 @@ namespace Brevi.Application
 
         private void btnNextDate_Click(object? sender, EventArgs e)
         {
+            if (_selectedDate >= DateTime.Today)
+            {
+                MessageBox.Show("You cannot select a future date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _selectedDate = _selectedDate.AddDays(1);
             UpdateDateDisplay();
             LoadStudentsForDate();
@@ -403,7 +428,8 @@ namespace Brevi.Application
                 SelectionEnd = _selectedDate,
                 ShowTodayCircle = false,
                 ShowWeekNumbers = false,
-                Location = new Point(5, 35)
+                Location = new Point(5, 35),
+                MaxDate = DateTime.Today
             };
 
             cal.StateCommon.Back.Color1 = Color.White;
@@ -523,6 +549,10 @@ namespace Brevi.Application
 
             try
             {
+                if (MessageBox.Show("This will remove all attendance records for the selected date. Are you sure?", "Confirm Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                {
+                    return;
+                }
                 DateTime dateStart = _selectedDate.Date;
                 DateTime dateEnd = dateStart.AddDays(1);
 
@@ -593,7 +623,7 @@ namespace Brevi.Application
         {
             using (var db = new AppDbContext())
             {
-                var section = db.Sections.FirstOrDefault(s => s.Id == sectionId);
+                var section = db.Sections.Include(s => s.Subject).FirstOrDefault(s => s.Id == sectionId);
                 if (section == null) return;
 
                 var records = db.AttendanceRecords
@@ -617,7 +647,7 @@ namespace Brevi.Application
                     {
                         StudentId = studentId,
                         SectionId = sectionId,
-                        Subject = section.Subject,
+                        Subject = section.Subject?.Name ?? "Unknown",
                         Percentage = percentage
                     });
                 }
@@ -631,7 +661,7 @@ namespace Brevi.Application
         }
         public void RecalculateClassGrades(AppDbContext db, int sectionId)
         {
-            var section = db.Sections.FirstOrDefault(s => s.Id == sectionId);
+            var section = db.Sections.Include(s => s.Subject).FirstOrDefault(s => s.Id == sectionId);
             if (section == null) return;
 
             var studentIds = db.Students.Where(s => s.SectionId == sectionId).Select(s => s.Id).ToList();
@@ -657,7 +687,7 @@ namespace Brevi.Application
                     {
                         StudentId = sId,
                         SectionId = sectionId,
-                        Subject = section.Subject,
+                        Subject = section.Subject?.Name ?? "Unknown",
                         Percentage = percentage
                     });
                 }

@@ -9,7 +9,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 namespace Brevi.Application
 {
     public partial class FormAttendanceSummary : Form
@@ -172,70 +175,112 @@ namespace Brevi.Application
 
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
-                sfd.Filter = "CSV Files (*.csv)|*.csv";
+                // Added PDF to the filter
+                sfd.Filter = "CSV Files (*.csv)|*.csv|PDF Files (*.pdf)|*.pdf";
                 sfd.Title = "Save Attendance Summary";
-                sfd.FileName = $"Attendance_Summary_{DateTime.Now:yyyy-MM-dd}.csv";
+                sfd.FileName = $"Attendance_Summary_{DateTime.Now:yyyy-MM-dd}";
 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    try
+                    string extension = Path.GetExtension(sfd.FileName).ToLower();
+
+                    if (extension == ".csv")
                     {
-                        using var db = new AppDbContext();
-
-                        var allSectionAttendance = db.AttendanceRecords
-                            .Where(a => a.SectionId == _sectionId)
-                            .ToList();
-
-                        var uniqueDates = allSectionAttendance
-                            .Select(a => a.Date.Date)
-                            .Distinct()
-                            .OrderBy(d => d)
-                            .ToList();
-
-                        var sb = new StringBuilder();
-
-                        var headerBuilder = new StringBuilder("Roll No,Name,Days,Present,Late,Absent,Excused,Score");
-                        foreach (var date in uniqueDates)
-                        {
-                            headerBuilder.Append($",{date.ToString("MMM dd yyyy")}");
-                        }
-                        sb.AppendLine(headerBuilder.ToString());
-
-                        foreach (var row in _summaryData)
-                        {
-                            string safeName = $"\"{row.Name}\"";
-                            var rowBuilder = new StringBuilder($"{row.RollNo},{safeName},{row.Days},{row.Present},{row.Late},{row.Absent},{row.Excused},{row.Score}");
-
-                            var studentRecords = allSectionAttendance.Where(a => a.StudentId == row.StudentId).ToList();
-
-                            foreach (var date in uniqueDates)
-                            {
-                                var recordForDate = studentRecords.FirstOrDefault(a => a.Date.Date == date);
-
-                                if (recordForDate != null)
-                                {
-                                    rowBuilder.Append($",{recordForDate.Status.ToString()}");
-                                }
-                                else
-                                {
-                                    rowBuilder.Append(",-");
-                                }
-                            }
-
-                            sb.AppendLine(rowBuilder.ToString());
-                        }
-
-                        File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
-                        MessageBox.Show("Successfully exported!", "Export Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ExportToCSV(sfd.FileName);
                     }
-                    catch (Exception ex)
+                    else if (extension == ".pdf")
                     {
-                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ExportToPDF(sfd.FileName);
                     }
                 }
             }
         }
+        private void ExportToCSV(string filePath)
+        {
+            try
+            {
+                using var db = new AppDbContext();
+                var allSectionAttendance = db.AttendanceRecords.Where(a => a.SectionId == _sectionId).ToList();
+                var uniqueDates = allSectionAttendance.Select(a => a.Date.Date).Distinct().OrderBy(d => d).ToList();
 
+                var sb = new StringBuilder();
+                var headerBuilder = new StringBuilder("Roll No,Name,Days,Present,Late,Absent,Excused,Score");
+                foreach (var date in uniqueDates) headerBuilder.Append($",{date:MMM dd yyyy}");
+                sb.AppendLine(headerBuilder.ToString());
+
+                foreach (var row in _summaryData)
+                {
+                    var rowBuilder = new StringBuilder($"{row.RollNo},\"{row.Name}\",{row.Days},{row.Present},{row.Late},{row.Absent},{row.Excused},{row.Score}");
+                    var studentRecords = allSectionAttendance.Where(a => a.StudentId == row.StudentId).ToList();
+
+                    foreach (var date in uniqueDates)
+                    {
+                        var recordForDate = studentRecords.FirstOrDefault(a => a.Date.Date == date);
+                        rowBuilder.Append(recordForDate != null ? $",{recordForDate.Status}" : ",-");
+                    }
+                    sb.AppendLine(rowBuilder.ToString());
+                }
+
+                File.WriteAllText(filePath, sb.ToString(), Encoding.UTF8);
+                MessageBox.Show("CSV exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex) { MessageBox.Show("CSV Error: " + ex.Message); }
+        }
+        private void ExportToPDF(string filePath)
+        {
+            try
+            {
+                using (PdfWriter writer = new PdfWriter(filePath))
+                using (PdfDocument pdf = new PdfDocument(writer))
+                using (iText.Layout.Document document = new iText.Layout.Document(pdf))
+                {
+                    // Use the "SetProperty" method instead of "SetBold()" extension
+                    // This is what SetBold() does behind the scenes
+                    var bold = iText.IO.Font.Constants.StandardFonts.HELVETICA_BOLD;
+                    var fontBold = iText.Kernel.Font.PdfFontFactory.CreateFont(bold);
+
+                    iText.Layout.Element.Paragraph header = new iText.Layout.Element.Paragraph("Attendance Summary")
+                        .SetFontSize(18)
+                        .SetFont(fontBold); // Manual Bold
+
+                    document.Add(header);
+                    document.Add(new iText.Layout.Element.Paragraph($"Generated on: {DateTime.Now:f}"));
+
+                    Table table = new Table(iText.Layout.Properties.UnitValue.CreatePercentArray(8)).UseAllAvailableWidth();
+
+                    string[] headers = { "Roll No", "Name", "Days", "Pres", "Late", "Abs", "Exc", "Score" };
+                    foreach (var h in headers)
+                    {
+                        // Applying manual font to header cells
+                        var cellPara = new iText.Layout.Element.Paragraph(h).SetFont(fontBold);
+                        table.AddHeaderCell(new Cell().Add(cellPara));
+                    }
+
+                    foreach (var row in _summaryData)
+                    {
+                        table.AddCell(row.RollNo ?? "");
+                        table.AddCell(row.Name ?? "");
+                        table.AddCell(row.Days.ToString());
+                        table.AddCell(row.Present.ToString());
+                        table.AddCell(row.Late.ToString());
+                        table.AddCell(row.Absent.ToString());
+                        table.AddCell(row.Excused.ToString());
+                        table.AddCell(row.Score ?? "");
+                    }
+                    document.Add(table);
+                }
+                MessageBox.Show("PDF exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // This provides much more detail for debugging
+                string detailedError = $"Message: {ex.Message}\n\n" +
+                                       $"Inner Exception: {ex.InnerException?.Message}\n\n" +
+                                       $"Stack Trace: {ex.StackTrace}";
+
+                MessageBox.Show(detailedError, "PDF Debug Info");
+            }
+        }
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();

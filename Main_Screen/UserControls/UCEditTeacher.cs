@@ -24,21 +24,26 @@ namespace Brevi.Application
         {
             using (var context = new AppDbContext())
             {
-                var teacher = context.Teachers.FirstOrDefault(); 
+                var allSubjects = context.Subjects.ToList();
+                cmbSubject.DataSource = allSubjects;
+                cmbSubject.DisplayMember = "Name"; // What the user sees
+                cmbSubject.ValueMember = "Id";     // The hidden ID value
+
+                var teacher = context.Teachers.Include(t => t.Subject).FirstOrDefault();
                 if (teacher != null)
                 {
-                    kryptonLabel2.Text = $"Editing Profile: {teacher.FirstName} {teacher.LastName}";
-                    kryptonLabel3.Text = teacher.Subject.ToString();
-                    txtFirstName.Text = teacher.FirstName;
-                    txtMiddleName.Text = teacher.MiddleName;
-                    txtLastName.Text = teacher.LastName;
-                    txtEmail.Text = teacher.Email;
+                    kryptonLabel2.Text = $"Editing Profile: {teacher.FirstName ?? ""} {teacher.LastName ?? ""}";
+                    kryptonLabel3.Text = teacher.Subject?.Name ?? "No Subject";
+                    txtFirstName.Text = teacher.FirstName ?? "";
+                    txtMiddleName.Text = teacher.MiddleName ?? "";
+                    txtLastName.Text = teacher.LastName ?? "";
+                    txtEmail.Text = teacher.Email ?? "";
                     datePickerDate.Value = teacher.Birthday.HasValue
                                             ? teacher.Birthday.Value.ToDateTime(TimeOnly.MinValue)
                                             : DateTime.Now;
-                    cmbSubject.SelectedItem = teacher.Subject.ToString();
-                    txtPhoneNum.Text = teacher.PhoneNumber;
-                    txtBio.Text = teacher.Bio;
+                    cmbSubject.Text = teacher.Subject?.Name ?? "";
+                    txtPhoneNum.Text = teacher.PhoneNumber ?? "";
+                    txtBio.Text = teacher.Bio ?? "";
                     if (teacher.ProfilePicture != null && teacher.ProfilePicture.Length > 0)
                     {
                         var ms = new System.IO.MemoryStream(teacher.ProfilePicture);
@@ -65,7 +70,31 @@ namespace Brevi.Application
                         teacher.LastName = txtLastName.Text;
                         teacher.Email = txtEmail.Text;
                         teacher.Birthday = DateOnly.FromDateTime(datePickerDate.Value);
-                        teacher.Subject = Enum.Parse<Subject>(cmbSubject.SelectedItem.ToString());
+
+                        string inputtedSubjectName = cmbSubject.Text.Trim();
+
+                        if (!string.IsNullOrWhiteSpace(inputtedSubjectName))
+                        {
+                            // Check if this subject already exists in the Subjects table
+                            var existingSubject = context.Subjects
+                                .FirstOrDefault(s => s.Name.ToLower() == inputtedSubjectName.ToLower());
+
+                            if (existingSubject != null)
+                            {
+                                // Subject exists, just link the ID
+                                teacher.SubjectId = existingSubject.Id;
+                            }
+                            else
+                            {
+                                // Subject is brand new! Create it, save it, then link it.
+                                var newSubject = new Subject { Name = inputtedSubjectName };
+                                context.Subjects.Add(newSubject);
+                                context.SaveChanges(); // Save to generate the new ID
+
+                                teacher.SubjectId = newSubject.Id;
+                            }
+                        }
+
                         teacher.PhoneNumber = txtPhoneNum.Text;
                         teacher.Bio = txtBio.Text;
                         if (_uploadedImageBytes != null)
@@ -75,14 +104,15 @@ namespace Brevi.Application
 
                         context.SaveChanges();
                         MessageBox.Show("Teacher profile updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true; 
+                        return true;
                     }
-                    return false; 
+                    return false;
                 }
             }
-            catch 
+            catch (Exception ex) // <-- Catch the actual exception
             {
-                MessageBox.Show("Fill up all necessary contents before saving. Please try again.");
+                // Show the real error so you know exactly what broke
+                MessageBox.Show($"Failed to save profile.\n\nError: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }

@@ -23,31 +23,59 @@ namespace Brevi.Application
             UIHelper.RoundControl(txtName, 10);
             UIHelper.RoundControl(dateTimeStarting, 10);
             UIHelper.RoundControl(dateTimeEnding, 10);
-        }
 
+            LoadExistingSubjects();
+        }
+        private void LoadExistingSubjects()
+        {
+            try
+            {
+                using (var db = new AppDbContext())
+                {
+                    var allSubjects = db.Subjects.ToList();
+
+                    comboSubject.DataSource = allSubjects;
+                    comboSubject.DisplayMember = "Name"; 
+                    comboSubject.ValueMember = "Id";     
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Could not load subjects: " + ex.Message);
+            }
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtName.Text) || comboSubject.SelectedIndex == -1)
+                if (string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(comboSubject.Text))
                 {
-                    MessageBox.Show("Please fill in all fields.");
+                    MessageBox.Show("Please fill in the class name and select or type a subject.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                string selectedSubjectName = comboSubject.SelectedItem.ToString();
-                if (!Enum.TryParse(selectedSubjectName, out Subject selectedSubject))
-                {
-                    MessageBox.Show("Please fill in the class name and select a subject.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                string selectedSubjectName = comboSubject.Text.Trim();
                 using (var db = new AppDbContext())
                 {
+                    int subjectIdToLink;
+                    var existingSubject = db.Subjects.FirstOrDefault(s => s.Name.ToLower() == selectedSubjectName.ToLower());
+
+                    if (existingSubject != null)
+                    {
+                        subjectIdToLink = existingSubject.Id; 
+                    }
+                    else
+                    {
+                        var newSubject = new Subject { Name = selectedSubjectName };
+                        db.Subjects.Add(newSubject);
+                        db.SaveChanges();
+                        subjectIdToLink = newSubject.Id;
+                    }
                     var section = new Section
                     {
                         SectionName = txtName.Text,
                         TeacherId = UserSession.CurrentTeacherId,
-                        Subject = selectedSubject,
+                        SubjectId = subjectIdToLink,
                         StartTimeSchedule = dateTimeStarting.Value.TimeOfDay,
                         EndTimeSchedule = dateTimeEnding.Value.TimeOfDay
                     };

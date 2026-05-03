@@ -86,8 +86,9 @@ namespace Brevi.Infrastructure.Migrations
                     b.Property<int>("StudentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Subject")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -115,13 +116,15 @@ namespace Brevi.Infrastructure.Migrations
                     b.Property<TimeSpan>("StartTimeSchedule")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Subject")
+                    b.Property<int>("SubjectId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SubjectId");
 
                     b.HasIndex("TeacherId");
 
@@ -157,6 +160,21 @@ namespace Brevi.Infrastructure.Migrations
                     b.HasIndex("SectionId");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("Brevi.Domain.Models.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("Brevi.Domain.Models.Teacher", b =>
@@ -222,7 +240,7 @@ namespace Brevi.Infrastructure.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Subject")
+                    b.Property<int?>("SubjectId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -232,6 +250,8 @@ namespace Brevi.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Teachers");
                 });
@@ -268,11 +288,19 @@ namespace Brevi.Infrastructure.Migrations
 
             modelBuilder.Entity("Brevi.Domain.Models.Section", b =>
                 {
+                    b.HasOne("Brevi.Domain.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Brevi.Domain.Models.Teacher", "Teacher")
                         .WithMany("Sections")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Subject");
 
                     b.Navigation("Teacher");
                 });
@@ -286,6 +314,15 @@ namespace Brevi.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Section");
+                });
+
+            modelBuilder.Entity("Brevi.Domain.Models.Teacher", b =>
+                {
+                    b.HasOne("Brevi.Domain.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId");
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("Brevi.Domain.Models.Section", b =>

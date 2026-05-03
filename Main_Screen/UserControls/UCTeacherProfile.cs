@@ -22,7 +22,9 @@ namespace Brevi.Application
         {
             using (var context = new AppDbContext())
             {
-                var teacher = await context.Teachers.FindAsync(UserSession.CurrentTeacherId);
+                var teacher = await context.Teachers
+                    .Include(t => t.Subject)
+                    .FirstOrDefaultAsync(t => t.Id == UserSession.CurrentTeacherId);
                 if (teacher != null)
                 {
                     lblTeacherTitle.Text = $"{teacher.FirstName} {teacher.LastName}";
@@ -39,8 +41,8 @@ namespace Brevi.Application
                     }
                     if (teacher.Subject != null) 
                     {
-                        lblSubject.Text = teacher.Subject.ToString();
-                        lblSubjectTitle.Text = teacher.Subject.ToString();
+                        lblSubject.Text = teacher.Subject.Name;
+                        lblSubjectTitle.Text = teacher.Subject.Name;
                     }
                     else
                     {

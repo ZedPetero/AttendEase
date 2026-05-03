@@ -65,6 +65,7 @@
             panel3 = new Panel();
             panel1 = new Panel();
             panel2 = new Panel();
+            FilterComboBox = new Krypton.Toolkit.KryptonComboBox();
             panelCalendar.SuspendLayout();
             panel6.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -73,6 +74,7 @@
             panel3.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)FilterComboBox).BeginInit();
             SuspendLayout();
             // 
             // lblSectionName
@@ -743,12 +745,27 @@
             panel2.Size = new Size(180, 159);
             panel2.TabIndex = 32;
             // 
+            // FilterComboBox
+            // 
+            FilterComboBox.DropDownWidth = 78;
+            FilterComboBox.Items.AddRange(new object[] { "All", "Present", "Late", "Absent", "Excused" });
+            FilterComboBox.Location = new Point(374, 483);
+            FilterComboBox.Name = "FilterComboBox";
+            FilterComboBox.Size = new Size(82, 26);
+            FilterComboBox.StateCommon.ComboBox.Border.Rounding = 5F;
+            FilterComboBox.StateCommon.ComboBox.Content.Color1 = Color.FromArgb(26, 37, 48);
+            FilterComboBox.StateCommon.ComboBox.Content.Font = new Font("Inter", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FilterComboBox.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            FilterComboBox.TabIndex = 31;
+            FilterComboBox.Text = "Filter";
+            // 
             // UCAttendance
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.FromArgb(249, 250, 251);
+            Controls.Add(FilterComboBox);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(btnSortFirstname);
             Controls.Add(btnSortSurname);
@@ -776,6 +793,7 @@
             panel3.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)FilterComboBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -817,5 +835,6 @@
         private Panel panel3;
         private Panel panel2;
         private Panel panel6;
+        private Krypton.Toolkit.KryptonComboBox FilterComboBox;
     }
 }

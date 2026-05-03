@@ -12,7 +12,8 @@ namespace Brevi.Domain.Models
         [Required]
         public string SectionName { get; set; }
         [Required]
-        public Subject Subject { get; set; } 
+        public int SubjectId { get; set; }
+        public virtual Subject Subject { get; set; }
         public TimeSpan StartTimeSchedule { get; set; }
         public TimeSpan EndTimeSchedule { get; set; }
         public int TeacherId { get; set; } [ForeignKey("TeacherId")]

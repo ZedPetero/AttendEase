@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Brevi.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260310012545_TryFix")]
-    partial class TryFix
+    [Migration("20260503155918_SubjectTable")]
+    partial class SubjectTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,6 +51,29 @@ namespace Brevi.Infrastructure.Migrations
                     b.ToTable("AttendanceRecords");
                 });
 
+            modelBuilder.Entity("Brevi.Domain.Models.AttendanceWeights", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("AbsentWeight")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("ExcusedWeight")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("LateWeight")
+                        .HasColumnType("REAL");
+
+                    b.Property<double>("PresentWeight")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AttendanceWeights");
+                });
+
             modelBuilder.Entity("Brevi.Domain.Models.Grade", b =>
                 {
                     b.Property<int>("Id")
@@ -66,8 +89,9 @@ namespace Brevi.Infrastructure.Migrations
                     b.Property<int>("StudentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Subject")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -95,13 +119,15 @@ namespace Brevi.Infrastructure.Migrations
                     b.Property<TimeSpan>("StartTimeSchedule")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Subject")
+                    b.Property<int>("SubjectId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("TeacherId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SubjectId");
 
                     b.HasIndex("TeacherId");
 
@@ -137,6 +163,21 @@ namespace Brevi.Infrastructure.Migrations
                     b.HasIndex("SectionId");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("Brevi.Domain.Models.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("Brevi.Domain.Models.Teacher", b =>
@@ -202,7 +243,7 @@ namespace Brevi.Infrastructure.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Subject")
+                    b.Property<int?>("SubjectId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -212,6 +253,8 @@ namespace Brevi.Infrastructure.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Teachers");
                 });
@@ -248,11 +291,19 @@ namespace Brevi.Infrastructure.Migrations
 
             modelBuilder.Entity("Brevi.Domain.Models.Section", b =>
                 {
+                    b.HasOne("Brevi.Domain.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Brevi.Domain.Models.Teacher", "Teacher")
                         .WithMany("Sections")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Subject");
 
                     b.Navigation("Teacher");
                 });
@@ -266,6 +317,15 @@ namespace Brevi.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Section");
+                });
+
+            modelBuilder.Entity("Brevi.Domain.Models.Teacher", b =>
+                {
+                    b.HasOne("Brevi.Domain.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectId");
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("Brevi.Domain.Models.Section", b =>

@@ -60,7 +60,7 @@
             gridSummary.PaletteMode = Krypton.Toolkit.PaletteMode.Office2007Blue;
             gridSummary.RowHeadersVisible = false;
             gridSummary.RowTemplate.Height = 45;
-            gridSummary.Size = new Size(736, 311);
+            gridSummary.Size = new Size(757, 311);
             gridSummary.StateCommon.Background.Color1 = Color.White;
             gridSummary.StateCommon.Background.Color2 = Color.White;
             gridSummary.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
@@ -149,7 +149,7 @@
             // btnDownloadCSV
             // 
             btnDownloadCSV.Cursor = Cursors.Hand;
-            btnDownloadCSV.Location = new Point(645, 69);
+            btnDownloadCSV.Location = new Point(626, 66);
             btnDownloadCSV.Name = "btnDownloadCSV";
             btnDownloadCSV.OverrideDefault.Back.Color1 = Color.Teal;
             btnDownloadCSV.OverrideDefault.Back.Color2 = Color.Teal;
@@ -157,7 +157,7 @@
             btnDownloadCSV.OverrideDefault.Border.Color1 = Color.Teal;
             btnDownloadCSV.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
             btnDownloadCSV.OverrideDefault.Border.Rounding = 5F;
-            btnDownloadCSV.Size = new Size(122, 34);
+            btnDownloadCSV.Size = new Size(162, 34);
             btnDownloadCSV.StateCommon.Back.Color1 = Color.Teal;
             btnDownloadCSV.StateCommon.Back.Color2 = Color.Teal;
             btnDownloadCSV.StateCommon.Border.Color1 = Color.Teal;
@@ -168,7 +168,7 @@
             btnDownloadCSV.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDownloadCSV.TabIndex = 3;
             btnDownloadCSV.Values.DropDownArrowColor = Color.Empty;
-            btnDownloadCSV.Values.ExtraText = "Download CSV";
+            btnDownloadCSV.Values.ExtraText = "Download CSV or PDF";
             btnDownloadCSV.Values.Text = "";
             btnDownloadCSV.Click += btnDownloadCSV_Click;
             // 
@@ -206,20 +206,19 @@
             pnlContent.Dock = DockStyle.Fill;
             pnlContent.Location = new Point(0, 0);
             pnlContent.Name = "pnlContent";
-            pnlContent.Size = new Size(800, 450);
+            pnlContent.Size = new Size(811, 450);
             pnlContent.TabIndex = 28;
             // 
             // FormAttendanceSummary
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(811, 450);
             ControlBox = false;
             Controls.Add(pnlContent);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "FormAttendanceSummary";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Load += Form_AttendanceSummary_Load;

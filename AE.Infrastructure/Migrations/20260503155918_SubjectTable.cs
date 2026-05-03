@@ -6,11 +6,40 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Brevi.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class TryFix : Migration
+    public partial class SubjectTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AttendanceWeights",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    PresentWeight = table.Column<double>(type: "REAL", nullable: false),
+                    LateWeight = table.Column<double>(type: "REAL", nullable: false),
+                    AbsentWeight = table.Column<double>(type: "REAL", nullable: false),
+                    ExcusedWeight = table.Column<double>(type: "REAL", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AttendanceWeights", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Subjects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Subjects", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Teachers",
                 columns: table => new
@@ -22,7 +51,7 @@ namespace Brevi.Infrastructure.Migrations
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
                     ProfilePicture = table.Column<byte[]>(type: "BLOB", nullable: true),
                     Birthday = table.Column<DateOnly>(type: "TEXT", nullable: true),
-                    Subject = table.Column<int>(type: "INTEGER", nullable: true),
+                    SubjectId = table.Column<int>(type: "INTEGER", nullable: true),
                     Bio = table.Column<string>(type: "TEXT", nullable: true),
                     UserName = table.Column<string>(type: "TEXT", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", nullable: true),
@@ -42,6 +71,11 @@ namespace Brevi.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Teachers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Teachers_Subjects_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "Subjects",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -51,7 +85,7 @@ namespace Brevi.Infrastructure.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     SectionName = table.Column<string>(type: "TEXT", nullable: false),
-                    Subject = table.Column<int>(type: "INTEGER", nullable: false),
+                    SubjectId = table.Column<int>(type: "INTEGER", nullable: false),
                     StartTimeSchedule = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     EndTimeSchedule = table.Column<TimeSpan>(type: "TEXT", nullable: false),
                     TeacherId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -60,6 +94,12 @@ namespace Brevi.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sections", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sections_Subjects_SubjectId",
+                        column: x => x.SubjectId,
+                        principalTable: "Subjects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Sections_Teachers_TeacherId",
                         column: x => x.TeacherId,
@@ -126,7 +166,7 @@ namespace Brevi.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Subject = table.Column<int>(type: "INTEGER", nullable: false),
+                    Subject = table.Column<string>(type: "TEXT", nullable: false),
                     SectionId = table.Column<int>(type: "INTEGER", nullable: false),
                     Percentage = table.Column<double>(type: "REAL", nullable: false),
                     StudentId = table.Column<int>(type: "INTEGER", nullable: false)
@@ -158,6 +198,11 @@ namespace Brevi.Infrastructure.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Sections_SubjectId",
+                table: "Sections",
+                column: "SubjectId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Sections_TeacherId",
                 table: "Sections",
                 column: "TeacherId");
@@ -166,6 +211,11 @@ namespace Brevi.Infrastructure.Migrations
                 name: "IX_Students_SectionId",
                 table: "Students",
                 column: "SectionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Teachers_SubjectId",
+                table: "Teachers",
+                column: "SubjectId");
         }
 
         /// <inheritdoc />
@@ -173,6 +223,9 @@ namespace Brevi.Infrastructure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AttendanceRecords");
+
+            migrationBuilder.DropTable(
+                name: "AttendanceWeights");
 
             migrationBuilder.DropTable(
                 name: "Grades");
@@ -185,6 +238,9 @@ namespace Brevi.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Teachers");
+
+            migrationBuilder.DropTable(
+                name: "Subjects");
         }
     }
 }

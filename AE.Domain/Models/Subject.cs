@@ -4,15 +4,9 @@ using System.Text;
 
 namespace Brevi.Domain.Models
 {
-    public enum Subject
+    public class Subject
     {
-        Math,
-        Science,
-        History,
-        Literature,
-        Art,
-        Music,
-        PhysicalEducation,
-        ComputerScience
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

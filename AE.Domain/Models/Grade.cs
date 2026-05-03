@@ -9,7 +9,7 @@ namespace Brevi.Domain.Models
         public int Id { get; set; }
 
         [Required]
-        public Subject Subject { get; set; } 
+        public string? Subject { get; set; } 
         public int SectionId { get; set; } [ForeignKey("SectionId")]
         public double Percentage { get; set; } 
         public int StudentId { get; set; } [ForeignKey("StudentId")]

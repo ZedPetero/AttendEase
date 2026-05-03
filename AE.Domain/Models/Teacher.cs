@@ -14,7 +14,8 @@ namespace Brevi.Domain.Models
         public string LastName { get; set; }
         public byte[]? ProfilePicture { get; set; }
         public DateOnly? Birthday { get; set; }
-        public Subject? Subject { get; set; }
+        public int? SubjectId { get; set; } // Nullable, in case a teacher hasn't picked one yet
+        public virtual Subject Subject { get; set; }
         public string? Bio { get; set; }
         public List<Section> Sections { get; set; } = new();
     }
