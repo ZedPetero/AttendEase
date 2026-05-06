@@ -29,11 +29,20 @@ namespace Brevi.Application.UserControls
             try
             {
                 SaveChangesClicked?.Invoke(this, e);
-            } catch 
+            }
+            catch
             {
                 MessageBox.Show("Fill up all contents before saving. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void SaveBtnTeacher_Load(object sender, EventArgs e)
+        {
+            if (this.FindForm() != null)
+            {
+                this.FindForm().AcceptButton = btnSaveChanges;
+            }
         }
     }
 }

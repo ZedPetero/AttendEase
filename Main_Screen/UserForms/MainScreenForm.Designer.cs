@@ -361,7 +361,7 @@ namespace Brevi.Application
             btnCollapse.StateCommon.Back.Color2 = Color.Transparent;
             btnCollapse.StateCommon.Border.Color1 = Color.Transparent;
             btnCollapse.StateCommon.Border.Color2 = Color.Transparent;
-            btnCollapse.TabIndex = 6;
+            btnCollapse.TabIndex = 7;
             btnCollapse.Values.DropDownArrowColor = Color.Empty;
             btnCollapse.Values.Image = Properties.Resources.green_circle;
             btnCollapse.Values.Text = "";
@@ -384,7 +384,7 @@ namespace Brevi.Application
             kryptonButton1.StateCommon.Back.Color2 = Color.Transparent;
             kryptonButton1.StateCommon.Border.Color1 = Color.Transparent;
             kryptonButton1.StateCommon.Border.Color2 = Color.Transparent;
-            kryptonButton1.TabIndex = 5;
+            kryptonButton1.TabIndex = 8;
             kryptonButton1.Values.DropDownArrowColor = Color.Empty;
             kryptonButton1.Values.Image = Properties.Resources.yellow_circle;
             kryptonButton1.Values.Text = "";
@@ -407,7 +407,7 @@ namespace Brevi.Application
             kryptonButton2.StateCommon.Back.Color2 = Color.Transparent;
             kryptonButton2.StateCommon.Border.Color1 = Color.Transparent;
             kryptonButton2.StateCommon.Border.Color2 = Color.Transparent;
-            kryptonButton2.TabIndex = 4;
+            kryptonButton2.TabIndex = 9;
             kryptonButton2.Values.DropDownArrowColor = Color.Empty;
             kryptonButton2.Values.Image = Properties.Resources.red_circle;
             kryptonButton2.Values.Text = "";
@@ -458,7 +458,7 @@ namespace Brevi.Application
             btnMenu.Size = new Size(47, 42);
             btnMenu.StateCommon.Content.Padding = new Padding(0, 3, 3, 3);
             btnMenu.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnMenu.TabIndex = 4;
+            btnMenu.TabIndex = 6;
             btnMenu.Values.DropDownArrowColor = Color.Empty;
             btnMenu.Values.Text = "";
             btnMenu.Click += btnMenu_Click;

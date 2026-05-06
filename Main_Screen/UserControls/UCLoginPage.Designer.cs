@@ -55,7 +55,7 @@
             linkLabel2.Location = new Point(250, 344);
             linkLabel2.Name = "linkLabel2";
             linkLabel2.Size = new Size(87, 21);
-            linkLabel2.TabIndex = 19;
+            linkLabel2.TabIndex = 3;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "Click Here";
             linkLabel2.LinkClicked += linkLabel2_LinkClicked;
@@ -82,7 +82,7 @@
             btnLogin.Size = new Size(345, 35);
             btnLogin.Style.BackColor = Color.FromArgb(40, 164, 153);
             btnLogin.Style.ForeColor = Color.White;
-            btnLogin.TabIndex = 17;
+            btnLogin.TabIndex = 2;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = false;
             btnLogin.Click += btnLogin_Click;
@@ -100,7 +100,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.BeforeTouchSize = new Size(141, 32);
+            txtPassword.BeforeTouchSize = new Size(345, 32);
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 5;
@@ -111,7 +111,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '●';
             txtPassword.Size = new Size(345, 32);
-            txtPassword.TabIndex = 15;
+            txtPassword.TabIndex = 1;
             txtPassword.Tag = "";
             txtPassword.UseSystemPasswordChar = true;
             // 
@@ -128,7 +128,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.BeforeTouchSize = new Size(141, 32);
+            txtUsername.BeforeTouchSize = new Size(345, 32);
             txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
@@ -139,7 +139,7 @@
             txtUsername.MinimumSize = new Size(34, 30);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(345, 32);
-            txtUsername.TabIndex = 13;
+            txtUsername.TabIndex = 0;
             // 
             // panel1
             // 
@@ -191,6 +191,7 @@
             Controls.Add(panel1);
             Name = "UCLoginPage";
             Size = new Size(1184, 599);
+            Load += UCLoginPage_Load;
             ((System.ComponentModel.ISupportInitialize)txtPassword).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtUsername).EndInit();
             panel1.ResumeLayout(false);

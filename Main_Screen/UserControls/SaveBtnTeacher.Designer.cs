@@ -126,6 +126,7 @@
             Controls.Add(btnSaveChanges);
             Name = "SaveBtnTeacher";
             Size = new Size(215, 50);
+            Load += SaveBtnTeacher_Load;
             ResumeLayout(false);
         }
 

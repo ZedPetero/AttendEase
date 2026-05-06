@@ -38,7 +38,6 @@ namespace Brevi.Application
                     item.SetSection(sec.Id);
 
                     item.AutoSize = false;
-                    // Initial width setup
                     item.Width = currentclassesflowpanel.ClientSize.Width - 25;
 
                     if (sec.IsArchived)
@@ -79,7 +78,6 @@ namespace Brevi.Application
             item.SetArchivedState(false);
         }
 
-        // FIX #2: Add Resize events to keep your cards responsive when the window changes size!
         private void currentclassesflowpanel_Resize(object sender, EventArgs e)
         {
             foreach (Control item in currentclassesflowpanel.Controls)
@@ -103,10 +101,8 @@ namespace Brevi.Application
         }
         private void currentclassesflowpanel_SizeChanged(object sender, EventArgs e)
         {
-            // Dynamically push the "Archived Classes" header down below the current classes list
-            ArchivedClassespanel.Top = currentclassesflowpanel.Bottom + 20; // 20 is just a visual margin
+            ArchivedClassespanel.Top = currentclassesflowpanel.Bottom + 20; 
 
-            // Dynamically push the archived list down below its header
             archivedClassFlowpanel.Top = ArchivedClassespanel.Bottom + 10;
         }
     }

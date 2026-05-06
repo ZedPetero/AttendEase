@@ -176,7 +176,7 @@
             btnGetStarted.StateTracking.Back.Color2 = Color.FromArgb(59, 174, 162);
             btnGetStarted.StateTracking.Border.Color1 = Color.FromArgb(59, 174, 162);
             btnGetStarted.StateTracking.Border.Color2 = Color.FromArgb(59, 174, 162);
-            btnGetStarted.TabIndex = 24;
+            btnGetStarted.TabIndex = 0;
             btnGetStarted.Values.DropDownArrowColor = Color.Empty;
             btnGetStarted.Values.ExtraText = "";
             btnGetStarted.Values.Text = "Get Started";
@@ -1098,7 +1098,7 @@
             btnViewClasses.StateTracking.Border.Color2 = Color.FromArgb(224, 230, 235);
             btnViewClasses.StateTracking.Content.LongText.Color1 = Color.FromArgb(63, 174, 163);
             btnViewClasses.StateTracking.Content.ShortText.Color1 = Color.FromArgb(63, 174, 163);
-            btnViewClasses.TabIndex = 25;
+            btnViewClasses.TabIndex = 1;
             btnViewClasses.Values.DropDownArrowColor = Color.Empty;
             btnViewClasses.Values.ExtraText = "";
             btnViewClasses.Values.Text = "View Classes";

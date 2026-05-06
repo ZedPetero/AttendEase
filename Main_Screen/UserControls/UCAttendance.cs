@@ -368,7 +368,6 @@ namespace Brevi.Application
         {
             lblDateNow.Values.ExtraText = _selectedDate.ToString("D");
 
-            // Automatically disable the Next button if we've reached Today
             if (btnNextDate != null)
             {
                 btnNextDate.Enabled = _selectedDate.Date < DateTime.Today;

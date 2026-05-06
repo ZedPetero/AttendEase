@@ -27,14 +27,11 @@ namespace Brevi.Application
             LoadSavedAccounts();
         }
 
-        // Load saved accounts from the user service and create a label for each username in the panel.
-
         private void LoadSavedAccounts()
         {
             try
             {
                 var usernames = _userService.GetAllUsernames() ?? new List<string>();
-                // Clear existing controls in the panel and add a label per username so designer can style the panel/list as desired
                 loggedInViewPanel.Controls.Clear();
 
                 int y = 0;
@@ -48,7 +45,7 @@ namespace Brevi.Application
                     LabelProperties(lbl, username, y);
 
                     lbl.DoubleClick += Label_DoubleClick;
-                    lbl.Click += Label_Click; // optional single-click behavior if designer wants to handle selection
+                    lbl.Click += Label_Click; 
                     loggedInViewPanel.Controls.Add(lbl);
 
                     y += lbl.Height + spacing;
@@ -78,13 +75,10 @@ namespace Brevi.Application
 
         private void Label_Click(object? sender, EventArgs e)
         {
-            // Keep a simple visual selection on single click if desired by designer (does not affect other rows' selection logic).
-            // Designers can remove or style this behavior in the designer; we only toggle a simple BackColor here.
             try
             {
                 if (sender is Label lbl)
                 {
-                    // Toggle selection for this label only
                     var selected = lbl.BackColor == SystemColors.Highlight;
                     lbl.BackColor = selected ? SystemColors.Window : SystemColors.Highlight;
                     lbl.ForeColor = selected ? SystemColors.ControlText : SystemColors.HighlightText;

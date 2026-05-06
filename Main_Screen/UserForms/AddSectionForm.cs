@@ -13,7 +13,7 @@ namespace Brevi.Application
 {
     public partial class AddSectionForm : Form
     {
-        
+
 
         public AddSectionForm()
         {
@@ -35,8 +35,8 @@ namespace Brevi.Application
                     var allSubjects = db.Subjects.ToList();
 
                     comboSubject.DataSource = allSubjects;
-                    comboSubject.DisplayMember = "Name"; 
-                    comboSubject.ValueMember = "Id";     
+                    comboSubject.DisplayMember = "Name";
+                    comboSubject.ValueMember = "Id";
                 }
             }
             catch (Exception ex)
@@ -62,7 +62,7 @@ namespace Brevi.Application
 
                     if (existingSubject != null)
                     {
-                        subjectIdToLink = existingSubject.Id; 
+                        subjectIdToLink = existingSubject.Id;
                     }
                     else
                     {
@@ -101,6 +101,14 @@ namespace Brevi.Application
         {
 
             this.Close();
+        }
+
+        private void AddSectionForm_Load(object sender, EventArgs e)
+        {
+            if (this.FindForm() != null)
+            {
+                this.FindForm().AcceptButton = btnSaveClass;
+            }
         }
     }
 }

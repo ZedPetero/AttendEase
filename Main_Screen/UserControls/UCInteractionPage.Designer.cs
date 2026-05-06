@@ -81,7 +81,7 @@
             btnStartNow.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnStartNow.StatePressed.Border.Color1 = Color.DarkGray;
             btnStartNow.StatePressed.Border.Color2 = Color.DarkGray;
-            btnStartNow.TabIndex = 25;
+            btnStartNow.TabIndex = 0;
             btnStartNow.TabStop = false;
             btnStartNow.Values.DropDownArrowColor = Color.Empty;
             btnStartNow.Values.ExtraText = "Start Now ->";
@@ -130,7 +130,7 @@
             loggedInViewPanel.Size = new Size(350, 150);
             loggedInViewPanel.StateCommon.Color1 = Color.White;
             loggedInViewPanel.StateCommon.Color2 = Color.White;
-            loggedInViewPanel.TabIndex = 18;
+            loggedInViewPanel.TabIndex = 1;
             // 
             // borderPanel
             // 

@@ -92,7 +92,7 @@
             newPassTxtBox.StateCommon.Content.Color1 = Color.FromArgb(29, 37, 48);
             newPassTxtBox.StateCommon.Content.Font = new Font("Segoe UI", 14.25F);
             newPassTxtBox.StateNormal.Border.Rounding = 20F;
-            newPassTxtBox.TabIndex = 14;
+            newPassTxtBox.TabIndex = 2;
             newPassTxtBox.UseSystemPasswordChar = true;
             // 
             // kryptonLabel8
@@ -141,7 +141,7 @@
             PasswordChangeButton.StateNormal.Content.ShortText.Color2 = Color.White;
             PasswordChangeButton.StateNormal.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
             PasswordChangeButton.StateTracking.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
-            PasswordChangeButton.TabIndex = 11;
+            PasswordChangeButton.TabIndex = 3;
             PasswordChangeButton.Values.DropDownArrowColor = Color.Empty;
             PasswordChangeButton.Values.ExtraText = "Save Account";
             PasswordChangeButton.Values.Text = "";
@@ -158,7 +158,7 @@
             currentPasstxtbox.StateCommon.Content.Color1 = Color.FromArgb(29, 37, 48);
             currentPasstxtbox.StateCommon.Content.Font = new Font("Segoe UI", 14.25F);
             currentPasstxtbox.StateNormal.Border.Rounding = 20F;
-            currentPasstxtbox.TabIndex = 9;
+            currentPasstxtbox.TabIndex = 1;
             currentPasstxtbox.UseSystemPasswordChar = true;
             // 
             // UsernameChangetxtbox
@@ -170,7 +170,7 @@
             UsernameChangetxtbox.StateCommon.Content.Color1 = Color.FromArgb(29, 37, 48);
             UsernameChangetxtbox.StateCommon.Content.Font = new Font("Segoe UI", 14.25F);
             UsernameChangetxtbox.StateNormal.Border.Rounding = 20F;
-            UsernameChangetxtbox.TabIndex = 8;
+            UsernameChangetxtbox.TabIndex = 0;
             // 
             // kryptonLabel3
             // 
@@ -250,7 +250,7 @@
             kryptonToggleSwitch1.Location = new Point(215, 79);
             kryptonToggleSwitch1.Name = "kryptonToggleSwitch1";
             kryptonToggleSwitch1.Size = new Size(59, 28);
-            kryptonToggleSwitch1.TabIndex = 8;
+            kryptonToggleSwitch1.TabIndex = 9;
             // 
             // darkmoderadiobtn
             // 
@@ -315,7 +315,7 @@
             saveFormulaBtn.StateNormal.Content.ShortText.Color2 = Color.White;
             saveFormulaBtn.StateNormal.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
             saveFormulaBtn.StateTracking.Content.ShortText.Font = new Font("Material Symbols Outlined", 15.7499981F);
-            saveFormulaBtn.TabIndex = 13;
+            saveFormulaBtn.TabIndex = 8;
             saveFormulaBtn.Values.DropDownArrowColor = Color.Empty;
             saveFormulaBtn.Values.ExtraText = "Save Formula";
             saveFormulaBtn.Values.Text = "";
@@ -329,7 +329,7 @@
             Excusedtxtbox.Size = new Size(129, 39);
             Excusedtxtbox.StateCommon.Border.Rounding = 20F;
             Excusedtxtbox.StateCommon.Content.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Excusedtxtbox.TabIndex = 19;
+            Excusedtxtbox.TabIndex = 7;
             // 
             // kryptonLabel7
             // 
@@ -354,7 +354,7 @@
             Absenttxtbox.Size = new Size(129, 39);
             Absenttxtbox.StateCommon.Border.Rounding = 20F;
             Absenttxtbox.StateCommon.Content.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Absenttxtbox.TabIndex = 18;
+            Absenttxtbox.TabIndex = 6;
             // 
             // Latetxtbox
             // 
@@ -363,7 +363,7 @@
             Latetxtbox.Size = new Size(129, 39);
             Latetxtbox.StateCommon.Border.Rounding = 20F;
             Latetxtbox.StateCommon.Content.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Latetxtbox.TabIndex = 17;
+            Latetxtbox.TabIndex = 5;
             // 
             // PresenttxtBox
             // 
@@ -372,7 +372,7 @@
             PresenttxtBox.Size = new Size(129, 39);
             PresenttxtBox.StateCommon.Border.Rounding = 20F;
             PresenttxtBox.StateCommon.Content.Font = new Font("Inter", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            PresenttxtBox.TabIndex = 14;
+            PresenttxtBox.TabIndex = 4;
             // 
             // kryptonLabel6
             // 

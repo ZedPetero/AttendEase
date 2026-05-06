@@ -62,7 +62,7 @@ namespace Brevi.Application
             btnClose.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
             btnClose.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
             btnClose.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
-            btnClose.TabIndex = 25;
+            btnClose.TabIndex = 7;
             btnClose.TabStop = false;
             btnClose.Values.DropDownArrowColor = Color.Empty;
             btnClose.Values.Text = "";
@@ -85,7 +85,7 @@ namespace Brevi.Application
             btnCancel.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
             btnCancel.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
             btnCancel.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
-            btnCancel.TabIndex = 7;
+            btnCancel.TabIndex = 6;
             btnCancel.Values.DropDownArrowColor = Color.Empty;
             btnCancel.Values.Text = "Cancel";
             btnCancel.Click += btnClose_Click;
@@ -116,7 +116,7 @@ namespace Brevi.Application
             btnSaveClass.StateCommon.Content.ShortText.Font = new Font("Inter", 12F, FontStyle.Bold);
             btnSaveClass.StateTracking.Back.Color1 = Color.FromArgb(77, 180, 170);
             btnSaveClass.StateTracking.Back.Color2 = Color.FromArgb(77, 180, 170);
-            btnSaveClass.TabIndex = 6;
+            btnSaveClass.TabIndex = 5;
             btnSaveClass.Values.DropDownArrowColor = Color.Empty;
             btnSaveClass.Values.Text = "Save Class";
             btnSaveClass.Click += btnSave_Click;
@@ -236,6 +236,7 @@ namespace Brevi.Application
             MinimizeBox = false;
             Name = "AddSectionForm";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += AddSectionForm_Load;
             ((System.ComponentModel.ISupportInitialize)comboSubject).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -26,8 +26,8 @@ namespace Brevi.Application
             {
                 var allSubjects = context.Subjects.ToList();
                 cmbSubject.DataSource = allSubjects;
-                cmbSubject.DisplayMember = "Name"; // What the user sees
-                cmbSubject.ValueMember = "Id";     // The hidden ID value
+                cmbSubject.DisplayMember = "Name";
+                cmbSubject.ValueMember = "Id";    
 
                 var teacher = context.Teachers.Include(t => t.Subject).FirstOrDefault();
                 if (teacher != null)
@@ -75,21 +75,18 @@ namespace Brevi.Application
 
                         if (!string.IsNullOrWhiteSpace(inputtedSubjectName))
                         {
-                            // Check if this subject already exists in the Subjects table
                             var existingSubject = context.Subjects
                                 .FirstOrDefault(s => s.Name.ToLower() == inputtedSubjectName.ToLower());
 
                             if (existingSubject != null)
                             {
-                                // Subject exists, just link the ID
                                 teacher.SubjectId = existingSubject.Id;
                             }
                             else
                             {
-                                // Subject is brand new! Create it, save it, then link it.
                                 var newSubject = new Subject { Name = inputtedSubjectName };
                                 context.Subjects.Add(newSubject);
-                                context.SaveChanges(); // Save to generate the new ID
+                                context.SaveChanges(); 
 
                                 teacher.SubjectId = newSubject.Id;
                             }
@@ -109,9 +106,8 @@ namespace Brevi.Application
                     return false;
                 }
             }
-            catch (Exception ex) // <-- Catch the actual exception
+            catch (Exception ex) 
             {
-                // Show the real error so you know exactly what broke
                 MessageBox.Show($"Failed to save profile.\n\nError: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }

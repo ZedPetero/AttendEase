@@ -25,30 +25,31 @@ namespace Brevi.Application
         {
             try
             {
-                classinfotable.Visible = false; // hide by default
+                classinfotable.Visible = false; 
                 this.Height = 100;
 
                 using var db = new Brevi.Infrastructure.Data.AppDbContext();
 
-                // 1. UPDATE DB QUERY: Assuming your Section model has a "Subject" or "SubjectName" property.
-                // If your property is named differently, update it here!
                 var section = db.Sections
                     .Where(s => s.Id == _sectionId)
-                    .Select(s => new { s.SectionName, SubjectName = s.Subject.ToString() }) // Fetch the subject name!
+                    .Select(s => new { s.SectionName, SubjectName = s.Subject.Name }) 
                     .AsNoTracking()
                     .SingleOrDefault();
 
                 if (section != null)
                 {
-                    // FILL OUT INITIAL LABELS
                     lblClassName.Values.Text = section.SectionName;
                     lblSubject.Values.Text = section.SubjectName ?? "Unknown Subject";
+                    lblClassName.AutoSize = true;
+                    Size preferredSize = lblClassName.GetPreferredSize(new Size(0, 0));
+                    int actualWidth = preferredSize.Width;
 
-                    // set archive button initial text
+                    int margin = 15;
+                    lblSubject.Location = new Point(lblClassName.Location.X + actualWidth + margin, lblSubject.Location.Y);
+
                     ArchiveorRestorebutton.Values.Text = _isArchived ? "" : "";
                     ArchiveorRestorebutton.Values.ExtraText = _isArchived ? "Restore" : "Archive";
 
-                    // Setup Table Layout with 6 Columns
                     classinfotable.Controls.Clear();
                     classinfotable.ColumnCount = 6;
                     classinfotable.ColumnStyles.Clear();
@@ -59,7 +60,6 @@ namespace Brevi.Application
                     classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // excused (NEW)
                     classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // score
 
-                    // Add Header Row
                     classinfotable.RowCount = 1;
                     classinfotable.RowStyles.Clear();
                     classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
@@ -76,7 +76,6 @@ namespace Brevi.Application
 
                     var students = db.Students.Where(st => st.SectionId == _sectionId).ToList();
 
-                    // Handle Empty Class State
                     if (students.Count == 0)
                     {
                         classinfotable.RowCount = 2;
@@ -93,7 +92,6 @@ namespace Brevi.Application
                         classinfotable.Controls.Add(emptyStateLabel, 0, 1);
                         classinfotable.SetColumnSpan(emptyStateLabel, 6);
 
-                        // ZERO OUT THE TOP LABELS
                         lblStudents.Values.ExtraText = "0 Students";
                         lblSessions.Values.Text = "0 Sessions";
                         lblAvgScore.Values.Text = "0%";
@@ -102,12 +100,10 @@ namespace Brevi.Application
                     {
                         int row = 1;
 
-                        // TRACKERS FOR THE TOP LABELS
                         int maxSessions = 0;
                         double totalClassScore = 0;
                         int studentsWithRecords = 0;
 
-                        // Populate Student Rows
                         foreach (var student in students)
                         {
                             classinfotable.RowCount = row + 1;
@@ -115,33 +111,27 @@ namespace Brevi.Application
 
                             AddCellToTable(row, 0, new Label { Text = $"{student.LastName}, {student.FirstName}", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft });
 
-                            // compute attendance counts for this student
                             int present = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Present);
                             int late = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Late);
                             int absent = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Absent);
                             int excused = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Excused);
 
-                            // TRACK MAX SESSIONS FOR THE WHOLE CLASS
                             int total = present + late + absent + excused;
                             if (total > maxSessions) maxSessions = total;
 
-                            // APPLYING YOUR COLORS HERE (I added Bold so they are easier to read)
                             Font statFont = new Font("Segoe UI", 9F, FontStyle.Bold);
 
                             AddCellToTable(row, 1, new Label { Text = present.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Green, Font = statFont });
-                            // Note: Pure Color.Yellow is practically invisible on a white background, so Goldenrod is usually standard for UI warnings/late states.
                             AddCellToTable(row, 2, new Label { Text = late.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Goldenrod, Font = statFont });
                             AddCellToTable(row, 3, new Label { Text = absent.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Red, Font = statFont });
                             AddCellToTable(row, 4, new Label { Text = excused.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Blue, Font = statFont });
 
-                            // score calculation
                             string score = "-";
                             if (total > 0)
                             {
                                 double studentPercentage = (present * 100.0) / total;
                                 score = $"{studentPercentage:0}%";
 
-                                // ADD TO OVERALL CLASS AVERAGE TRACKER
                                 totalClassScore += studentPercentage;
                                 studentsWithRecords++;
                             }
@@ -151,7 +141,6 @@ namespace Brevi.Application
                             row++;
                         }
 
-                        // FINALLY: FILL OUT THE TOP LABELS!
                         lblStudents.Values.ExtraText = $"{students.Count} Students";
                         lblSessions.Values.Text = $"{maxSessions} Sessions";
 
@@ -175,7 +164,6 @@ namespace Brevi.Application
 
         private void AddCellToTable(int row, int col, Control ctrl)
         {
-            // ensure enough controls
             ctrl.Margin = new Padding(3);
             classinfotable.Controls.Add(ctrl, col, row);
         }
@@ -192,23 +180,19 @@ namespace Brevi.Application
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            // Toggle the visibility of the table
             classinfotable.Visible = !classinfotable.Visible;
 
             if (classinfotable.Visible)
             {
-                // EXPANDING
                 sidebarbtn.Values.Text = "";
                 this.Height = 350;
             }
             else
             {
-                // COLLAPSING
                 sidebarbtn.Values.Text = "";
                 this.Height = 100;
             }
 
-            // ADD THIS LINE: Force the parent FlowLayoutPanel to push the items below it down!
             this.Parent?.PerformLayout();
         }
 
@@ -220,12 +204,10 @@ namespace Brevi.Application
                 var sec = db.Sections.Find(_sectionId);
                 if (sec == null) return;
 
-                // toggle archived state
                 sec.IsArchived = !sec.IsArchived;
                 db.Sections.Update(sec);
                 db.SaveChanges();
 
-                // update UI by asking parent control to move this control
                 var parent = this.FindForm();
                 if (parent != null)
                 {
@@ -269,11 +251,7 @@ namespace Brevi.Application
         {
             _isArchived = archived;
 
-            // Update the text
             ArchiveorRestorebutton.Values.ExtraText = archived ? "Restore" : "Archive";
-
-            // Update the icon! 
-            // (Note: Replace "" with whatever your actual "Restore/Unarchive" character is in your font)
             ArchiveorRestorebutton.Values.Text = archived ? "" : "";
         }
 

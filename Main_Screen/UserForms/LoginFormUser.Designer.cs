@@ -77,7 +77,7 @@
             btnCollapse.StateCommon.Back.Color2 = Color.Transparent;
             btnCollapse.StateCommon.Border.Color1 = Color.Transparent;
             btnCollapse.StateCommon.Border.Color2 = Color.Transparent;
-            btnCollapse.TabIndex = 2;
+            btnCollapse.TabIndex = 5;
             btnCollapse.Values.DropDownArrowColor = Color.Empty;
             btnCollapse.Values.Image = Properties.Resources.green_circle;
             btnCollapse.Values.Text = "";
@@ -100,7 +100,7 @@
             btnMaximize.StateCommon.Back.Color2 = Color.Transparent;
             btnMaximize.StateCommon.Border.Color1 = Color.Transparent;
             btnMaximize.StateCommon.Border.Color2 = Color.Transparent;
-            btnMaximize.TabIndex = 1;
+            btnMaximize.TabIndex = 4;
             btnMaximize.Values.DropDownArrowColor = Color.Empty;
             btnMaximize.Values.Image = Properties.Resources.yellow_circle;
             btnMaximize.Values.Text = "";
@@ -123,7 +123,7 @@
             btnClose.StateCommon.Back.Color2 = Color.Transparent;
             btnClose.StateCommon.Border.Color1 = Color.Transparent;
             btnClose.StateCommon.Border.Color2 = Color.Transparent;
-            btnClose.TabIndex = 0;
+            btnClose.TabIndex = 3;
             btnClose.Values.DropDownArrowColor = Color.Empty;
             btnClose.Values.Image = Properties.Resources.red_circle;
             btnClose.Values.Text = "";

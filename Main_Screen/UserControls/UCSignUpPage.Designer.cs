@@ -343,6 +343,7 @@
             Controls.Add(panel1);
             Name = "UCSignUpPage";
             Size = new Size(1184, 599);
+            Load += UCSignUpPage_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)txtEmail).EndInit();

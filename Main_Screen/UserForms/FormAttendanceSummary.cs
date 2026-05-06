@@ -234,14 +234,12 @@ namespace Brevi.Application
                 using (PdfDocument pdf = new PdfDocument(writer))
                 using (iText.Layout.Document document = new iText.Layout.Document(pdf))
                 {
-                    // Use the "SetProperty" method instead of "SetBold()" extension
-                    // This is what SetBold() does behind the scenes
                     var bold = iText.IO.Font.Constants.StandardFonts.HELVETICA_BOLD;
                     var fontBold = iText.Kernel.Font.PdfFontFactory.CreateFont(bold);
 
                     iText.Layout.Element.Paragraph header = new iText.Layout.Element.Paragraph("Attendance Summary")
                         .SetFontSize(18)
-                        .SetFont(fontBold); // Manual Bold
+                        .SetFont(fontBold);
 
                     document.Add(header);
                     document.Add(new iText.Layout.Element.Paragraph($"Generated on: {DateTime.Now:f}"));
@@ -251,7 +249,6 @@ namespace Brevi.Application
                     string[] headers = { "Roll No", "Name", "Days", "Pres", "Late", "Abs", "Exc", "Score" };
                     foreach (var h in headers)
                     {
-                        // Applying manual font to header cells
                         var cellPara = new iText.Layout.Element.Paragraph(h).SetFont(fontBold);
                         table.AddHeaderCell(new Cell().Add(cellPara));
                     }
@@ -273,7 +270,6 @@ namespace Brevi.Application
             }
             catch (Exception ex)
             {
-                // This provides much more detail for debugging
                 string detailedError = $"Message: {ex.Message}\n\n" +
                                        $"Inner Exception: {ex.InnerException?.Message}\n\n" +
                                        $"Stack Trace: {ex.StackTrace}";

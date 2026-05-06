@@ -14,7 +14,6 @@ namespace Brevi.Application
         public MainScreenForm()
         {
             InitializeComponent();
-            //this.Resize += MainScreenForm_Resize;
             UpdateMainContentBounds();
             var db = new AppDbContext();
             _sectionService = new SectionService(db);
@@ -62,7 +61,6 @@ namespace Brevi.Application
                     sidebarTimer.Stop();
                 }
             }
-            //UpdateMainContentBounds();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -96,7 +94,6 @@ namespace Brevi.Application
 
             pnlMainContent.Controls.Add(customizedControl);
 
-            //pnlMainContent.SendToBack();
             customizedControl.Focus();
         }
 

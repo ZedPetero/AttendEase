@@ -58,5 +58,13 @@ namespace Brevi.Application
         {
             ToLoginPage?.Invoke(this, EventArgs.Empty);
         }
+
+        private void UCSignUpPage_Load(object sender, EventArgs e)
+        {
+            if (this.FindForm() != null)
+            {
+                this.FindForm().AcceptButton = btnSignUp;
+            }
+        }
     }
 }

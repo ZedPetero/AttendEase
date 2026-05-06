@@ -751,12 +751,12 @@
             FilterComboBox.Items.AddRange(new object[] { "All", "Present", "Late", "Absent", "Excused" });
             FilterComboBox.Location = new Point(374, 483);
             FilterComboBox.Name = "FilterComboBox";
-            FilterComboBox.Size = new Size(82, 26);
+            FilterComboBox.Size = new Size(82, 25);
             FilterComboBox.StateCommon.ComboBox.Border.Rounding = 5F;
             FilterComboBox.StateCommon.ComboBox.Content.Color1 = Color.FromArgb(26, 37, 48);
             FilterComboBox.StateCommon.ComboBox.Content.Font = new Font("Inter", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FilterComboBox.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            FilterComboBox.TabIndex = 31;
+            FilterComboBox.TabIndex = 9;
             FilterComboBox.Text = "Filter";
             // 
             // UCAttendance

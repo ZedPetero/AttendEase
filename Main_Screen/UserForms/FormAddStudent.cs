@@ -62,5 +62,13 @@ namespace Brevi.Application
         {
             Close();
         }
+
+        private void FormAddStudent_Load(object sender, EventArgs e)
+        {
+            if (this.FindForm() != null)
+            {
+                this.FindForm().AcceptButton = btnSave;
+            }
+        }
     }
 }

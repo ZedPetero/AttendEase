@@ -60,7 +60,7 @@
             ArchiveorRestorebutton.StateCommon.Content.ShortText.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             ArchiveorRestorebutton.StateNormal.Back.Color1 = Color.FromArgb(39, 165, 153);
             ArchiveorRestorebutton.StateNormal.Back.Color2 = Color.FromArgb(39, 165, 153);
-            ArchiveorRestorebutton.TabIndex = 13;
+            ArchiveorRestorebutton.TabIndex = 1;
             ArchiveorRestorebutton.Values.DropDownArrowColor = Color.Empty;
             ArchiveorRestorebutton.Values.ExtraText = "Archive";
             ArchiveorRestorebutton.Values.Text = "";
@@ -81,7 +81,7 @@
             sidebarbtn.StateCommon.Content.ShortText.Font = new Font("Material Symbols Sharp", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             sidebarbtn.StateNormal.Back.Color1 = Color.White;
             sidebarbtn.StateNormal.Back.Color2 = Color.White;
-            sidebarbtn.TabIndex = 15;
+            sidebarbtn.TabIndex = 2;
             sidebarbtn.Values.DropDownArrowColor = Color.Empty;
             sidebarbtn.Values.Text = "";
             sidebarbtn.Click += kryptonButton1_Click;
@@ -165,7 +165,7 @@
             // lblSubject
             // 
             lblSubject.Enabled = false;
-            lblSubject.Location = new Point(157, 10);
+            lblSubject.Location = new Point(162, 13);
             lblSubject.Name = "lblSubject";
             lblSubject.Size = new Size(114, 37);
             lblSubject.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);

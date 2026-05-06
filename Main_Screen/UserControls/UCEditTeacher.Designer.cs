@@ -223,7 +223,7 @@
             txtFirstName.Size = new Size(155, 30);
             txtFirstName.StateCommon.Border.Rounding = 10F;
             txtFirstName.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtFirstName.TabIndex = 35;
+            txtFirstName.TabIndex = 0;
             // 
             // txtBio
             // 
@@ -232,7 +232,7 @@
             txtBio.Size = new Size(495, 96);
             txtBio.StateCommon.Border.Rounding = 10F;
             txtBio.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtBio.TabIndex = 37;
+            txtBio.TabIndex = 7;
             txtBio.Text = "";
             // 
             // txtEmail
@@ -242,7 +242,7 @@
             txtEmail.Size = new Size(214, 30);
             txtEmail.StateCommon.Border.Rounding = 10F;
             txtEmail.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtEmail.TabIndex = 39;
+            txtEmail.TabIndex = 3;
             // 
             // txtPhoneNum
             // 
@@ -251,7 +251,7 @@
             txtPhoneNum.Size = new Size(214, 30);
             txtPhoneNum.StateCommon.Border.Rounding = 10F;
             txtPhoneNum.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtPhoneNum.TabIndex = 40;
+            txtPhoneNum.TabIndex = 6;
             // 
             // vScrollBar1
             // 
@@ -267,7 +267,7 @@
             txtMiddleName.Size = new Size(155, 30);
             txtMiddleName.StateCommon.Border.Rounding = 10F;
             txtMiddleName.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtMiddleName.TabIndex = 45;
+            txtMiddleName.TabIndex = 1;
             // 
             // kryptonLabel1
             // 
@@ -295,7 +295,7 @@
             txtLastName.Size = new Size(155, 30);
             txtLastName.StateCommon.Border.Rounding = 10F;
             txtLastName.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtLastName.TabIndex = 47;
+            txtLastName.TabIndex = 2;
             // 
             // kryptonLabel10
             // 
@@ -324,7 +324,7 @@
             cmbSubject.Name = "cmbSubject";
             cmbSubject.Size = new Size(214, 22);
             cmbSubject.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
-            cmbSubject.TabIndex = 48;
+            cmbSubject.TabIndex = 5;
             // 
             // datePickerDate
             // 
@@ -332,7 +332,7 @@
             datePickerDate.Location = new Point(288, 243);
             datePickerDate.Name = "datePickerDate";
             datePickerDate.Size = new Size(214, 23);
-            datePickerDate.TabIndex = 51;
+            datePickerDate.TabIndex = 4;
             // 
             // UCEditTeacher
             // 

@@ -82,7 +82,7 @@
             kryptonButton1.StateTracking.Back.Color2 = Color.FromArgb(39, 166, 156);
             kryptonButton1.StateTracking.Border.Color1 = Color.FromArgb(39, 166, 156);
             kryptonButton1.StateTracking.Border.Color2 = Color.FromArgb(39, 166, 156);
-            kryptonButton1.TabIndex = 5;
+            kryptonButton1.TabIndex = 0;
             kryptonButton1.Values.DropDownArrowColor = Color.Empty;
             kryptonButton1.Values.Text = "+  Add Class ";
             kryptonButton1.Click += btnAddClass_Click;

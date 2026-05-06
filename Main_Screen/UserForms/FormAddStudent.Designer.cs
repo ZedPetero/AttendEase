@@ -47,7 +47,7 @@
             txtFirstName.Size = new Size(330, 30);
             txtFirstName.StateCommon.Border.Rounding = 10F;
             txtFirstName.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtFirstName.TabIndex = 8;
+            txtFirstName.TabIndex = 1;
             // 
             // txtMiddleName
             // 
@@ -56,7 +56,7 @@
             txtMiddleName.Size = new Size(330, 30);
             txtMiddleName.StateCommon.Border.Rounding = 10F;
             txtMiddleName.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtMiddleName.TabIndex = 9;
+            txtMiddleName.TabIndex = 2;
             // 
             // txtLastName
             // 
@@ -65,7 +65,7 @@
             txtLastName.Size = new Size(330, 30);
             txtLastName.StateCommon.Border.Rounding = 10F;
             txtLastName.StateCommon.Content.Font = new Font("Inter", 10F);
-            txtLastName.TabIndex = 10;
+            txtLastName.TabIndex = 3;
             // 
             // kryptonLabel1
             // 
@@ -139,7 +139,7 @@
             btnSave.StateCommon.Content.ShortText.Font = new Font("Inter", 12F, FontStyle.Bold);
             btnSave.StateTracking.Back.Color1 = Color.FromArgb(77, 180, 170);
             btnSave.StateTracking.Back.Color2 = Color.FromArgb(77, 180, 170);
-            btnSave.TabIndex = 27;
+            btnSave.TabIndex = 4;
             btnSave.Values.DropDownArrowColor = Color.Empty;
             btnSave.Values.Text = "Save";
             btnSave.Click += btnSave_Click;
@@ -172,7 +172,7 @@
             btnCancel.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
             btnCancel.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
             btnCancel.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
-            btnCancel.TabIndex = 29;
+            btnCancel.TabIndex = 5;
             btnCancel.Values.DropDownArrowColor = Color.Empty;
             btnCancel.Values.Text = "Cancel";
             btnCancel.Click += btnClose_Click;
@@ -201,6 +201,7 @@
             Name = "FormAddStudent";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Student";
+            Load += FormAddStudent_Load;
             ResumeLayout(false);
             PerformLayout();
         }

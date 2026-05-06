@@ -17,7 +17,12 @@ namespace Brevi.Application.UserControls
         public event EventHandler EditClicked;
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
-            this.OnClick(e); 
+            this.OnClick(e);
+        }
+
+        private void EditBtnTeacher_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

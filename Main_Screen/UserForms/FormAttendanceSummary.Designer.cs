@@ -166,7 +166,7 @@
             btnDownloadCSV.StateCommon.Content.LongText.Font = new Font("Inter", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDownloadCSV.StateCommon.Content.ShortText.Color1 = Color.White;
             btnDownloadCSV.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnDownloadCSV.TabIndex = 3;
+            btnDownloadCSV.TabIndex = 0;
             btnDownloadCSV.Values.DropDownArrowColor = Color.Empty;
             btnDownloadCSV.Values.ExtraText = "Download CSV or PDF";
             btnDownloadCSV.Values.Text = "";
@@ -189,7 +189,7 @@
             btnClose.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
             btnClose.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
             btnClose.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
-            btnClose.TabIndex = 26;
+            btnClose.TabIndex = 1;
             btnClose.TabStop = false;
             btnClose.Values.DropDownArrowColor = Color.Empty;
             btnClose.Values.Text = "";
