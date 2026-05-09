@@ -70,5 +70,10 @@ namespace Brevi.Application
                 this.FindForm().AcceptButton = btnSave;
             }
         }
+
+        private void FormAddStudent_KeyUp(object sender, KeyEventArgs e)
+        {
+            btnSave_Click(sender, e);
+        }
     }
 }

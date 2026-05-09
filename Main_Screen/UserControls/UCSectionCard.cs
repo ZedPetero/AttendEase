@@ -19,6 +19,8 @@ namespace Brevi.Application
         public UCSectionCard()
         {
             InitializeComponent();
+            UIHelper.RoundControl(panel1, 10);
+            UIHelper.RoundControl(this, 16);
             originalMargin = this.Margin;
         }
         public void SetData(int sectionId, string sectionName, string subject, int studentCount, string timeSchedule)

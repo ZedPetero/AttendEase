@@ -34,12 +34,14 @@
             lblSubjectName = new Krypton.Toolkit.KryptonLabel();
             lblNumOfStudents = new Krypton.Toolkit.KryptonLabel();
             lblTime = new Krypton.Toolkit.KryptonLabel();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // lblSectionName
             // 
             lblSectionName.AutoSize = false;
-            lblSectionName.Location = new Point(20, 25);
+            lblSectionName.Location = new Point(17, 20);
             lblSectionName.Name = "lblSectionName";
             lblSectionName.Size = new Size(271, 32);
             lblSectionName.StateCommon.Padding = new Padding(0, -1, -1, -1);
@@ -53,7 +55,7 @@
             // btnTakeAttendance
             // 
             btnTakeAttendance.Cursor = Cursors.Hand;
-            btnTakeAttendance.Location = new Point(181, 140);
+            btnTakeAttendance.Location = new Point(178, 135);
             btnTakeAttendance.Name = "btnTakeAttendance";
             btnTakeAttendance.OverrideDefault.Back.Color1 = Color.FromArgb(249, 250, 251);
             btnTakeAttendance.OverrideDefault.Back.Color2 = Color.FromArgb(249, 250, 251);
@@ -94,7 +96,7 @@
             // btnDeleteSection
             // 
             btnDeleteSection.Cursor = Cursors.Hand;
-            btnDeleteSection.Location = new Point(297, 25);
+            btnDeleteSection.Location = new Point(294, 20);
             btnDeleteSection.Name = "btnDeleteSection";
             btnDeleteSection.Size = new Size(32, 32);
             btnDeleteSection.StateCommon.Back.Color1 = Color.FromArgb(249, 250, 251);
@@ -118,7 +120,7 @@
             // 
             // lblSubjectName
             // 
-            lblSubjectName.Location = new Point(20, 54);
+            lblSubjectName.Location = new Point(17, 49);
             lblSubjectName.Name = "lblSubjectName";
             lblSubjectName.Size = new Size(138, 37);
             lblSubjectName.StateCommon.ShortText.Color1 = Color.FromArgb(108, 124, 137);
@@ -130,7 +132,7 @@
             // 
             // lblNumOfStudents
             // 
-            lblNumOfStudents.Location = new Point(20, 140);
+            lblNumOfStudents.Location = new Point(17, 135);
             lblNumOfStudents.Name = "lblNumOfStudents";
             lblNumOfStudents.Size = new Size(130, 34);
             lblNumOfStudents.StateCommon.LongText.Color1 = Color.FromArgb(108, 124, 137);
@@ -146,7 +148,7 @@
             // 
             // lblTime
             // 
-            lblTime.Location = new Point(20, 97);
+            lblTime.Location = new Point(17, 92);
             lblTime.Name = "lblTime";
             lblTime.Size = new Size(188, 28);
             lblTime.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
@@ -156,24 +158,34 @@
             lblTime.MouseEnter += Card_MouseEnter;
             lblTime.MouseLeave += Card_MouseLeave;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.White;
+            panel1.Controls.Add(lblSectionName);
+            panel1.Controls.Add(lblTime);
+            panel1.Controls.Add(btnTakeAttendance);
+            panel1.Controls.Add(lblNumOfStudents);
+            panel1.Controls.Add(btnDeleteSection);
+            panel1.Controls.Add(lblSubjectName);
+            panel1.Location = new Point(2, 2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(340, 186);
+            panel1.TabIndex = 6;
+            // 
             // UCSectionCard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
-            Controls.Add(lblTime);
-            Controls.Add(lblNumOfStudents);
-            Controls.Add(lblSubjectName);
-            Controls.Add(btnDeleteSection);
-            Controls.Add(btnTakeAttendance);
-            Controls.Add(lblSectionName);
+            BackColor = Color.Black;
+            Controls.Add(panel1);
             Margin = new Padding(3, 10, 3, 10);
             Name = "UCSectionCard";
             Size = new Size(344, 190);
             MouseEnter += Card_MouseEnter;
             MouseLeave += Card_MouseLeave;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -184,5 +196,6 @@
         private Krypton.Toolkit.KryptonLabel lblSubjectName;
         private Krypton.Toolkit.KryptonLabel lblNumOfStudents;
         private Krypton.Toolkit.KryptonLabel lblTime;
+        private Panel panel1;
     }
 }

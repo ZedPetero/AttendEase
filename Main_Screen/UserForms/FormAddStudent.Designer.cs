@@ -44,27 +44,27 @@
             // 
             txtFirstName.Location = new Point(60, 92);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(330, 30);
+            txtFirstName.Size = new Size(330, 29);
             txtFirstName.StateCommon.Border.Rounding = 10F;
-            txtFirstName.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtFirstName.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 10F);
             txtFirstName.TabIndex = 1;
             // 
             // txtMiddleName
             // 
             txtMiddleName.Location = new Point(60, 174);
             txtMiddleName.Name = "txtMiddleName";
-            txtMiddleName.Size = new Size(330, 30);
+            txtMiddleName.Size = new Size(330, 29);
             txtMiddleName.StateCommon.Border.Rounding = 10F;
-            txtMiddleName.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtMiddleName.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 10F);
             txtMiddleName.TabIndex = 2;
             // 
             // txtLastName
             // 
             txtLastName.Location = new Point(60, 256);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(330, 30);
+            txtLastName.Size = new Size(330, 29);
             txtLastName.StateCommon.Border.Rounding = 10F;
-            txtLastName.StateCommon.Content.Font = new Font("Inter", 10F);
+            txtLastName.StateCommon.Content.Font = new Font("Microsoft Sans Serif", 10F);
             txtLastName.TabIndex = 3;
             // 
             // kryptonLabel1
@@ -74,7 +74,7 @@
             kryptonLabel1.Size = new Size(181, 25);
             kryptonLabel1.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
             kryptonLabel1.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonLabel1.StateCommon.ShortText.Font = new Font("Inter", 10F, FontStyle.Bold);
+            kryptonLabel1.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             kryptonLabel1.TabIndex = 11;
             kryptonLabel1.Values.Text = "First Name:";
             // 
@@ -85,7 +85,7 @@
             kryptonLabel2.Size = new Size(181, 25);
             kryptonLabel2.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
             kryptonLabel2.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonLabel2.StateCommon.ShortText.Font = new Font("Inter", 10F, FontStyle.Bold);
+            kryptonLabel2.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             kryptonLabel2.TabIndex = 12;
             kryptonLabel2.Values.Text = "Middle Name (optional):";
             // 
@@ -96,7 +96,7 @@
             kryptonLabel3.Size = new Size(181, 25);
             kryptonLabel3.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
             kryptonLabel3.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonLabel3.StateCommon.ShortText.Font = new Font("Inter", 10F, FontStyle.Bold);
+            kryptonLabel3.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             kryptonLabel3.TabIndex = 13;
             kryptonLabel3.Values.Text = "Last Name:";
             // 
@@ -111,16 +111,18 @@
             btnClose.StateCommon.Border.Color1 = Color.White;
             btnClose.StateCommon.Border.Color2 = Color.White;
             btnClose.StateCommon.Border.Rounding = 20F;
+            btnClose.StateCommon.Content.LongText.Font = new Font("Material Symbols Outlined", 13F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnClose.StateCommon.Content.Padding = new Padding(0, 0, 1, 6);
             btnClose.StateCommon.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
-            btnClose.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClose.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined Light", 15.7499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
             btnClose.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
             btnClose.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
             btnClose.TabIndex = 26;
             btnClose.TabStop = false;
             btnClose.Values.DropDownArrowColor = Color.Empty;
-            btnClose.Values.Text = "";
+            btnClose.Values.ExtraText = "close";
+            btnClose.Values.Text = "";
             btnClose.Click += btnClose_Click;
             // 
             // btnSave
@@ -128,6 +130,12 @@
             btnSave.Cursor = Cursors.Hand;
             btnSave.Location = new Point(357, 303);
             btnSave.Name = "btnSave";
+            btnSave.OverrideDefault.Back.Color1 = Color.FromArgb(39, 165, 153);
+            btnSave.OverrideDefault.Back.Color2 = Color.FromArgb(39, 165, 153);
+            btnSave.OverrideDefault.Border.Color1 = Color.FromArgb(39, 165, 153);
+            btnSave.OverrideDefault.Border.Color2 = Color.FromArgb(39, 165, 153);
+            btnSave.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
+            btnSave.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnSave.PaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
             btnSave.Size = new Size(81, 35);
             btnSave.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
@@ -136,7 +144,7 @@
             btnSave.StateCommon.Border.Color2 = Color.FromArgb(39, 165, 153);
             btnSave.StateCommon.Border.Rounding = 4F;
             btnSave.StateCommon.Content.ShortText.Color1 = Color.White;
-            btnSave.StateCommon.Content.ShortText.Font = new Font("Inter", 12F, FontStyle.Bold);
+            btnSave.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnSave.StateTracking.Back.Color1 = Color.FromArgb(77, 180, 170);
             btnSave.StateTracking.Back.Color2 = Color.FromArgb(77, 180, 170);
             btnSave.TabIndex = 4;
@@ -151,7 +159,7 @@
             kryptonLabel4.Size = new Size(181, 31);
             kryptonLabel4.StateCommon.ShortText.Color1 = Color.FromArgb(29, 37, 48);
             kryptonLabel4.StateCommon.ShortText.Color2 = Color.FromArgb(29, 37, 48);
-            kryptonLabel4.StateCommon.ShortText.Font = new Font("Inter", 16F, FontStyle.Bold);
+            kryptonLabel4.StateCommon.ShortText.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Bold);
             kryptonLabel4.TabIndex = 28;
             kryptonLabel4.Values.Text = "Add Student";
             // 
@@ -168,7 +176,7 @@
             btnCancel.StateCommon.Border.Color2 = Color.FromArgb(224, 230, 235);
             btnCancel.StateCommon.Border.Rounding = 4F;
             btnCancel.StateCommon.Content.ShortText.Color1 = Color.FromArgb(29, 37, 48);
-            btnCancel.StateCommon.Content.ShortText.Font = new Font("Inter", 12F, FontStyle.Bold);
+            btnCancel.StateCommon.Content.ShortText.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCancel.StateTracking.Back.Color1 = Color.FromArgb(228, 242, 240);
             btnCancel.StateTracking.Back.Color2 = Color.FromArgb(228, 242, 240);
             btnCancel.StateTracking.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
@@ -179,7 +187,6 @@
             // 
             // FormAddStudent
             // 
-            AcceptButton = btnSave;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
@@ -202,6 +209,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Student";
             Load += FormAddStudent_Load;
+            KeyUp += FormAddStudent_KeyUp;
             ResumeLayout(false);
             PerformLayout();
         }

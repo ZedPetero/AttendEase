@@ -121,7 +121,7 @@
             archivedClassFlowpanel.FlowDirection = FlowDirection.TopDown;
             archivedClassFlowpanel.Location = new Point(44, 502);
             archivedClassFlowpanel.Name = "archivedClassFlowpanel";
-            archivedClassFlowpanel.Size = new Size(1038, 259);
+            archivedClassFlowpanel.Size = new Size(764, 259);
             archivedClassFlowpanel.TabIndex = 10;
             archivedClassFlowpanel.WrapContents = false;
             archivedClassFlowpanel.Resize += archivedClassFlowpanel_Resize;

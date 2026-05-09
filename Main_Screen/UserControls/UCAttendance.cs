@@ -26,7 +26,7 @@ namespace Brevi.Application
             {
                 CreateParams cp = base.CreateParams;
                 cp.ExStyle |= 0x02000000;
-                return cp;
+                return cp; 
             }
         }
 
@@ -123,6 +123,7 @@ namespace Brevi.Application
                     pnlExcused.IntegerColor = "13, 162, 231";
                     pnlExcused.Percentage = "0.0%";
                     pnlExcused.PercentageColor = "55, 178, 235";
+
                     return;
                 }
 
@@ -263,9 +264,10 @@ namespace Brevi.Application
                     .AsNoTracking()
                     .ToList()
                     .ToDictionary(a => a.StudentId, a => a.Status);
-                
+
                 string selectedFilter = FilterComboBox.SelectedItem?.ToString() ?? "All";
-                List<Student> filteredStudents = students.Where(student => { 
+                List<Student> filteredStudents = students.Where(student =>
+                {
                     if (attendanceForDay.TryGetValue(student.Id, out var status))
                     {
                         return selectedFilter == "All" || status.ToString() == selectedFilter;

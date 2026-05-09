@@ -225,7 +225,7 @@
             layoutStudents.Location = new Point(124, 525);
             layoutStudents.Margin = new Padding(3, 3, 3, 20);
             layoutStudents.Name = "layoutStudents";
-            layoutStudents.Size = new Size(898, 195);
+            layoutStudents.Size = new Size(904, 195);
             layoutStudents.TabIndex = 10;
             layoutStudents.SizeChanged += layoutStudents_SizeChanged;
             // 

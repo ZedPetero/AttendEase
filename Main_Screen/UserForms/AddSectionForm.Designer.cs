@@ -105,6 +105,10 @@ namespace Brevi.Application
             btnSaveClass.Cursor = Cursors.Hand;
             btnSaveClass.Location = new Point(296, 293);
             btnSaveClass.Name = "btnSaveClass";
+            btnSaveClass.OverrideDefault.Back.Color1 = Color.FromArgb(39, 165, 153);
+            btnSaveClass.OverrideDefault.Back.Color2 = Color.FromArgb(39, 165, 153);
+            btnSaveClass.OverrideDefault.Border.Color1 = Color.FromArgb(39, 165, 153);
+            btnSaveClass.OverrideDefault.Border.Color2 = Color.FromArgb(39, 165, 153);
             btnSaveClass.PaletteMode = Krypton.Toolkit.PaletteMode.Microsoft365White;
             btnSaveClass.Size = new Size(112, 35);
             btnSaveClass.StateCommon.Back.Color1 = Color.FromArgb(39, 165, 153);
