@@ -61,21 +61,10 @@ internal static class Program
                 }
             }
 
-            // Ask the DI container for the Main form
-            try
+            using (var mainForm = (MainScreenForm)ServiceProvider.GetService(typeof(MainScreenForm)))
             {
-                using (var mainForm = (MainScreenForm)ServiceProvider.GetService(typeof(MainScreenForm)))
-                {
-                    mainForm.ExitClicked += (sender, e) => exitClicked = true;
-                    mainForm.ShowDialog();
-                }
-            }
-            catch (Exception ex)
-            {
-                // If DI fails to build the form, it will throw an exception here.
-                // This will pop up a box telling us exactly what is missing!
-                MessageBox.Show($"Crash while loading MainScreenForm:\n{ex.Message}");
-                return;
+                mainForm.ExitClicked += (sender, e) => exitClicked = true;
+                mainForm.ShowDialog();
             }
         }
     }
