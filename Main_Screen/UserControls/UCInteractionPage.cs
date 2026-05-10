@@ -15,11 +15,11 @@ namespace Brevi.Application
 {
     public partial class UCInteractionPage : UserControl
     {
-        private readonly IUserService _userService;
+        private readonly IUserSessionService _userService;
         public event EventHandler? StartNowClicked;
         public event Action<string>? AccountSelected;
 
-        public UCInteractionPage(IUserService userService)
+        public UCInteractionPage(IUserSessionService userService)
         {
             _userService = userService;
             InitializeComponent();

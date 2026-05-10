@@ -8,9 +8,9 @@ namespace Brevi.Services.Repositories
 {
     public class SettingsServices
     {
-        private readonly UserManager<Teacher> _userManager;
+        private readonly UserManager<TeacherService> _userManager;
 
-        public SettingsServices(UserManager<Teacher> userManager)
+        public SettingsServices(UserManager<TeacherService> userManager)
         {
             _userManager = userManager;
         }

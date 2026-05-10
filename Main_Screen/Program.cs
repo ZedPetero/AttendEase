@@ -31,7 +31,7 @@ internal static class Program
         services.AddIdentityCore<Teacher>()
             .AddEntityFrameworkStores<AppDbContext>();
 
-        services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IUserSessionService, UserService>();
 
         var serviceProvider = services.BuildServiceProvider();
 
@@ -47,7 +47,7 @@ internal static class Program
         }
 
         var userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
-        var userService = (IUserService)serviceProvider.GetService(typeof(IUserService));
+        var userService = (IUserSessionService)serviceProvider.GetService(typeof(IUserSessionService));
 
         bool exitClicked = false;
 

@@ -15,10 +15,10 @@ namespace Brevi.Application
     public partial class LoginFormUser : Form
     {
         private readonly UserManager<Teacher> _userManager;
-        private readonly IUserService _userService;
+        private readonly IUserSessionService _userService;
         private string uName;
 
-        public LoginFormUser(UserManager<Teacher> userManager, IUserService userService)
+        public LoginFormUser(UserManager<Teacher> userManager, IUserSessionService userService)
         {
             _userManager = userManager;
             _userService = userService;
