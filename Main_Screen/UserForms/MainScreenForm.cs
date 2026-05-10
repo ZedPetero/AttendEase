@@ -11,13 +11,11 @@ namespace Brevi.Application
         private readonly ISectionService _sectionService;
         public event EventHandler? ExitClicked;
 
-        public MainScreenForm()
+        public MainScreenForm(ISectionService sectionService)
         {
             InitializeComponent();
             UpdateMainContentBounds();
-            var db = new AppDbContext();
-            _sectionService = new SectionService(db);
-
+            _sectionService = sectionService;
             UCHome myHome = new UCHome();
             LoadForm(myHome);
             btnHome.Checked = true;

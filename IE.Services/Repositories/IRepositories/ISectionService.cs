@@ -9,5 +9,6 @@ namespace Brevi.Services.Repositories.IRepositories
 {
     public interface ISectionService : IRepository<Section>
     {
+        Task<List<SectionDto>> GetTeacherSectionsAsync(int teacherId);
     }
 }

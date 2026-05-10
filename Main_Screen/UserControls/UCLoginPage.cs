@@ -51,7 +51,7 @@ namespace Brevi.Application
                     UserSession.CurrentTeacherName = user.FirstName;
                     MessageBox.Show("Login successful!");
                     this.ParentForm.DialogResult = DialogResult.OK;
-                    this.ParentForm.Close();
+                    //this.ParentForm.Close();
                 }
                 else
                 {

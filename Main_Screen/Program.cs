@@ -33,7 +33,7 @@ internal static class Program
         // Register your forms here so DI can build them!
         services.AddTransient<LoginFormUser>();
         services.AddTransient<MainScreenForm>();
-
+        services.AddTransient<ISectionService, SectionService>();
         ServiceProvider = services.BuildServiceProvider();
 
         // Run Migrations safely
@@ -62,12 +62,20 @@ internal static class Program
             }
 
             // Ask the DI container for the Main form
-            using (var mainForm = (MainScreenForm)ServiceProvider.GetService(typeof(MainScreenForm)))
+            try
             {
+                using (var mainForm = (MainScreenForm)ServiceProvider.GetService(typeof(MainScreenForm)))
                 {
                     mainForm.ExitClicked += (sender, e) => exitClicked = true;
                     mainForm.ShowDialog();
                 }
+            }
+            catch (Exception ex)
+            {
+                // If DI fails to build the form, it will throw an exception here.
+                // This will pop up a box telling us exactly what is missing!
+                MessageBox.Show($"Crash while loading MainScreenForm:\n{ex.Message}");
+                return;
             }
         }
     }
