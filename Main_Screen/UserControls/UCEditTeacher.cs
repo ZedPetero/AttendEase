@@ -8,107 +8,91 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Brevi.Domain.Models;
+using Brevi.Services.Repositories.IRepositories;
 
 namespace Brevi.Application
 {
     public partial class UCEditTeacher : UserControl
     {
+        private readonly ITeacherService _teacherService;
+        private Teacher? _currentTeacher;
         private byte[]? _uploadedImageBytes = null;
-        public UCEditTeacher()
+        public UCEditTeacher(ITeacherService teacherService)
         {
             InitializeComponent();
+            _teacherService = teacherService;
             LoadTeacherData();
         }
 
-        private void LoadTeacherData()
+        private async Task LoadTeacherData()
         {
-            using (var context = new AppDbContext())
+            var allSubjects = await _teacherService.GetAllSubjectsAsync();
+            cmbSubject.DataSource = allSubjects;
+            cmbSubject.DisplayMember = "Name";
+            cmbSubject.ValueMember = "Id";
+        
+            _currentTeacher = await _teacherService.GetTeacherByIdAsync(UserSession.CurrentTeacherId);
+            if (_currentTeacher != null)
             {
-                var allSubjects = context.Subjects.ToList();
-                cmbSubject.DataSource = allSubjects;
-                cmbSubject.DisplayMember = "Name";
-                cmbSubject.ValueMember = "Id";    
-
-                var teacher = context.Teachers.Include(t => t.Subject).FirstOrDefault();
-                if (teacher != null)
+                kryptonLabel2.Text = $"Editing Profile: {_currentTeacher.FirstName ?? ""} {_currentTeacher.LastName ?? ""}";
+                kryptonLabel3.Text = _currentTeacher.Subject?.Name ?? "No Subject";
+                txtFirstName.Text = _currentTeacher.FirstName ?? "";
+                txtMiddleName.Text = _currentTeacher.MiddleName ?? "";
+                txtLastName.Text = _currentTeacher.LastName ?? "";
+                txtEmail.Text = _currentTeacher.Email ?? "";
+                datePickerDate.Value = _currentTeacher.Birthday.HasValue
+                                        ? _currentTeacher.Birthday.Value.ToDateTime(TimeOnly.MinValue)
+                                        : DateTime.Now;
+                cmbSubject.Text = _currentTeacher.Subject?.Name ?? "";
+                txtPhoneNum.Text = _currentTeacher.PhoneNumber ?? "";
+                txtBio.Text = _currentTeacher.Bio ?? "";
+                if (_currentTeacher.ProfilePicture != null && _currentTeacher.ProfilePicture.Length > 0)
                 {
-                    kryptonLabel2.Text = $"Editing Profile: {teacher.FirstName ?? ""} {teacher.LastName ?? ""}";
-                    kryptonLabel3.Text = teacher.Subject?.Name ?? "No Subject";
-                    txtFirstName.Text = teacher.FirstName ?? "";
-                    txtMiddleName.Text = teacher.MiddleName ?? "";
-                    txtLastName.Text = teacher.LastName ?? "";
-                    txtEmail.Text = teacher.Email ?? "";
-                    datePickerDate.Value = teacher.Birthday.HasValue
-                                            ? teacher.Birthday.Value.ToDateTime(TimeOnly.MinValue)
-                                            : DateTime.Now;
-                    cmbSubject.Text = teacher.Subject?.Name ?? "";
-                    txtPhoneNum.Text = teacher.PhoneNumber ?? "";
-                    txtBio.Text = teacher.Bio ?? "";
-                    if (teacher.ProfilePicture != null && teacher.ProfilePicture.Length > 0)
-                    {
-                        var ms = new System.IO.MemoryStream(teacher.ProfilePicture);
-                        Image profilePic = Image.FromStream(ms);
-                        btnUploadPicture.StateCommon.Back.Image = profilePic;
-                        btnUploadPicture.StateCommon.Back.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Stretch;
-                        btnUploadPicture.Values.Text = "";
-                    }
+                    using var ms = new System.IO.MemoryStream(_currentTeacher.ProfilePicture);
+                    Image profilePic = Image.FromStream(ms);
+                    btnUploadPicture.StateCommon.Back.Image = profilePic;
+                    btnUploadPicture.StateCommon.Back.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Stretch;
+                    btnUploadPicture.Values.Text = "";
                 }
             }
         }
-        public bool SaveTeacherData()
+        public async Task<bool> SaveTeacherDataAsync()
         {
+            if (_currentTeacher == null) return false;
+
             try
             {
-                using (var context = new AppDbContext())
-                {
-                    var teacher = context.Teachers.FirstOrDefault();
+                // Map UI to Model
+                _currentTeacher.FirstName = txtFirstName.Text;
+                _currentTeacher.LastName = txtLastName.Text;
+                _currentTeacher.Email = txtEmail.Text;
+                _currentTeacher.PhoneNumber = txtPhoneNum.Text;
+                _currentTeacher.Bio = txtBio.Text;
+                _currentTeacher.Birthday = DateOnly.FromDateTime(datePickerDate.Value);
 
-                    if (teacher != null)
-                    {
-                        teacher.FirstName = txtFirstName.Text;
-                        teacher.MiddleName = txtMiddleName.Text;
-                        teacher.LastName = txtLastName.Text;
-                        teacher.Email = txtEmail.Text;
-                        teacher.Birthday = DateOnly.FromDateTime(datePickerDate.Value);
+                // Handle Subject Logic
+                string subjectName = cmbSubject.Text.Trim();
+                var existingSubject = await _teacherService.GetSubjectByNameAsync(subjectName);
 
-                        string inputtedSubjectName = cmbSubject.Text.Trim();
+                if (existingSubject != null)
+                    _currentTeacher.SubjectId = existingSubject.Id;
+                else
+                    _currentTeacher.SubjectId = (await _teacherService.CreateSubjectAsync(subjectName)).Id;
 
-                        if (!string.IsNullOrWhiteSpace(inputtedSubjectName))
-                        {
-                            var existingSubject = context.Subjects
-                                .FirstOrDefault(s => s.Name.ToLower() == inputtedSubjectName.ToLower());
+                if (_uploadedImageBytes != null)
+                    _currentTeacher.ProfilePicture = _uploadedImageBytes;
 
-                            if (existingSubject != null)
-                            {
-                                teacher.SubjectId = existingSubject.Id;
-                            }
-                            else
-                            {
-                                var newSubject = new Subject { Name = inputtedSubjectName };
-                                context.Subjects.Add(newSubject);
-                                context.SaveChanges(); 
+                // Save via Service
+                bool success = await _teacherService.UpdateTeacherProfileAsync(_currentTeacher);
 
-                                teacher.SubjectId = newSubject.Id;
-                            }
-                        }
+                if (success)
+                    MessageBox.Show("Profile updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        teacher.PhoneNumber = txtPhoneNum.Text;
-                        teacher.Bio = txtBio.Text;
-                        if (_uploadedImageBytes != null)
-                        {
-                            teacher.ProfilePicture = _uploadedImageBytes;
-                        }
-
-                        context.SaveChanges();
-                        MessageBox.Show("Teacher profile updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
-                    }
-                    return false;
-                }
+                return success;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                MessageBox.Show($"Failed to save profile.\n\nError: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}");
                 return false;
             }
         }

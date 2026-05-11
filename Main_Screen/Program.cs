@@ -34,6 +34,8 @@ internal static class Program
         services.AddTransient<LoginFormUser>();
         services.AddTransient<MainScreenForm>();
         services.AddTransient<ISectionService, SectionService>();
+        services.AddTransient<ITeacherService, TeacherService>();
+        services.AddTransient<IAttendanceWeightsService, AttendanceWeightsService>();
         ServiceProvider = services.BuildServiceProvider();
 
         // Run Migrations safely

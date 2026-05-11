@@ -2,6 +2,8 @@ using Brevi.Services.Repositories.IRepositories;
 using Brevi.Infrastructure.Data;
 using Brevi.Services.Repositories;
 using System.Drawing.Drawing2D;
+using Microsoft.AspNetCore.Identity;
+using Brevi.Domain.Models;
 namespace Brevi.Application
 {
     public partial class MainScreenForm : Form
@@ -9,21 +11,27 @@ namespace Brevi.Application
         bool sidebarExpand = false;
         private Form backgroundOverlay;
         private readonly ISectionService _sectionService;
+        private readonly ITeacherService _teacherService;
+        private readonly UserManager<Teacher> _userManager;
+        private readonly IAttendanceWeightsService _attendanceWeightsService; 
         public event EventHandler? ExitClicked;
 
-        public MainScreenForm(ISectionService sectionService)
+        public MainScreenForm(ISectionService sectionService, ITeacherService teacherService, UserManager<Teacher> userManager, IAttendanceWeightsService attendanceWeightsService)
         {
             InitializeComponent();
             UpdateMainContentBounds();
             _sectionService = sectionService;
-            UCHome myHome = new UCHome();
+            _teacherService = teacherService;
+            _userManager = userManager;
+            _attendanceWeightsService = attendanceWeightsService;
+            UCHome myHome = new UCHome(_sectionService);
             LoadForm(myHome);
             btnHome.Checked = true;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            UCHome myHome = new UCHome();
+            UCHome myHome = new UCHome(_sectionService);
             LoadForm(myHome);
         }
 
@@ -109,7 +117,7 @@ namespace Brevi.Application
 
         public void btnTeacher_Click(object sender, EventArgs e)
         {
-            UCTeacher myTeacher = new UCTeacher();
+            UCTeacher myTeacher = new UCTeacher(_teacherService);
             LoadForm(myTeacher);
         }
 
@@ -128,7 +136,7 @@ namespace Brevi.Application
 
         public void btnSettings_Click(object sender, EventArgs e)
         {
-            UCSettings mySettings = new UCSettings();
+            UCSettings mySettings = new UCSettings(_userManager, _attendanceWeightsService);
             LoadForm(mySettings);
         }
 

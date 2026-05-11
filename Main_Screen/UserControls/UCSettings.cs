@@ -1,45 +1,51 @@
-﻿using System;
+﻿using Brevi.Domain.Models;
+using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories;
+using Brevi.Services.Repositories.IRepositories;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using Brevi.Infrastructure.Data;
-using Microsoft.AspNetCore.Identity;
-using Brevi.Domain.Models;
-using System.Text.RegularExpressions;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Brevi.Application
 {
     public partial class UCSettings : UserControl
     {
         private readonly UserManager<Teacher> _userManager;
-
-        public UCSettings()
+        private readonly IAttendanceWeightsService _attendanceWeightsService;
+        public UCSettings(UserManager<Teacher> userManager, IAttendanceWeightsService attendanceWeightsService)
         {
             InitializeComponent();
 
-            // Build minimal service provider to access UserManager
-            var services = new ServiceCollection();
-
-            services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite("Data Source=AttendEase.db"));
-
-            services.AddIdentityCore<Teacher>()
-                .AddEntityFrameworkStores<AppDbContext>();
-
-            var serviceProvider = services.BuildServiceProvider();
-
-            _userManager = (UserManager<Teacher>)serviceProvider.GetService(typeof(UserManager<Teacher>));
+            _userManager = userManager;
+            _attendanceWeightsService = attendanceWeightsService;
 
             UIHelper.RoundControl(AccountManagementPanel, 20);
             UIHelper.RoundControl(GradeFormulaPanel, 20);
             UIHelper.RoundControl(DarkModePanel, 20);
+        }
+        protected override async void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            await LoadSettingsAsync();
+        }
+        private async Task LoadSettingsAsync()
+        {
+            var weights = await _attendanceWeightsService.GetWeightsAsync();
+            PresenttxtBox.Text = (weights.PresentWeight * 100).ToString();
+            Latetxtbox.Text = (weights.LateWeight * 100).ToString();
+            Absenttxtbox.Text = (weights.AbsentWeight * 100).ToString();
+            Excusedtxtbox.Text = (weights.ExcusedWeight * 100).ToString();
 
+            UsernameChangetxtbox.Text = UserSession.CurrentTeacherName;
         }
 
         private async void PasswordChangebutton_Click(object? sender, EventArgs e)
@@ -166,11 +172,10 @@ namespace Brevi.Application
 
         }
 
-        private void saveFormulaBtn_Click(object sender, EventArgs e)
+        private async void saveFormulaBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                // 1. Validate and Parse inputs
                 if (!double.TryParse(PresenttxtBox.Text, out double p) ||
                     !double.TryParse(Latetxtbox.Text, out double l) ||
                     !double.TryParse(Absenttxtbox.Text, out double a) ||
@@ -179,27 +184,16 @@ namespace Brevi.Application
                     MessageBox.Show("Please enter valid numbers for all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
-                using (var db = new AppDbContext())
+                var newWeights = new AttendanceWeights
                 {
-                    // 2. Find existing settings or create new
-                    var settings = db.AttendanceWeights.FirstOrDefault();
-                    if (settings == null)
-                    {
-                        settings = new AttendanceWeights();
-                        db.AttendanceWeights.Add(settings);
-                    }
-
-                    // 3. Update values
-                    settings.PresentWeight = p/100;
-                    settings.LateWeight = l/100;
-                    settings.AbsentWeight = a/100;
-                    settings.ExcusedWeight = ex/100;
-
-                    db.SaveChanges();
-                    MessageBox.Show("Formula weights saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    PresentWeight = p / 100,
+                    LateWeight = l / 100,
+                    AbsentWeight = a / 100,
+                    ExcusedWeight = ex / 100
+                };
+                if(await _attendanceWeightsService.SaveWeightsAsync(newWeights))
+                    MessageBox.Show("Weights saved!");
                 }
-            }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error saving settings: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

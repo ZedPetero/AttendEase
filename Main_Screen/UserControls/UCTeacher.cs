@@ -1,4 +1,5 @@
 ﻿using Brevi.Application.UserControls;
+using Brevi.Services.Repositories.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,10 +12,12 @@ namespace Brevi.Application
 {
     public partial class UCTeacher : UserControl
     {
+        private readonly ITeacherService _teacherService;
         private UCEditTeacher _activeEditTeacher;
-        public UCTeacher()
+        public UCTeacher(ITeacherService teacherService)
         {
             InitializeComponent();
+            _teacherService = teacherService;
             ShowProfileMode();
             UIHelper.RoundControl(panelTeacherProfile, 20);
         }
@@ -33,11 +36,11 @@ namespace Brevi.Application
             panel1.Controls.Add(customizedButton);
             customizedButton.BringToFront();
         }
-        public void ShowProfileMode()
+        public async void ShowProfileMode()
         {
-            UCTeacherProfile teacherProfile = new UCTeacherProfile();
+            UCTeacherProfile teacherProfile = new UCTeacherProfile(_teacherService);
             LoadForm(teacherProfile);
-
+            _= teacherProfile.LoadTeacherProfileAsync(); 
             EditBtnTeacher editBtnControl = new EditBtnTeacher();
 
             editBtnControl.Click += EditBtnControl_Click;
@@ -47,7 +50,7 @@ namespace Brevi.Application
 
         public void ShowEditMode()
         {
-            _activeEditTeacher = new UCEditTeacher();
+            _activeEditTeacher = new UCEditTeacher(_teacherService);
             LoadForm(_activeEditTeacher);
 
             SaveBtnTeacher saveBtnControl = new SaveBtnTeacher();
@@ -61,11 +64,11 @@ namespace Brevi.Application
         {
             ShowEditMode();
         }
-        private void SaveBtnControl_SaveChangesClicked(object sender, EventArgs e)
+        private async void SaveBtnControl_SaveChangesClicked(object sender, EventArgs e)
         {
             if (_activeEditTeacher != null)
             {
-                bool saveWasSuccessful = _activeEditTeacher.SaveTeacherData();
+                bool saveWasSuccessful = await _activeEditTeacher.SaveTeacherDataAsync();
                 if (saveWasSuccessful)
                 {
                     ShowProfileMode();

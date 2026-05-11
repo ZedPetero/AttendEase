@@ -6,14 +6,17 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Brevi.Application;
+using Brevi.Services.Repositories.IRepositories;
 using ComponentFactory.Krypton.Toolkit;
 namespace Brevi.Application
 {
     public partial class UCHome : UserControl
     {
-        public UCHome()
+        private readonly ISectionService _sectionService;
+        public UCHome(ISectionService sectionService)
         {
             InitializeComponent();
+            _sectionService = sectionService;
             UIHelper.RoundControl(this.kryptonPanel1, 20);
             UIHelper.RoundControl(this.kryptonPanel2, 20);
             UIHelper.RoundControl(this.kryptonPanel3, 20);

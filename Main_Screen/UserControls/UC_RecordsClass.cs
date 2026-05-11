@@ -197,13 +197,6 @@ namespace Brevi.Application
         {
             try
             {
-                //using var db = new Brevi.Infrastructure.Data.AppDbContext();
-                //var sec = db.Sections.Find(_sectionId);
-                //if (sec == null) return;
-
-                //sec.IsArchived = !sec.IsArchived;
-                //db.Sections.Update(sec);
-                //db.SaveChanges();
                 bool isNowArchived = await _sectionService.ToggleArchiveStatusAsync(_sectionId);
                 var parent = this.FindForm();
                 if (parent != null)
