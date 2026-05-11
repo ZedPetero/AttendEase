@@ -6,36 +6,34 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using Brevi.Services.Repositories.IRepositories;
 
 namespace Brevi.Application
 {
     public partial class UC_Records_New : UserControl
     {
-        public UC_Records_New()
+        private readonly ISectionService _sectionService;
+        public UC_Records_New(ISectionService sectionService)
         {
             InitializeComponent();
-
+            _sectionService = sectionService;
             UIHelper.RoundControl(CurrentClassespanel, 20);
             UIHelper.RoundControl(ArchivedClassespanel, 20);
         }
 
-        private void UC_Records_New_Load(object sender, EventArgs e)
+        private async void UC_Records_New_Load(object sender, EventArgs e)
         {
             try
             {
                 currentclassesflowpanel.Controls.Clear();
                 archivedClassFlowpanel.Controls.Clear();
 
-                using var db = new Brevi.Infrastructure.Data.AppDbContext();
-
-                var sections = db.Sections
-                    .OrderBy(s => s.SectionName)
-                    .ToList();
+                var sections = await _sectionService.GetTeacherSectionsAsync(UserSession.CurrentTeacherId, true);
 
                 foreach (var sec in sections)
                 {
-                    var item = new UC_RecordsClass();
-                    item.SetSection(sec.Id);
+                    var item = new UC_RecordsClass(_sectionService);
+                    await item.SetSectionAsync(sec.Id);
 
                     item.AutoSize = false;
                     item.Width = currentclassesflowpanel.ClientSize.Width - 25;

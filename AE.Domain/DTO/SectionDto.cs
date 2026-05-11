@@ -12,5 +12,6 @@ namespace Brevi.Domain.DTO
         public int StudentCount { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
+        public bool IsArchived { get; set; }
     }
 }

@@ -103,7 +103,7 @@ namespace Brevi.Application
 
         public void btnRecords_Click(object sender, EventArgs e)
         {
-            UC_Records_New myRecords = new UC_Records_New();
+            UC_Records_New myRecords = new UC_Records_New(_sectionService);
             LoadForm(myRecords);
         }
 

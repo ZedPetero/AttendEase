@@ -7,39 +7,41 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Brevi.Services.Repositories.IRepositories;
 
 namespace Brevi.Application
 {
     public partial class UC_RecordsClass : UserControl
     {
+        private readonly ISectionService _sectionService;
         private int _sectionId;
         private bool _isArchived = false;
 
-        public void SetSection(int sectionId)
+        public UC_RecordsClass(ISectionService sectionService)
+        {
+            InitializeComponent();
+            _sectionService = sectionService;
+            UIHelper.RoundControl(lblSubject, 20);
+        }
+        public async Task SetSectionAsync(int sectionId)
         {
             _sectionId = sectionId;
-            LoadSection();
+            await LoadSectionAsync();
         }
 
-        private void LoadSection()
+        private async Task LoadSectionAsync()
         {
             try
             {
                 classinfotable.Visible = false; 
                 this.Height = 100;
 
-                using var db = new Brevi.Infrastructure.Data.AppDbContext();
-
-                var section = db.Sections
-                    .Where(s => s.Id == _sectionId)
-                    .Select(s => new { s.SectionName, SubjectName = s.Subject.Name }) 
-                    .AsNoTracking()
-                    .SingleOrDefault();
+                var section = await _sectionService.GetSectionByIdAsync(_sectionId);
 
                 if (section != null)
                 {
                     lblClassName.Values.Text = section.SectionName;
-                    lblSubject.Values.Text = section.SubjectName ?? "Unknown Subject";
+                    lblSubject.Values.Text = section.Subject?.Name ?? "Unknown Subject";
                     lblClassName.AutoSize = true;
                     Size preferredSize = lblClassName.GetPreferredSize(new Size(0, 0));
                     int actualWidth = preferredSize.Width;
@@ -74,7 +76,7 @@ namespace Brevi.Application
                     AddCellToTable(0, 4, new Label { Text = "Excused", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
                     AddCellToTable(0, 5, new Label { Text = "Score", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
 
-                    var students = db.Students.Where(st => st.SectionId == _sectionId).ToList();
+                    var students = await _sectionService.GetStudentsInSectionAsync(_sectionId);
 
                     if (students.Count == 0)
                     {
@@ -111,11 +113,11 @@ namespace Brevi.Application
 
                             AddCellToTable(row, 0, new Label { Text = $"{student.LastName}, {student.FirstName}", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft });
 
-                            int present = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Present);
-                            int late = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Late);
-                            int absent = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Absent);
-                            int excused = db.AttendanceRecords.Count(a => a.StudentId == student.Id && a.Status == Brevi.Domain.Models.AttendanceStatus.Excused);
-
+                            var stats = await _sectionService.GetStudentAttendanceStatsAsync(student.Id, _sectionId);
+                            int present = stats.PresentCount;
+                            int late = stats.LateCount;
+                            int absent = stats.AbsentCount;
+                            int excused = stats.ExcusedCount;
                             int total = present + late + absent + excused;
                             if (total > maxSessions) maxSessions = total;
 
@@ -167,11 +169,6 @@ namespace Brevi.Application
             ctrl.Margin = new Padding(3);
             classinfotable.Controls.Add(ctrl, col, row);
         }
-        public UC_RecordsClass()
-        {
-            InitializeComponent();
-            UIHelper.RoundControl(lblSubject, 20);
-        }
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -196,25 +193,25 @@ namespace Brevi.Application
             this.Parent?.PerformLayout();
         }
 
-        private void ArchiveorRestorebutton_Click(object sender, EventArgs e)
+        private async void ArchiveorRestorebutton_Click(object sender, EventArgs e)
         {
             try
             {
-                using var db = new Brevi.Infrastructure.Data.AppDbContext();
-                var sec = db.Sections.Find(_sectionId);
-                if (sec == null) return;
+                //using var db = new Brevi.Infrastructure.Data.AppDbContext();
+                //var sec = db.Sections.Find(_sectionId);
+                //if (sec == null) return;
 
-                sec.IsArchived = !sec.IsArchived;
-                db.Sections.Update(sec);
-                db.SaveChanges();
-
+                //sec.IsArchived = !sec.IsArchived;
+                //db.Sections.Update(sec);
+                //db.SaveChanges();
+                bool isNowArchived = await _sectionService.ToggleArchiveStatusAsync(_sectionId);
                 var parent = this.FindForm();
                 if (parent != null)
                 {
                     var mainControl = FindParentRecordsNew();
                     if (mainControl != null)
                     {
-                        if (sec.IsArchived)
+                        if (isNowArchived)
                         {
                             mainControl.MoveToArchived(this);
                             ArchiveorRestorebutton.Values.Text = "";
