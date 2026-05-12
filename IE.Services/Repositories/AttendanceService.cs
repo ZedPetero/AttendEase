@@ -19,8 +19,8 @@ namespace Brevi.Services.Repositories
         {
             var dayStart = date.Date;
             var dayEnd = dayStart.AddDays(1);
-            return await _context.AttendanceRecords
-                .FirstOrDefaultAsync(a => a.StudentId == studentId &&
+            return await _context.AttendanceRecords.
+                FirstOrDefaultAsync(a => a.StudentId == studentId &&
                                          a.SectionId == sectionId &&
                                          a.Date >= dayStart && a.Date < dayEnd);
         }
@@ -68,6 +68,23 @@ namespace Brevi.Services.Repositories
                 .ToListAsync();
             _context.AttendanceRecords.RemoveRange(recordsToRemove);
             await _context.SaveChangesAsync();
+        }
+        public async Task<List<Attendance>> GetAllRecordsForSectionAsync(int sectionId)
+        {
+            return await _context.AttendanceRecords
+                .Where(a => a.SectionId == sectionId)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+        public async Task<List<Attendance>> GetRecordsForSectionAndDateAsync(int sectionId, DateTime date)
+        {
+            var dayStart = date.Date;
+            var dayEnd = dayStart.AddDays(1);
+
+            return await _context.AttendanceRecords
+                .Where(a => a.SectionId == sectionId && a.Date >= dayStart && a.Date < dayEnd)
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

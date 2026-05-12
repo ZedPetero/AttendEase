@@ -1,6 +1,11 @@
 ﻿using Brevi.Application.DTO;
 using Brevi.Domain.Models;
 using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories.IRepositories;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,21 +14,22 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
 namespace Brevi.Application
 {
     public partial class FormAttendanceSummary : Form
     {
         private readonly int _sectionId;
         private List<StudentSummaryDTO> _summaryData;
-
-        public FormAttendanceSummary(int sectionId)
+        private readonly ISectionService _sectionService;
+        private readonly IAttendanceService _attendanceService;
+        private readonly IAttendanceWeightsService _weightsService;
+        public FormAttendanceSummary(int sectionId, ISectionService sectionService, IAttendanceService attendanceService, IAttendanceWeightsService weightsService)
         {
             InitializeComponent();
             _sectionId = sectionId;
+            _sectionService = sectionService;
+            _attendanceService = attendanceService;
+            _weightsService = weightsService;
             UIHelper.RoundControl(pnlContent, 30);
 
             gridSummary.AutoGenerateColumns = false;
@@ -38,79 +44,86 @@ namespace Brevi.Application
             gridSummary.Columns["Score"].DataPropertyName = "Score";
             gridSummary.Columns["RawScore"].DataPropertyName = "RawScore";
         }
-
-        private void LoadSummaryData()
+        private async void Form_AttendanceSummary_Load(object sender, EventArgs e)
         {
-            var summaryList = new List<StudentSummaryDTO>();
-
-            using (var db = new AppDbContext())
+            SetControlsEnabled(false);
+            try
             {
-                var weights = db.AttendanceWeights.FirstOrDefault() ?? new AttendanceWeights();
-                var students = db.Students
-                         .Where(s => s.SectionId == _sectionId)
-                         .OrderBy(s => s.LastName)
-                         .ThenBy(s => s.FirstName)
-                         .ToList();
-
-                var attendance = db.AttendanceRecords
-                                   .Where(a => a.SectionId == _sectionId)
-                                   .ToList();
-
-                int counter = 1;
-                foreach (var student in students)
-                {
-                    var records = attendance.Where(a => a.StudentId == student.Id).ToList();
-
-                    int total = records.Count;
-                    int p = records.Count(r => r.Status == AttendanceStatus.Present);
-                    int l = records.Count(r => r.Status == AttendanceStatus.Late);
-                    int a = records.Count(r => r.Status == AttendanceStatus.Absent);
-                    int e = records.Count(r => r.Status == AttendanceStatus.Excused);
-
-                    double points = (p * weights.PresentWeight) +
-                            (e * weights.ExcusedWeight) +
-                            (l * weights.LateWeight) +
-                            (a * weights.AbsentWeight);
-                    double finalPercentage = total > 0 ? (points / total) * 100.0 : 0;
-
-                    string middleInitial = string.IsNullOrWhiteSpace(student.MiddleName)
-                                ? ""
-                                : $" {student.MiddleName.Substring(0, 1).ToUpper()}.";
-                    string fullName = $"{student.LastName}, {student.FirstName}{middleInitial}";
-
-                    summaryList.Add(new StudentSummaryDTO
-                    {
-                        StudentId = student.Id,
-                        RollNo = counter.ToString("D3"),
-                        Name = fullName,
-                        Days = total,
-                        Present = p,
-                        Late = l,
-                        Absent = a,
-                        Excused = e,
-                        RawScore = finalPercentage,
-                        Score = $"{Math.Round(finalPercentage)}/100"
-                    });
-                    counter++;
-                }
-
-                _summaryData = summaryList;
-                gridSummary.DataSource = _summaryData;
-
-                gridSummary.Columns["RawScore"].Visible = false;
-
-                string[] numberCols = { "Days", "Present", "Late", "Absent", "Excused", "Score" };
-                foreach (var col in numberCols)
-                {
-                    gridSummary.Columns[col].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-
-                scoreCalculationLabel.Text = "Score calculation: Present = " 
-                    + weights.PresentWeight*100 + "%, Late = "
-                    + weights.LateWeight*100 + "%, Absent = "
-                    + weights.AbsentWeight*100 + "%, Excused = "
-                    + weights.ExcusedWeight*100 + "%";
+                await LoadSummaryDataAsync();
             }
+            finally
+            {
+                SetControlsEnabled(true);
+            }
+        }
+        private void SetControlsEnabled(bool enabled)
+        {
+            btnDownloadCSV.Enabled = enabled;
+            gridSummary.Enabled = enabled;
+        }
+        private async Task LoadSummaryDataAsync()
+        {
+
+            var weights = await _weightsService.GetWeightsAsync();
+            var students = await _sectionService.GetStudentsInSectionAsync(_sectionId);
+            var allRecords = await _attendanceService.GetAllRecordsForSectionAsync(_sectionId);
+
+            var summaryList = new List<StudentSummaryDTO>();
+            int counter = 1;
+
+            foreach (var student in students)
+            {
+                var records = allRecords.Where(a => a.StudentId == student.Id).ToList();
+
+                int total = records.Count;
+                int p = records.Count(r => r.Status == AttendanceStatus.Present);
+                int l = records.Count(r => r.Status == AttendanceStatus.Late);
+                int a = records.Count(r => r.Status == AttendanceStatus.Absent);
+                int ex = records.Count(r => r.Status == AttendanceStatus.Excused);
+
+                double points = (p * weights.PresentWeight)
+                              + (ex * weights.ExcusedWeight)
+                              + (l * weights.LateWeight)
+                              + (a * weights.AbsentWeight);
+
+                double finalPercentage = total > 0 ? (points / total) * 100.0 : 0;
+
+                string middleInitial = string.IsNullOrWhiteSpace(student.MiddleName)
+                    ? ""
+                    : $" {student.MiddleName[0].ToString().ToUpper()}.";
+
+                summaryList.Add(new StudentSummaryDTO
+                {
+                    StudentId = student.Id,
+                    RollNo = counter.ToString("D3"),
+                    Name = $"{student.LastName}, {student.FirstName}{middleInitial}",
+                    Days = total,
+                    Present = p,
+                    Late = l,
+                    Absent = a,
+                    Excused = ex,
+                    RawScore = finalPercentage,
+                    Score = $"{Math.Round(finalPercentage)}/100"
+                });
+                counter++;
+            }
+
+            _summaryData = summaryList;
+
+            // Bind on the UI thread (we're already on it since Load is a UI event)
+            gridSummary.DataSource = _summaryData;
+            gridSummary.Columns["RawScore"].Visible = false;
+
+            string[] centerCols = { "Days", "Present", "Late", "Absent", "Excused", "Score" };
+            foreach (var col in centerCols)
+                gridSummary.Columns[col].DefaultCellStyle.Alignment =
+                    DataGridViewContentAlignment.MiddleCenter;
+
+            scoreCalculationLabel.Text =
+                $"Score calculation: Present = {weights.PresentWeight * 100}%, " +
+                $"Late = {weights.LateWeight * 100}%, " +
+                $"Absent = {weights.AbsentWeight * 100}%, " +
+                $"Excused = {weights.ExcusedWeight * 100}%";
         }
 
         private void gridSummary_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -160,71 +173,67 @@ namespace Brevi.Application
             }
         }
 
-        private void Form_AttendanceSummary_Load(object sender, EventArgs e)
-        {
-            LoadSummaryData();
-        }
-
-        private void btnDownloadCSV_Click(object sender, EventArgs e)
+        private async void btnDownloadCSV_Click(object sender, EventArgs e)
         {
             if (_summaryData == null || _summaryData.Count == 0)
             {
-                MessageBox.Show("No data found to export.", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No data found to export.", "Export Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            using (SaveFileDialog sfd = new SaveFileDialog())
+            using var sfd = new SaveFileDialog
             {
-                // Added PDF to the filter
-                sfd.Filter = "CSV Files (*.csv)|*.csv|PDF Files (*.pdf)|*.pdf";
-                sfd.Title = "Save Attendance Summary";
-                sfd.FileName = $"Attendance_Summary_{DateTime.Now:yyyy-MM-dd}";
+                Filter = "CSV Files (*.csv)|*.csv|PDF Files (*.pdf)|*.pdf",
+                Title = "Save Attendance Summary",
+                FileName = $"Attendance_Summary_{DateTime.Now:yyyy-MM-dd}"
+            };
 
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    string extension = Path.GetExtension(sfd.FileName).ToLower();
+            if (sfd.ShowDialog() != DialogResult.OK) return;
 
-                    if (extension == ".csv")
-                    {
-                        ExportToCSV(sfd.FileName);
-                    }
-                    else if (extension == ".pdf")
-                    {
-                        ExportToPDF(sfd.FileName);
-                    }
-                }
-            }
+            string ext = Path.GetExtension(sfd.FileName).ToLower();
+
+            if (ext == ".csv")
+                await ExportToCSVAsync(sfd.FileName);
+            else if (ext == ".pdf")
+                ExportToPDF(sfd.FileName);
         }
-        private void ExportToCSV(string filePath)
+        private async Task ExportToCSVAsync(string filePath)
         {
             try
             {
-                using var db = new AppDbContext();
-                var allSectionAttendance = db.AttendanceRecords.Where(a => a.SectionId == _sectionId).ToList();
-                var uniqueDates = allSectionAttendance.Select(a => a.Date.Date).Distinct().OrderBy(d => d).ToList();
+                var allRecords = await _attendanceService.GetAllRecordsForSectionAsync(_sectionId);
+                var uniqueDates = allRecords.Select(a => a.Date.Date).Distinct().OrderBy(d => d).ToList();
 
                 var sb = new StringBuilder();
-                var headerBuilder = new StringBuilder("Roll No,Name,Days,Present,Late,Absent,Excused,Score");
-                foreach (var date in uniqueDates) headerBuilder.Append($",{date:MMM dd yyyy}");
-                sb.AppendLine(headerBuilder.ToString());
+                var header = new StringBuilder("Roll No,Name,Days,Present,Late,Absent,Excused,Score");
+                foreach (var date in uniqueDates) header.Append($",{date:MMM dd yyyy}");
+                sb.AppendLine(header.ToString());
 
                 foreach (var row in _summaryData)
                 {
-                    var rowBuilder = new StringBuilder($"{row.RollNo},\"{row.Name}\",{row.Days},{row.Present},{row.Late},{row.Absent},{row.Excused},{row.Score}");
-                    var studentRecords = allSectionAttendance.Where(a => a.StudentId == row.StudentId).ToList();
+                    var line = new StringBuilder(
+                        $"{row.RollNo},\"{row.Name}\",{row.Days},{row.Present}," +
+                        $"{row.Late},{row.Absent},{row.Excused},{row.Score}");
 
+                    var studentRecords = allRecords.Where(a => a.StudentId == row.StudentId).ToList();
                     foreach (var date in uniqueDates)
                     {
-                        var recordForDate = studentRecords.FirstOrDefault(a => a.Date.Date == date);
-                        rowBuilder.Append(recordForDate != null ? $",{recordForDate.Status}" : ",-");
+                        var rec = studentRecords.FirstOrDefault(a => a.Date.Date == date);
+                        line.Append(rec != null ? $",{rec.Status}" : ",-");
                     }
-                    sb.AppendLine(rowBuilder.ToString());
+                    sb.AppendLine(line.ToString());
                 }
 
-                File.WriteAllText(filePath, sb.ToString(), Encoding.UTF8);
-                MessageBox.Show("CSV exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await File.WriteAllTextAsync(filePath, sb.ToString(), Encoding.UTF8);
+
+                MessageBox.Show("CSV exported successfully!", "Success",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex) { MessageBox.Show("CSV Error: " + ex.Message); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CSV Error: " + ex.Message);
+            }
         }
         private void ExportToPDF(string filePath)
         {

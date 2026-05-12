@@ -20,10 +20,11 @@ namespace Brevi.Application
     {
         private readonly ISectionService _sectionService;
         private readonly IAttendanceService _attendanceService;
+        private readonly IAttendanceWeightsService _attendanceWeightsService;
         private readonly IGradeService _gradeService;
         private readonly IStudentService _studentService;
         private readonly IRepository<Subject> _subjectRepository;
-        public UCClasses(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService, IRepository<Subject> subjectRepository)
+        public UCClasses(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService, IAttendanceWeightsService attendanceWeightsService, IRepository<Subject> subjectRepository)
         {
             InitializeComponent();
             _sectionService = sectionService;
@@ -31,6 +32,7 @@ namespace Brevi.Application
             _gradeService = gradeService;
             _studentService = studentService;
             _subjectRepository = subjectRepository;
+            _attendanceWeightsService = attendanceWeightsService;
             lblTeacher.Text = $"Welcome, {UserSession.CurrentTeacherName}!";
         }
         protected override void OnLoad(EventArgs e)
@@ -47,8 +49,8 @@ namespace Brevi.Application
 
                 var sections = await _sectionService
                     .GetTeacherSectionsAsync(UserSession.CurrentTeacherId);
-
-                foreach (var section in sections)
+                var sortedSections = sections.OrderBy(s => s.StartTime).ToList();
+                foreach (var section in sortedSections)
                 {
                     string timeString =
                         DateTime.Today.Add(section.StartTime).ToString("hh:mm tt")
@@ -82,7 +84,7 @@ namespace Brevi.Application
         private void Card_TakeAttendanceClicked(object sender, int sectionId)   
         {
             MainScreenForm mainForm = (MainScreenForm)this.FindForm();
-            UCAttendance attendanceScreen = new UCAttendance(_sectionService, _attendanceService, _gradeService, _studentService, _subjectRepository);
+            UCAttendance attendanceScreen = new UCAttendance(_sectionService, _attendanceService, _gradeService, _studentService, _attendanceWeightsService, _subjectRepository);
 
             attendanceScreen.CallerControl = this;
             attendanceScreen.SetSection(sectionId);

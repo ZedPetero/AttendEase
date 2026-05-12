@@ -25,8 +25,9 @@ namespace Brevi.Application
         private readonly IAttendanceService _attendanceService;
         private readonly IGradeService _gradeService;
         private readonly IStudentService _studentService;
+        private readonly IAttendanceWeightsService _attendanceWeightsService;
         private readonly IRepository<Subject> _subjectRepository;
-        public UCAttendance(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService, IRepository<Subject> subjectRepository)
+        public UCAttendance(ISectionService sectionService, IAttendanceService attendanceService, IGradeService gradeService, IStudentService studentService, IAttendanceWeightsService attendanceWeightsService, IRepository<Subject> subjectRepository)
         {
             InitializeComponent();
             _sectionService = sectionService;
@@ -34,6 +35,7 @@ namespace Brevi.Application
             _gradeService = gradeService;
             _studentService = studentService;
             _subjectRepository = subjectRepository;
+            _attendanceWeightsService = attendanceWeightsService;
             UpdateDateDisplay();
             SetSection(CurrentSectionId);
             FilterComboBox.SelectedIndexChanged += async (s, ev) => await LoadStudentsForDateAsync();
@@ -71,30 +73,50 @@ namespace Brevi.Application
                 UIHelper.RoundControl(panel, 20);
             }
         }
+        private async void UC_Attendance_Load(object sender, EventArgs e)
+        {
+            UpdateDateDisplay();
 
+            if (CurrentSectionId != 0)
+            {
+                await LoadSectionInfoAsync();
+                await LoadStudentsForDateAsync();
+            }
+
+            foreach (var panel in new Control[]
+            {
+                pnlTotalStudents, panelTotalBorder,
+                pnlPresent,       panelPresentBorder,
+                pnlLate,          panelLateBorder,
+                pnlAbsent,        panelAbsentBorder,
+                pnlExcused,       panelExcusedBorder,
+                panelCalendar,    panelCalendarBorder
+            })
+            {
+                UIHelper.RoundControl(panel, 20);
+            }
+        }
         private async void btnAddStudent_Click(object sender, EventArgs e)
         {
-            using (FormAddStudent popup = new FormAddStudent(_studentService, _sectionService))
+            using var popup = new FormAddStudent(_studentService, _sectionService)
             {
-                MainScreenForm mainForm = (MainScreenForm)this.FindForm();
-                mainForm.ShowOverlay();
-                popup.CurrentSectionId = CurrentSectionId;
-                var result = popup.ShowDialog();
-                mainForm.HideOverlay();
-                await LoadStudentsForDateAsync();
-                await SetSummaryCardsAsync();
-            }
+                CurrentSectionId = CurrentSectionId
+            };
+
+            var mainForm = this.FindForm() as MainScreenForm;
+            mainForm?.ShowOverlay();
+            popup.ShowDialog();
+            mainForm?.HideOverlay();
+
+            await LoadStudentsForDateAsync();
+            await SetSummaryCardsAsync();
         }
 
         private async Task SetSummaryCardsAsync()
         {
             try
             {
-                pnlTotalStudents.SuspendLayout();
-                pnlPresent.SuspendLayout();
-                pnlLate.SuspendLayout();
-                pnlAbsent.SuspendLayout();
-                pnlExcused.SuspendLayout();
+                SuspendSummaryPanels();
                 if (CurrentSectionId == 0)
                 {
                     pnlTotalStudents.Title = "Total Students";
@@ -135,17 +157,11 @@ namespace Brevi.Application
                     return;
                 }
 
-                using var _context = new AppDbContext();
+                var students = await _sectionService.GetStudentsInSectionAsync(CurrentSectionId);
+                int total = students.Count;
 
-                int total = await _context.Students.CountAsync(s => s.SectionId == CurrentSectionId);
-
-                DateTime dateStart = _selectedDate.Date;
-                DateTime dateEnd = dateStart.AddDays(1);
-
-                var attendance = await _context.AttendanceRecords
-                    .Where(a => a.SectionId == CurrentSectionId && a.Date >= dateStart && a.Date < dateEnd)
-                    .AsNoTracking()
-                    .ToListAsync();
+                var attendance = await _attendanceService
+                    .GetRecordsForSectionAndDateAsync(CurrentSectionId, _selectedDate);
 
                 int present = attendance.Count(a => a.Status == AttendanceStatus.Present);
                 int late = attendance.Count(a => a.Status == AttendanceStatus.Late);
@@ -187,8 +203,27 @@ namespace Brevi.Application
             {
                 Debug.WriteLine("[UC_Attendance] SetSummaryCards error: " + ex);
             }
+            finally
+            {
+                ResumeSummaryPanels();
+            }
         }
-
+        private void SuspendSummaryPanels()
+        {
+            pnlTotalStudents.SuspendLayout();
+            pnlPresent.SuspendLayout();
+            pnlLate.SuspendLayout();
+            pnlAbsent.SuspendLayout();
+            pnlExcused.SuspendLayout();
+        }
+        private void ResumeSummaryPanels()
+        {
+            pnlTotalStudents.ResumeLayout();
+            pnlPresent.ResumeLayout();
+            pnlLate.ResumeLayout();
+            pnlAbsent.ResumeLayout();
+            pnlExcused.ResumeLayout();
+        }
         private async Task LoadSectionInfoAsync()
         {
             lblSectionName.Text = "Loading...";
@@ -240,31 +275,20 @@ namespace Brevi.Application
             layoutStudents.WrapContents = false;
             layoutStudents.AutoScrollPosition = new Point(0, 0);
 
-            using (var _context = new AppDbContext())
+            try
             {
-                var studentsQuery = _context.Students.Where(s => s.SectionId == this.CurrentSectionId);
+                var students = await _sectionService.GetStudentsInSectionAsync(CurrentSectionId);
+                var attendance = await _attendanceService
+                    .GetRecordsForSectionAndDateAsync(CurrentSectionId, _selectedDate);
 
-                if (_currentSort == SortMethod.Surname)
-                {
-                    studentsQuery = studentsQuery.OrderBy(s => s.LastName).ThenBy(s => s.FirstName);
-                }
-                else
-                {
-                    studentsQuery = studentsQuery.OrderBy(s => s.FirstName).ThenBy(s => s.LastName);
-                }
+                students = _currentSort == SortMethod.Surname
+                    ? students.OrderBy(s => s.LastName).ThenBy(s => s.FirstName).ToList()
+                    : students.OrderBy(s => s.FirstName).ThenBy(s => s.LastName).ToList();
 
-                var students = await studentsQuery.ToListAsync();
-
-                DateTime dateStart = _selectedDate.Date;
-                DateTime dateEnd = dateStart.AddDays(1);
-
-                var attendanceRecords = await _context.AttendanceRecords
-                    .Where(a => a.SectionId == this.CurrentSectionId && a.Date >= dateStart && a.Date < dateEnd)
-                    .AsNoTracking()
-                    .ToListAsync();
-                var attendanceForDay = attendanceRecords.ToDictionary(a => a.StudentId, a => a.Status);
+                var attendanceForDay = attendance.ToDictionary(a => a.StudentId, a => a.Status);
 
                 string selectedFilter = FilterComboBox.SelectedItem?.ToString() ?? "All";
+
                 var filteredStudents = students.Where(student =>
                 {
                     if (attendanceForDay.TryGetValue(student.Id, out var status))
@@ -275,74 +299,42 @@ namespace Brevi.Application
                 int count = 1;
                 foreach (var student in filteredStudents)
                 {
-                    UCStudentRow studentRow = new UCStudentRow(_attendanceService, _studentService);
-
-                    studentRow.StudentId = student.Id;
-                    studentRow.SectionId = this.CurrentSectionId;
-                    studentRow.AttendanceDate = _selectedDate;
-
-                    if (_currentSort == SortMethod.Surname)
+                    var studentRow = new UCStudentRow(_attendanceService, _studentService)
                     {
-                        studentRow.StudentName = $"{student.LastName}, {student.FirstName}";
-                    }
-                    else
-                    {
-                        studentRow.StudentName = $"{student.FirstName} {student.LastName}";
-                    }
+                        StudentId = student.Id,
+                        SectionId = CurrentSectionId,
+                        AttendanceDate = _selectedDate,
+                        StudentName = _currentSort == SortMethod.Surname
+                            ? $"{student.LastName}, {student.FirstName}"
+                            : $"{student.FirstName} {student.LastName}",
+                        StudentNumber = count.ToString(),
+                        Width1 = layoutStudents.ClientSize.Width - 10
+                    };
 
-                    studentRow.StudentNumber = count.ToString();
+                    studentRow.SetSelectedStatus(
+                        attendanceForDay.TryGetValue(student.Id, out var s) ? s : (AttendanceStatus?)null);
 
-                    if (attendanceForDay.TryGetValue(student.Id, out var status))
-                    {
-                        studentRow.SetSelectedStatus(status);
-                    }
-                    else
-                    {
-                        studentRow.SetSelectedStatus(null);
-                    }
-                    studentRow.Width1 = layoutStudents.ClientSize.Width - 10;
-                    studentRow.AttendanceStatusChanged += async (s, id) => await StudentRow_AttendanceStatusChangedAsync(s, id);
+                    studentRow.AttendanceStatusChanged +=
+                        async (sender, id) => await StudentRow_AttendanceStatusChangedAsync(sender, id);
+
                     layoutStudents.Controls.Add(studentRow);
                     count++;
                 }
 
                 lblNumberofStudents.Text = $"{students.Count} Students";
             }
-
-            layoutStudents.ResumeLayout();
-
-            layoutStudents.AutoScrollPosition = new Point(Math.Abs(scrollPos.X), Math.Abs(scrollPos.Y));
-
-            SetSummaryCardsAsync();
+            finally
+            {
+                layoutStudents.ResumeLayout();
+                layoutStudents.AutoScrollPosition =
+                    new Point(Math.Abs(scrollPos.X), Math.Abs(scrollPos.Y));
+            }
+            _ = SetSummaryCardsAsync();
         }
         private async Task StudentRow_AttendanceStatusChangedAsync(object sender, int studentId)
         {
-            await RecalculateSingleStudentGradeAsync(studentId, CurrentSectionId);
+            await _gradeService.RecalculateGradeAsync(studentId, CurrentSectionId);
             await SetSummaryCardsAsync();
-        }
-
-        private async void UC_Attendance_Load(object sender, EventArgs e)
-        {
-            UpdateDateDisplay();
-
-            if (CurrentSectionId != 0)
-            {
-                await LoadSectionInfoAsync();
-                await LoadStudentsForDateAsync();
-            }
-
-            RoundPanel(pnlTotalStudents, EventArgs.Empty);
-            RoundPanel(panelTotalBorder, EventArgs.Empty);
-            RoundPanel(pnlPresent, EventArgs.Empty);
-            RoundPanel(panelPresentBorder, EventArgs.Empty);
-            RoundPanel(pnlLate, EventArgs.Empty);
-            RoundPanel(panelLateBorder, EventArgs.Empty);
-            RoundPanel(pnlAbsent, EventArgs.Empty);
-            RoundPanel(panelAbsentBorder, EventArgs.Empty);
-            RoundPanel(pnlExcused, EventArgs.Empty);
-            RoundPanel(panelExcusedBorder, EventArgs.Empty);
-            RoundPanel(panelCalendar, EventArgs.Empty);
-            RoundPanel(panelCalendarBorder, EventArgs.Empty);
         }
 
         private void lblBackToClass_Click(object sender, EventArgs e)
@@ -357,7 +349,7 @@ namespace Brevi.Application
             }
             else
             {
-                mainForm.LoadForm(new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService, _subjectRepository));
+                mainForm.LoadForm(new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService, _attendanceWeightsService, _subjectRepository));
             }
         }
 
@@ -488,98 +480,51 @@ namespace Brevi.Application
 
             try
             {
-                DateTime dateStart = _selectedDate.Date;
-                DateTime dateEnd = dateStart.AddDays(1);
+                await _attendanceService.MarkAllPresentAsync(CurrentSectionId, _selectedDate);
 
-                using var _context = new AppDbContext();
-
-                var students = await _context.Students.Where(s => s.SectionId == CurrentSectionId).ToListAsync();
-
+                var students = await _sectionService.GetStudentsInSectionAsync(CurrentSectionId);
                 foreach (var student in students)
-                {
-                    var existing = _context.AttendanceRecords
-                        .FirstOrDefault(a => a.StudentId == student.Id
-                                             && a.SectionId == CurrentSectionId
-                                             && a.Date >= dateStart && a.Date < dateEnd);
+                    await _gradeService.RecalculateGradeAsync(student.Id, CurrentSectionId);
 
-                    if (existing == null)
-                    {
-                        _context.AttendanceRecords.Add(new Attendance
-                        {
-                            StudentId = student.Id,
-                            SectionId = CurrentSectionId,
-                            Date = dateStart,
-                            Status = AttendanceStatus.Present,
-                            Remarks = string.Empty
-                        });
-                    }
-                    else
-                    {
-                        existing.Status = AttendanceStatus.Present;
-                    }
-                }
+                foreach (Control control in layoutStudents.Controls)
+                    if (control is UCStudentRow row)
+                        row.SetSelectedStatus(AttendanceStatus.Present);
 
-                _context.SaveChanges();
-
-                await RecalculateClassGradesAsync(_context, CurrentSectionId);
-                _context.SaveChanges();
+                await SetSummaryCardsAsync();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("[UC_Attendance] btnMarkAllPresent error: " + ex);
             }
-
-            foreach (Control control in layoutStudents.Controls)
-            {
-                if (control is UCStudentRow studentRow)
-                {
-                    studentRow.SetSelectedStatus(AttendanceStatus.Present);
-                }
-            }
-            await SetSummaryCardsAsync();
         }
 
         private async void btnReset_Click(object? sender, EventArgs e)
         {
             if (CurrentSectionId == 0) return;
 
+            if (MessageBox.Show(
+                    "This will remove all attendance records for the selected date. Are you sure?",
+                    "Confirm Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                return;
+
             try
             {
-                if (MessageBox.Show("This will remove all attendance records for the selected date. Are you sure?", "Confirm Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
-                {
-                    return;
-                }
-                DateTime dateStart = _selectedDate.Date;
-                DateTime dateEnd = dateStart.AddDays(1);
+                await _attendanceService.ResetAttendanceAsync(CurrentSectionId, _selectedDate);
 
-                using var _context = new AppDbContext();
+                var students = await _sectionService.GetStudentsInSectionAsync(CurrentSectionId);
+                foreach (var student in students)
+                    await _gradeService.RecalculateGradeAsync(student.Id, CurrentSectionId);
 
-                var toRemove = await _context.AttendanceRecords
-                    .Where(a => a.SectionId == CurrentSectionId && a.Date == dateStart)
-                    .ToListAsync();
+                foreach (Control control in layoutStudents.Controls)
+                    if (control is UCStudentRow row)
+                        row.SetSelectedStatus(null);
 
-                if (toRemove.Any())
-                {
-                    _context.AttendanceRecords.RemoveRange(toRemove);
-                    await _context.SaveChangesAsync();
-
-                    await RecalculateClassGradesAsync(_context, CurrentSectionId);
-                    await _context.SaveChangesAsync();
-                }
+                await SetSummaryCardsAsync();
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("[UC_Attendance] btnReset error: " + ex);
             }
-
-            foreach (Control control in layoutStudents.Controls)
-            {
-                if (control is UCStudentRow studentRow)
-                {
-                    studentRow.SetSelectedStatus(null);
-                }
-            }
-            await SetSummaryCardsAsync();
         }
 
         public async void RefreshSummaryAndRoster()
@@ -595,7 +540,7 @@ namespace Brevi.Application
                 return;
             }
 
-            using (FormAttendanceSummary summaryForm = new FormAttendanceSummary(CurrentSectionId))
+            using (FormAttendanceSummary summaryForm = new FormAttendanceSummary(CurrentSectionId, _sectionService, _attendanceService, _attendanceWeightsService))
             {
                 MainScreenForm mainForm = (MainScreenForm)this.FindForm();
                 if (mainForm != null) mainForm.ShowOverlay();
@@ -615,98 +560,13 @@ namespace Brevi.Application
             _currentSort = SortMethod.FirstName;
             await LoadStudentsForDateAsync();
         }
-        public async Task RecalculateSingleStudentGradeAsync(int studentId, int sectionId)
-        {
-            using (var db = new AppDbContext())
-            {
-                var section = await db.Sections.Include(s => s.Subject).FirstOrDefaultAsync(s => s.Id == sectionId);
-                if (section == null) return;
-
-                var records = await db.AttendanceRecords
-                                .Where(a => a.StudentId == studentId && a.SectionId == sectionId)
-                                .ToListAsync();
-
-                int total = records.Count;
-                int p = records.Count(r => r.Status == AttendanceStatus.Present);
-                int e = records.Count(r => r.Status == AttendanceStatus.Excused);
-                int l = records.Count(r => r.Status == AttendanceStatus.Late);
-                int a = records.Count(r => r.Status == AttendanceStatus.Absent);
-
-                double points = (p * 1.0) + (e * 1.0) + (l * 0.5) + (a * 0.0);
-                double percentage = total > 0 ? (points / total) * 100.0 : 0;
-
-                var grade = db.Grades.FirstOrDefault(g => g.StudentId == studentId && g.SectionId == sectionId);
-
-                if (grade == null)
-                {
-                    db.Grades.Add(new Grade
-                    {
-                        StudentId = studentId,
-                        SectionId = sectionId,
-                        Subject = section.Subject?.Name ?? "Unknown",
-                        Percentage = percentage
-                    });
-                }
-                else
-                {
-                    grade.Percentage = percentage;
-                }
-
-                db.SaveChanges();
-            }
-        }
-        public async Task RecalculateClassGradesAsync(AppDbContext db, int sectionId)
-        {
-            var section = await db.Sections.Include(s => s.Subject).FirstOrDefaultAsync(s => s.Id == sectionId);
-            if (section == null) return;
-
-            var studentIds = await db.Students.Where(s => s.SectionId == sectionId).Select(s => s.Id).ToListAsync();
-            var allAttendance = await db.AttendanceRecords.Where(a => a.SectionId == sectionId).ToListAsync();
-            var allGrades = await db.Grades.Where(g => g.SectionId == sectionId).ToListAsync();
-
-            foreach (var sId in studentIds)
-            {
-                var records = allAttendance.Where(a => a.StudentId == sId).ToList();
-
-                int total = records.Count;
-                int p = records.Count(r => r.Status == AttendanceStatus.Present);
-                int e = records.Count(r => r.Status == AttendanceStatus.Excused);
-                int l = records.Count(r => r.Status == AttendanceStatus.Late);
-
-                double points = p + e + (l * 0.5);
-                double percentage = total > 0 ? (points / total) * 100.0 : 0;
-
-                var grade = allGrades.FirstOrDefault(g => g.StudentId == sId);
-                if (grade == null)
-                {
-                    db.Grades.Add(new Grade
-                    {
-                        StudentId = sId,
-                        SectionId = sectionId,
-                        Subject = section.Subject?.Name ?? "Unknown",
-                        Percentage = percentage
-                    });
-                }
-                else
-                {
-                    grade.Percentage = percentage;
-                }
-            }
-        }
         private void layoutStudents_SizeChanged(object sender, EventArgs e)
         {
             layoutStudents.SuspendLayout();
-
-            int targetWidth = layoutStudents.ClientSize.Width - 3 - 3 - 5;
-
+            int targetWidth = layoutStudents.ClientSize.Width - 11;
             foreach (Control ctrl in layoutStudents.Controls)
-            {
                 if (ctrl is UCStudentRow)
-                {
                     ctrl.Width = targetWidth;
-                }
-            }
-
             layoutStudents.ResumeLayout();
         }
     }

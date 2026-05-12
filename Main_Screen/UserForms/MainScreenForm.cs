@@ -113,7 +113,7 @@ namespace Brevi.Application
 
         public void btnClasses_Click(object sender, EventArgs e)
         {
-            UCClasses myClasses = new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService, _subjectRepository);
+            UCClasses myClasses = new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService, _attendanceWeightsService, _subjectRepository);
             LoadForm(myClasses);
         }
 
@@ -175,7 +175,7 @@ namespace Brevi.Application
         public void NavigateToClasses()
         {
             btnClasses.Checked = true;
-            LoadForm(new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService, _subjectRepository));
+            LoadForm(new UCClasses(_sectionService, _attendanceService, _gradeService, _studentService, _attendanceWeightsService, _subjectRepository));
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
