@@ -1,0 +1,254 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Brevi.Services.Repositories.IRepositories;
+
+namespace Brevi.Application
+{
+    public partial class UC_RecordsClass : UserControl
+    {
+        private readonly ISectionService _sectionService;
+        private int _sectionId;
+        private bool _isArchived = false;
+        public string SectionName => lblClassName.Values.Text;
+        public UC_RecordsClass(ISectionService sectionService)
+        {
+            InitializeComponent();
+            _sectionService = sectionService;
+            UIHelper.RoundControl(lblSubject, 20);
+        }
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            UIHelper.RoundControl(this, 20);
+            UIHelper.RoundControl(panel1, 18);
+        }
+        public async Task SetSectionAsync(int sectionId)
+        {
+            _sectionId = sectionId;
+            await LoadSectionAsync();
+        }
+
+        private async Task LoadSectionAsync()
+        {
+            try
+            {
+                classinfotable.Visible = false; 
+                this.Height = 100;
+
+                var section = await _sectionService.GetSectionByIdAsync(_sectionId);
+
+                if (section != null)
+                {
+                    lblClassName.Values.Text = section.SectionName;
+                    lblSubject.Values.Text = section.Subject?.Name ?? "Unknown Subject";
+                    lblClassName.AutoSize = true;
+                    Size preferredSize = lblClassName.GetPreferredSize(new Size(0, 0));
+                    int actualWidth = preferredSize.Width;
+
+                    int margin = 15;
+                    lblSubject.Location = new Point(lblClassName.Location.X + actualWidth + margin, lblSubject.Location.Y);
+
+                    ArchiveorRestorebutton.Values.Text = _isArchived ? "" : "";
+                    ArchiveorRestorebutton.Values.ExtraText = _isArchived ? "Restore" : "Archive";
+
+                    classinfotable.Controls.Clear();
+                    classinfotable.ColumnCount = 6;
+                    classinfotable.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single; 
+                    classinfotable.Padding = new Padding(0, 0, 0, 2); 
+                    classinfotable.ColumnStyles.Clear();
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F)); // name
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // present
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // late
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // absent
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // excused (NEW)
+                    classinfotable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F)); // score
+
+                    classinfotable.RowCount = 1;
+                    classinfotable.RowStyles.Clear();
+                    classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+
+                    Font headerFont = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+                    Color headerColor = Color.Gray;
+
+                    AddCellToTable(0, 0, new Label { Text = "Name", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 1, new Label { Text = "Present", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 2, new Label { Text = "Late", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 3, new Label { Text = "Absent", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 4, new Label { Text = "Excused", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
+                    AddCellToTable(0, 5, new Label { Text = "Score", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = headerFont, ForeColor = headerColor });
+
+                    var students = await _sectionService.GetStudentsInSectionAsync(_sectionId);
+
+                    if (students.Count == 0)
+                    {
+                        classinfotable.RowCount = 2;
+                        classinfotable.RowStyles.Clear();
+                        classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+                        classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); 
+                        Label emptyStateLabel = new Label
+                        {
+                            Text = "No students enrolled in this class yet.",
+                            Dock = DockStyle.Fill,
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            ForeColor = Color.DimGray,
+                            Margin = new Padding(0, 0, 0, 5)
+                        };
+
+                        classinfotable.Controls.Add(emptyStateLabel, 0, 1);
+                        classinfotable.SetColumnSpan(emptyStateLabel, 6);
+
+                        lblStudents.Values.ExtraText = "0 Students";
+                        lblSessions.Values.Text = "0 Sessions";
+                        lblAvgScore.Values.Text = "0%";
+                    }
+                    else
+                    {
+                        int row = 1;
+
+                        int maxSessions = 0;
+                        double totalClassScore = 0;
+                        int studentsWithRecords = 0;
+
+                        foreach (var student in students)
+                        {
+                            classinfotable.RowCount = row + 1;
+                            classinfotable.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
+
+                            AddCellToTable(row, 0, new Label { Text = $"{student.LastName}, {student.FirstName}", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft });
+
+                            var stats = await _sectionService.GetStudentAttendanceStatsAsync(student.Id, _sectionId);
+                            int present = stats.PresentCount;
+                            int late = stats.LateCount;
+                            int absent = stats.AbsentCount;
+                            int excused = stats.ExcusedCount;
+                            int total = present + late + absent + excused;
+                            if (total > maxSessions) maxSessions = total;
+
+                            Font statFont = new Font("Segoe UI", 9F, FontStyle.Bold);
+
+                            AddCellToTable(row, 1, new Label { Text = present.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Green, Font = statFont });
+                            AddCellToTable(row, 2, new Label { Text = late.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Goldenrod, Font = statFont });
+                            AddCellToTable(row, 3, new Label { Text = absent.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Red, Font = statFont });
+                            AddCellToTable(row, 4, new Label { Text = excused.ToString(), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Blue, Font = statFont });
+
+                            string score = "-";
+                            if (total > 0)
+                            {
+                                double studentPercentage = (present * 100.0) / total;
+                                score = $"{studentPercentage:0}%";
+
+                                totalClassScore += studentPercentage;
+                                studentsWithRecords++;
+                            }
+
+                            AddCellToTable(row, 5, new Label { Text = score, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter, Font = statFont });
+
+                            row++;
+                        }
+
+                        lblStudents.Values.ExtraText = $"{students.Count} Students";
+                        lblSessions.Values.Text = $"{maxSessions} Sessions";
+
+                        if (studentsWithRecords > 0)
+                        {
+                            double classAverage = totalClassScore / studentsWithRecords;
+                            lblAvgScore.Values.Text = $"{classAverage:0}%";
+                        }
+                        else
+                        {
+                            lblAvgScore.Values.Text = "0%";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("UC_RecordsClass LoadSection error: " + ex.Message);
+            }
+        }
+
+        private void AddCellToTable(int row, int col, Control ctrl)
+        {
+            ctrl.Margin = new Padding(3);
+            classinfotable.Controls.Add(ctrl, col, row);
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+            classinfotable.Visible = !classinfotable.Visible;
+
+            if (classinfotable.Visible)
+            {
+                sidebarbtn.Values.Text = "";
+                int preferredHeight = classinfotable.GetPreferredSize(new Size(classinfotable.Width, 0)).Height;
+                this.Height = classinfotable.Top + preferredHeight + 20;
+            }
+            else
+            {
+                sidebarbtn.Values.Text = "";
+                this.Height = 100;
+            }
+
+            this.Parent?.PerformLayout();
+        }
+
+        private async void ArchiveorRestorebutton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool isNowArchived = await _sectionService.ToggleArchiveStatusAsync(_sectionId);
+                var parent = this.FindForm();
+                if (parent != null)
+                {
+                    var mainControl = FindParentRecordsNew();
+                    if (mainControl != null)
+                    {
+                        if (isNowArchived)
+                        {
+                            mainControl.MoveToArchived(this);
+                            ArchiveorRestorebutton.Values.Text = "";
+                            ArchiveorRestorebutton.Values.ExtraText = "Restore";
+                        }
+                        else
+                        {
+                            mainControl.MoveToCurrent(this);
+                            ArchiveorRestorebutton.Values.Text = "";
+                            ArchiveorRestorebutton.Values.ExtraText = "Archive";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Archive toggle failed: " + ex.Message);
+            }
+        }
+
+        private UC_Records_New FindParentRecordsNew()
+        {
+            Control p = this.Parent;
+            while (p != null)
+            {
+                if (p is UC_Records_New rn)
+                    return rn;
+                p = p.Parent;
+            }
+            return null;
+        }
+
+        public void SetArchivedState(bool archived)
+        {
+            _isArchived = archived;
+
+            ArchiveorRestorebutton.Values.ExtraText = archived ? "Restore" : "Archive";
+            ArchiveorRestorebutton.Values.Text = archived ? "" : "";
+        }
+    }
+}
