@@ -77,7 +77,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            BackColor = Color.FromArgb(239, 240, 241);
+            BackColor = Color.FromArgb(249, 250, 251);
             Controls.Add(panel1);
             Controls.Add(kryptonLabel1);
             Controls.Add(panelTeacherProfile);

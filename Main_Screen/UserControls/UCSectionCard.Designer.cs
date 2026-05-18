@@ -176,7 +176,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(39, 165, 153);
+            BackColor = SystemColors.Control;
             Controls.Add(panel1);
             Margin = new Padding(3, 10, 3, 10);
             Name = "UCSectionCard";

@@ -19,6 +19,8 @@ namespace Brevi.Application
         {
             InitializeComponent();
             _teacherService = teacherService;
+            UIHelper.RoundControl(this, 20);
+            UIHelper.RoundControl(panel1, 20);
         }
         public async Task LoadTeacherProfileAsync()
         {

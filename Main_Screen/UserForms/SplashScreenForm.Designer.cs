@@ -40,9 +40,9 @@
             // logoPictureBox
             // 
             logoPictureBox.Image = Properties.Resources.Logo_Name_only_removedBg__WHITE;
-            logoPictureBox.Location = new Point(40, -7);
+            logoPictureBox.Location = new Point(-15, -26);
             logoPictureBox.Name = "logoPictureBox";
-            logoPictureBox.Size = new Size(393, 189);
+            logoPictureBox.Size = new Size(578, 290);
             logoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             logoPictureBox.TabIndex = 0;
             logoPictureBox.TabStop = false;
@@ -55,7 +55,7 @@
             // GIFPictureBox
             // 
             GIFPictureBox.Image = (Image)resources.GetObject("GIFPictureBox.Image");
-            GIFPictureBox.Location = new Point(136, 128);
+            GIFPictureBox.Location = new Point(189, 170);
             GIFPictureBox.Name = "GIFPictureBox";
             GIFPictureBox.Size = new Size(200, 200);
             GIFPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -67,9 +67,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 164, 153);
-            ClientSize = new Size(473, 339);
-            Controls.Add(logoPictureBox);
+            ClientSize = new Size(578, 378);
             Controls.Add(GIFPictureBox);
+            Controls.Add(logoPictureBox);
             FormBorderStyle = FormBorderStyle.None;
             Name = "SplashScreenForm";
             StartPosition = FormStartPosition.CenterScreen;

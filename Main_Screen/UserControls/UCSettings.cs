@@ -30,7 +30,8 @@ namespace Brevi.Application
 
             UIHelper.RoundControl(AccountManagementPanel, 20);
             UIHelper.RoundControl(GradeFormulaPanel, 20);
-            UIHelper.RoundControl(DarkModePanel, 20);
+            UIHelper.RoundControl(BorderPanel1, 20);
+            UIHelper.RoundControl(BorderPanel2, 20);
         }
         protected override async void OnLoad(EventArgs e)
         {

@@ -46,7 +46,7 @@
             // 
             btnStartNow.Anchor = AnchorStyles.None;
             btnStartNow.Cursor = Cursors.Hand;
-            btnStartNow.Location = new Point(105, 403);
+            btnStartNow.Location = new Point(109, 380);
             btnStartNow.Name = "btnStartNow";
             btnStartNow.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
             btnStartNow.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
@@ -81,7 +81,7 @@
             kryptonWrapLabel1.Anchor = AnchorStyles.None;
             kryptonWrapLabel1.AutoSize = false;
             kryptonWrapLabel1.LabelStyle = Krypton.Toolkit.LabelStyle.AlternateControl;
-            kryptonWrapLabel1.Location = new Point(105, 304);
+            kryptonWrapLabel1.Location = new Point(100, 294);
             kryptonWrapLabel1.Name = "kryptonWrapLabel1";
             kryptonWrapLabel1.Size = new Size(332, 73);
             kryptonWrapLabel1.StateCommon.Font = new Font("Inter Medium", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -93,7 +93,7 @@
             pictureBox2.Anchor = AnchorStyles.None;
             pictureBox2.BackgroundImage = Properties.Resources.Logo_Name_only_removedBg;
             pictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox2.Location = new Point(105, 160);
+            pictureBox2.Location = new Point(57, 132);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(425, 152);
             pictureBox2.TabIndex = 12;
