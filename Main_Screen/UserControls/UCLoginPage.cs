@@ -19,7 +19,7 @@ namespace Brevi.Application
         bool _visibility = false;
 
         public UCLoginPage(UserManager<Teacher> userManager, string? username)
-        {
+        { 
             _userManager = userManager;
             _prefilledUsername = username;
             InitializeComponent();
@@ -84,17 +84,19 @@ namespace Brevi.Application
 
         private void visibilityBtn_Click(object sender, EventArgs e)
         {
+            _visibility = !_visibility;
             if (_visibility)
+
             {
-                txtPassword.UseSystemPasswordChar = true;
-                _visibility = false;
-                visibilityBtn.Values.Image = Properties.Resources.visibility_off;
+                txtPassword.UseSystemPasswordChar = false;
+                txtPassword.PasswordChar = '\0';
+                visibilityBtn.Values.Image = Properties.Resources.visibility;
             }
             else
             {
-                txtPassword.UseSystemPasswordChar = false;
-                _visibility = true;
-                visibilityBtn.Values.Image = Properties.Resources.visibility;
+                txtPassword.UseSystemPasswordChar = true;
+                txtPassword.PasswordChar = '●';
+                visibilityBtn.Values.Image = Properties.Resources.visibility_off;
             }
         }
     }

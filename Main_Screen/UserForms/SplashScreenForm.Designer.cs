@@ -40,9 +40,9 @@
             // logoPictureBox
             // 
             logoPictureBox.Image = Properties.Resources.Logo_Name_only_removedBg__WHITE;
-            logoPictureBox.Location = new Point(-15, -26);
+            logoPictureBox.Location = new Point(33, -1);
             logoPictureBox.Name = "logoPictureBox";
-            logoPictureBox.Size = new Size(578, 290);
+            logoPictureBox.Size = new Size(483, 251);
             logoPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             logoPictureBox.TabIndex = 0;
             logoPictureBox.TabStop = false;
@@ -55,10 +55,10 @@
             // GIFPictureBox
             // 
             GIFPictureBox.Image = (Image)resources.GetObject("GIFPictureBox.Image");
-            GIFPictureBox.Location = new Point(189, 170);
+            GIFPictureBox.Location = new Point(202, 175);
             GIFPictureBox.Name = "GIFPictureBox";
-            GIFPictureBox.Size = new Size(200, 200);
-            GIFPictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+            GIFPictureBox.Size = new Size(174, 156);
+            GIFPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             GIFPictureBox.TabIndex = 1;
             GIFPictureBox.TabStop = false;
             // 
@@ -78,7 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)logoPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)GIFPictureBox).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

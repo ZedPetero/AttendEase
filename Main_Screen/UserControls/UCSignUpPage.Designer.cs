@@ -92,11 +92,20 @@
             // 
             visibilityBtn.Location = new Point(455, 376);
             visibilityBtn.Name = "visibilityBtn";
-            visibilityBtn.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            visibilityBtn.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.False;
-            visibilityBtn.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.False;
-            visibilityBtn.OverrideFocus.Border.Color1 = Color.DarkGray;
-            visibilityBtn.OverrideFocus.Border.Color2 = Color.DarkGray;
+            visibilityBtn.OverrideDefault.Back.Color1 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideDefault.Back.Color2 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideDefault.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            visibilityBtn.OverrideDefault.Border.Color1 = Color.FromArgb(229, 242, 240);
+            visibilityBtn.OverrideDefault.Border.Color2 = Color.FromArgb(229, 242, 240);
+            visibilityBtn.OverrideDefault.Border.Draw = Krypton.Toolkit.InheritBool.True;
+            visibilityBtn.OverrideDefault.Border.Width = 1;
+            visibilityBtn.OverrideFocus.Back.Color1 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideFocus.Back.Color2 = Color.FromArgb(39, 165, 153);
+            visibilityBtn.OverrideFocus.Back.Draw = Krypton.Toolkit.InheritBool.True;
+            visibilityBtn.OverrideFocus.Border.Color1 = Color.FromArgb(229, 242, 240);
+            visibilityBtn.OverrideFocus.Border.Color2 = Color.FromArgb(229, 242, 240);
+            visibilityBtn.OverrideFocus.Border.Rounding = 5F;
+            visibilityBtn.OverrideFocus.Border.Width = 1;
             visibilityBtn.OverrideFocus.Content.LongText.Color1 = Color.FromArgb(39, 165, 153);
             visibilityBtn.OverrideFocus.Content.LongText.Color2 = Color.FromArgb(39, 165, 153);
             visibilityBtn.OverrideFocus.Content.ShortText.Color1 = Color.FromArgb(39, 165, 153);
@@ -111,6 +120,8 @@
             visibilityBtn.StateCommon.Content.LongText.Color2 = Color.White;
             visibilityBtn.StateCommon.Content.LongText.Font = new Font("Inter", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             visibilityBtn.StateCommon.Content.ShortText.Font = new Font("Material Symbols Outlined", 20.2499981F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            visibilityBtn.StatePressed.Back.Color1 = SystemColors.ActiveCaption;
+            visibilityBtn.StatePressed.Back.Color2 = SystemColors.ActiveCaption;
             visibilityBtn.StatePressed.Border.Color1 = Color.DarkGray;
             visibilityBtn.StatePressed.Border.Color2 = Color.DarkGray;
             visibilityBtn.TabIndex = 41;
