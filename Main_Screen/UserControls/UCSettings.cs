@@ -46,7 +46,15 @@ namespace Brevi.Application
             Absenttxtbox.Text = (weights.AbsentWeight * 100).ToString();
             Excusedtxtbox.Text = (weights.ExcusedWeight * 100).ToString();
 
-            UsernameChangetxtbox.Text = UserSession.CurrentTeacherName;
+            var user = await _userManager.FindByIdAsync(UserSession.CurrentTeacherId.ToString());
+            if (user != null)
+            {
+                UsernameChangetxtbox.Text = user.UserName;
+            }
+            else
+            {
+                UsernameChangetxtbox.Text = UserSession.CurrentTeacherName;
+            }
         }
 
         private async void PasswordChangebutton_Click(object? sender, EventArgs e)

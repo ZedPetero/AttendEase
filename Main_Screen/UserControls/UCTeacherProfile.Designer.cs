@@ -349,7 +349,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
+            BackColor = Color.FromArgb(224, 230, 235);
             Controls.Add(panel1);
             Controls.Add(kryptonBorderEdge2);
             Controls.Add(kryptonBorderEdge1);

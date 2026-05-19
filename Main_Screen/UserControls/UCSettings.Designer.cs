@@ -402,7 +402,7 @@
             // BorderPanel2
             // 
             BorderPanel2.Anchor = AnchorStyles.None;
-            BorderPanel2.BackColor = SystemColors.Control;
+            BorderPanel2.BackColor = Color.FromArgb(224, 230, 235);
             BorderPanel2.Location = new Point(234, 559);
             BorderPanel2.Name = "BorderPanel2";
             BorderPanel2.Size = new Size(614, 244);
@@ -411,7 +411,7 @@
             // BorderPanel1
             // 
             BorderPanel1.Anchor = AnchorStyles.None;
-            BorderPanel1.BackColor = SystemColors.Control;
+            BorderPanel1.BackColor = Color.FromArgb(224, 230, 235);
             BorderPanel1.Location = new Point(234, 102);
             BorderPanel1.Name = "BorderPanel1";
             BorderPanel1.Size = new Size(614, 433);

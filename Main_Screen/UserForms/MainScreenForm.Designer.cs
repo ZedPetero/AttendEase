@@ -281,7 +281,7 @@ namespace Brevi.Application
             flowLayoutPanel2.Location = new Point(0, 0);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Padding = new Padding(4, 0, 0, 0);
-            flowLayoutPanel2.Size = new Size(53, 570);
+            flowLayoutPanel2.Size = new Size(52, 570);
             flowLayoutPanel2.TabIndex = 2;
             // 
             // btnLogout
@@ -293,7 +293,7 @@ namespace Brevi.Application
             btnLogout.Name = "btnLogout";
             btnLogout.OverrideFocus.Border.Draw = Krypton.Toolkit.InheritBool.False;
             btnLogout.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
-            btnLogout.Size = new Size(53, 60);
+            btnLogout.Size = new Size(52, 60);
             btnLogout.StateCommon.Back.Color1 = Color.Transparent;
             btnLogout.StateCommon.Back.Color2 = Color.Transparent;
             btnLogout.StateCommon.Back.Draw = Krypton.Toolkit.InheritBool.False;
@@ -322,10 +322,10 @@ namespace Brevi.Application
             // 
             kryptonBorderEdge2.AutoSize = false;
             kryptonBorderEdge2.Dock = DockStyle.Right;
-            kryptonBorderEdge2.Location = new Point(53, 0);
+            kryptonBorderEdge2.Location = new Point(52, 0);
             kryptonBorderEdge2.Name = "kryptonBorderEdge2";
-            kryptonBorderEdge2.Size = new Size(2, 630);
-            kryptonBorderEdge2.StateCommon.Color1 = SystemColors.Control;
+            kryptonBorderEdge2.Size = new Size(3, 630);
+            kryptonBorderEdge2.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
             kryptonBorderEdge2.StateCommon.Width = 2;
             kryptonBorderEdge2.Text = "kryptonBorderEdge2";
             // 
@@ -427,11 +427,11 @@ namespace Brevi.Application
             // kryptonBorderEdge1
             // 
             kryptonBorderEdge1.Dock = DockStyle.Bottom;
-            kryptonBorderEdge1.Location = new Point(0, 58);
+            kryptonBorderEdge1.Location = new Point(0, 57);
             kryptonBorderEdge1.Name = "kryptonBorderEdge1";
-            kryptonBorderEdge1.Size = new Size(1200, 2);
-            kryptonBorderEdge1.StateCommon.Color1 = SystemColors.Control;
-            kryptonBorderEdge1.StateCommon.Width = 2;
+            kryptonBorderEdge1.Size = new Size(1200, 3);
+            kryptonBorderEdge1.StateCommon.Color1 = Color.FromArgb(224, 230, 235);
+            kryptonBorderEdge1.StateCommon.Width = 3;
             kryptonBorderEdge1.Text = "kryptonBorderEdge1";
             // 
             // btnMenu

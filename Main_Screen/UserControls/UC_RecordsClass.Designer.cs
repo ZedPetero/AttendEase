@@ -226,7 +226,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
+            BackColor = Color.FromArgb(224, 230, 235);
             Controls.Add(panel1);
             Name = "UC_RecordsClass";
             Padding = new Padding(2);

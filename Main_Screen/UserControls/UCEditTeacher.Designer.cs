@@ -62,6 +62,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.White;
             panel1.Controls.Add(datePickerDate);
             panel1.Controls.Add(cmbSubject);
             panel1.Controls.Add(txtLastName);
@@ -365,7 +366,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.FromArgb(224, 230, 235);
             Controls.Add(panel1);
             Controls.Add(vScrollBar1);
             Name = "UCEditTeacher";
