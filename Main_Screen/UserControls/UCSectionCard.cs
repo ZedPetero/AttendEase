@@ -26,6 +26,7 @@ namespace Brevi.Application
             UIHelper.RoundControl(this, 16);
             originalMargin = this.Margin;
             BindHoverEvents(this);
+            FontEngine.RetargetAllFonts(this);
         }
         private void BindHoverEvents(Control parent)
         {

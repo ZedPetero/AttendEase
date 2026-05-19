@@ -21,6 +21,7 @@ namespace Brevi.Application
             _teacherService = teacherService;
             UIHelper.RoundControl(this, 20);
             UIHelper.RoundControl(panel1, 20);
+            FontEngine.RetargetAllFonts(this);
         }
         public async Task LoadTeacherProfileAsync()
         {

@@ -24,6 +24,7 @@ namespace Brevi.Application
             _userManager = userManager;
             InitializeComponent();
             LoadSavedAccounts();
+            FontEngine.RetargetAllFonts(this);
         }
 
         private void LoadSavedAccounts()

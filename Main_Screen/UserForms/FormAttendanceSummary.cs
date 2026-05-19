@@ -31,7 +31,7 @@ namespace Brevi.Application
             _attendanceService = attendanceService;
             _weightsService = weightsService;
             UIHelper.RoundControl(pnlContent, 30);
-
+            FontEngine.RetargetAllFonts(this);
             gridSummary.AutoGenerateColumns = false;
 
             gridSummary.Columns["RollNo"].DataPropertyName = "RollNo";

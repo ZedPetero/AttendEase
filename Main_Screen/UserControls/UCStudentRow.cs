@@ -34,6 +34,7 @@ namespace Brevi.Application
             _attendanceService = attendanceService;
             _studentService = studentService;
             InitializeComponent();
+            FontEngine.RetargetAllFonts(this);
         }
         private void RoundPanel(object sender, EventArgs e)
         {

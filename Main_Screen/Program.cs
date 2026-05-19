@@ -18,6 +18,7 @@ internal static class Program
     static void Main()
     {
         FontEngine.LoadFonts();
+        Application.SetDefaultFont(FontEngine.InterBase);
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdENjW35acHJRRWNbVkR0VkleYQ==");

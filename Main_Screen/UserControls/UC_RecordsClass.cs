@@ -22,6 +22,7 @@ namespace Brevi.Application
             InitializeComponent();
             _sectionService = sectionService;
             UIHelper.RoundControl(lblSubject, 20);
+            FontEngine.RetargetAllFonts(this);
         }
         protected override void OnResize(EventArgs e)
         {

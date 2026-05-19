@@ -25,6 +25,7 @@ namespace Brevi.Application
             UIHelper.RoundControl(this.kryptonPanel6, 20);
             UIHelper.RoundControl(this.kryptonPanel7, 20);
             UIHelper.RoundControl(this.kryptonPanel8, 20);
+            FontEngine.RetargetAllFonts(this);
         }
 
         private void btnGetStarted_Click(object sender, EventArgs e)

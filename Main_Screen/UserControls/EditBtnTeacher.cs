@@ -13,6 +13,7 @@ namespace Brevi.Application.UserControls
         public EditBtnTeacher()
         {
             InitializeComponent();
+            FontEngine.RetargetAllFonts(this);
         }
         public event EventHandler EditClicked;
         private void btnEditProfile_Click(object sender, EventArgs e)

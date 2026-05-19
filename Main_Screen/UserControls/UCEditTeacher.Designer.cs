@@ -361,6 +361,7 @@
             btnUploadPicture.TabIndex = 55;
             btnUploadPicture.Values.DropDownArrowColor = Color.Empty;
             btnUploadPicture.Values.Text = "";
+            btnUploadPicture.Click += btnUploadPicture_Click;
             // 
             // UCEditTeacher
             // 

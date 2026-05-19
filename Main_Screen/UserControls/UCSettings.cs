@@ -32,6 +32,7 @@ namespace Brevi.Application
             UIHelper.RoundControl(GradeFormulaPanel, 20);
             UIHelper.RoundControl(BorderPanel1, 20);
             UIHelper.RoundControl(BorderPanel2, 20);
+            FontEngine.RetargetAllFonts(this);
         }
         protected override async void OnLoad(EventArgs e)
         {
