@@ -13,7 +13,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Inter-VariableFont_opsz,wght.ttf" />
+    <None Remove="MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="BreviIconTrue.ico" />
+    <Content Include="Inter-VariableFont_opsz,wght.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
