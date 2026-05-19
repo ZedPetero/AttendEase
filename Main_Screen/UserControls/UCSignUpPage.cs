@@ -21,7 +21,7 @@ namespace Brevi.Application
         {
             _userManager = userManager;
             InitializeComponent();
-            FontEngine.RetargetAllFonts(this);
+            
         }
 
         private async void btnSignUp_Click(object sender, EventArgs e)

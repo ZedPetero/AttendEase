@@ -219,7 +219,6 @@
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "FormAttendanceSummary";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Load += Form_AttendanceSummary_Load;

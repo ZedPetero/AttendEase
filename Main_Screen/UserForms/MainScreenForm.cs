@@ -39,8 +39,7 @@ namespace Brevi.Application
             UCHome myHome = new UCHome(_sectionService);
             LoadForm(myHome);
             btnHome.Checked = true;
-            FontEngine.RetargetAllFonts(this);
-            FontEngine.RetargetPalette(this.ButtonPalette);
+            
         }
 
         private void btnHome_Click(object sender, EventArgs e)

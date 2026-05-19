@@ -25,7 +25,7 @@ namespace Brevi.Application
             iPage.StartNowClicked += (s, e) => btnSignUp_Click(s, e);
             iPage.AccountSelected += (username) => ListForQuickLoginLoad(username);
             LoadForm(iPage);
-            FontEngine.RetargetAllFonts(this);
+            
         }
 
         private void ListForQuickLoginLoad(string username)

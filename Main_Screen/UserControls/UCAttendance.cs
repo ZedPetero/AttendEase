@@ -39,7 +39,7 @@ namespace Brevi.Application
             UpdateDateDisplay();
             SetSection(CurrentSectionId);
             FilterComboBox.SelectedIndexChanged += async (s, ev) => await LoadStudentsForDateAsync();
-            FontEngine.RetargetAllFonts(this);
+            
         }
         protected override CreateParams CreateParams
         {

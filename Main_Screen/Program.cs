@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 internal static class Program
@@ -18,8 +19,42 @@ internal static class Program
     static void Main()
     {
         Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
-        FontEngine.LoadFonts();
-        Application.SetDefaultFont(FontEngine.InterBase);
+        if (!IsFontInstalled("Inter") || !IsFontInstalled("Material Symbols Outlined"))
+        {
+            try
+            {
+                string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+         
+                string interVar = "Inter-VariableFont_opsz,wght.ttf";
+                string iconVar = "MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf";
+
+                ProcessStartInfo psi = new ProcessStartInfo();
+                psi.FileName = "cmd.exe";
+
+                psi.Arguments = $"/c copy /y \"{Path.Combine(baseDir, interVar)}\" \"%WINDIR%\\Fonts\" & " +
+                                $"copy /y \"{Path.Combine(baseDir, iconVar)}\" \"%WINDIR%\\Fonts\" & " +
+                                $"reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\" /v \"Inter (TrueType)\" /t REG_SZ /d \"{interVar}\" /f & " +
+                                $"reg add \"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\" /v \"Material Symbols Outlined (TrueType)\" /t REG_SZ /d \"{iconVar}\" /f";
+
+                psi.Verb = "runas";
+                psi.UseShellExecute = true;
+                psi.WindowStyle = ProcessWindowStyle.Normal; 
+
+                Process p = Process.Start(psi);
+
+                MessageBox.Show("Font setup initiated. Please wait for the black window to finish, then the app will close.", "Setup");
+
+                p.WaitForExit();
+
+                Environment.Exit(0);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
         Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF1cXmhIfEx1RHxQdld5ZFRHallYTnNWUj0eQnxTdENjW35acHJRRWNbVkR0VkleYQ==");
@@ -74,6 +109,13 @@ internal static class Program
                 mainForm.ExitClicked += (sender, e) => exitClicked = true;
                 mainForm.ShowDialog();
             }
+        }
+    }
+    static bool IsFontInstalled(string name)
+    {
+        using (var fonts = new System.Drawing.Text.InstalledFontCollection())
+        {
+            return fonts.Families.Any(f => f.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

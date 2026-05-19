@@ -29,7 +29,7 @@ namespace Brevi.Application
                 welcomingLabel.Text = $"Welcome Back, {_prefilledUsername}!";
             }
             UIHelper.RoundControl(panel1, 15);
-            FontEngine.RetargetAllFonts(this);
+            
         }
 
         public void UCLoginPage_Reset(object sender, EventArgs e)

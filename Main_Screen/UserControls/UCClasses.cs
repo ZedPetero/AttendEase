@@ -34,7 +34,7 @@ namespace Brevi.Application
             _subjectRepository = subjectRepository;
             _attendanceWeightsService = attendanceWeightsService;
             lblTeacher.Text = $"Welcome, {UserSession.CurrentTeacherName}!";
-            FontEngine.RetargetAllFonts(this);
+            
         }
         protected override void OnLoad(EventArgs e)
         {
