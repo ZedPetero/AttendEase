@@ -49,7 +49,10 @@ namespace Brevi.Application
 
                 var sections = await _sectionService
                     .GetTeacherSectionsAsync(UserSession.CurrentTeacherId);
-                var sortedSections = sections.OrderBy(s => s.StartTime).ToList();
+                var sortedSections = sections
+                    .OrderBy(s => s.StartTime)
+                    .ThenBy(s => s.EndTime)
+                    .ToList();
                 foreach (var section in sortedSections)
                 {
                     string timeString =

@@ -1,4 +1,7 @@
-﻿using Brevi.Infrastructure.Data;
+﻿using Brevi.Application.UserControls;
+using Brevi.Domain.Models;
+using Brevi.Infrastructure.Data;
+using Brevi.Services.Repositories.IRepositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,8 +10,6 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using Brevi.Domain.Models;
-using Brevi.Services.Repositories.IRepositories;
 
 namespace Brevi.Application
 {
@@ -22,6 +23,8 @@ namespace Brevi.Application
             InitializeComponent();
             _teacherService = teacherService;
             LoadTeacherData();
+            UIHelper.RoundControl(this, 20);
+            UIHelper.RoundControl(panel1, 20);
         }
 
         private async Task LoadTeacherData()
@@ -48,11 +51,24 @@ namespace Brevi.Application
                 txtBio.Text = _currentTeacher.Bio ?? "";
                 if (_currentTeacher.ProfilePicture != null && _currentTeacher.ProfilePicture.Length > 0)
                 {
-                    using var ms = new System.IO.MemoryStream(_currentTeacher.ProfilePicture);
-                    Image profilePic = Image.FromStream(ms);
-                    btnUploadPicture.StateCommon.Back.Image = profilePic;
-                    btnUploadPicture.StateCommon.Back.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Stretch;
-                    btnUploadPicture.Values.Text = "";
+                    try
+                    {
+                        using (var ms = new System.IO.MemoryStream(_currentTeacher.ProfilePicture))
+                        {
+                            using (var tempImage = Image.FromStream(ms))
+                            {
+                                Bitmap profilePic = new Bitmap(tempImage);
+
+                                btnUploadPicture.StateCommon.Back.Image = profilePic;
+                                btnUploadPicture.StateCommon.Back.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Stretch;
+                                btnUploadPicture.Values.Text = "";
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Image Load Error in Edit Mode: {ex.Message}");
+                    }
                 }
             }
         }

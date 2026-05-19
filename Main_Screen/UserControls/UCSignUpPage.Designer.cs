@@ -133,7 +133,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.BeforeTouchSize = new Size(141, 32);
+            txtEmail.BeforeTouchSize = new Size(345, 32);
             txtEmail.Border3DStyle = Border3DStyle.SunkenOuter;
             txtEmail.BorderColor = Color.DimGray;
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
@@ -149,7 +149,7 @@
             // 
             // txtPhoneNumber
             // 
-            txtPhoneNumber.BeforeTouchSize = new Size(141, 32);
+            txtPhoneNumber.BeforeTouchSize = new Size(345, 32);
             txtPhoneNumber.Border3DStyle = Border3DStyle.SunkenOuter;
             txtPhoneNumber.BorderColor = Color.DimGray;
             txtPhoneNumber.BorderStyle = BorderStyle.FixedSingle;
@@ -165,7 +165,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.BeforeTouchSize = new Size(141, 32);
+            txtUsername.BeforeTouchSize = new Size(345, 32);
             txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
@@ -181,7 +181,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.BeforeTouchSize = new Size(141, 32);
+            txtPassword.BeforeTouchSize = new Size(345, 32);
             txtPassword.Border3DStyle = Border3DStyle.SunkenOuter;
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
@@ -243,7 +243,7 @@
             // 
             // txtMiddleName
             // 
-            txtMiddleName.BeforeTouchSize = new Size(141, 32);
+            txtMiddleName.BeforeTouchSize = new Size(345, 32);
             txtMiddleName.Border3DStyle = Border3DStyle.SunkenOuter;
             txtMiddleName.BorderColor = Color.DimGray;
             txtMiddleName.BorderStyle = BorderStyle.FixedSingle;
@@ -270,7 +270,7 @@
             // 
             // txtLastName
             // 
-            txtLastName.BeforeTouchSize = new Size(141, 32);
+            txtLastName.BeforeTouchSize = new Size(345, 32);
             txtLastName.Border3DStyle = Border3DStyle.SunkenOuter;
             txtLastName.BorderColor = Color.DimGray;
             txtLastName.BorderStyle = BorderStyle.FixedSingle;
@@ -301,11 +301,11 @@
             autoLabel5.BackColor = Color.Transparent;
             autoLabel5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             autoLabel5.ForeColor = Color.FromArgb(108, 124, 137);
-            autoLabel5.Location = new Point(87, 54);
+            autoLabel5.Location = new Point(93, 54);
             autoLabel5.Name = "autoLabel5";
-            autoLabel5.Size = new Size(346, 21);
+            autoLabel5.Size = new Size(334, 21);
             autoLabel5.TabIndex = 30;
-            autoLabel5.Text = "Join Korum and start tracking your attendance";
+            autoLabel5.Text = "Join Brevi and start tracking your attendance";
             // 
             // autoLabel4
             // 
@@ -321,7 +321,7 @@
             // 
             // txtFirstName
             // 
-            txtFirstName.BeforeTouchSize = new Size(141, 32);
+            txtFirstName.BeforeTouchSize = new Size(345, 32);
             txtFirstName.Border3DStyle = Border3DStyle.SunkenOuter;
             txtFirstName.BorderColor = Color.DimGray;
             txtFirstName.BorderStyle = BorderStyle.FixedSingle;
@@ -368,11 +368,11 @@
             autoLabel3.BackColor = Color.Transparent;
             autoLabel3.Font = new Font("Segoe UI", 12F);
             autoLabel3.ForeColor = Color.FromArgb(108, 124, 137);
-            autoLabel3.Location = new Point(126, 489);
+            autoLabel3.Location = new Point(112, 489);
             autoLabel3.Name = "autoLabel3";
-            autoLabel3.Size = new Size(171, 21);
+            autoLabel3.Size = new Size(186, 21);
             autoLabel3.TabIndex = 27;
-            autoLabel3.Text = "Don't have an account?";
+            autoLabel3.Text = "Already have an account?";
             // 
             // btnSignUp
             // 

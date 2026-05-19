@@ -66,13 +66,30 @@ namespace Brevi.Application
         }
         private async void SaveBtnControl_SaveChangesClicked(object sender, EventArgs e)
         {
-            if (_activeEditTeacher != null)
+            if (_activeEditTeacher == null) return;
+
+            try
             {
+                if (sender is Control btn) btn.Enabled = false;
+
                 bool saveWasSuccessful = await _activeEditTeacher.SaveTeacherDataAsync();
+
                 if (saveWasSuccessful)
                 {
                     ShowProfileMode();
                 }
+                else
+                {
+                    MessageBox.Show("The save operation was rejected by the service. Check your data.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Critical error during save: {ex.Message}");
+            }
+            finally
+            {
+                if (sender is Control btn) btn.Enabled = true;
             }
         }
 

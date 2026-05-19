@@ -23,6 +23,10 @@ namespace Brevi.Application
         public MainScreenForm(ISectionService sectionService, ITeacherService teacherService, IStudentService studentService, IAttendanceService attendanceService, IGradeService gradeService, UserManager<Teacher> userManager, IAttendanceWeightsService attendanceWeightsService, IRepository<Subject> subjectRepository)
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
+            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
+            EnableDoubleBuffer(sidebar);
+            EnableDoubleBuffer(pnlMainContent);
             UpdateMainContentBounds();
             _sectionService = sectionService;
             _teacherService = teacherService;
@@ -209,6 +213,14 @@ namespace Brevi.Application
                 this.Close();
             }
         }
+        private void EnableDoubleBuffer(Control c)
+        {
+            if (c == null) return;
 
+            var property = typeof(Control).GetProperty("DoubleBuffered",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+            property?.SetValue(c, true, null);
+        }
     }
 }

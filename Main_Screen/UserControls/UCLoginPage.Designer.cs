@@ -101,7 +101,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.BeforeTouchSize = new Size(141, 32);
+            txtPassword.BeforeTouchSize = new Size(345, 32);
             txtPassword.BorderColor = Color.DimGray;
             txtPassword.BorderStyle = BorderStyle.FixedSingle;
             txtPassword.CornerRadius = 5;
@@ -130,7 +130,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.BeforeTouchSize = new Size(141, 32);
+            txtUsername.BeforeTouchSize = new Size(345, 32);
             txtUsername.Border3DStyle = Border3DStyle.SunkenOuter;
             txtUsername.BorderColor = Color.DimGray;
             txtUsername.BorderStyle = BorderStyle.FixedSingle;
@@ -214,9 +214,9 @@
             autoLabel5.ForeColor = Color.FromArgb(108, 124, 137);
             autoLabel5.Location = new Point(94, 58);
             autoLabel5.Name = "autoLabel5";
-            autoLabel5.Size = new Size(235, 21);
+            autoLabel5.Size = new Size(223, 21);
             autoLabel5.TabIndex = 21;
-            autoLabel5.Text = "Sign In to your Korum Account";
+            autoLabel5.Text = "Sign In to your Brevi Account";
             // 
             // welcomingLabel
             // 

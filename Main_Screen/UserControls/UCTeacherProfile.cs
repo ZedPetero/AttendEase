@@ -48,9 +48,24 @@ namespace Brevi.Application
 
                     if (teacher.ProfilePicture != null && teacher.ProfilePicture.Length > 0)
                     {
-                        using var ms = new System.IO.MemoryStream(teacher.ProfilePicture);
-                        btnProfilePic.StateCommon.Back.Image = Image.FromStream(ms);
-                        btnProfilePic.Values.Text = "";
+                        try
+                        {
+                            using (var ms = new System.IO.MemoryStream(teacher.ProfilePicture))
+                            {
+                                using (var tempImage = Image.FromStream(ms))
+                                {
+                                    Bitmap profilePic = new Bitmap(tempImage);
+
+                                    btnProfilePic.StateCommon.Back.Image = profilePic;
+                                    btnProfilePic.StateCommon.Back.ImageStyle = Krypton.Toolkit.PaletteImageStyle.Stretch;
+                                    btnProfilePic.Values.Text = "";
+                                }
+                            }
+                        }
+                        catch (Exception imgEx)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Image Rendering Error: {imgEx.Message}");
+                        }
                     }
 
                     lblSubject.Text = teacher.Subject?.Name ?? "N/A";

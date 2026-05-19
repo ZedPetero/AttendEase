@@ -37,7 +37,14 @@ namespace Brevi.Services.Repositories
 
         public async Task<bool> UpdateTeacherProfileAsync(Teacher teacher)
         {
-            _context.Teachers.Update(teacher);
+            var trackedEntity = _context.Teachers.Local.FirstOrDefault(t => t.Id == teacher.Id);
+
+            if (trackedEntity != null)
+            {
+                _context.Entry(trackedEntity).State = EntityState.Detached;
+            }
+            _context.Entry(teacher).State = EntityState.Modified;
+
             return await _context.SaveChangesAsync() > 0;
         }
 

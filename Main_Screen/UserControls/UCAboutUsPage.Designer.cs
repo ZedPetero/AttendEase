@@ -329,7 +329,7 @@
             kryptonWrapLabel4.Size = new Size(230, 72);
             kryptonWrapLabel4.StateCommon.Font = new Font("Inter", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             kryptonWrapLabel4.StateCommon.TextColor = Color.FromArgb(108, 124, 137);
-            kryptonWrapLabel4.Text = "We believe every student counts. Korum helps ensure no one falls through the cracks.";
+            kryptonWrapLabel4.Text = "We believe every student counts. Brevi helps ensure no one falls through the cracks.";
             kryptonWrapLabel4.TextAlign = ContentAlignment.TopCenter;
             // 
             // panel6

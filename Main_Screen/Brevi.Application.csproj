@@ -7,7 +7,21 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>448401fc-6be6-4335-b649-d2b1e60863db</UserSecretsId>
+    <AssemblyTitle>Brevi</AssemblyTitle>
+    <ApplicationIcon>BreviIconTrue.ico</ApplicationIcon>
+    <PackageIcon>Gemini_Generated_Image_iylclhiylclhiylc.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="BreviIconTrue.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Downloads\Gemini_Generated_Image_iylclhiylclhiylc.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="itext" Version="9.6.0" />
